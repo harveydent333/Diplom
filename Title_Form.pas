@@ -89,9 +89,9 @@ begin
 MenuLectures.show;
 MenuLectures.ComboBox1.Items.Clear;
 
-DataModule1.ADOModuleLectrue.SQL.Clear;
-DataModule1.ADOModuleLectrue.SQL.Add('SELECT * FROM Раздел');
-DataModule1.ADOModuleLectrue.Open;
+DataModule1.ADOModuleLecture.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Раздел');
+DataModule1.ADOModuleLecture.Open;
 
 DBGrid2.DataSource.DataSet.First;
 

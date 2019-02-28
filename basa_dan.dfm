@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 183
-  Top = 195
+  Left = 135
+  Top = 261
   Height = 696
   Width = 1104
   object DataSource1: TDataSource
@@ -144,17 +144,6 @@ object DataModule1: TDataModule1
     Left = 504
     Top = 8
   end
-  object ProverkaTemADO66: TADOQuery
-    Connection = ADOConnection1
-    Parameters = <>
-    Left = 256
-    Top = 176
-  end
-  object ProverkaTem66: TDataSource
-    DataSet = ProverkaTemADO66
-    Left = 240
-    Top = 240
-  end
   object KodRazdelaForTree: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
@@ -290,16 +279,16 @@ object DataModule1: TDataModule1
     Left = 1024
     Top = 240
   end
-  object ModuleLectrue: TDataSource
-    DataSet = ADOModuleLectrue
-    Left = 80
-    Top = 424
+  object ModuleLecture: TDataSource
+    DataSet = ADOModuleLecture
+    Left = 40
+    Top = 432
   end
-  object ADOModuleLectrue: TADOQuery
+  object ADOModuleLecture: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
-    Left = 80
-    Top = 368
+    Left = 40
+    Top = 376
   end
   object TemaCRUD: TDataSource
     DataSet = ADOTemaCRUD

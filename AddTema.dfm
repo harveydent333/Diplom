@@ -1,6 +1,6 @@
 object AddTemaModalForm: TAddTemaModalForm
-  Left = 281
-  Top = 249
+  Left = 269
+  Top = 116
   AutoScroll = False
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1081' '#1090#1077#1084#1099
   ClientHeight = 310
@@ -720,6 +720,13 @@ object AddTemaModalForm: TAddTemaModalForm
     Transparent = True
     Visible = False
   end
+  object Label4: TLabel
+    Left = 56
+    Top = 104
+    Width = 32
+    Height = 13
+    Caption = 'Label4'
+  end
   object Panel2: TPanel
     Left = 112
     Top = 240
@@ -1287,7 +1294,6 @@ object AddTemaModalForm: TAddTemaModalForm
     ParentFont = False
     TabOrder = 1
     Text = 'Edit1'
-    Visible = False
   end
   object ComboBox1: TComboBox
     Left = 120
@@ -1310,7 +1316,7 @@ object AddTemaModalForm: TAddTemaModalForm
     Top = 40
     Width = 353
     Height = 49
-    DataSource = DataModule1.ModuleLectrue
+    DataSource = DataModule1.ModuleLecture
     TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

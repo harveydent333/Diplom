@@ -41,9 +41,9 @@ procedure TRazdelCRUD.SpeedButton7Click(Sender: TObject);
 var str:string;
 begin
   str:='DELETE FROM Раздел WHERE НазваниеРаздела='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString+#39;
-  DataModule1.ADOModuleLectrue.SQL.Clear;
-  DataModule1.ADOModuleLectrue.SQL.Add(str);
-  DataModule1.ADOModuleLectrue.ExecSQL;
+  DataModule1.ADOModuleLecture.SQL.Clear;
+  DataModule1.ADOModuleLecture.SQL.Add(str);
+  DataModule1.ADOModuleLecture.ExecSQL;
   DataModule1.ADORazdelCRUD.Active:=False;
   DataModule1.ADORazdelCRUD.Active:=True;
 end;

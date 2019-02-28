@@ -1,6 +1,6 @@
 object AddPracticModalForm: TAddPracticModalForm
-  Left = 284
-  Top = 596
+  Left = 260
+  Top = 139
   AutoScroll = False
   Caption = 'AddPracticModalForm'
   ClientHeight = 310
@@ -1330,7 +1330,7 @@ object AddPracticModalForm: TAddPracticModalForm
     Top = 8
     Width = 320
     Height = 65
-    DataSource = DataModule1.ModulePractic
+    DataSource = DataModule1.ModuleLecture
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

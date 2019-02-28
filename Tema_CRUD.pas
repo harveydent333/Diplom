@@ -57,9 +57,9 @@ procedure TTemaCRUD.SpeedButton7Click(Sender: TObject);
 var str:string;
 begin
   str:='DELETE FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39;
-  DataModule1.ADOModuleLectrue.SQL.Clear;
-  DataModule1.ADOModuleLectrue.SQL.Add(str);
-  DataModule1.ADOModuleLectrue.ExecSQL;
+  DataModule1.ADOModuleLecture.SQL.Clear;
+  DataModule1.ADOModuleLecture.SQL.Add(str);
+  DataModule1.ADOModuleLecture.ExecSQL;
   DataModule1.ADOTemaCRUD.Active:=False;
   DataModule1.ADOTemaCRUD.Active:=True;
 end;

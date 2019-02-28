@@ -38,9 +38,9 @@ uses basa_dan;
 procedure TAddPracticModalForm.FormCreate(Sender: TObject);
 begin
 Edit1.Text:='';                                                                               //Заполнение ComboBox при создании
-DataModule1.ADOModulePractic.SQL.Clear;                                                       //Заполнение Раздела
-DataModule1.ADOModulePractic.SQL.Add('SELECT * FROM Раздел');                                 //
-DataModule1.ADOModulePractic.Open;                                                            //
+DataModule1.ADOModuleLecture.SQL.Clear;                                                       //Заполнение Раздела
+DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Раздел');                                 //
+DataModule1.ADOModuleLecture.Open;                                                            //
 DBGrid1.DataSource.DataSet.First;                                                             //
 While (DBGrid1.DataSource.DataSet.Eof=false) do                                               //
  begin                                                                                        //

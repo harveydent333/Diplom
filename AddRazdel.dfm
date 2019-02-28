@@ -1,8 +1,8 @@
 object AddRazdelModalForm: TAddRazdelModalForm
-  Left = 292
-  Top = 469
+  Left = 274
+  Top = 466
   AutoScroll = False
-  Caption = #1057#1086#1079#1076#1072#1085#1080#1103' '#1085#1086#1074#1086#1075#1086' '#1088#1072#1079#1076#1077#1083#1072
+  Caption = #1057#1086#1079#1076#1072#1085#1080'e '#1085#1086#1074#1086#1075#1086' '#1088#1072#1079#1076#1077#1083#1072
   ClientHeight = 310
   ClientWidth = 644
   Color = clBtnFace
@@ -685,11 +685,11 @@ object AddRazdelModalForm: TAddRazdelModalForm
       0514514005145140051451400514514005145140051451401FFFD9}
   end
   object Label1: TLabel
-    Left = 176
-    Top = 16
-    Width = 303
+    Left = 112
+    Top = 80
+    Width = 238
     Height = 23
-    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1085#1086#1074#1086#1075#1086' '#1056#1072#1079#1076#1077#1083#1072
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -1252,8 +1252,8 @@ object AddRazdelModalForm: TAddRazdelModalForm
     end
   end
   object Edit1: TEdit
-    Left = 120
-    Top = 144
+    Left = 112
+    Top = 140
     Width = 400
     Height = 31
     Font.Charset = RUSSIAN_CHARSET

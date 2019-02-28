@@ -3395,7 +3395,6 @@ object MenuLectures: TMenuLectures
     Top = 8
     Width = 425
     Height = 129
-    DataSource = DataModule1.ModuleLectrue
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

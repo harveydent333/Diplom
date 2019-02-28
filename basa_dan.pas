@@ -26,8 +26,6 @@ type
     ADOQuery3: TADOQuery;
     GetDataUserSource: TDataSource;
     GetDataUserADO: TADOQuery;
-    ProverkaTemADO66: TADOQuery;
-    ProverkaTem66: TDataSource;
     KodRazdelaForTree: TADOQuery;
     KodRazdelaTree: TDataSource;
     ShowControlADO: TADOQuery;
@@ -48,8 +46,8 @@ type
     DataSource4: TDataSource;
     Auth_YchenikADO: TADOQuery;
     Auth_Ychenik: TDataSource;
-    ModuleLectrue: TDataSource;
-    ADOModuleLectrue: TADOQuery;
+    ModuleLecture: TDataSource;
+    ADOModuleLecture: TADOQuery;
     TemaCRUD: TDataSource;
     ADOTemaCRUD: TADOQuery;
     ModulePractic: TDataSource;
