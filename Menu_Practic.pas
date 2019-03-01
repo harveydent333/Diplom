@@ -48,16 +48,16 @@ kodRazdela:integer;
 begin                                                                            // НАШЛИ КОД РАЗДЕЛА ИЗ ТАБЛИЦЫ РАЗДЕЛ
 ComboBox2.Items.Clear;                                                           //
 nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];                       //
-DataModule1.ADOModulePractic.SQL.Clear;                                          //
+DataModule1.ADOModuleLecture.SQL.Clear;                                          //
 str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39;          //
-DataModule1.ADOModulePractic.SQL.Add(str);                                       //
-DataModule1.ADOModulePractic.Open;                                               //
+DataModule1.ADOModuleLecture.SQL.Add(str);                                       //
+DataModule1.ADOModuleLecture.Open;                                               //
 kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;      //
                                                                                  //
-DataModule1.ADOModulePractic.SQL.Clear;                                          // Далее ищем все записи из таблицы темы, у кого код
+DataModule1.ADOModuleLecture.SQL.Clear;                                          // Далее ищем все записи из таблицы темы, у кого код
 str:='SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela);                // раздела совпадает с нашим
-DataModule1.ADOModulePractic.SQL.Add(str);                                       //
-DataModule1.ADOModulePractic.Open;                                               //
+DataModule1.ADOModuleLecture.SQL.Add(str);                                       //
+DataModule1.ADOModuleLecture.Open;                                               //
 While (DBGrid1.DataSource.DataSet.Eof=false) do                                  //
  begin                                                                           //
     ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
@@ -76,16 +76,16 @@ nameTema,str:string;
 begin
 ComboBox3.Items.Clear; 
 nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
-DataModule1.ADOModulePractic.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Clear;
 str:='SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39;
-DataModule1.ADOModulePractic.SQL.Add(str);
-DataModule1.ADOModulePractic.Open;
+DataModule1.ADOModuleLecture.SQL.Add(str);
+DataModule1.ADOModuleLecture.Open;
 kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
 
-DataModule1.ADOModulePractic.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Clear;
 str:='SELECT * FROM Лекции WHERE КодТемы='+inttostr(kodTema);
-DataModule1.ADOModulePractic.SQL.Add(str);
-DataModule1.ADOModulePractic.Open;
+DataModule1.ADOModuleLecture.SQL.Add(str);
+DataModule1.ADOModuleLecture.Open;
 While (DBGrid1.DataSource.DataSet.Eof=false) do
  begin
     ComboBox3.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString);

@@ -1,6 +1,6 @@
 object MenuLectures: TMenuLectures
-  Left = 107
-  Top = 386
+  Left = 219
+  Top = 276
   AutoScroll = False
   Caption = 'MenuLectures'
   ClientHeight = 643
@@ -3395,6 +3395,7 @@ object MenuLectures: TMenuLectures
     Top = 8
     Width = 425
     Height = 129
+    DataSource = DataModule1.ModuleLecture
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

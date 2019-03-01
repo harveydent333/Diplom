@@ -50,8 +50,8 @@ type
     ADOModuleLecture: TADOQuery;
     TemaCRUD: TDataSource;
     ADOTemaCRUD: TADOQuery;
-    ModulePractic: TDataSource;
-    ADOModulePractic: TADOQuery;
+    ModulePractic1: TDataSource;
+    ADOModulePractic1: TADOQuery;
     RazdelCRUD: TDataSource;
     ADORazdelCRUD: TADOQuery;
     LectureCRUD: TDataSource;

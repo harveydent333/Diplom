@@ -44,8 +44,22 @@ begin
   DataModule1.ADOModuleLecture.SQL.Clear;
   DataModule1.ADOModuleLecture.SQL.Add(str);
   DataModule1.ADOModuleLecture.ExecSQL;
+
+ //==============акнй намнбкемхъ рюакхж оняке сдюкемхъ пюгдекю===============
+
   DataModule1.ADORazdelCRUD.Active:=False;
   DataModule1.ADORazdelCRUD.Active:=True;
+
+  DataModule1.ADOTemaCRUD.Active:=False;
+  DataModule1.ADOTemaCRUD.Active:=True;
+
+  DataModule1.ADOLectureCRUD.Active:=False;
+  DataModule1.ADOLectureCRUD.Active:=True;
+
+  DataModule1.ADOPracticCRUD.Active:=False;
+  DataModule1.ADOPracticCRUD.Active:=True;
+//================онйю рюй==================================================
+
 end;
 
 procedure TRazdelCRUD.SpeedButton4Click(Sender: TObject);

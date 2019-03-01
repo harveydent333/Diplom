@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 135
-  Top = 261
+  Left = 123
+  Top = 129
   Height = 696
   Width = 1104
   object DataSource1: TDataSource
@@ -309,12 +309,12 @@ object DataModule1: TDataModule1
     Left = 32
     Top = 520
   end
-  object ModulePractic: TDataSource
-    DataSet = ADOModulePractic
+  object ModulePractic1: TDataSource
+    DataSet = ADOModulePractic1
     Left = 160
     Top = 424
   end
-  object ADOModulePractic: TADOQuery
+  object ADOModulePractic1: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
     Left = 160

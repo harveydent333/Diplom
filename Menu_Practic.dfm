@@ -1,6 +1,6 @@
 object MenuPractic: TMenuPractic
-  Left = 87
-  Top = 69
+  Left = 104
+  Top = 113
   AutoScroll = False
   Caption = 'MenuPractic'
   ClientHeight = 643
@@ -3396,7 +3396,7 @@ object MenuPractic: TMenuPractic
     Top = 24
     Width = 353
     Height = 105
-    DataSource = DataModule1.ModulePractic
+    DataSource = DataModule1.ModuleLecture
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

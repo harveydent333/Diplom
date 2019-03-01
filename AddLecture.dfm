@@ -1,6 +1,6 @@
 object AddLectureModalForm: TAddLectureModalForm
-  Left = 252
-  Top = 197
+  Left = 237
+  Top = 228
   AutoScroll = False
   Caption = 'AddLectureModalForm'
   ClientHeight = 310

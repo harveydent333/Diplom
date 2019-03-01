@@ -19,7 +19,6 @@ type
     ComboBox1: TComboBox;
     DBGrid1: TDBGrid;
     Label2: TLabel;
-    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
@@ -32,6 +31,8 @@ type
 var
   AddTemaModalForm: TAddTemaModalForm;
   kodRazdel:integer;
+  nameRazdel,str:string;
+  unique_user:boolean;
 
 implementation
 
@@ -66,13 +67,19 @@ if ComboBox1.ItemIndex=-1 then
     Edit1.Visible:=true;
     label2.Visible:=true;
     Panel2.Visible:=true;
+    //
+    nameRazdel:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
+    DataModule1.ADOModuleLecture.SQL.Clear;
+    str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdel+#39;
+    DataModule1.ADOModuleLecture.SQL.Add(str);
+    DataModule1.ADOModuleLecture.Open;
+    kodRazdel:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
     end;
 
 
 end;
 
 procedure TAddTemaModalForm.SpeedButton1Click(Sender: TObject);
-var unique_user:boolean;
 begin
 unique_user:=false;
 DataModule1.ADOModuleLecture.SQL.Clear;
@@ -101,10 +108,8 @@ end;
 
 
 procedure TAddTemaModalForm.ComboBox1Change(Sender: TObject);
-var
-nameRazdel,str:string;
 begin
-Edit1.Text:='';  
+Edit1.Text:='';
 Edit1.Visible:=true;
 label2.Visible:=true;
 Panel2.Visible:=true;

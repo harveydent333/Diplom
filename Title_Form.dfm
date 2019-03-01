@@ -4057,7 +4057,7 @@ object TitleForm: TTitleForm
     Top = 488
     Width = 137
     Height = 80
-    DataSource = DataModule1.ModuleLectrue
+    DataSource = DataModule1.ModuleLecture
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -4074,26 +4074,13 @@ object TitleForm: TTitleForm
     TabOrder = 3
     OnClick = Button2Click
   end
-  object DBGrid3: TDBGrid
-    Left = 208
-    Top = 488
-    Width = 145
-    Height = 81
-    DataSource = DataModule1.ModulePractic
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-  end
   object Button3: TButton
     Left = 488
     Top = 592
     Width = 75
     Height = 25
     Caption = #1058#1077#1084#1099
-    TabOrder = 5
+    TabOrder = 4
     OnClick = Button3Click
   end
   object Button4: TButton
@@ -4102,7 +4089,7 @@ object TitleForm: TTitleForm
     Width = 81
     Height = 25
     Caption = #1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1077
-    TabOrder = 6
+    TabOrder = 5
     OnClick = Button4Click
   end
   object Button5: TButton
@@ -4111,7 +4098,7 @@ object TitleForm: TTitleForm
     Width = 73
     Height = 25
     Caption = #1056#1072#1079#1076#1077#1083#1099
-    TabOrder = 7
+    TabOrder = 6
     OnClick = Button5Click
   end
   object Button6: TButton
@@ -4120,7 +4107,7 @@ object TitleForm: TTitleForm
     Width = 75
     Height = 25
     Caption = #1051#1077#1082#1094#1080#1080
-    TabOrder = 8
+    TabOrder = 7
     OnClick = Button6Click
   end
   object Button7: TButton
@@ -4129,7 +4116,7 @@ object TitleForm: TTitleForm
     Width = 75
     Height = 25
     Caption = #1050#1086#1085#1090#1088#1086#1083#1100
-    TabOrder = 9
+    TabOrder = 8
     OnClick = Button7Click
   end
   object Button8: TButton
@@ -4138,6 +4125,6 @@ object TitleForm: TTitleForm
     Width = 97
     Height = 25
     Caption = #1059#1095#1077#1085#1080#1082#1080
-    TabOrder = 10
+    TabOrder = 9
   end
 end

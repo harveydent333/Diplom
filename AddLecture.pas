@@ -50,8 +50,7 @@ While (DBGrid1.DataSource.DataSet.Eof=false) do                                 
 DBGrid1.DataSource.DataSet.First;                                                             //
 ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;           //  конец создания
 end;
-
-     {//
+         {//
 Edit1.Text:='';
 Edit1.Visible:=true;
 label2.Visible:=true;
@@ -72,24 +71,45 @@ if ComboBox1.ItemIndex=-1 then
   end;
 
         }
-
-
-
-
-
-
-
 procedure TAddLectureModalForm.ComboBox1Change(Sender: TObject);
-begin    {
-Edit1.Visible:=true;
-label2.Visible:=true;
-Panel2.Visible:=true;
-nameRazdel:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
-DataModule1.ADOModuleLecture.SQL.Clear;
-str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdel+#39;
-DataModule1.ADOModuleLecture.SQL.Add(str);
-DataModule1.ADOModuleLecture.Open;
-kodRazdel:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger; }
+var
+nameRazdela,str:string;
+kodRazdela:integer;
+begin
+//===================БЛОК В КОНФИГ===========
+Edit1.Visible:=false;
+Edit1.Text:='';
+label2.Visible:=false;
+label3.Visible:=false;
+ComboBox2.Visible:=false;                                                        // НАШЛИ КОД РАЗДЕЛА ИЗ ТАБЛИЦЫ РАЗДЕЛ
+ComboBox2.Items.Clear;
+//=============================================
+                                                                                 //
+nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];                       //
+DataModule1.ADOModuleLecture.SQL.Clear;                                          //
+str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39;          //
+DataModule1.ADOModuleLecture.SQL.Add(str);                                       //
+DataModule1.ADOModuleLecture.Open;                                               //
+kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;      //
+                                                                                 //
+DataModule1.ADOModuleLecture.SQL.Clear;                                          // Далее ищем все записи из таблицы темы, у кого код
+str:='SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela);                // раздела совпадает с нашим
+DataModule1.ADOModuleLecture.SQL.Add(str);                                       //
+DataModule1.ADOModuleLecture.Open;                                               //
+While (DBGrid1.DataSource.DataSet.Eof=false) do                                  //
+ begin                                                                           //
+    ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
+    DBGrid1.DataSource.DataSet.Next;                                             //
+    ComboBox2.Text:='Тема';                                                      //
+  end;
+
+
+if ComboBox2.Items.Count>0 then                                            //
+begin                                                                      // Проверка на наличие тем в разделе
+  label3.Visible:=true;                                                    //
+  combobox2.Visible:=true;                                                 //
+end;
+
 end;
 
 end.

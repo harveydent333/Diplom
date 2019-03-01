@@ -20,7 +20,6 @@ type
     Button1: TButton;
     DBGrid2: TDBGrid;
     Button2: TButton;
-    DBGrid3: TDBGrid;
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
@@ -109,16 +108,16 @@ begin
 MenuPractic.show;
 MenuPractic.ComboBox1.Items.Clear;
 
-DataModule1.ADOModulePractic.SQL.Clear;
-DataModule1.ADOModulePractic.SQL.Add('SELECT * FROM Раздел');
-DataModule1.ADOModulePractic.Open;
+DataModule1.ADOModuleLecture.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Раздел');
+DataModule1.ADOModuleLecture.Open;
 
-DBGrid3.DataSource.DataSet.First;
+DBGrid2.DataSource.DataSet.First;
 
-While (DBGrid3.DataSource.DataSet.Eof=false) do
+While (DBGrid2.DataSource.DataSet.Eof=false) do
   begin
-    MenuPractic.ComboBox1.Items.Add(DBGrid3.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
-    DBGrid3.DataSource.DataSet.Next;
+    MenuPractic.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+    DBGrid2.DataSource.DataSet.Next;
     MenuPractic.ComboBox1.Text:='Раздел';    // ТУТ ЗАМЕНИТЬ НА РАЗДЕЛ ПЕРЫЙ , В СПИСКЕ
   end;
 end;

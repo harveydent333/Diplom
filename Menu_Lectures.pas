@@ -52,8 +52,15 @@ var
 nameRazdela,str:string;
 kodRazdela:integer;
 
-begin                                                                            // НАШЛИ КОД РАЗДЕЛА ИЗ ТАБЛИЦЫ РАЗДЕЛ
-ComboBox2.Items.Clear;                                                           //
+begin
+//===================БЛОК В КОНФИГ===========
+ComboBox3.Visible:=false;
+label2.Visible:=false;
+label3.Visible:=false;
+ComboBox2.Visible:=false;                                                        // НАШЛИ КОД РАЗДЕЛА ИЗ ТАБЛИЦЫ РАЗДЕЛ
+ComboBox2.Items.Clear;
+//=============================================
+                                                                                 //
 nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];                       //
 DataModule1.ADOModuleLecture.SQL.Clear;                                          //
 str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39;          //
@@ -70,10 +77,14 @@ While (DBGrid1.DataSource.DataSet.Eof=false) do                                 
     ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
     DBGrid1.DataSource.DataSet.Next;                                             //
     ComboBox2.Text:='Тема';                                                      //
-  end;                                                                           //
+  end;
 
-label2.Visible:=true;
-combobox2.Visible:=true;
+
+if ComboBox2.Items.Count>0 then                                            //
+begin                                                                      // Проверка на наличие тем в разделе
+  label2.Visible:=true;                                                    //
+  combobox2.Visible:=true;                                                 //
+end;
 
 end;
 
@@ -84,7 +95,11 @@ var
 kodTema:integer;
 nameTema,str:string;
 begin
-ComboBox3.Items.Clear; 
+ComboBox3.Visible:=false;
+label3.Visible:=false;
+ComboBox3.Items.Clear;
+
+
 nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
 DataModule1.ADOModuleLecture.SQL.Clear;
 str:='SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39;
@@ -103,8 +118,15 @@ While (DBGrid1.DataSource.DataSet.Eof=false) do
     ComboBox3.Text:='Лекция';
   end;
 
-label3.Visible:=true;
-combobox3.Visible:=true;
+
+if ComboBox3.Items.Count>0 then                                               //
+  begin                                                                       // Проверка на наличие лекций в теме
+    label3.Visible:=true;                                                     //
+    combobox3.Visible:=true;                                                  //
+  end;
+
+
+
 end;
 
 end.

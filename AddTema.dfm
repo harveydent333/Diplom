@@ -1,6 +1,6 @@
 object AddTemaModalForm: TAddTemaModalForm
-  Left = 269
-  Top = 116
+  Left = 285
+  Top = 321
   AutoScroll = False
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1081' '#1090#1077#1084#1099
   ClientHeight = 310
@@ -720,13 +720,6 @@ object AddTemaModalForm: TAddTemaModalForm
     Transparent = True
     Visible = False
   end
-  object Label4: TLabel
-    Left = 56
-    Top = 104
-    Width = 32
-    Height = 13
-    Caption = 'Label4'
-  end
   object Panel2: TPanel
     Left = 112
     Top = 240
@@ -1312,8 +1305,8 @@ object AddTemaModalForm: TAddTemaModalForm
     OnChange = ComboBox1Change
   end
   object DBGrid1: TDBGrid
-    Left = 352
-    Top = 40
+    Left = 384
+    Top = 1000
     Width = 353
     Height = 49
     DataSource = DataModule1.ModuleLecture
