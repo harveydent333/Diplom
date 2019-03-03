@@ -28429,7 +28429,7 @@ object AuthorizationForm: TAuthorizationForm
     Top = -200
     Width = 320
     Height = 120
-    DataSource = DataModule1.Auth_Ychenik
+    DataSource = DataModule1.ModuleLecture
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -28443,7 +28443,6 @@ object AuthorizationForm: TAuthorizationForm
     Width = 545
     Height = 31
     DataField = 'login'
-    DataSource = DataModule1.Auth_Ychenik
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19

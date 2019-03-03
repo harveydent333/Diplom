@@ -8,7 +8,7 @@ uses
   RpConDS, RpDefine, RpRave, QuickRpt, QRCtrls;
 
 type
-  TForm4 = class(TForm)
+  TShyrnal = class(TForm)
     DBGrid1: TDBGrid;
     Edit1: TEdit;
     Button1: TButton;
@@ -63,38 +63,38 @@ type
   end;
 
 var
-  Form4: TForm4;
+  Shyrnal: TShyrnal;
 
 implementation
      uses basa_dan, Unit3, Unit2, AuthorizationData, Title_Form;
 {$R *.dfm}
 
-procedure TForm4.SpeedButton1Click(Sender: TObject);
+procedure TShyrnal.SpeedButton1Click(Sender: TObject);
 begin
 MainMenu.show;
-Form4.Close;
+Shyrnal.Close;
 end;
 
-procedure TForm4.SpeedButton3Click(Sender: TObject);
+procedure TShyrnal.SpeedButton3Click(Sender: TObject);
 begin
 AuthorizationForm.Edit1.Text:='';
 AuthorizationData.freeDataUser;
 AuthorizationForm.show;
-Form4.Close;
+Shyrnal.Close;
 MainMenu.Close;
    end;
-procedure TForm4.SpeedButton6Click(Sender: TObject);
+procedure TShyrnal.SpeedButton6Click(Sender: TObject);
 begin
-form4.Close;
+Shyrnal.Close;
 TitleForm.close;
 end;
 
-procedure TForm4.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TShyrnal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 MainMenu.Show;
 end;
 
-procedure TForm4.Button1Click(Sender: TObject);
+procedure TShyrnal.Button1Click(Sender: TObject);
 begin
 if roleUser='teacher' then
 QuickRep2.Preview else

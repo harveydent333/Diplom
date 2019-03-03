@@ -3315,6 +3315,7 @@ object ControlCRUD: TControlCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton4Click
   end
   object Label1: TLabel
     Left = 1010

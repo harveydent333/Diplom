@@ -40,6 +40,8 @@ type
     ADOPracticCRUD: TADOQuery;
     ControlCRUD: TDataSource;
     ADOControlCRUD: TADOQuery;
+    Update: TDataSource;
+    ADOUpdate: TADOQuery;
   private
     { Private declarations }
   public

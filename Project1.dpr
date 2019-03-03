@@ -14,10 +14,9 @@ uses
   AuthorizationData in 'AuthorizationData.pas',
   PassingKnowledgeControl in 'PassingKnowledgeControl.pas' {PassingKnowledgeControlForm},
   AddControl in 'AddControl.pas' {AddTestModalForm},
-  DocumentForm in 'DocumentForm.pas' {Form4},
+  DocumentForm in 'DocumentForm.pas' {Shyrnal},
   defoltTest in 'defoltTest.pas',
   Result in 'Result.pas' {ResultForm},
-  Add_Question2 in 'Add_Question2.pas' {Form1},
   Menu_Lectures in 'Menu_Lectures.pas' {MenuLectures},
   Menu_Practic in 'Menu_Practic.pas' {MenuPractic},
   Menu_CRUD in 'Menu_CRUD.pas' {MenuCRUD},
@@ -28,7 +27,9 @@ uses
   Control_CRUD in 'Control_CRUD.pas' {ControlCRUD},
   Stydent_CRUD in 'Stydent_CRUD.pas' {StydentCRUD},
   AddLecture in 'AddLecture.pas' {AddLectureModalForm},
-  AddPractic in 'AddPractic.pas' {AddPracticModalForm};
+  AddPractic in 'AddPractic.pas' {AddPracticModalForm},
+  Ycheniki_CRUD in 'Ycheniki_CRUD.pas' {YchenikiCRUD},
+  UpdateTema in 'UpdateTema.pas' {UpdateTemaModalForm};
 
 {$R *.res}
 
@@ -42,9 +43,8 @@ begin
   Application.CreateForm(TAdd_Questions, Add_Questions);
   Application.CreateForm(TKnowledgeControl, KnowledgeControl);
   Application.CreateForm(TPassingKnowledgeControlForm, PassingKnowledgeControlForm);
-  Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TShyrnal, Shyrnal);
   Application.CreateForm(TResultForm, ResultForm);
-  Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TMenuLectures, MenuLectures);
   Application.CreateForm(TMenuPractic, MenuPractic);
   Application.CreateForm(TMenuCRUD, MenuCRUD);
@@ -54,5 +54,6 @@ begin
   Application.CreateForm(TPracticCRUD, PracticCRUD);
   Application.CreateForm(TControlCRUD, ControlCRUD);
   Application.CreateForm(TStydentCRUD, StydentCRUD);
+  Application.CreateForm(TYchenikiCRUD, YchenikiCRUD);
   Application.Run;
 end.

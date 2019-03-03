@@ -36,6 +36,7 @@ type
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +50,7 @@ implementation
 
 uses Unit2, Add_Question, Control, PassingKnowledgeControl, Menu_Lectures,
   Menu_Practic, Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD,
-  Control_CRUD;
+  Control_CRUD, Ycheniki_CRUD;
 
 {$R *.dfm}
 
@@ -145,6 +146,11 @@ end;
 procedure TTitleForm.Button7Click(Sender: TObject);
 begin
 ControlCRUD.show;
+end;
+
+procedure TTitleForm.Button8Click(Sender: TObject);
+begin
+YchenikiCRUD.show;
 end;
 
 end.

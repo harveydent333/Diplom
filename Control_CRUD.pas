@@ -19,6 +19,7 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
+    procedure SpeedButton4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +31,13 @@ var
 
 implementation
 
+uses Title_Form;
+
 {$R *.dfm}
+
+procedure TControlCRUD.SpeedButton4Click(Sender: TObject);
+begin
+TitleForm.close;
+end;
 
 end.

@@ -22,6 +22,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,7 +34,7 @@ var
 
 implementation
 
-uses Title_Form;
+uses Title_Form, UpdateTema;
 
 {$R *.dfm}
 
@@ -65,5 +66,28 @@ begin
 end;
 
 
+
+procedure TTemaCRUD.SpeedButton6Click(Sender: TObject);
+begin
+str:='SELECT * FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39;
+DataModule1.ADOUpdate.SQL.Clear;
+DataModule1.ADOUpdate.SQL.Add(str);
+DataModule1.ADOUpdate.Open;
+with TUpdateTemaModalForm.Create(nil) do
+try
+  ShowModal;
+  finally
+  Free;
+  end;
+
+{
+  str:='DELETE FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39;
+  DataModule1.ADOModuleLecture.SQL.Clear;
+  DataModule1.ADOModuleLecture.SQL.Add(str);
+  DataModule1.ADOModuleLecture.ExecSQL;
+  DataModule1.ADOTemaCRUD.Active:=False;
+  DataModule1.ADOTemaCRUD.Active:=True;
+  }
+end;
 
 end.

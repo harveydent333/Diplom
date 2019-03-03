@@ -56,7 +56,7 @@ AuthorizationData.defoltConfigRegistrationForm;
 
   RegistrationForm.label7.Caption:=nameUser;
   RegistrationForm.label8.Caption:=familyUser;
-      if (roleUser='teacher') then RegistrationForm.Label6.Caption:='Преподаватель' else RegistrationForm.Label6.Caption:='Обучающийся';
+if (roleUser='teacher') then RegistrationForm.Label6.Caption:='Преподаватель' else RegistrationForm.Label6.Caption:='Обучающийся';
 end;
 
 procedure TMainMenu.SpeedButton6Click(Sender: TObject);
@@ -97,9 +97,9 @@ procedure TMainMenu.SpeedButton2Click(Sender: TObject);
 var str:string;
 begin
 MainMenu.Close;
-form4.show;
-form4.Label1.Caption:=nameUser;
-form4.Label2.Caption:=familyUser;
+Shyrnal.show;
+Shyrnal.Label1.Caption:=nameUser;
+Shyrnal.Label2.Caption:=familyUser;
 
 if roleUser='stydent' then
   begin
@@ -111,7 +111,7 @@ if roleUser='stydent' then
     DataModule1.ShyrnalADO.SQL.clear;
     DataModule1.ShyrnalADO.SQL.Add(str);
     DataModule1.ShyrnalADO.Open;
-    if (roleUser='teacher') then Form4.Label3.Caption:='Преподаватель' else Form4.Label3.Caption:='Обучающийся';
+    if (roleUser='teacher') then Shyrnal.Label3.Caption:='Преподаватель' else Shyrnal.Label3.Caption:='Обучающийся';
   end;
 end;
 

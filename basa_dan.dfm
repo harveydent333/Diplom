@@ -1,9 +1,9 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 368
-  Top = 211
+  Left = 180
+  Top = 195
   Height = 537
-  Width = 669
+  Width = 813
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
@@ -284,5 +284,16 @@ object DataModule1: TDataModule1
         #1074#1072#1085#1080#1077#1050#1086#1085#1090#1088#1086#1083#1103';')
     Left = 424
     Top = 368
+  end
+  object Update: TDataSource
+    DataSet = ADOUpdate
+    Left = 624
+    Top = 432
+  end
+  object ADOUpdate: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 624
+    Top = 376
   end
 end

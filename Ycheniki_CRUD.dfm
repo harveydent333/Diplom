@@ -1,8 +1,8 @@
-object TemaCRUD: TTemaCRUD
-  Left = 87
-  Top = 134
+object YchenikiCRUD: TYchenikiCRUD
+  Left = 98
+  Top = 184
   AutoScroll = False
-  Caption = 'TemaCRUD'
+  Caption = 'YchenikiCRUD'
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -3276,22 +3276,22 @@ object TemaCRUD: TTemaCRUD
       75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BA
       FFD9}
   end
-  object SpeedButton3: TSpeedButton
-    Left = 11
-    Top = 0
-    Width = 59
-    Height = 53
-    Hint = #1057#1087#1088#1072#1074#1082#1072
-    Flat = True
-    ParentShowHint = False
-    ShowHint = True
-  end
   object SpeedButton2: TSpeedButton
     Left = 86
     Top = 0
     Width = 62
-    Height = 53
+    Height = 52
     Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1074' '#1084#1077#1085#1102
+    Flat = True
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object SpeedButton3: TSpeedButton
+    Left = 11
+    Top = 0
+    Width = 59
+    Height = 52
+    Hint = #1057#1087#1088#1072#1074#1082#1072
     Flat = True
     ParentShowHint = False
     ShowHint = True
@@ -3310,57 +3310,12 @@ object TemaCRUD: TTemaCRUD
     Left = 1120
     Top = 0
     Width = 50
-    Height = 52
+    Height = 49
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
     Flat = True
     ParentShowHint = False
     ShowHint = True
     OnClick = SpeedButton4Click
-  end
-  object SpeedButton1: TSpeedButton
-    Left = 200
-    Top = 408
-    Width = 425
-    Height = 49
-    Caption = #1057#1086#1079#1076#1072#1090#1100
-    Flat = True
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -32
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    OnClick = SpeedButton1Click
-  end
-  object SpeedButton6: TSpeedButton
-    Left = 200
-    Top = 464
-    Width = 425
-    Height = 49
-    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
-    Flat = True
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -32
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    OnClick = SpeedButton6Click
-  end
-  object SpeedButton7: TSpeedButton
-    Left = 200
-    Top = 520
-    Width = 425
-    Height = 49
-    Caption = #1059#1076#1072#1083#1080#1090#1100
-    Flat = True
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -32
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    OnClick = SpeedButton7Click
   end
   object Label1: TLabel
     Left = 1010
@@ -3390,20 +3345,64 @@ object TemaCRUD: TTemaCRUD
     ParentFont = False
     Transparent = True
   end
+  object SpeedButton6: TSpeedButton
+    Left = 96
+    Top = 416
+    Width = 673
+    Height = 49
+    Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1085#1086#1074#1086#1075#1086' '#1091#1095#1077#1085#1080#1082#1072
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton6Click
+  end
+  object SpeedButton7: TSpeedButton
+    Left = 96
+    Top = 480
+    Width = 673
+    Height = 49
+    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1076#1072#1085#1085#1099#1077' '#1091#1095#1077#1085#1080#1082#1072
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+  end
+  object SpeedButton1: TSpeedButton
+    Left = 96
+    Top = 536
+    Width = 673
+    Height = 49
+    Caption = #1059#1076#1072#1083#1080#1090#1100' '#1091#1095#1077#1085#1080#1082#1072
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton1Click
+  end
   object DBGrid1: TDBGrid
     Left = 8
     Top = 56
-    Width = 809
-    Height = 345
-    DataSource = DataModule1.TemaCRUD
+    Width = 929
+    Height = 337
+    DataSource = DataModule1.Ychenik
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -21
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     ImeMode = imDisable
-    Options = [dgTitles, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
     ParentFont = False
     ReadOnly = True
     TabOrder = 0
@@ -3414,18 +3413,34 @@ object TemaCRUD: TTemaCRUD
     TitleFont.Style = [fsBold]
     Columns = <
       item
+        Alignment = taCenter
         Expanded = False
-        FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
-        ReadOnly = False
+        FieldName = #1060#1072#1084#1080#1083#1080#1103
         Title.Alignment = taCenter
-        Title.Caption = #1056#1072#1079#1076#1077#1083
+        Width = 250
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
-        FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
+        FieldName = #1048#1084#1103
         Title.Alignment = taCenter
-        Title.Caption = #1058#1077#1084#1072
+        Width = 250
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = #1054#1090#1095#1077#1089#1090#1074#1086
+        Title.Alignment = taCenter
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = #1043#1088#1091#1087#1087#1072
+        Title.Alignment = taCenter
+        Width = 200
         Visible = True
       end>
   end

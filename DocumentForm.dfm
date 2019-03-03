@@ -1,6 +1,6 @@
-object Form4: TForm4
-  Left = 186
-  Top = 134
+object Shyrnal: TShyrnal
+  Left = 52
+  Top = 138
   AutoScroll = False
   Caption = #1046#1091#1088#1085#1072#1083
   ClientHeight = 642
@@ -3369,7 +3369,6 @@ object Form4: TForm4
     Width = 1197
     Height = 225
     BorderStyle = bsNone
-    DataSource = DataModule1.DataSource3
     FixedColor = clWindow
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText

@@ -1,6 +1,6 @@
 object TitleForm: TTitleForm
-  Left = 45
-  Top = 153
+  Left = 120
+  Top = 161
   AutoScroll = False
   Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1080' '#1079#1072#1097#1080#1090#1072' WEB '#1087#1088#1080#1083#1086#1078#1077#1085#1080#1081
   ClientHeight = 643
@@ -4035,7 +4035,7 @@ object TitleForm: TTitleForm
     Top = 376
     Width = 320
     Height = 88
-    DataSource = DataModule1.Auth_Ychenik
+    DataSource = DataModule1.Ychenik
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -4126,5 +4126,6 @@ object TitleForm: TTitleForm
     Height = 25
     Caption = #1059#1095#1077#1085#1080#1082#1080
     TabOrder = 9
+    OnClick = Button8Click
   end
 end

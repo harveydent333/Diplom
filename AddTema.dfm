@@ -1,6 +1,6 @@
 object AddTemaModalForm: TAddTemaModalForm
-  Left = 285
-  Top = 321
+  Left = 339
+  Top = 137
   AutoScroll = False
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1081' '#1090#1077#1084#1099
   ClientHeight = 310
@@ -687,9 +687,9 @@ object AddTemaModalForm: TAddTemaModalForm
   object Label1: TLabel
     Left = 120
     Top = 60
-    Width = 153
+    Width = 164
     Height = 23
-    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
+    Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -708,9 +708,9 @@ object AddTemaModalForm: TAddTemaModalForm
   object Label2: TLabel
     Left = 120
     Top = 140
-    Width = 215
+    Width = 141
     Height = 23
-    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1058#1077#1084#1099
+    Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1058#1077#1084#1099
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -1286,7 +1286,6 @@ object AddTemaModalForm: TAddTemaModalForm
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    Text = 'Edit1'
   end
   object ComboBox1: TComboBox
     Left = 120
