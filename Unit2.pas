@@ -56,17 +56,18 @@ Edit1.PasswordChar:='*';
 end;
 
 procedure TAuthorizationForm.SpeedButton2Click(Sender: TObject);
+var KodUser:integer;
 begin
 if teacher_ON.Visible = true then
   begin
-     DataModule1.ADOQuery2.SQL.Clear;
-     DataModule1.ADOQuery2.SQL.Add('SELECT password FROM Учитель WHERE login='+#39+edit2.text+#39);
-     DataModule1.ADOQuery2.Open;
-     if DataModule1.ADOQuery2.IsEmpty then
+     DataModule1.ADOModuleLecture.SQL.Clear;
+     DataModule1.ADOModuleLecture.SQL.Add('SELECT password FROM Учитель WHERE login='+#39+edit2.text+#39);
+     DataModule1.ADOModuleLecture.Open;
+     if DataModule1.ADOModuleLecture.IsEmpty then
         MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
      else
       begin
-       if DataModule1.ADOQuery2.FieldByName('password').Value<>edit1.Text then
+       if DataModule1.ADOModuleLecture.FieldByName('password').Value<>edit1.Text then
         MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
        else
         begin
@@ -86,10 +87,10 @@ if teacher_ON.Visible = true then
   end;
 if stydent_ON.Visible = true then
     begin
-      DataModule1.ADOQuery2.SQL.Clear;
-      DataModule1.ADOQuery2.SQL.Add('SELECT * FROM Ученик WHERE login='+#39+DBComboBox1.Text+#39);
-      DataModule1.ADOQuery2.Open;
-      if DataModule1.ADOQuery2.IsEmpty then
+      DataModule1.ADOModuleLecture.SQL.Clear;
+      DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Ученик WHERE login='+#39+DBComboBox1.Text+#39);
+      DataModule1.ADOModuleLecture.Open;
+      if DataModule1.ADOModuleLecture.IsEmpty then
         MessageBox(0,'Данный пользователь не найден!','Авторизация', MB_OK+MB_ICONwarning)
       else
             begin

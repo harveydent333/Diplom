@@ -1,5 +1,5 @@
 object MenuPractic: TMenuPractic
-  Left = 104
+  Left = 92
   Top = 113
   AutoScroll = False
   Caption = 'MenuPractic'

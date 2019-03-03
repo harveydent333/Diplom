@@ -10287,7 +10287,7 @@ object RegistrationForm: TRegistrationForm
     Height = 26
     BorderStyle = bsNone
     DataField = #1043#1088#1091#1087#1087#1072
-    DataSource = DataModule1.DataSource1
+    DataSource = DataModule1.DataSource122
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -10304,7 +10304,7 @@ object RegistrationForm: TRegistrationForm
     Height = 26
     BorderStyle = bsNone
     DataField = #1060#1072#1084#1080#1083#1080#1103
-    DataSource = DataModule1.DataSource1
+    DataSource = DataModule1.DataSource122
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -10321,7 +10321,7 @@ object RegistrationForm: TRegistrationForm
     Height = 26
     BorderStyle = bsNone
     DataField = #1048#1084#1103
-    DataSource = DataModule1.DataSource1
+    DataSource = DataModule1.DataSource122
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -10338,7 +10338,7 @@ object RegistrationForm: TRegistrationForm
     Height = 26
     BorderStyle = bsNone
     DataField = #1054#1090#1095#1077#1089#1090#1074#1086
-    DataSource = DataModule1.DataSource1
+    DataSource = DataModule1.DataSource122
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -10355,7 +10355,7 @@ object RegistrationForm: TRegistrationForm
     Height = 26
     BorderStyle = bsNone
     DataField = 'login'
-    DataSource = DataModule1.DataSource1
+    DataSource = DataModule1.DataSource122
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19

@@ -95,9 +95,9 @@ for i:=2 to 9 do
   begin
   str2:=DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString;
 str:='SELECT СодержаниеОтвета'+inttostr(i)+' FROM Вопросы WHERE СодержаниеВопроса='+#39+str2+#39+';';
-DataModule1.SearchQuestADO.SQL.Clear;
-DataModule1.SearchQuestADO.SQL.Add(str);
-DataModule1.SearchQuestADO.Open;
+DataModule1.ADOModuleLecture.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Add(str);
+DataModule1.ADOModuleLecture.Open;
 str:=inttostr(i);
 if dbgrid1.DataSource.DataSet.FieldByName('СодержаниеОтвета'+str).AsString<>'' then
  label5.Caption:=inttostr(i);

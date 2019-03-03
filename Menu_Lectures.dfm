@@ -1,5 +1,5 @@
 object MenuLectures: TMenuLectures
-  Left = 219
+  Left = 92
   Top = 276
   AutoScroll = False
   Caption = 'MenuLectures'

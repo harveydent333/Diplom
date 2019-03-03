@@ -1,5 +1,5 @@
 object AddTestModalForm: TAddTestModalForm
-  Left = 631
+  Left = 620
   Top = 321
   AutoScroll = False
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1075#1086' '#1090#1077#1089#1090#1072

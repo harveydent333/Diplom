@@ -139,11 +139,11 @@ while not dbgrid2.DataSource.DataSet.Eof do
   begin
      KodRazdela:=dbgrid2.DataSource.DataSet.FieldByName('КодРаздела').AsString;
      NameTema:=dbgrid2.DataSource.DataSet.FieldByName('НазваниеТемы').AsString;
-     DataModule1.KodRazdelaForTree.SQL.Clear;
+     DataModule1.ADOModuleLecture.SQL.Clear;
      str:='SELECT * FROM Раздел WHERE КодРаздела='+KodRazdela;
-    DataModule1.KodRazdelaForTree.SQL.Add(str);
-     DataModule1.KodRazdelaForTree.Open;
-     NameRazdela:=DataModule1.KodRazdelaForTree.FieldByName('НазваниеРаздела').AsString;
+    DataModule1.ADOModuleLecture.SQL.Add(str);
+     DataModule1.ADOModuleLecture.Open;
+     NameRazdela:=DataModule1.ADOModuleLecture.FieldByName('НазваниеРаздела').AsString;
      for i := 0 to TreeView1.Items.Count - 1 do
       begin
         TreeView1.Selected:= TreeView1.Items[i];
@@ -158,11 +158,11 @@ while not dbgrid4.DataSource.DataSet.Eof do
   begin
      KodTema:=dbgrid4.DataSource.DataSet.FieldByName('КодТемы').AsString;
      NameControl:=dbgrid4.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString;
-     DataModule1.KodRazdelaForTree.SQL.Clear;
+     DataModule1.ADOModuleLecture.SQL.Clear;
      str:='SELECT * FROM Тема WHERE КодТемы='+KodTema;
-    DataModule1.KodRazdelaForTree.SQL.Add(str);
-     DataModule1.KodRazdelaForTree.Open;
-     NameTema:=DataModule1.KodRazdelaForTree.FieldByName('НазваниеТемы').AsString;
+    DataModule1.ADOModuleLecture.SQL.Add(str);
+     DataModule1.ADOModuleLecture.Open;
+     NameTema:=DataModule1.ADOModuleLecture.FieldByName('НазваниеТемы').AsString;
      for i := 0 to TreeView1.Items.Count - 1 do
       begin
         TreeView1.Selected:= TreeView1.Items[i];
@@ -305,16 +305,16 @@ if AuthorizationData.roleUser='teacher' then
          speedbutton15.Visible:=true;
         label20.Caption:=treeview1.Selected.Text;
         label20.Caption:=label20.Caption+'"';
-        DataModule1.ADOQuery3.SQL.Clear;
+        DataModule1.ADOModuleLecture.SQL.Clear;
         str:='SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+TreeView1.Selected.Text+#39;
-        DataModule1.ADOQuery3.SQL.Add(str);
-        DataModule1.ADOQuery3.Open;
+        DataModule1.ADOModuleLecture.SQL.Add(str);
+        DataModule1.ADOModuleLecture.Open;
         Kod:=DBGrid9.DataSource.DataSet.FieldByName('КодКонтроля').AsInteger;
-        DataModule1.ADOQuery3.SQL.Clear;
+        DataModule1.ADOModuleLecture.SQL.Clear;
         str:='SELECT * FROM Вопросы WHERE КодКонтроля='+inttostr(Kod);
         label21.Caption:=inttostr(Kod);
-        DataModule1.ADOQuery3.SQL.Add(str);
-        DataModule1.ADOQuery3.Open;
+        DataModule1.ADOModuleLecture.SQL.Add(str);
+        DataModule1.ADOModuleLecture.Open;
         label14.Caption:=inttostr(DBGrid9.DataSource.DataSet.RecordCount);
         if label14.Caption='0' then
           speedbutton15.Enabled:=false else speedbutton15.Enabled:=true;
@@ -367,13 +367,13 @@ procedure TKnowledgeControl.SpeedButton8Click(Sender: TObject);
 var str:string;
 begin
 
-DataModule1.ADOQuery3.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Clear;
 str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Treeview1.Selected.Text+#39;
-DataModule1.ADOQuery3.SQL.Add(str);
-    DataModule1.ADOQuery3.Open;
-    if (not (DataModule1.ADOQuery3.IsEmpty)) then
+DataModule1.ADOModuleLecture.SQL.Add(str);
+    DataModule1.ADOModuleLecture.Open;
+    if (not (DataModule1.ADOModuleLecture.IsEmpty)) then
       begin
-    DataModule1.ADOQuery3.Delete;
+    DataModule1.ADOModuleLecture.Delete;
     Treeview1.Selected.Delete;
   end;
 end;
@@ -381,22 +381,22 @@ end;
 procedure TKnowledgeControl.SpeedButton9Click(Sender: TObject);
 var str:string;
 begin
-DataModule1.ADOQuery3.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Clear;
 str:='SELECT * FROM Тема WHERE НазваниеТемы='+#39+Treeview1.Selected.Text+#39;
-DataModule1.ADOQuery3.SQL.Add(str);
-DataModule1.ADOQuery3.Open;
-DataModule1.ADOQuery3.Delete;
+DataModule1.ADOModuleLecture.SQL.Add(str);
+DataModule1.ADOModuleLecture.Open;
+DataModule1.ADOModuleLecture.Delete;
 Treeview1.Selected.Delete;
 end;
 
 procedure TKnowledgeControl.SpeedButton10Click(Sender: TObject);
 var str:string;
 begin
-DataModule1.ADOQuery3.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Clear;
 str:='SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Treeview1.Selected.Text+#39;
-DataModule1.ADOQuery3.SQL.Add(str);
-DataModule1.ADOQuery3.Open;
-DataModule1.ADOQuery3.Delete;
+DataModule1.ADOModuleLecture.SQL.Add(str);
+DataModule1.ADOModuleLecture.Open;
+DataModule1.ADOModuleLecture.Delete;
 Treeview1.Selected.Delete;
 end;
 
@@ -581,11 +581,10 @@ PassingKnowledgeControlForm.label5.Caption:='2';
 for i:=2 to 9 do
   begin
   str2:=PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString;
- // str2:=DBLookupListBox1.SelectedItem;
 str:='SELECT СодержаниеОтвета'+inttostr(i)+' FROM Вопросы WHERE СодержаниеВопроса='+#39+str2+#39+';';
-DataModule1.SearchQuestADO.SQL.Clear;
-DataModule1.SearchQuestADO.SQL.Add(str);
-DataModule1.SearchQuestADO.Open;
+DataModule1.ADOModuleLecture.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Add(str);
+DataModule1.ADOModuleLecture.Open;
 str:=inttostr(i);
 if PassingKnowledgeControlForm.dbgrid1.DataSource.DataSet.FieldByName('СодержаниеОтвета'+str).AsString<>'' then
  label5.Caption:=inttostr(i);
@@ -608,10 +607,10 @@ DataModule1.ShyrnalADO.Append;
 DataModule1.ShyrnalADO.Edit;
 DataModule1.ShyrnalADO.FieldByName('КодУченика').Value:=KodUser;
 DataModule1.ShyrnalADO.FieldByName('ДатаПроведения').Value:=DataControl;
-DataModule1.ADOQuery4.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Clear;
 str:='SELECT * FROM Тема WHERE НазваниеТемы='+#39+treeview1.Selected.Parent.Text+#39;
-DataModule1.ADOQuery4.SQL.Add(str);
-DataModule1.ADOQuery4.Open;
+DataModule1.ADOModuleLecture.SQL.Add(str);
+DataModule1.ADOModuleLecture.Open;
 label23.Caption:=DBGrid11.DataSource.DataSet.FieldByName('КодТемы').AsString;
 DataModule1.ShyrnalADO.FieldByName('КодТемы').Value:=label23.Caption;
 

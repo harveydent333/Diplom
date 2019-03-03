@@ -1,6 +1,6 @@
 object MainMenu: TMainMenu
-  Left = 148
-  Top = 597
+  Left = 139
+  Top = 183
   AutoScroll = False
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102
   ClientHeight = 631
@@ -3263,7 +3263,7 @@ object MainMenu: TMainMenu
     Top = -150
     Width = 249
     Height = 81
-    DataSource = DataModule1.SearchKodRazdela
+    DataSource = DataModule1.ModuleLecture
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

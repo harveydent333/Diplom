@@ -1,6 +1,6 @@
 object AuthorizationForm: TAuthorizationForm
-  Left = 92
-  Top = 231
+  Left = 81
+  Top = 160
   AutoScroll = False
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103
   ClientHeight = 643
@@ -28429,7 +28429,7 @@ object AuthorizationForm: TAuthorizationForm
     Top = -200
     Width = 320
     Height = 120
-    DataSource = DataModule1.DataSource2
+    DataSource = DataModule1.Auth_Ychenik
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

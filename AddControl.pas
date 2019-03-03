@@ -44,9 +44,9 @@ if ((KnowledgeControl.treeview1.Selected.Parent<>nil) and (KnowledgeControl.tree
 KnowledgeControl.label4.Caption:=KnowledgeControl.treeview1.Selected.Text;
 NameTemaForAddControl:='SELECT КодТемы FROM Тема WHERE НазваниеТемы='+#39+KnowledgeControl.label4.Caption+#39;
 KnowledgeControl.label4.Caption:=NameTemaForAddControl;
-DataModule1.ADOQuery3.SQL.Clear;
-DataModule1.ADOQuery3.SQL.Add(NameTemaForAddControl);
-DataModule1.ADOQuery3.Open;
+DataModule1.ADOModuleLecture.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Add(NameTemaForAddControl);
+DataModule1.ADOModuleLecture.Open;
 KnowledgeControl.label6.Caption:=KnowledgeControl.dbgrid3.DataSource.DataSet.FieldByName('КодТемы').AsString;
 label3.Caption:=KnowledgeControl.dbgrid3.DataSource.DataSet.FieldByName('КодТемы').AsString;
 //...
@@ -61,9 +61,9 @@ end
         KnowledgeControl.label4.Caption:=KnowledgeControl.treeview1.Selected.Parent.Text;
         NameRazdelForAddTema:='SELECT КодРаздела FROM Раздел WHERE НазваниеРаздела='+#39+KnowledgeControl.label4.Caption+#39;
         KnowledgeControl.label4.Caption:=NameRazdelForAddTema;
-        DataModule1.ADOQuery3.SQL.Clear;
-        DataModule1.ADOQuery3.SQL.Add(NameRazdelForAddTema);
-        DataModule1.ADOQuery3.Open;
+        DataModule1.ADOModuleLecture.SQL.Clear;
+        DataModule1.ADOModuleLecture.SQL.Add(NameRazdelForAddTema);
+        DataModule1.ADOModuleLecture.Open;
         KnowledgeControl.label6.Caption:=KnowledgeControl.dbgrid3.DataSource.DataSet.FieldByName('КодРаздела').AsString;
         label3.Caption:=KnowledgeControl.dbgrid3.DataSource.DataSet.FieldByName('КодРаздела').AsString;
 
@@ -81,7 +81,7 @@ procedure TAddTestModalForm.SpeedButton1Click(Sender: TObject);
 var unique_user:boolean;
 begin
 unique_user:=false;
-DataModule1.ADOQuery3.SQL.Clear;
+DataModule1.ADOModuleLecture.SQL.Clear;
 if DBEdit2.Text='' then   //ПОЛЕ ПРИ НАЖАТИИ КНОПКИ ДОБАВИТЬ
   begin
     label2.Visible:=true;
@@ -91,9 +91,9 @@ if DBEdit2.Text='' then   //ПОЛЕ ПРИ НАЖАТИИ КНОПКИ ДОБАВИТЬ
   end;
   if DBEdit2.Text<>'' then
   begin
-      DataModule1.ADOQuery3.SQL.Add('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBEdit2.Text+#39);
-      DataModule1.ADOQuery3.Open;
-      if DataModule1.ADOQuery3.IsEmpty then unique_user:=true
+      DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBEdit2.Text+#39);
+      DataModule1.ADOModuleLecture.Open;
+      if DataModule1.ADOModuleLecture.IsEmpty then unique_user:=true
       else
        MessageBox(0,'Данный контроль уже сущетсвует!','Создание контроля', MB_OK+MB_ICONwarning);
    end;

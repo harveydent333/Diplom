@@ -4898,7 +4898,6 @@ object KnowledgeControl: TKnowledgeControl
     Top = -100
     Width = 96
     Height = 32
-    DataSource = DataModule1.SearchKodRazdela
     TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -5014,7 +5013,6 @@ object KnowledgeControl: TKnowledgeControl
     Top = -100
     Width = 40
     Height = 57
-    DataSource = DataModule1.SearchKodControl
     TabOrder = 11
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -5154,7 +5152,6 @@ object KnowledgeControl: TKnowledgeControl
     Top = -200
     Width = 320
     Height = 120
-    DataSource = DataModule1.SearchKodRazdela
     TabOrder = 13
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -5176,7 +5173,7 @@ object KnowledgeControl: TKnowledgeControl
     Top = -200
     Width = 320
     Height = 120
-    DataSource = DataModule1.DataSource3
+    DataSource = DataModule1.Shyrnal
     TabOrder = 15
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -5189,7 +5186,6 @@ object KnowledgeControl: TKnowledgeControl
     Top = -250
     Width = 320
     Height = 120
-    DataSource = DataModule1.DataSource4
     TabOrder = 16
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

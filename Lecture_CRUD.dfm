@@ -1,5 +1,5 @@
 object LectureCRUD: TLectureCRUD
-  Left = 123
+  Left = 92
   Top = 169
   AutoScroll = False
   Caption = 'LectureCRUD'

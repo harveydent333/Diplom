@@ -44,9 +44,9 @@ uses Unit2, Menu_Teacher, Title_Form, basa_dan, Control, DocumentForm;
 procedure TMainMenu.SpeedButton5Click(Sender: TObject);
 begin
 RegistrationForm.Show;
-DataModule1.ADOQuery1.Append;
-DataModule1.ADOQuery2.Close;
-DataModule1.ADOQuery2.SQL.Clear;
+DataModule1.YchenikADO.Append;
+DataModule1.ADOModuleLecture.Close;
+DataModule1.ADOModuleLecture.SQL.Clear;
 RegistrationForm.SpeedButton2.Visible:=true;
 RegistrationForm.Height:=699;
 RegistrationForm.Width:=1188;
@@ -104,9 +104,9 @@ form4.Label2.Caption:=familyUser;
 if roleUser='stydent' then
   begin
     str:='SELECT * FROM Ученик WHERE login='+#39+loginUser+#39;
-    DataModule1.ADOQuery3.SQL.clear;
-    DataModule1.ADOQuery3.SQL.Add(str);
-    DataModule1.ADOQuery3.Open;
+    DataModule1.ADOModuleLecture.SQL.clear;
+    DataModule1.ADOModuleLecture.SQL.Add(str);
+    DataModule1.ADOModuleLecture.Open;
     str:='SELECT * FROM Журнал WHERE КодУченика='+dbgrid1.DataSource.DataSet.fieldbyName('КодУченика').AsString;
     DataModule1.ShyrnalADO.SQL.clear;
     DataModule1.ShyrnalADO.SQL.Add(str);

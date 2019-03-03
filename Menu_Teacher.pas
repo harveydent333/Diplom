@@ -159,7 +159,7 @@ end;
 procedure TRegistrationForm.SpeedButton2Click(Sender: TObject);
 begin
 RegistrationForm.Close;
-DataModule1.ADOQuery1.Cancel;
+DataModule1.YchenikADO.Cancel;
 MainMenu.Show;
 MainMenu.Position:=poDesktopCenter;
 
@@ -168,8 +168,8 @@ end;
 
 procedure TRegistrationForm.SpeedButton1Click(Sender: TObject);    //  ÕŒœ ¿ «¿–≈√»—“–»–Œ¬¿“‹
 begin
-DataModule1.ADOQuery2.Close;
-DataModule1.ADOQuery2.SQL.Clear;
+DataModule1.ADOModuleLecture.Close;
+DataModule1.ADOModuleLecture.SQL.Clear;
 if last_name.Text='' then   //œŒÀ≈ ‘¿Ã»À»ﬂ œ–» Õ¿∆¿“»»  ÕŒœ » «¿–≈√≈—“–»–Œ¬¿“‹
   begin
     label1.Visible:=true;
@@ -212,9 +212,9 @@ if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')
 and (number_group.text<>'')) then
 begin
   login_field.Text:=last_name.Text+' '+first_name.Text+' '+second_name.Text;
-  DataModule1.ADOQuery1.Post;
+  DataModule1.YchenikADO.Post;
   label1.Visible:=false;
-  DataModule1.ADOQuery1.Append;
+  DataModule1.YchenikADO.Append;
     defolt_edit1.Visible:=true;
     defolt_edit2.Visible:=true;
     defolt_edit3.Visible:=true;

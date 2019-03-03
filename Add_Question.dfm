@@ -4955,7 +4955,7 @@ object Add_Questions: TAdd_Questions
     Left = 0
     Top = 53
     Width = 300
-    Height = 418
+    Height = 372
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -5228,7 +5228,6 @@ object Add_Questions: TAdd_Questions
     Top = -200
     Width = 320
     Height = 120
-    DataSource = DataModule1.SearchQuest
     TabOrder = 22
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
