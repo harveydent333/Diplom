@@ -1,6 +1,6 @@
 object ControlCRUD: TControlCRUD
-  Left = 78
-  Top = 113
+  Left = 132
+  Top = 144
   AutoScroll = False
   Caption = 'ControlCRUD'
   ClientHeight = 643

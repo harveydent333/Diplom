@@ -1,6 +1,6 @@
 object UpdateTemaModalForm: TUpdateTemaModalForm
-  Left = 228
-  Top = 278
+  Left = 209
+  Top = 175
   AutoScroll = False
   Caption = 'UpdateTemaModalForm'
   ClientHeight = 310
@@ -16,6 +16,7 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -4163,5 +4164,18 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
     ParentFont = False
     TabOrder = 3
     Text = 'ComboBox1'
+  end
+  object DBGrid2: TDBGrid
+    Left = 16
+    Top = 8
+    Width = 249
+    Height = 49
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
   end
 end

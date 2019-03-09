@@ -1,5 +1,5 @@
 object MainMenu: TMainMenu
-  Left = 139
+  Left = 100
   Top = 183
   AutoScroll = False
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102
@@ -22,7 +22,7 @@ object MainMenu: TMainMenu
   TextHeight = 13
   object Image1: TImage
     Left = 0
-    Top = 0
+    Top = 16
     Width = 1180
     Height = 695
     Constraints.MaxHeight = 695

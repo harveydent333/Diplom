@@ -1,5 +1,5 @@
 object YchenikiCRUD: TYchenikiCRUD
-  Left = 98
+  Left = 92
   Top = 184
   AutoScroll = False
   Caption = 'YchenikiCRUD'
