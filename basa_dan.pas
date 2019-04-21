@@ -42,6 +42,8 @@ type
     ADOControlCRUD: TADOQuery;
     Update: TDataSource;
     ADOUpdate: TADOQuery;
+    ShowLectureADO: TADOQuery;
+    ShowLecture: TDataSource;
   private
     { Private declarations }
   public

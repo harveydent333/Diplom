@@ -1,6 +1,6 @@
 object RazdelCRUD: TRazdelCRUD
-  Left = 83
-  Top = 169
+  Left = 120
+  Top = 122
   AutoScroll = False
   Caption = 'RazdelCRUD'
   ClientHeight = 643
@@ -3304,6 +3304,7 @@ object RazdelCRUD: TRazdelCRUD
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton6Click
   end
   object SpeedButton7: TSpeedButton
     Left = 200
@@ -3420,5 +3421,18 @@ object RazdelCRUD: TRazdelCRUD
         Width = 779
         Visible = True
       end>
+  end
+  object DBGrid2: TDBGrid
+    Left = 832
+    Top = 900
+    Width = 320
+    Height = 120
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
   end
 end

@@ -1,6 +1,6 @@
 object AddTemaModalForm: TAddTemaModalForm
-  Left = 339
-  Top = 137
+  Left = 418
+  Top = 145
   AutoScroll = False
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1081' '#1090#1077#1084#1099
   ClientHeight = 310
@@ -1300,8 +1300,8 @@ object AddTemaModalForm: TAddTemaModalForm
     ItemHeight = 23
     ParentFont = False
     TabOrder = 2
-    Text = 'ComboBox1'
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object DBGrid1: TDBGrid
     Left = 384

@@ -29,6 +29,7 @@ if AuthorizationForm.teacher_ON.Visible = true then
     DataModule1.ADOModuleLecture.SQL.Clear;
     DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
     DataModule1.ADOModuleLecture.Open;
+    
     nameUser:=DataModule1.ADOModuleLecture.FieldByName('Имя').AsString;
     familyUser:=DataModule1.ADOModuleLecture.FieldByName('Фамилия').AsString;
     secondNameUser:=DataModule1.ADOModuleLecture.FieldByName('Отчество').AsString;
@@ -40,6 +41,7 @@ if AuthorizationForm.stydent_ON.Visible = true then
       DataModule1.ADOModuleLecture.SQL.Clear;
       DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Ученик WHERE login='+#39+AuthorizationForm.DBComboBox1.Text+#39);
       DataModule1.ADOModuleLecture.Open;
+
       nameUser:=DataModule1.ADOModuleLecture.FieldByName('Имя').AsString;
       familyUser:=DataModule1.ADOModuleLecture.FieldByName('Фамилия').AsString;
       secondNameUser:=DataModule1.ADOModuleLecture.FieldByName('Отчество').AsString;

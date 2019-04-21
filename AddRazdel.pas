@@ -15,50 +15,54 @@ type
     Label1: TLabel;
     Edit1: TEdit;
     procedure SpeedButton1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
+    procedure saveDataInBD;
+    procedure checkUniqueData;
     { Private declarations }
   public
     { Public declarations }
   end;
 
 var
-  AddRazdelModalForm: TAddRazdelModalForm;
-
+    AddRazdelModalForm: TAddRazdelModalForm;
+    unique_razdel:boolean;
+    str:string;
+    
 implementation
 
-uses Control; //kodRazdel:integer;
+uses Control, config;
 
 {$R *.dfm}
 
-procedure TAddRazdelModalForm.SpeedButton1Click(Sender: TObject);
-var unique_razdel:boolean;   str:string;
+procedure TAddRazdelModalForm.SpeedButton1Click(Sender: TObject);   //  Нажатие кнопки "Добавить"
 begin
-unique_razdel:=false;
-DataModule1.ADOModuleLecture.SQL.Clear;
-  if Edit1.Text<>'' then
-  begin
-      DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Edit1.Text+#39);
-      DataModule1.ADOModuleLecture.Open;
-      if DataModule1.ADOModuleLecture.IsEmpty then unique_razdel:=true
-      else
-       MessageBox(0,'Данный раздел уже сущетсвует!','Создание раздела', MB_OK+MB_ICONwarning);
-   end;
- if ((Edit1.Text<>'')and(unique_razdel<>false)) then
-    begin
+    unique_razdel:=false;
+
+    if Edit1.Text<>'' then
+      checkUniqueData;
+
+    if ((Edit1.Text<>'')and(unique_razdel<>false)) then
+      saveDataInBD;
+end;
+
+procedure TAddRazdelModalForm.saveDataInBD; // Внесение данных в БД
+begin
     DataModule1.ShowRazdelADO.Append;
     DataModule1.ShowRazdelADO.Edit;
     DataModule1.ShowRazdelADO.FieldByName('НазваниеРаздела').AsString:=edit1.Text;
     DataModule1.ShowRazdelADO.Post;
     MessageBox(0,'Раздел был успешно Создан!','Создание Раздела', MB_OK+MB_ICONINFORMATION);
-    DataModule1.ADORazdelCRUD.Active:=False;
-    DataModule1.ADORazdelCRUD.Active:=True;
-   end;
+    config.rebootRequestsCRUD;
+    Edit1.Text:='';
 end;
 
-procedure TAddRazdelModalForm.FormCreate(Sender: TObject);
+procedure TAddRazdelModalForm.checkUniqueData; // Проверка на уникальные данные
 begin
-Edit1.Text:='';
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Edit1.Text+#39);
+    if DataModule1.ADOModuleLecture.IsEmpty then
+      unique_razdel:=true
+    else
+       MessageBox(0,'Данный раздел уже сущетсвует!','Создание раздела', MB_OK+MB_ICONwarning);
 end;
 
 end.

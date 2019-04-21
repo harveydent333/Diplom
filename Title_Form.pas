@@ -26,6 +26,7 @@ type
     Button6: TButton;
     Button7: TButton;
     Button8: TButton;
+    Button9: TButton;
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -37,6 +38,7 @@ type
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,7 +52,7 @@ implementation
 
 uses Unit2, Add_Question, Control, PassingKnowledgeControl, Menu_Lectures,
   Menu_Practic, Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD,
-  Control_CRUD, Ycheniki_CRUD;
+  Control_CRUD, Ycheniki_CRUD, Unit3, config, UpdateUnit;
 
 {$R *.dfm}
 
@@ -83,74 +85,73 @@ begin
 
 end;
 
-procedure TTitleForm.Button1Click(Sender: TObject);
+procedure TTitleForm.Button1Click(Sender: TObject);    //  –¿¡Œ“¿ —  À≈ ÷»» - ”◊≈Õ» 
 begin
+    MenuLectures.show;
+    MenuLectures.ComboBox1.Items.Clear;
 
-MenuLectures.show;
-MenuLectures.ComboBox1.Items.Clear;
+    config.selectRequestSQL('SELECT * FROM –‡Á‰ÂÎ');
 
-DataModule1.ADOModuleLecture.SQL.Clear;
-DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM –‡Á‰ÂÎ');
-DataModule1.ADOModuleLecture.Open;
+    DBGrid2.DataSource.DataSet.First;
 
-DBGrid2.DataSource.DataSet.First;
-
-While (DBGrid2.DataSource.DataSet.Eof=false) do
-  begin
-    MenuLectures.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('Õ‡Á‚‡ÌËÂ–‡Á‰ÂÎ‡').AsString);
-    DBGrid2.DataSource.DataSet.Next;
-    MenuLectures.ComboBox1.Text:='–‡Á‰ÂÎ';    // “”“ «¿Ã≈Õ»“‹ Õ¿ –¿«ƒ≈À œ≈–€… , ¬ —œ»— ≈
-  end;
-
+    While (DBGrid2.DataSource.DataSet.Eof=false) do
+      begin
+        MenuLectures.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('Õ‡Á‚‡ÌËÂ–‡Á‰ÂÎ‡').AsString);
+        DBGrid2.DataSource.DataSet.Next;
+        MenuLectures.ComboBox1.Text:='–‡Á‰ÂÎ';    // “”“ «¿Ã≈Õ»“‹ Õ¿ –¿«ƒ≈À œ≈–€… , ¬ —œ»— ≈
+      end;
 end;
 
-procedure TTitleForm.Button2Click(Sender: TObject);
+procedure TTitleForm.Button2Click(Sender: TObject);     //  –¿¡Œ“¿ —  œ–¿ “» ◊≈— »Ã» - ”◊≈Õ» 
 begin
-MenuPractic.show;
-MenuPractic.ComboBox1.Items.Clear;
+    MenuPractic.show;
+    MenuPractic.ComboBox1.Items.Clear;
 
-DataModule1.ADOModuleLecture.SQL.Clear;
-DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM –‡Á‰ÂÎ');
-DataModule1.ADOModuleLecture.Open;
+    config.selectRequestSQL('SELECT * FROM –‡Á‰ÂÎ');
 
-DBGrid2.DataSource.DataSet.First;
+    DBGrid2.DataSource.DataSet.First;
 
-While (DBGrid2.DataSource.DataSet.Eof=false) do
-  begin
-    MenuPractic.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('Õ‡Á‚‡ÌËÂ–‡Á‰ÂÎ‡').AsString);
-    DBGrid2.DataSource.DataSet.Next;
-    MenuPractic.ComboBox1.Text:='–‡Á‰ÂÎ';    // “”“ «¿Ã≈Õ»“‹ Õ¿ –¿«ƒ≈À œ≈–€… , ¬ —œ»— ≈
-  end;
+    While (DBGrid2.DataSource.DataSet.Eof=false) do
+      begin
+        MenuPractic.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('Õ‡Á‚‡ÌËÂ–‡Á‰ÂÎ‡').AsString);
+        DBGrid2.DataSource.DataSet.Next;
+        MenuPractic.ComboBox1.Text:='–‡Á‰ÂÎ';    // “”“ «¿Ã≈Õ»“‹ Õ¿ –¿«ƒ≈À œ≈–€… , ¬ —œ»— ≈
+      end;
 end;
 
 procedure TTitleForm.Button3Click(Sender: TObject);
 begin
-TemaCRUD.show;
+    TemaCRUD.show;
 end;
 
 procedure TTitleForm.Button4Click(Sender: TObject);
 begin
-PracticCRUD.show;
+    PracticCRUD.show;
 end;
 
 procedure TTitleForm.Button5Click(Sender: TObject);
 begin
-RazdelCRUD.Show;
+    RazdelCRUD.Show;
 end;
 
 procedure TTitleForm.Button6Click(Sender: TObject);
 begin
-LectureCRUD.show;
+    LectureCRUD.show;
 end;
 
 procedure TTitleForm.Button7Click(Sender: TObject);
 begin
-ControlCRUD.show;
+    ControlCRUD.show;
 end;
 
 procedure TTitleForm.Button8Click(Sender: TObject);
 begin
-YchenikiCRUD.show;
+    YchenikiCRUD.show;
+end;
+
+procedure TTitleForm.Button9Click(Sender: TObject);
+begin
+    Mainmenu.show;
 end;
 
 end.

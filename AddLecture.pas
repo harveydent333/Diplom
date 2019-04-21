@@ -19,8 +19,13 @@ type
     Image2: TImage;
     SpeedButton1: TSpeedButton;
     DBGrid1: TDBGrid;
+    Label5: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -29,87 +34,107 @@ type
 
 var
   AddLectureModalForm: TAddLectureModalForm;
+   nameRazdela,str,nameTema:string;
+   kodRazdela,kodTema:integer;
 
 implementation
 
-uses basa_dan;
+uses basa_dan, config;
 
 {$R *.dfm}
 
 procedure TAddLectureModalForm.FormCreate(Sender: TObject);
-begin                                                                                        //Заполнение ComboBox при создании
-DataModule1.ADOModuleLecture.SQL.Clear;                                                       //Заполнение Раздела
-DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Раздел');                                 //
-DataModule1.ADOModuleLecture.Open;                                                            //
-DBGrid1.DataSource.DataSet.First;                                                             //
-While (DBGrid1.DataSource.DataSet.Eof=false) do                                               //
- begin                                                                                        //
-    ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);  //
-    DBGrid1.DataSource.DataSet.Next;                                                          //
-  end;                                                                                        //
-DBGrid1.DataSource.DataSet.First;                                                             //
-ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;           //  конец создания
-end;
-         {//
-Edit1.Text:='';
-Edit1.Visible:=true;
-label2.Visible:=true;
-Panel2.Visible:=true;
-nameRazdel:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
-DataModule1.ADOModuleLecture.SQL.Clear;
-str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdel+#39;
-DataModule1.ADOModuleLecture.SQL.Add(str);
-DataModule1.ADOModuleLecture.Open;
-kodRazdel:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
-if ComboBox1.ItemIndex=-1 then
-  begin
-    Edit1.Text:='';
-    Edit1.Visible:=false;
-    label2.Visible:=false;
-    Panel2.Visible:=false;
-
-  end;
-
-        }
-procedure TAddLectureModalForm.ComboBox1Change(Sender: TObject);
-var
-nameRazdela,str:string;
-kodRazdela:integer;
 begin
-//===================БЛОК В КОНФИГ===========
-Edit1.Visible:=false;
-Edit1.Text:='';
-label2.Visible:=false;
-label3.Visible:=false;
-ComboBox2.Visible:=false;                                                        // НАШЛИ КОД РАЗДЕЛА ИЗ ТАБЛИЦЫ РАЗДЕЛ
-ComboBox2.Items.Clear;
-//=============================================
-                                                                                 //
-nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];                       //
-DataModule1.ADOModuleLecture.SQL.Clear;                                          //
-str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39;          //
-DataModule1.ADOModuleLecture.SQL.Add(str);                                       //
-DataModule1.ADOModuleLecture.Open;                                               //
-kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;      //
-                                                                                 //
-DataModule1.ADOModuleLecture.SQL.Clear;                                          // Далее ищем все записи из таблицы темы, у кого код
-str:='SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela);                // раздела совпадает с нашим
-DataModule1.ADOModuleLecture.SQL.Add(str);                                       //
-DataModule1.ADOModuleLecture.Open;                                               //
-While (DBGrid1.DataSource.DataSet.Eof=false) do                                  //
- begin                                                                           //
-    ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-    DBGrid1.DataSource.DataSet.Next;                                             //
-    ComboBox2.Text:='Тема';                                                      //
-  end;
-
-
-if ComboBox2.Items.Count>0 then                                            //
-begin                                                                      // Проверка на наличие тем в разделе
-  label3.Visible:=true;                                                    //
-  combobox2.Visible:=true;                                                 //
+    config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
+    DBGrid1.DataSource.DataSet.First;
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
+      begin
+        ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+        DBGrid1.DataSource.DataSet.Next;
+      end;
+    DBGrid1.DataSource.DataSet.First;
+    ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;           //  конец создания
 end;
 
+procedure TAddLectureModalForm.ComboBox1Change(Sender: TObject);
+begin
+    Edit1.Visible:=false;
+    Edit1.Text:='';
+    label2.Visible:=false;
+    label3.Visible:=false;
+    ComboBox2.Visible:=false;
+    ComboBox2.Items.Clear;
+    label5.visible:=false;
+
+    nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
+    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+     // Проверка на наличие потомков у Раздела
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
+
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
+      begin
+        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
+        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Text:=ComboBox2.Items.Strings[0];
+      end;
+
+    if ComboBox2.Items.Count>0 then
+      begin                                                                      // Проверка на наличие тем в разделе
+        label3.Visible:=true;
+        combobox2.Visible:=true;
+        nameTema:=ComboBox2.Items.Strings[0];
+        config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
+        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+      end
+    else
+      label5.Visible:=true;
+end;
+
+procedure TAddLectureModalForm.ComboBox2Change(Sender: TObject);
+begin
+Edit1.Visible:=true;
+ nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
+
+ config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);  // Получение код темы
+ kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+ label2.Visible:=true;
+end;
+
+procedure TAddLectureModalForm.SpeedButton1Click(Sender: TObject);
+begin
+    if (Edit1.Text<>'') then
+      begin
+        DataModule1.ShowLectureADO.Append;
+        DataModule1.ShowLectureADO.Edit;
+        DataModule1.ShowLectureADO.FieldByName('НазваниеЛекции').AsString:=edit1.Text;
+        DataModule1.ShowLectureADO.FieldByName('КодТемы').AsInteger:=kodTema;
+        DataModule1.ShowLectureADO.Post;
+        MessageBox(0,'Лекция была успешно Создана!','Создание Лекции', MB_OK+MB_ICONINFORMATION);
+
+        config.rebootRequestsCRUD;
+
+        Edit1.Visible:=false;
+        Edit1.Text:='';
+        label2.Visible:=false;
+        label3.Visible:=false;
+        ComboBox2.Visible:=false;
+        ComboBox2.Items.Clear;
+        label5.visible:=false;
+      end;
+end;
+
+procedure TAddLectureModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+
+procedure TAddLectureModalForm.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

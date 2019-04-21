@@ -1,6 +1,6 @@
 object YchenikiCRUD: TYchenikiCRUD
-  Left = 92
-  Top = 184
+  Left = 60
+  Top = 116
   AutoScroll = False
   Caption = 'YchenikiCRUD'
   ClientHeight = 643
@@ -3373,6 +3373,7 @@ object YchenikiCRUD: TYchenikiCRUD
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton7Click
   end
   object SpeedButton1: TSpeedButton
     Left = 96
@@ -3443,5 +3444,18 @@ object YchenikiCRUD: TYchenikiCRUD
         Width = 200
         Visible = True
       end>
+  end
+  object DBGrid2: TDBGrid
+    Left = 952
+    Top = 152
+    Width = 320
+    Height = 120
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
   end
 end

@@ -1,6 +1,6 @@
 object AddPracticModalForm: TAddPracticModalForm
-  Left = 260
-  Top = 139
+  Left = 466
+  Top = 558
   AutoScroll = False
   Caption = 'AddPracticModalForm'
   ClientHeight = 310
@@ -739,7 +739,6 @@ object AddPracticModalForm: TAddPracticModalForm
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    Text = 'Edit1'
     Visible = False
   end
   object Panel2: TPanel

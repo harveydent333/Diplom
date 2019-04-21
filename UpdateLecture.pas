@@ -1,0 +1,149 @@
+unit UpdateLecture;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Grids, DBGrids, jpeg, ExtCtrls, Buttons;
+
+type
+  TUpdateLectureModalForm = class(TForm)
+    Image1: TImage;
+    DBGrid1: TDBGrid;
+    Panel2: TPanel;
+    Image2: TImage;
+    SpeedButton1: TSpeedButton;
+    Label1: TLabel;
+    ComboBox1: TComboBox;
+    Label3: TLabel;
+    ComboBox2: TComboBox;
+    Label2: TLabel;
+    Edit1: TEdit;
+    Label5: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  UpdateLectureModalForm: TUpdateLectureModalForm;
+   nameTema, nameRazdela:string;
+    kodTema, kodRazdela:integer;
+
+implementation
+
+uses config, basa_dan, UpdateUnit;
+{$R *.dfm}
+
+procedure TUpdateLectureModalForm.FormCreate(Sender: TObject);
+begin
+    // Получение всех разделов
+    config.selectRequestSQL('SELECT * FROM Раздел');
+    DBGrid1.DataSource.DataSet.First;
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
+      begin
+      ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+      DBGrid1.DataSource.DataSet.Next;
+    end;
+
+    // Получение Раздела к которому относиться наша изменяемая лекция
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
+    ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;
+
+    // Получение всех Тем раздела к которомой относиться наша изменяемая лекция
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
+
+    ComboBox2.Visible:=true;
+    label3.Visible:=true;
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
+      begin
+        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
+        DBGrid1.DataSource.DataSet.Next;
+      end;
+
+   // Получение название Темы нашей зменяемой лекции
+   config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
+   ComboBox2.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString;
+
+   // Получение названия Лекции к которомой относитсья наша изменяемая лекция
+   Edit1.Visible:=true;
+   label2.Visible:=true;
+   config.selectRequestSQL('SELECT * FROM Лекции WHERE КодЛекции='+IntToStr(updateKodLecture));
+   Edit1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString;
+
+    kodRazdela:=updateKodRazdela;
+    kodTema:=updateKodTema;
+end;
+
+procedure TUpdateLectureModalForm.ComboBox1Change(Sender: TObject);
+begin
+    Edit1.Visible:=false;
+    label2.Visible:=false;
+    label3.Visible:=false;
+    ComboBox2.Visible:=false;
+    ComboBox2.Items.Clear;
+    label5.visible:=false;
+
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
+    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
+
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
+      begin
+        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
+        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Text:=ComboBox2.Items.Strings[0];
+      end;
+
+    if ComboBox2.Items.Count>0 then
+      begin                                                                      // Проверка на наличие тем в разделе
+        label3.Visible:=true;
+        edit1.visible:=true;
+        label2.Visible:=true;
+        Combobox2.Visible:=true;
+        nameTema:=ComboBox2.Items.Strings[0];
+        config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
+        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+      end
+    else
+      label5.Visible:=true;
+end;
+
+procedure TUpdateLectureModalForm.SpeedButton1Click(Sender: TObject);       // Кнопка сохранить изменения
+begin
+ if ((Edit1.Text<>'') and (Edit1.Visible=true)) then
+    begin
+      config.execRequestSQL('UPDATE Лекции SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеЛекции='+#39+Edit1.Text+#39+' WHERE КодЛекции ='+IntToStr(updateKodLecture));
+      config.rebootRequestsCRUD;
+      MessageBox(0,'Лекция была успешно Изменена!','Редактирование Лекции', MB_OK+MB_ICONINFORMATION);
+   end;
+end;
+
+procedure TUpdateLectureModalForm.ComboBox2Change(Sender: TObject);
+begin
+    nameTema:=Combobox2.Text;
+    config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
+    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+end;
+
+procedure TUpdateLectureModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TUpdateLectureModalForm.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+     if not (Key in []) then Key := #0;
+end;
+
+end.

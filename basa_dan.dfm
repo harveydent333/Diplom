@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 180
-  Top = 195
+  Left = 297
+  Top = 143
   Height = 537
   Width = 813
   object ADOConnection1: TADOConnection
@@ -84,7 +84,7 @@ object DataModule1: TDataModule1
   end
   object EditRazdel: TDataSource
     DataSet = EditRazdelADO
-    Left = 392
+    Left = 576
     Top = 64
   end
   object EditRazdelADO: TADOQuery
@@ -94,7 +94,7 @@ object DataModule1: TDataModule1
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM '#1056#1072#1079#1076#1077#1083';')
-    Left = 384
+    Left = 568
     Top = 16
   end
   object Test: TADOQuery
@@ -116,18 +116,18 @@ object DataModule1: TDataModule1
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM '#1058#1077#1084#1072';')
-    Left = 464
-    Top = 24
+    Left = 656
+    Top = 16
   end
   object EditTema: TDataSource
     DataSet = EditTemaADO
-    Left = 464
-    Top = 72
+    Left = 664
+    Top = 64
   end
   object EditControl: TDataSource
     DataSet = EditControlADO
-    Left = 544
-    Top = 80
+    Left = 744
+    Top = 64
   end
   object EditControlADO: TADOQuery
     Active = True
@@ -136,8 +136,8 @@ object DataModule1: TDataModule1
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM '#1050#1086#1085#1090#1088#1086#1083#1100';')
-    Left = 544
-    Top = 32
+    Left = 744
+    Top = 16
   end
   object ShyrnalADO: TADOQuery
     Active = True
@@ -146,13 +146,13 @@ object DataModule1: TDataModule1
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM '#1046#1091#1088#1085#1072#1083';')
-    Left = 464
-    Top = 200
+    Left = 480
+    Top = 208
   end
   object Shyrnal: TDataSource
     DataSet = ShyrnalADO
-    Left = 464
-    Top = 248
+    Left = 480
+    Top = 256
   end
   object YchenikADO: TADOQuery
     Active = True
@@ -295,5 +295,19 @@ object DataModule1: TDataModule1
     Parameters = <>
     Left = 624
     Top = 376
+  end
+  object ShowLectureADO: TADOQuery
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM '#1051#1077#1082#1094#1080#1080';')
+    Left = 400
+    Top = 80
+  end
+  object ShowLecture: TDataSource
+    Left = 400
+    Top = 136
   end
 end

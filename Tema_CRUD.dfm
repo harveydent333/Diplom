@@ -1,6 +1,6 @@
 object TemaCRUD: TTemaCRUD
-  Left = 87
-  Top = 134
+  Left = 67
+  Top = 154
   AutoScroll = False
   Caption = 'TemaCRUD'
   ClientHeight = 643
@@ -3428,5 +3428,18 @@ object TemaCRUD: TTemaCRUD
         Title.Caption = #1058#1077#1084#1072
         Visible = True
       end>
+  end
+  object DBGrid2: TDBGrid
+    Left = 832
+    Top = 700
+    Width = 209
+    Height = 120
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
   end
 end

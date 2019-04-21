@@ -1,6 +1,6 @@
 object AddRazdelModalForm: TAddRazdelModalForm
-  Left = 274
-  Top = 466
+  Left = 390
+  Top = 216
   AutoScroll = False
   Caption = #1057#1086#1079#1076#1072#1085#1080'e '#1085#1086#1074#1086#1075#1086' '#1088#1072#1079#1076#1077#1083#1072
   ClientHeight = 310
@@ -17,7 +17,6 @@ object AddRazdelModalForm: TAddRazdelModalForm
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -685,7 +684,7 @@ object AddRazdelModalForm: TAddRazdelModalForm
       0514514005145140051451400514514005145140051451401FFFD9}
   end
   object Label1: TLabel
-    Left = 112
+    Left = 192
     Top = 80
     Width = 238
     Height = 23
@@ -1263,6 +1262,5 @@ object AddRazdelModalForm: TAddRazdelModalForm
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    Text = 'Edit1'
   end
 end

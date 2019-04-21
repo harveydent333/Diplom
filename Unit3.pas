@@ -56,7 +56,6 @@ AuthorizationData.defoltConfigRegistrationForm;
 
   RegistrationForm.label7.Caption:=nameUser;
   RegistrationForm.label8.Caption:=familyUser;
-if (roleUser='teacher') then RegistrationForm.Label6.Caption:='Преподаватель' else RegistrationForm.Label6.Caption:='Обучающийся';
 end;
 
 procedure TMainMenu.SpeedButton6Click(Sender: TObject);

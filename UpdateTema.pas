@@ -15,12 +15,13 @@ type
     Panel2: TPanel;
     Image2: TImage;
     SpeedButton1: TSpeedButton;
-    Label1: TLabel;
     ComboBox1: TComboBox;
     Label3: TLabel;
     DBGrid2: TDBGrid;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,67 +30,65 @@ type
 
 var
   UpdateTemaModalForm: TUpdateTemaModalForm;
-  kodTema,nameRazdel,kodRazdel:string;
+  nameRazdel, nameTema,str:string;
+  kodTema,kodRazdel:integer;
+  unique_user:boolean;
 
 implementation
 
-uses basa_dan;
+uses basa_dan, UpdateUnit, config;
 
 {$R *.dfm}
 
-procedure TUpdateTemaModalForm.SpeedButton1Click(Sender: TObject);
-var str:string;
+procedure TUpdateTemaModalForm.FormCreate(Sender: TObject);
 begin
-{ ЕСЛИ МЕНЯТЬ РАЗДЕЛ, ИЗ ВЫПАДАЮЩЕГО СПИСКА ПОЛУЧАЕМ ПО НАЗВАНИЮ КОД РАЗДЕЛА}
+    // Получение всех разделов
+    config.selectRequestSQL('SELECT * FROM Раздел');
+    DBGrid1.DataSource.DataSet.First;
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
+      begin
+      ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+      DBGrid1.DataSource.DataSet.Next;
+    end;
 
-str:='UPDATE Тема SET НазваниеТемы='+#39+edit1.Text+#39+' WHERE КодТемы ='+kodTema; //через (,) SET ПОЛЕ1 = ВАЛ1, ПОЛЕ2=ВАЛ2 ....
-DataModule1.ADOUpdate.SQL.Clear;
-DataModule1.ADOUpdate.SQL.Add(str);
-DataModule1.ADOUpdate.ExecSQL;
+    // Получение Раздела к которому относиться наша изменяемая тема
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
+    ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;
 
-DataModule1.ADOTemaCRUD.Active:=false;
-DataModule1.ADOTemaCRUD.Active:=true;
+    // Получение Темы
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
+    Edit1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString;
 end;
 
-procedure TUpdateTemaModalForm.FormCreate(Sender: TObject);
-var str:string;
+procedure TUpdateTemaModalForm.ComboBox1Change(Sender: TObject);     // Выбор Раздела
 begin
-kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsString;
-label1.Caption:=kodTema;
-Edit1.Text:='';                                                                               // Заполнение ComboBox при создании
-DataModule1.ADOModuleLecture.SQL.Clear;                                                       //
-DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Раздел');                                 //
-DataModule1.ADOModuleLecture.Open;                                                            //
-DBGrid2.DataSource.DataSet.First;                                                             //
-While (DBGrid2.DataSource.DataSet.Eof=false) do                                               //
- begin                                                                                        //
-    ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);  //
-    DBGrid2.DataSource.DataSet.Next;                                                          //
- end;                                                                                        //
-DBGrid2.DataSource.DataSet.First;                                                             //
-ComboBox1.ItemIndex:=0;                                                                       //
-                                                                                              //  конец создания
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
+    updateKodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+end;
 
-if ComboBox1.ItemIndex=-1 then
-  begin
-    Edit1.Text:='';
-    Edit1.Visible:=false;
-    label2.Visible:=false;
-    Panel2.Visible:=false;
-  end
-  else
-    begin
-    Edit1.Text:='';
-    Edit1.Visible:=true;
-    label2.Visible:=true;
-    Panel2.Visible:=true;
-    nameRazdel:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
-    DataModule1.ADOModuleLecture.SQL.Clear;
-    str:='SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdel+#39;
-    DataModule1.ADOModuleLecture.SQL.Add(str);
-    DataModule1.ADOModuleLecture.Open;
-    kodRazdel:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsString;
-    end;
+procedure TUpdateTemaModalForm.SpeedButton1Click(Sender: TObject);      // Сохранение изменений
+begin
+    unique_user:=false;
+    if Edit1.Text<>'' then
+      begin
+        config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+Edit1.Text+#39);
+        if ((DataModule1.ADOModuleLecture.IsEmpty) or (updateKodTema=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger)) then
+          unique_user:=true
+        else
+          MessageBox(0,'Данная тема уже сущетсвует!','Создание темы', MB_OK+MB_ICONwarning);
+      end;
+
+      if ((Edit1.Text<>'')and(unique_user<>false)) then
+        begin
+          config.execRequestSQL('UPDATE Тема SET КодРаздела='+#39+IntToStr(updateKodRazdela)+#39+', НазваниеТемы='+#39+edit1.Text+#39+' WHERE КодТемы ='+IntToStr(updateKodTema));
+          config.rebootRequestsCRUD;
+        end;
+end;
+
+procedure TUpdateTemaModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

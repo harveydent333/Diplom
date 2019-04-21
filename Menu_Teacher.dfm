@@ -1,6 +1,6 @@
 object RegistrationForm: TRegistrationForm
-  Left = 53
-  Top = 134
+  Left = 88
+  Top = 191
   AutoScroll = False
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
   ClientHeight = 627
@@ -21,7 +21,7 @@ object RegistrationForm: TRegistrationForm
   PixelsPerInch = 96
   TextHeight = 13
   object fon: TImage
-    Left = 0
+    Left = -8
     Top = 0
     Width = 1188
     Height = 699
@@ -9560,7 +9560,7 @@ object RegistrationForm: TRegistrationForm
     Transparent = True
   end
   object SpeedButton2: TSpeedButton
-    Left = 83
+    Left = 76
     Top = 0
     Width = 62
     Height = 50
@@ -9571,7 +9571,7 @@ object RegistrationForm: TRegistrationForm
     OnClick = SpeedButton2Click
   end
   object SpeedButton3: TSpeedButton
-    Left = 8
+    Left = 5
     Top = 0
     Width = 65
     Height = 50
@@ -9581,9 +9581,9 @@ object RegistrationForm: TRegistrationForm
     ShowHint = True
   end
   object SpeedButton4: TSpeedButton
-    Left = 1120
+    Left = 1118
     Top = 0
-    Width = 57
+    Width = 45
     Height = 49
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
     Flat = True
@@ -9592,33 +9592,19 @@ object RegistrationForm: TRegistrationForm
     OnClick = SpeedButton4Click
   end
   object SpeedButton5: TSpeedButton
-    Left = 864
+    Left = 856
     Top = 0
     Width = 67
-    Height = 49
+    Height = 51
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
     Flat = True
     ParentShowHint = False
     ShowHint = True
     OnClick = SpeedButton5Click
   end
-  object Label6: TLabel
-    Left = 720
-    Top = 16
-    Width = 57
-    Height = 23
-    Caption = 'Label6'
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
   object Image1: TImage
-    Left = 192
-    Top = 408
+    Left = 176
+    Top = 416
     Width = 169
     Height = 49
     Picture.Data = {
@@ -10280,14 +10266,12 @@ object RegistrationForm: TRegistrationForm
       0514514005145140051451400514514005145140051451400514514005145140
       0514514005145140051451400514514005145140051451401FFFD9}
   end
-  object number_group: TDBEdit
+  object last_name: TEdit
     Left = 368
-    Top = 355
-    Width = 465
+    Top = 176
+    Width = 457
     Height = 26
     BorderStyle = bsNone
-    DataField = #1043#1088#1091#1087#1087#1072
-    DataSource = DataModule1.Ychenik
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -10295,16 +10279,14 @@ object RegistrationForm: TRegistrationForm
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    OnChange = number_groupChange
+    OnChange = last_nameChange
   end
-  object last_name: TDBEdit
+  object first_name: TEdit
     Left = 368
-    Top = 174
+    Top = 236
     Width = 457
     Height = 26
     BorderStyle = bsNone
-    DataField = #1060#1072#1084#1080#1083#1080#1103
-    DataSource = DataModule1.Ychenik
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -10312,16 +10294,14 @@ object RegistrationForm: TRegistrationForm
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnChange = last_nameChange
+    OnChange = first_nameChange
   end
-  object first_name: TDBEdit
+  object second_name: TEdit
     Left = 368
-    Top = 236
-    Width = 465
+    Top = 299
+    Width = 457
     Height = 26
     BorderStyle = bsNone
-    DataField = #1048#1084#1103
-    DataSource = DataModule1.Ychenik
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -10329,16 +10309,14 @@ object RegistrationForm: TRegistrationForm
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    OnChange = first_nameChange
+    OnChange = second_nameChange
   end
-  object second_name: TDBEdit
+  object number_group: TEdit
     Left = 368
-    Top = 299
-    Width = 465
+    Top = 354
+    Width = 457
     Height = 26
     BorderStyle = bsNone
-    DataField = #1054#1090#1095#1077#1089#1090#1074#1086
-    DataSource = DataModule1.Ychenik
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -10346,23 +10324,6 @@ object RegistrationForm: TRegistrationForm
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnChange = second_nameChange
-  end
-  object login_field: TDBEdit
-    Left = 368
-    Top = 800
-    Width = 457
-    Height = 26
-    BorderStyle = bsNone
-    DataField = 'login'
-    DataSource = DataModule1.Ychenik
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 4
-    OnChange = login_fieldChange
+    OnChange = number_groupChange
   end
 end

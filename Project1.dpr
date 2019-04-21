@@ -29,7 +29,12 @@ uses
   AddLecture in 'AddLecture.pas' {AddLectureModalForm},
   AddPractic in 'AddPractic.pas' {AddPracticModalForm},
   Ycheniki_CRUD in 'Ycheniki_CRUD.pas' {YchenikiCRUD},
-  UpdateTema in 'UpdateTema.pas' {UpdateTemaModalForm};
+  UpdateTema in 'UpdateTema.pas' {UpdateTemaModalForm},
+  UpdateLecture in 'UpdateLecture.pas' {UpdateLectureModalForm},
+  UpdateUnit in 'UpdateUnit.pas',
+  config in 'config.pas',
+  UpdateRazdel in 'UpdateRazdel.pas' {UpdateRazdelModalForm},
+  UpdatePractic in 'UpdatePractic.pas' {UpdatePracticModalForm};
 
 {$R *.res}
 

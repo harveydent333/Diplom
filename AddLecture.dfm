@@ -1,6 +1,6 @@
 object AddLectureModalForm: TAddLectureModalForm
-  Left = 237
-  Top = 228
+  Left = 456
+  Top = 191
   AutoScroll = False
   Caption = 'AddLectureModalForm'
   ClientHeight = 310
@@ -715,11 +715,26 @@ object AddLectureModalForm: TAddLectureModalForm
   object Label2: TLabel
     Left = 120
     Top = 160
-    Width = 363
+    Width = 234
     Height = 23
-    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081' '#1088#1072#1073#1086#1090#1099
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1051#1077#1082#1094#1080#1080
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
+  object Label5: TLabel
+    Left = 120
+    Top = 120
+    Width = 164
+    Height = 23
+    Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1090#1077#1084'.'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clRed
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
@@ -740,8 +755,8 @@ object AddLectureModalForm: TAddLectureModalForm
     ItemHeight = 23
     ParentFont = False
     TabOrder = 0
-    Text = 'ComboBox1'
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
     Left = 120
@@ -756,8 +771,9 @@ object AddLectureModalForm: TAddLectureModalForm
     ItemHeight = 23
     ParentFont = False
     TabOrder = 1
-    Text = 'ComboBox2'
     Visible = False
+    OnChange = ComboBox2Change
+    OnKeyPress = ComboBox2KeyPress
   end
   object Edit1: TEdit
     Left = 120
@@ -771,7 +787,6 @@ object AddLectureModalForm: TAddLectureModalForm
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    Text = 'Edit1'
     Visible = False
   end
   object Panel2: TPanel
@@ -1324,10 +1339,11 @@ object AddLectureModalForm: TAddLectureModalForm
       Width = 420
       Height = 35
       Flat = True
+      OnClick = SpeedButton1Click
     end
   end
   object DBGrid1: TDBGrid
-    Left = 532
+    Left = 700
     Top = 16
     Width = 165
     Height = 65

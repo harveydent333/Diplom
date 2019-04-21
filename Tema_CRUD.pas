@@ -19,6 +19,7 @@ type
     SpeedButton7: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
+    DBGrid2: TDBGrid;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
@@ -34,60 +35,43 @@ var
 
 implementation
 
-uses Title_Form, UpdateTema;
+uses Title_Form, UpdateTema, UpdateUnit, config;
 
 {$R *.dfm}
 
-procedure TTemaCRUD.SpeedButton1Click(Sender: TObject);
+procedure TTemaCRUD.SpeedButton1Click(Sender: TObject);   // Добавление Темы
 begin
-with TAddTemaModalForm.Create(nil) do
-try
-  ShowModal;
-  finally
-  Free;
-  end;
+    with TAddTemaModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
 end;
 
-
-procedure TTemaCRUD.SpeedButton4Click(Sender: TObject);
+procedure TTemaCRUD.SpeedButton6Click(Sender: TObject);     // Изменение Темы
 begin
-TitleForm.close;
+    // Запрашиваем код раздела и код темы
+    config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39);
+    updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    updateKodRazdela:=DBGrid2.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    with TUpdateTemaModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
 end;
 
-procedure TTemaCRUD.SpeedButton7Click(Sender: TObject);
-var str:string;
+procedure TTemaCRUD.SpeedButton7Click(Sender: TObject);  // Удаление Темы
 begin
-  str:='DELETE FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39;
-  DataModule1.ADOModuleLecture.SQL.Clear;
-  DataModule1.ADOModuleLecture.SQL.Add(str);
-  DataModule1.ADOModuleLecture.ExecSQL;
-  DataModule1.ADOTemaCRUD.Active:=False;
-  DataModule1.ADOTemaCRUD.Active:=True;
+    config.execRequestSQL('DELETE FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39);
+    config.rebootRequestsCRUD;
 end;
 
-
-
-procedure TTemaCRUD.SpeedButton6Click(Sender: TObject);
+procedure TTemaCRUD.SpeedButton4Click(Sender: TObject);  // Завершение работы программы
 begin
-str:='SELECT * FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39;
-DataModule1.ADOUpdate.SQL.Clear;
-DataModule1.ADOUpdate.SQL.Add(str);
-DataModule1.ADOUpdate.Open;
-with TUpdateTemaModalForm.Create(nil) do
-try
-  ShowModal;
-  finally
-  Free;
-  end;
-
-{
-  str:='DELETE FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39;
-  DataModule1.ADOModuleLecture.SQL.Clear;
-  DataModule1.ADOModuleLecture.SQL.Add(str);
-  DataModule1.ADOModuleLecture.ExecSQL;
-  DataModule1.ADOTemaCRUD.Active:=False;
-  DataModule1.ADOTemaCRUD.Active:=True;
-  }
+    TitleForm.close;
 end;
 
 end.

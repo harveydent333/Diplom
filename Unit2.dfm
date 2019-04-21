@@ -1,6 +1,6 @@
 object AuthorizationForm: TAuthorizationForm
-  Left = 81
-  Top = 160
+  Left = 76
+  Top = 172
   AutoScroll = False
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103
   ClientHeight = 643
@@ -28420,9 +28420,8 @@ object AuthorizationForm: TAuthorizationForm
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    PasswordChar = '*'
     TabOrder = 1
-    OnChange = Edit1Change
-    OnClick = Edit1Click
   end
   object DBGrid1: TDBGrid
     Left = 248
@@ -28443,6 +28442,7 @@ object AuthorizationForm: TAuthorizationForm
     Width = 545
     Height = 31
     DataField = 'login'
+    DataSource = DataModule1.Ychenik
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19

@@ -1,6 +1,6 @@
 object LectureCRUD: TLectureCRUD
-  Left = 92
-  Top = 114
+  Left = 29
+  Top = 182
   AutoScroll = False
   Caption = 'LectureCRUD'
   ClientHeight = 643
@@ -3304,6 +3304,7 @@ object LectureCRUD: TLectureCRUD
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton6Click
   end
   object SpeedButton7: TSpeedButton
     Left = 200
@@ -3318,6 +3319,7 @@ object LectureCRUD: TLectureCRUD
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton7Click
   end
   object Label2: TLabel
     Left = 1010
@@ -3435,5 +3437,18 @@ object LectureCRUD: TLectureCRUD
         Width = 350
         Visible = True
       end>
+  end
+  object DBGrid2: TDBGrid
+    Left = 688
+    Top = 800
+    Width = 320
+    Height = 56
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
   end
 end
