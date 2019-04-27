@@ -13,7 +13,7 @@ uses
   AddTema in 'AddTema.pas' {AddTemaModalForm},
   AuthorizationData in 'AuthorizationData.pas',
   PassingKnowledgeControl in 'PassingKnowledgeControl.pas' {PassingKnowledgeControlForm},
-  AddControl in 'AddControl.pas' {AddTestModalForm},
+  AddControl in 'AddControl.pas' {AddControlModalForm},
   DocumentForm in 'DocumentForm.pas' {Shyrnal},
   defoltTest in 'defoltTest.pas',
   Result in 'Result.pas' {ResultForm},
@@ -34,7 +34,8 @@ uses
   UpdateUnit in 'UpdateUnit.pas',
   config in 'config.pas',
   UpdateRazdel in 'UpdateRazdel.pas' {UpdateRazdelModalForm},
-  UpdatePractic in 'UpdatePractic.pas' {UpdatePracticModalForm};
+  UpdatePractic in 'UpdatePractic.pas' {UpdatePracticModalForm},
+  UpdateControl in 'UpdateControl.pas' {UpdateControlModalForm};
 
 {$R *.res}
 

@@ -1,6 +1,6 @@
 object ControlCRUD: TControlCRUD
-  Left = 132
-  Top = 144
+  Left = 240
+  Top = 187
   AutoScroll = False
   Caption = 'ControlCRUD'
   ClientHeight = 643
@@ -16,6 +16,7 @@ object ControlCRUD: TControlCRUD
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3358,6 +3359,7 @@ object ControlCRUD: TControlCRUD
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton1Click
   end
   object SpeedButton6: TSpeedButton
     Left = 200
@@ -3372,6 +3374,7 @@ object ControlCRUD: TControlCRUD
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton6Click
   end
   object SpeedButton7: TSpeedButton
     Left = 200
@@ -3386,6 +3389,7 @@ object ControlCRUD: TControlCRUD
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton7Click
   end
   object DBGrid1: TDBGrid
     Left = 8
@@ -3434,5 +3438,18 @@ object ControlCRUD: TControlCRUD
         Width = 363
         Visible = True
       end>
+  end
+  object DBGrid2: TDBGrid
+    Left = 680
+    Top = 416
+    Width = 320
+    Height = 120
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
   end
 end

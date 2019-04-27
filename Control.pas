@@ -80,7 +80,6 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
-    procedure SpeedButton7Click(Sender: TObject);
     procedure SpeedButton8Click(Sender: TObject);
     procedure SpeedButton9Click(Sender: TObject);
     procedure SpeedButton10Click(Sender: TObject);
@@ -346,16 +345,6 @@ end;
 procedure TKnowledgeControl.SpeedButton6Click(Sender: TObject);
 begin
  with TAddTemaModalForm.Create(nil) do
-try
-  ShowModal;
-  finally
-  Free;
-  end;
-end;
-
-procedure TKnowledgeControl.SpeedButton7Click(Sender: TObject);
-begin
- with TAddTestModalForm.Create(nil) do
 try
   ShowModal;
   finally

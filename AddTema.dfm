@@ -1,6 +1,6 @@
 object AddTemaModalForm: TAddTemaModalForm
-  Left = 418
-  Top = 145
+  Left = 267
+  Top = 290
   AutoScroll = False
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1081' '#1090#1077#1084#1099
   ClientHeight = 310

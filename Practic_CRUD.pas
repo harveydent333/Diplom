@@ -49,8 +49,6 @@ begin
     end;
 end;
 
-
-
 procedure TPracticCRUD.SpeedButton4Click(Sender: TObject);
 begin
     TitleForm.close;

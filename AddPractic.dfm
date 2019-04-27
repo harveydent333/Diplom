@@ -1,6 +1,6 @@
 object AddPracticModalForm: TAddPracticModalForm
-  Left = 466
-  Top = 558
+  Left = 379
+  Top = 158
   AutoScroll = False
   Caption = 'AddPracticModalForm'
   ClientHeight = 310
@@ -683,9 +683,39 @@ object AddPracticModalForm: TAddPracticModalForm
       0514514005145140051451400514514005145140051451400514514005145140
       0514514005145140051451400514514005145140051451401FFFD9}
   end
+  object Label5: TLabel
+    Left = 128
+    Top = 128
+    Width = 164
+    Height = 23
+    Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1090#1077#1084'.'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clRed
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
+  object Label2: TLabel
+    Left = 120
+    Top = 160
+    Width = 359
+    Height = 23
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081' '#1088#1072#1073#1086#1090#1099
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
   object Label1: TLabel
     Left = 120
-    Top = 8
+    Top = 12
     Width = 153
     Height = 23
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
@@ -696,21 +726,6 @@ object AddPracticModalForm: TAddPracticModalForm
     Font.Style = []
     ParentFont = False
     Transparent = True
-  end
-  object Label2: TLabel
-    Left = 120
-    Top = 160
-    Width = 363
-    Height = 23
-    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081' '#1088#1072#1073#1086#1090#1099
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-    Visible = False
   end
   object Label3: TLabel
     Left = 120
@@ -1291,6 +1306,7 @@ object AddPracticModalForm: TAddPracticModalForm
       Width = 420
       Height = 35
       Flat = True
+      OnClick = SpeedButton1Click
     end
   end
   object ComboBox1: TComboBox
@@ -1307,6 +1323,8 @@ object AddPracticModalForm: TAddPracticModalForm
     ParentFont = False
     TabOrder = 2
     Text = 'ComboBox1'
+    OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
     Left = 120
@@ -1323,10 +1341,12 @@ object AddPracticModalForm: TAddPracticModalForm
     TabOrder = 3
     Text = 'ComboBox2'
     Visible = False
+    OnChange = ComboBox2Change
+    OnKeyPress = ComboBox2KeyPress
   end
   object DBGrid1: TDBGrid
     Left = 552
-    Top = 8
+    Top = 480
     Width = 320
     Height = 65
     DataSource = DataModule1.ModuleLecture

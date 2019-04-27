@@ -9,7 +9,6 @@ uses
 type
   TAddLectureModalForm = class(TForm)
     Image1: TImage;
-    Label1: TLabel;
     ComboBox1: TComboBox;
     Label3: TLabel;
     ComboBox2: TComboBox;
@@ -20,6 +19,7 @@ type
     SpeedButton1: TSpeedButton;
     DBGrid1: TDBGrid;
     Label5: TLabel;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
@@ -36,6 +36,7 @@ var
   AddLectureModalForm: TAddLectureModalForm;
    nameRazdela,str,nameTema:string;
    kodRazdela,kodTema:integer;
+   unique_user:boolean;
 
 implementation
 
@@ -93,25 +94,31 @@ end;
 
 procedure TAddLectureModalForm.ComboBox2Change(Sender: TObject);
 begin
-Edit1.Visible:=true;
- nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
+    Edit1.Visible:=true;
+    nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
 
- config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);  // Получение код темы
- kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
- label2.Visible:=true;
+    config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);  // Получение код темы
+    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    label2.Visible:=true;
 end;
 
 procedure TAddLectureModalForm.SpeedButton1Click(Sender: TObject);
 begin
-    if (Edit1.Text<>'') then
+    unique_user:=false;
+    if Edit1.Text<>'' then
       begin
-        DataModule1.ShowLectureADO.Append;
-        DataModule1.ShowLectureADO.Edit;
-        DataModule1.ShowLectureADO.FieldByName('НазваниеЛекции').AsString:=edit1.Text;
-        DataModule1.ShowLectureADO.FieldByName('КодТемы').AsInteger:=kodTema;
-        DataModule1.ShowLectureADO.Post;
-        MessageBox(0,'Лекция была успешно Создана!','Создание Лекции', MB_OK+MB_ICONINFORMATION);
+        config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+Edit1.Text+#39);
+        if DataModule1.ADOModuleLecture.IsEmpty then
+          unique_user:=true
+        else
+          MessageBox(0,'Данная лекция уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);
+      end;
 
+    if ((Edit1.Text<>'')and(unique_user<>false)) then
+      begin
+        // Добавление новой Лекции
+        config.execRequestSQL('INSERT INTO Лекции (КодТемы, НазваниеЛекции) VALUES('+IntToStr(kodTema)+','+#39+Edit1.Text+#39+')');
+        MessageBox(0,'Лекция была успешно создана!','Создание Лекции', MB_OK+MB_ICONINFORMATION);
         config.rebootRequestsCRUD;
 
         Edit1.Visible:=false;

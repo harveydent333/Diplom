@@ -3344,7 +3344,6 @@ object KnowledgeControl: TKnowledgeControl
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    OnClick = SpeedButton7Click
   end
   object Label7: TLabel
     Left = 1000

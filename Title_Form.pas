@@ -89,9 +89,7 @@ procedure TTitleForm.Button1Click(Sender: TObject);    //  –¿¡Œ“¿ —  À≈ ÷»» - ”◊
 begin
     MenuLectures.show;
     MenuLectures.ComboBox1.Items.Clear;
-
     config.selectRequestSQL('SELECT * FROM –‡Á‰ÂÎ');
-
     DBGrid2.DataSource.DataSet.First;
 
     While (DBGrid2.DataSource.DataSet.Eof=false) do

@@ -4,23 +4,28 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, DBCtrls, Buttons, ExtCtrls, jpeg;
+  Dialogs, StdCtrls, Mask, DBCtrls, Buttons, ExtCtrls, jpeg, Grids, DBGrids;
 
 type
-  TAddTestModalForm = class(TForm)
+  TAddControlModalForm = class(TForm)
     Image1: TImage;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    Label2: TLabel;
+    Edit1: TEdit;
     Panel2: TPanel;
     Image2: TImage;
     SpeedButton1: TSpeedButton;
-    bed_edit: TImage;
-    good_edit: TImage;
-    defolt_edit: TImage;
-    DBEdit2: TDBEdit;
-    Label3: TLabel;
+    Label5: TLabel;
+    DBGrid1: TDBGrid;
     Label1: TLabel;
-    Label2: TLabel;
-    procedure FormCreate(Sender: TObject);
+    Label3: TLabel;
     procedure SpeedButton1Click(Sender: TObject);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,93 +33,114 @@ type
   end;
 
 var
-  AddTestModalForm: TAddTestModalForm;
+  AddControlModalForm: TAddControlModalForm;
+  nameRazdela,str,nameTema:string;
+   kodRazdela,kodTema:integer;
+   unique_user:boolean;
 
 implementation
 
-uses Control, basa_dan;
+uses Control, basa_dan, config;
 
 {$R *.dfm}
 
-procedure TAddTestModalForm.FormCreate(Sender: TObject);
+procedure TAddControlModalForm.SpeedButton1Click(Sender: TObject);
 begin
-                                                                    //ЭТО ЕСЛИ ВЫБРАНА ТЕМА
-if ((KnowledgeControl.treeview1.Selected.Parent<>nil) and (KnowledgeControl.treeview1.Selected.Parent.Parent=nil))then
-  begin
-KnowledgeControl.label4.Caption:=KnowledgeControl.treeview1.Selected.Text;
-NameTemaForAddControl:='SELECT КодТемы FROM Тема WHERE НазваниеТемы='+#39+KnowledgeControl.label4.Caption+#39;
-KnowledgeControl.label4.Caption:=NameTemaForAddControl;
-DataModule1.ADOModuleLecture.SQL.Clear;
-DataModule1.ADOModuleLecture.SQL.Add(NameTemaForAddControl);
-DataModule1.ADOModuleLecture.Open;
-KnowledgeControl.label6.Caption:=KnowledgeControl.dbgrid3.DataSource.DataSet.FieldByName('КодТемы').AsString;
-label3.Caption:=KnowledgeControl.dbgrid3.DataSource.DataSet.FieldByName('КодТемы').AsString;
-//...
-DataModule1.ShowControlADO.Append;
-good_edit.Visible:=false;
-label2.Visible:=false;
-bed_edit.Visible:=false;
-defolt_edit.Visible:=true;
-end
-  else
-    begin
-        KnowledgeControl.label4.Caption:=KnowledgeControl.treeview1.Selected.Parent.Text;
-        NameRazdelForAddTema:='SELECT КодРаздела FROM Раздел WHERE НазваниеРаздела='+#39+KnowledgeControl.label4.Caption+#39;
-        KnowledgeControl.label4.Caption:=NameRazdelForAddTema;
-        DataModule1.ADOModuleLecture.SQL.Clear;
-        DataModule1.ADOModuleLecture.SQL.Add(NameRazdelForAddTema);
-        DataModule1.ADOModuleLecture.Open;
-        KnowledgeControl.label6.Caption:=KnowledgeControl.dbgrid3.DataSource.DataSet.FieldByName('КодРаздела').AsString;
-        label3.Caption:=KnowledgeControl.dbgrid3.DataSource.DataSet.FieldByName('КодРаздела').AsString;
+    unique_user:=false;
+    if Edit1.Text<>'' then
+      begin
+        config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Edit1.Text+#39);
+        if DataModule1.ADOModuleLecture.IsEmpty then
+          unique_user:=true
+        else
+          MessageBox(0,'Данный контроль знаний уже сущетсвует!','Создание контроля знаний', MB_OK+MB_ICONwarning);
+      end;
 
-        DataModule1.ShowTemaADO.Append;
+    if ((Edit1.Text<>'')and(unique_user<>false)) then
+      begin
+        // Добавление новой темы
+        config.execRequestSQL('INSERT INTO Контроль (КодТемы, НазваниеКонтроля) VALUES('+IntToStr(kodTema)+','+#39+Edit1.Text+#39+')');
+        MessageBox(0,'Контроль знаний был успешно создан!','Создание контроля знаний', MB_OK+MB_ICONINFORMATION);
+        config.rebootRequestsCRUD;
 
-        good_edit.Visible:=false;
+        Edit1.Visible:=false;
+        Edit1.Text:='';
         label2.Visible:=false;
-        bed_edit.Visible:=false;
-        defolt_edit.Visible:=true;
-    end;
-
+        label3.Visible:=false;
+        ComboBox2.Visible:=false;
+        ComboBox2.Items.Clear;
+        label5.visible:=false;
+      end;
 end;
 
-procedure TAddTestModalForm.SpeedButton1Click(Sender: TObject);
-var unique_user:boolean;
+procedure TAddControlModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
 begin
-unique_user:=false;
-DataModule1.ADOModuleLecture.SQL.Clear;
-if DBEdit2.Text='' then   //ПОЛЕ ПРИ НАЖАТИИ КНОПКИ ДОБАВИТЬ
-  begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TAddControlModalForm.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TAddControlModalForm.FormCreate(Sender: TObject);
+begin
+    config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
+    DBGrid1.DataSource.DataSet.First;
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
+      begin
+        ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+        DBGrid1.DataSource.DataSet.Next;
+      end;
+    DBGrid1.DataSource.DataSet.First;
+    ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;           //  конец создания
+end;
+
+procedure TAddControlModalForm.ComboBox1Change(Sender: TObject);
+begin
+    Edit1.Visible:=false;
+    Edit1.Text:='';
+    label2.Visible:=false;
+    label3.Visible:=false;
+    ComboBox2.Visible:=false;
+    ComboBox2.Items.Clear;
+    label5.visible:=false;
+
+    nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
+    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+     // Проверка на наличие потомков у Раздела
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
+
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
+      begin
+        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
+        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Text:=ComboBox2.Items.Strings[0];
+      end;
+
+    if ComboBox2.Items.Count>0 then
+      begin                                                                      // Проверка на наличие тем в разделе
+        label3.Visible:=true;
+        combobox2.Visible:=true;
+        nameTema:=ComboBox2.Items.Strings[0];
+        config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
+        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+      end
+    else
+      label5.Visible:=true;
+end;
+
+procedure TAddControlModalForm.ComboBox2Change(Sender: TObject);
+begin
+    Edit1.Visible:=true;
+    nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
+
+    config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);  // Получение код темы
+    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
     label2.Visible:=true;
-    defolt_edit.Visible:=false;
-    good_edit.Visible:=false;
-    bed_edit.Visible:=true;
-  end;
-  if DBEdit2.Text<>'' then
-  begin
-      DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBEdit2.Text+#39);
-      DataModule1.ADOModuleLecture.Open;
-      if DataModule1.ADOModuleLecture.IsEmpty then unique_user:=true
-      else
-       MessageBox(0,'Данный контроль уже сущетсвует!','Создание контроля', MB_OK+MB_ICONwarning);
-   end;
- if ((DBEdit2.Text<>'')and(unique_user<>false)) then
-    begin
-    MessageBox(0,'Контроль был успешно Создан!','Создание Контроля', MB_OK+MB_ICONINFORMATION);
-
-  if MyNode.Parent<>nil then
-    KnowledgeControl.Treeview1.Items.AddChild(MyNode,DBEdit2.Text)
-  else
-      KnowledgeControl.Treeview1.Items.AddChild(MyNode,DBEdit2.Text);
-
-
-  DataModule1.ShowControlADO.FieldByName('КодТемы').Value:=label3.Caption;
-     DataModule1.ShowControlADO.Post;
-     DataModule1.ShowControlADO.Append;
-      label2.Visible:=false;
-    defolt_edit.Visible:=true;
-    good_edit.Visible:=false;
-    bed_edit.Visible:=false;
-    end;
 end;
 
 end.

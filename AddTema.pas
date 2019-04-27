@@ -112,7 +112,6 @@ begin
         MessageBox(0,'Тема была успешно Создана!','Создание Темы', MB_OK+MB_ICONINFORMATION);
         config.rebootRequestsCRUD;
         Edit1.Text:='';
-        //default setting creat ModalForm
       end;
 end;
 

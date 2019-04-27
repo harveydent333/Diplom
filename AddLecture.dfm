@@ -1,6 +1,6 @@
 object AddLectureModalForm: TAddLectureModalForm
-  Left = 456
-  Top = 191
+  Left = 455
+  Top = 140
   AutoScroll = False
   Caption = 'AddLectureModalForm'
   ClientHeight = 310
@@ -683,20 +683,6 @@ object AddLectureModalForm: TAddLectureModalForm
       0514514005145140051451400514514005145140051451400514514005145140
       0514514005145140051451400514514005145140051451401FFFD9}
   end
-  object Label1: TLabel
-    Left = 120
-    Top = 8
-    Width = 153
-    Height = 23
-    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
   object Label3: TLabel
     Left = 120
     Top = 80
@@ -741,6 +727,20 @@ object AddLectureModalForm: TAddLectureModalForm
     ParentFont = False
     Transparent = True
     Visible = False
+  end
+  object Label1: TLabel
+    Left = 120
+    Top = 12
+    Width = 153
+    Height = 23
+    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
   end
   object ComboBox1: TComboBox
     Left = 120

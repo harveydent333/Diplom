@@ -1,6 +1,6 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 297
+  Left = 484
   Top = 143
   Height = 537
   Width = 813

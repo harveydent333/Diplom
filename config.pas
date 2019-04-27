@@ -41,6 +41,9 @@ begin
     DataModule1.ADOPracticCRUD.Active:=False;
     DataModule1.ADOPracticCRUD.Active:=True;
 
+    DataModule1.ADOControlCRUD.Active:=False;
+    DataModule1.ADOControlCRUD.Active:=True;
+
     DataModule1.YchenikADO.Active:=false;
     DataModule1.YchenikADO.Active:=true;
 end;

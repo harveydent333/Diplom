@@ -1,6 +1,6 @@
 object PracticCRUD: TPracticCRUD
-  Left = 314
-  Top = 256
+  Left = 229
+  Top = 195
   AutoScroll = False
   Caption = 'PracticCRUD'
   ClientHeight = 643
