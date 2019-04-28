@@ -1,6 +1,6 @@
 object KnowledgeControl: TKnowledgeControl
-  Left = 79
-  Top = 154
+  Left = 90
+  Top = 129
   AutoScroll = False
   Caption = #1050#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 631

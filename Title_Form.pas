@@ -9,14 +9,12 @@ uses
 type
   TTitleForm = class(TForm)
     Image1: TImage;
-    SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     Label1: TLabel;
     DBGrid1: TDBGrid;
     Image2: TImage;
     SpeedButton4: TSpeedButton;
-    Label2: TLabel;
     Button1: TButton;
     DBGrid2: TDBGrid;
     Button2: TButton;
@@ -27,6 +25,7 @@ type
     Button7: TButton;
     Button8: TButton;
     Button9: TButton;
+    Button10: TButton;
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -39,6 +38,7 @@ type
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,7 +52,7 @@ implementation
 
 uses Unit2, Add_Question, Control, PassingKnowledgeControl, Menu_Lectures,
   Menu_Practic, Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD,
-  Control_CRUD, Ycheniki_CRUD, Unit3, config, UpdateUnit;
+  Control_CRUD, Ycheniki_CRUD, Unit3, config, UpdateUnit, Menu_Control;
 
 {$R *.dfm}
 
@@ -89,32 +89,45 @@ procedure TTitleForm.Button1Click(Sender: TObject);    //  РАБОТА С  ЛЕКЦИИ - УЧ
 begin
     MenuLectures.show;
     MenuLectures.ComboBox1.Items.Clear;
-    config.selectRequestSQL('SELECT * FROM Раздел');
+    config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
     DBGrid2.DataSource.DataSet.First;
-
     While (DBGrid2.DataSource.DataSet.Eof=false) do
       begin
         MenuLectures.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
         DBGrid2.DataSource.DataSet.Next;
-        MenuLectures.ComboBox1.Text:='Раздел';    // ТУТ ЗАМЕНИТЬ НА РАЗДЕЛ ПЕРЫЙ , В СПИСКЕ
       end;
+    DBGrid2.DataSource.DataSet.First;
+    MenuLectures.ComboBox1.Text:=DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;  //  конец создания
 end;
 
 procedure TTitleForm.Button2Click(Sender: TObject);     //  РАБОТА С  ПРАКТИКЧЕСКИМИ - УЧЕНИК
 begin
     MenuPractic.show;
-    MenuPractic.ComboBox1.Items.Clear;
-
-    config.selectRequestSQL('SELECT * FROM Раздел');
-
+    MenuPractic.ComboBox2.Items.Clear;
+    config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
     DBGrid2.DataSource.DataSet.First;
-
     While (DBGrid2.DataSource.DataSet.Eof=false) do
       begin
         MenuPractic.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
         DBGrid2.DataSource.DataSet.Next;
-        MenuPractic.ComboBox1.Text:='Раздел';    // ТУТ ЗАМЕНИТЬ НА РАЗДЕЛ ПЕРЫЙ , В СПИСКЕ
       end;
+    DBGrid2.DataSource.DataSet.First;
+    MenuPractic.ComboBox1.Text:=DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;  //  конец создания
+end;
+
+procedure TTitleForm.Button10Click(Sender: TObject);  //  РАБОТА С Контролем знаний - УЧЕНИК
+begin
+    MenuControl.show;
+    MenuControl.ComboBox2.Items.Clear;
+    config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
+    DBGrid2.DataSource.DataSet.First;
+    While (DBGrid2.DataSource.DataSet.Eof=false) do
+      begin
+        MenuControl.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+        DBGrid2.DataSource.DataSet.Next;
+      end;
+    DBGrid2.DataSource.DataSet.First;
+    MenuControl.ComboBox1.Text:=DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;  //  конец создания
 end;
 
 procedure TTitleForm.Button3Click(Sender: TObject);

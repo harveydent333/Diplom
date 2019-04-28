@@ -1,6 +1,6 @@
 object Add_Questions: TAdd_Questions
-  Left = 351
-  Top = 169
+  Left = 92
+  Top = 243
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 661
@@ -4955,7 +4955,7 @@ object Add_Questions: TAdd_Questions
     Left = 0
     Top = 53
     Width = 300
-    Height = 372
+    Height = 349
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19

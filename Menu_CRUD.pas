@@ -7,17 +7,7 @@ uses
   Dialogs, Buttons, jpeg, ExtCtrls;
 
 type
-  TMenuCRUD = class(TForm)
-    Image1: TImage;
-    SpeedButton7: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton1: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    SpeedButton5: TSpeedButton;
-    SpeedButton8: TSpeedButton;
-    SpeedButton9: TSpeedButton;
+  Tdelete = class(TForm)
     procedure SpeedButton4Click(Sender: TObject);
   private
     { Private declarations }
@@ -26,7 +16,7 @@ type
   end;
 
 var
-  MenuCRUD: TMenuCRUD;
+  delete: Tdelete;
 
 implementation
 
@@ -34,7 +24,7 @@ uses Title_Form;
 
 {$R *.dfm}
 
-procedure TMenuCRUD.SpeedButton4Click(Sender: TObject);
+procedure Tdelete.SpeedButton4Click(Sender: TObject);
 begin
 TitleForm.close;
 end;

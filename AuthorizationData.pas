@@ -15,10 +15,11 @@ procedure freeDataUser;
 procedure defoltConfigRegistrationForm;
 procedure defoltKnowledgeControl;
 procedure defoltKnowledgeControlStydent;
+procedure getDataAuthUser;
 
 implementation
 
-uses Unit3 ,Menu_Teacher, Control;
+uses Unit3 ,Menu_Teacher, Control, config;
 
 
 
@@ -26,29 +27,26 @@ procedure getDataUser;
 begin
 if AuthorizationForm.teacher_ON.Visible = true then
   begin
-    DataModule1.ADOModuleLecture.SQL.Clear;
-    DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
-    DataModule1.ADOModuleLecture.Open;
-    
-    nameUser:=DataModule1.ADOModuleLecture.FieldByName('Имя').AsString;
-    familyUser:=DataModule1.ADOModuleLecture.FieldByName('Фамилия').AsString;
-    secondNameUser:=DataModule1.ADOModuleLecture.FieldByName('Отчество').AsString;
-    loginUser:=DataModule1.ADOModuleLecture.FieldByName('login').AsString;
+    config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
+    getDataAuthUser;
     roleUser:='teacher';
   end;
 if AuthorizationForm.stydent_ON.Visible = true then
     begin
-      DataModule1.ADOModuleLecture.SQL.Clear;
-      DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Ученик WHERE login='+#39+AuthorizationForm.DBComboBox1.Text+#39);
-      DataModule1.ADOModuleLecture.Open;
-
-      nameUser:=DataModule1.ADOModuleLecture.FieldByName('Имя').AsString;
-      familyUser:=DataModule1.ADOModuleLecture.FieldByName('Фамилия').AsString;
-      secondNameUser:=DataModule1.ADOModuleLecture.FieldByName('Отчество').AsString;
-      loginUser:=DataModule1.ADOModuleLecture.FieldByName('login').AsString;
+      config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+AuthorizationForm.DBComboBox1.Text+#39);
+      getDataAuthUser;
       roleUser:='stydent';
     end;
 end;
+
+procedure getDataAuthUser;
+begin
+    nameUser:=DataModule1.ADOModuleLecture.FieldByName('Имя').AsString;
+    familyUser:=DataModule1.ADOModuleLecture.FieldByName('Фамилия').AsString;
+    secondNameUser:=DataModule1.ADOModuleLecture.FieldByName('Отчество').AsString;      // ВЫТИАЩИТЬ ЭТО ГОВНО В ОДИН МЕТОД
+    loginUser:=DataModule1.ADOModuleLecture.FieldByName('login').AsString;
+end;
+
 
 procedure freeDataUser;
 begin
@@ -58,7 +56,6 @@ begin
    loginUser:='';
    roleUser:='';
    kodUser:=0;
-   MainMenu.SpeedButton5.Visible:=true;
 end;
 
 procedure defoltConfigRegistrationForm;

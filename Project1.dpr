@@ -19,7 +19,6 @@ uses
   Result in 'Result.pas' {ResultForm},
   Menu_Lectures in 'Menu_Lectures.pas' {MenuLectures},
   Menu_Practic in 'Menu_Practic.pas' {MenuPractic},
-  Menu_CRUD in 'Menu_CRUD.pas' {MenuCRUD},
   Tema_CRUD in 'Tema_CRUD.pas' {TemaCRUD},
   Razdel_CRUD in 'Razdel_CRUD.pas' {RazdelCRUD},
   Lecture_CRUD in 'Lecture_CRUD.pas' {LectureCRUD},
@@ -35,7 +34,9 @@ uses
   config in 'config.pas',
   UpdateRazdel in 'UpdateRazdel.pas' {UpdateRazdelModalForm},
   UpdatePractic in 'UpdatePractic.pas' {UpdatePracticModalForm},
-  UpdateControl in 'UpdateControl.pas' {UpdateControlModalForm};
+  UpdateControl in 'UpdateControl.pas' {UpdateControlModalForm},
+  ControlCenter in 'ControlCenter.pas' {DataManagementCenter},
+  Menu_Control in 'Menu_Control.pas' {MenuControl};
 
 {$R *.res}
 
@@ -53,7 +54,6 @@ begin
   Application.CreateForm(TResultForm, ResultForm);
   Application.CreateForm(TMenuLectures, MenuLectures);
   Application.CreateForm(TMenuPractic, MenuPractic);
-  Application.CreateForm(TMenuCRUD, MenuCRUD);
   Application.CreateForm(TTemaCRUD, TemaCRUD);
   Application.CreateForm(TRazdelCRUD, RazdelCRUD);
   Application.CreateForm(TLectureCRUD, LectureCRUD);
@@ -61,5 +61,7 @@ begin
   Application.CreateForm(TControlCRUD, ControlCRUD);
   Application.CreateForm(TStydentCRUD, StydentCRUD);
   Application.CreateForm(TYchenikiCRUD, YchenikiCRUD);
+  Application.CreateForm(TDataManagementCenter, DataManagementCenter);
+  Application.CreateForm(TMenuControl, MenuControl);
   Application.Run;
 end.

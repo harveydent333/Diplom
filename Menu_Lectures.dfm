@@ -1,6 +1,6 @@
 object MenuLectures: TMenuLectures
-  Left = 92
-  Top = 276
+  Left = 453
+  Top = 199
   AutoScroll = False
   Caption = 'MenuLectures'
   ClientHeight = 643
@@ -3289,7 +3289,7 @@ object MenuLectures: TMenuLectures
     Left = 86
     Top = 0
     Width = 62
-    Height = 50
+    Height = 52
     Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1074' '#1084#1077#1085#1102
     Flat = True
     ParentShowHint = False
@@ -3299,17 +3299,17 @@ object MenuLectures: TMenuLectures
     Left = 874
     Top = 0
     Width = 67
-    Height = 49
+    Height = 51
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
     Flat = True
     ParentShowHint = False
     ShowHint = True
   end
   object SpeedButton4: TSpeedButton
-    Left = 1120
+    Left = 1121
     Top = 0
-    Width = 50
-    Height = 49
+    Width = 51
+    Height = 52
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
     Flat = True
     ParentShowHint = False
@@ -3365,9 +3365,23 @@ object MenuLectures: TMenuLectures
   object Label4: TLabel
     Left = 1010
     Top = 2
-    Width = 54
+    Width = 57
     Height = 23
-    Caption = 'Label1'
+    Caption = 'Label4'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Label6: TLabel
+    Left = 1010
+    Top = 26
+    Width = 57
+    Height = 23
+    Caption = 'Label6'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -3377,18 +3391,34 @@ object MenuLectures: TMenuLectures
     Transparent = True
   end
   object Label5: TLabel
-    Left = 1010
-    Top = 26
-    Width = 54
+    Left = 48
+    Top = 272
+    Width = 162
     Height = 23
-    Caption = 'Label1'
+    Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1058#1077#1084
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clRed
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
     Transparent = True
+    Visible = False
+  end
+  object Label7: TLabel
+    Left = 48
+    Top = 392
+    Width = 166
+    Height = 23
+    Caption = #1042' '#1090#1077#1084#1077' '#1085#1077#1090' '#1051#1077#1082#1094#1080#1081
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clRed
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
   end
   object DBGrid1: TDBGrid
     Left = 296
@@ -3418,6 +3448,7 @@ object MenuLectures: TMenuLectures
     TabOrder = 1
     Text = 'ComboBox1'
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
     Left = 48
@@ -3435,6 +3466,7 @@ object MenuLectures: TMenuLectures
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox2Change
+    OnKeyPress = ComboBox2KeyPress
   end
   object ComboBox3: TComboBox
     Left = 48
@@ -3451,5 +3483,6 @@ object MenuLectures: TMenuLectures
     TabOrder = 3
     Text = 'ComboBox3'
     Visible = False
+    OnKeyPress = ComboBox3KeyPress
   end
 end

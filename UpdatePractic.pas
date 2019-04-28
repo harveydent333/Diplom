@@ -36,7 +36,8 @@ var
   UpdatePracticModalForm: TUpdatePracticModalForm;
        nameTema, nameRazdela:string;
         kodTema, kodRazdela:integer;
-        
+        unique_user:boolean;
+
 implementation
 
 uses config, basa_dan, UpdateUnit;
@@ -80,18 +81,6 @@ begin
 
     kodRazdela:=updateKodRazdela;
     kodTema:=updateKodTema;
-end;
-
-procedure TUpdatePracticModalForm.ComboBox1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
-procedure TUpdatePracticModalForm.ComboBox2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
 end;
 
 procedure TUpdatePracticModalForm.ComboBox2Change(Sender: TObject);
@@ -138,12 +127,35 @@ end;
 
 procedure TUpdatePracticModalForm.SpeedButton1Click(Sender: TObject);
 begin
-if ((Edit1.Text<>'') and (Edit1.Visible=true)) then
-    begin
-      config.execRequestSQL('UPDATE Практические SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеПрактической='+#39+Edit1.Text+#39+' WHERE КодПрактической ='+IntToStr(updateKodPractic));
-      config.rebootRequestsCRUD;
-      MessageBox(0,'Практическая была успешно Изменена!','Редактирование Практической', MB_OK+MB_ICONINFORMATION);
-   end;
+    unique_user:=false;
+    if Edit1.Text<>'' then
+      begin
+        config.selectRequestSQL('SELECT * FROM Практические WHERE НазваниеПрактической='+#39+Edit1.Text+#39);
+        if ((DataModule1.ADOModuleLecture.IsEmpty) or (updateKodPractic=DBGrid1.DataSource.DataSet.FieldByName('КодПрактической').AsInteger)) then
+          unique_user:=true
+        else
+          MessageBox(0,'Даннный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
+      end;
+
+      if ((Edit1.Text<>'')and(unique_user<>false) and (Edit1.Visible=true)) then
+        begin
+          config.execRequestSQL('UPDATE Практические SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеПрактической='+#39+Edit1.Text+#39+' WHERE КодПрактической ='+IntToStr(updateKodPractic));
+          config.rebootRequestsCRUD;
+          MessageBox(0,'Практическая была успешно Изменена!','Редактирование Практической', MB_OK+MB_ICONINFORMATION);
+        end;
 end;
+
+procedure TUpdatePracticModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TUpdatePracticModalForm.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
 
 end.

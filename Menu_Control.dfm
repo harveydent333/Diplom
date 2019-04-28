@@ -1,8 +1,8 @@
-object MenuPractic: TMenuPractic
-  Left = 258
-  Top = 272
+object MenuControl: TMenuControl
+  Left = 131
+  Top = 207
   AutoScroll = False
-  Caption = 'MenuPractic'
+  Caption = 'MenuControl'
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -21,12 +21,10 @@ object MenuPractic: TMenuPractic
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1188
-    Height = 681
-    Constraints.MaxHeight = 681
-    Constraints.MaxWidth = 1188
-    Constraints.MinHeight = 681
-    Constraints.MinWidth = 1188
+    Width = 1702
+    Height = 663
+    Constraints.MaxHeight = 2000
+    Constraints.MaxWidth = 2000
     Picture.Data = {
       0A544A504547496D616765B3950100FFD8FFE107894578696600004D4D002A00
       0000080007011200030000000100010000011A00050000000100000062011B00
@@ -3275,47 +3273,7 @@ object MenuPractic: TMenuPractic
       BDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF
       75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BA
       FFD9}
-  end
-  object SpeedButton3: TSpeedButton
-    Left = 11
-    Top = 0
-    Width = 59
-    Height = 51
-    Hint = #1057#1087#1088#1072#1074#1082#1072
-    Flat = True
-    ParentShowHint = False
-    ShowHint = True
-  end
-  object SpeedButton2: TSpeedButton
-    Left = 86
-    Top = 0
-    Width = 62
-    Height = 50
-    Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1074' '#1084#1077#1085#1102
-    Flat = True
-    ParentShowHint = False
-    ShowHint = True
-  end
-  object SpeedButton5: TSpeedButton
-    Left = 874
-    Top = 0
-    Width = 67
-    Height = 49
-    Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
-    Flat = True
-    ParentShowHint = False
-    ShowHint = True
-  end
-  object SpeedButton4: TSpeedButton
-    Left = 1120
-    Top = 0
-    Width = 50
-    Height = 49
-    Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
-    Flat = True
-    ParentShowHint = False
-    ShowHint = True
-    OnClick = SpeedButton4Click
+    Proportional = True
   end
   object Label1: TLabel
     Left = 48
@@ -3348,6 +3306,21 @@ object MenuPractic: TMenuPractic
     Transparent = True
     Visible = False
   end
+  object Label5: TLabel
+    Left = 48
+    Top = 272
+    Width = 162
+    Height = 23
+    Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1058#1077#1084
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clRed
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
   object Label3: TLabel
     Left = 48
     Top = 360
@@ -3362,6 +3335,51 @@ object MenuPractic: TMenuPractic
     ParentFont = False
     Transparent = True
     Visible = False
+  end
+  object Label7: TLabel
+    Left = 48
+    Top = 392
+    Width = 166
+    Height = 23
+    Caption = #1042' '#1090#1077#1084#1077' '#1085#1077#1090' '#1051#1077#1082#1094#1080#1081
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clRed
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
+  object SpeedButton2: TSpeedButton
+    Left = 86
+    Top = 0
+    Width = 62
+    Height = 52
+    Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1074' '#1084#1077#1085#1102
+    Flat = True
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object SpeedButton3: TSpeedButton
+    Left = 11
+    Top = 0
+    Width = 59
+    Height = 51
+    Hint = #1057#1087#1088#1072#1074#1082#1072
+    Flat = True
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object SpeedButton5: TSpeedButton
+    Left = 874
+    Top = 0
+    Width = 67
+    Height = 51
+    Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
+    Flat = True
+    ParentShowHint = False
+    ShowHint = True
   end
   object Label4: TLabel
     Left = 1010
@@ -3391,41 +3409,22 @@ object MenuPractic: TMenuPractic
     ParentFont = False
     Transparent = True
   end
-  object Label5: TLabel
-    Left = 48
-    Top = 272
-    Width = 162
-    Height = 23
-    Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1058#1077#1084
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clRed
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-    Visible = False
-  end
-  object Label7: TLabel
-    Left = 48
-    Top = 392
-    Width = 226
-    Height = 23
-    Caption = #1042' '#1090#1077#1084#1077' '#1085#1077#1090' '#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1093
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clRed
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-    Visible = False
+  object SpeedButton4: TSpeedButton
+    Left = 1121
+    Top = 0
+    Width = 51
+    Height = 52
+    Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
+    Flat = True
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = SpeedButton4Click
   end
   object DBGrid1: TDBGrid
-    Left = 432
-    Top = 24
-    Width = 353
-    Height = 105
+    Left = 296
+    Top = 8
+    Width = 425
+    Height = 129
     DataSource = DataModule1.ModuleLecture
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
@@ -3449,6 +3448,7 @@ object MenuPractic: TMenuPractic
     TabOrder = 1
     Text = 'ComboBox1'
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
     Left = 48
@@ -3466,6 +3466,7 @@ object MenuPractic: TMenuPractic
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox2Change
+    OnKeyPress = ComboBox2KeyPress
   end
   object ComboBox3: TComboBox
     Left = 48
@@ -3482,5 +3483,6 @@ object MenuPractic: TMenuPractic
     TabOrder = 3
     Text = 'ComboBox3'
     Visible = False
+    OnKeyPress = ComboBox3KeyPress
   end
 end

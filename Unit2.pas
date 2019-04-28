@@ -45,7 +45,7 @@ var
 
 implementation
 
-uses Unit3, AuthorizationData, Title_Form;
+uses Unit3, AuthorizationData, Title_Form, config;
 
 {$R *.dfm}
 
@@ -113,9 +113,8 @@ end;
 
 procedure TAuthorizationForm.teacherAuthorization;
 begin
-     DataModule1.ADOModuleLecture.SQL.Clear;
-     DataModule1.ADOModuleLecture.SQL.Add('SELECT password FROM Учитель WHERE login='+#39+edit2.text+#39);
-     DataModule1.ADOModuleLecture.Open;
+     config.selectRequestSQL('SELECT password FROM Учитель WHERE login='+#39+edit2.text+#39);
+
      if DataModule1.ADOModuleLecture.IsEmpty then
         MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
      else
@@ -126,23 +125,16 @@ begin
         begin
               AuthorizationData.getDataUser;
            MainMenu.show;
-           MainMenu.Height:=699;
-           MainMenu.Width:=1188;
-            MainMenu.label1.Caption:=nameUser;
-            MainMenu.label2.Caption:=familyUser;
-            if (roleUser='teacher') then MainMenu.Label3.Caption:='Преподаватель';
+           MainMenu.label1.Caption:=nameUser;
+           MainMenu.label2.Caption:=familyUser;
 
     AuthorizationForm.Visible:=false;
-    MainMenu.SpeedButton1.Caption:='Редактирование данных контроля знаний';
-    MainMenu.SpeedButton2.Caption:='Формирование отчетов';
         end;
 end;
     end;
 procedure TAuthorizationForm.stydentAuthorization;
 begin
-      DataModule1.ADOModuleLecture.SQL.Clear;
-      DataModule1.ADOModuleLecture.SQL.Add('SELECT * FROM Ученик WHERE login='+#39+DBComboBox1.Text+#39);
-      DataModule1.ADOModuleLecture.Open;
+      config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+DBComboBox1.Text+#39);
       if DataModule1.ADOModuleLecture.IsEmpty then
         MessageBox(0,'Данный пользователь не найден!','Авторизация', MB_OK+MB_ICONwarning)
       else
@@ -151,12 +143,9 @@ begin
                 AuthorizationData.getDataUser;
               MainMenu.show;
             label1.Caption:=inttostr(KodUser);
-               if AuthorizationData.roleUser='stydent' then MainMenu.SpeedButton5.Visible:=false;
-              MainMenu.Height:=699;
-              MainMenu.Width:=1188;
+           
                  MainMenu.label1.Caption:=nameUser;
                   MainMenu.label2.Caption:=familyUser;
-                   if (roleUser='stydent') then MainMenu.Label3.Caption:='Обучающийся';
              AuthorizationForm.Visible:=false;
 
            // Перенести этот кусок кода в конфиг!!!!

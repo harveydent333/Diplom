@@ -1,36 +1,35 @@
-unit Menu_Lectures;
+unit Menu_Control;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, jpeg, ExtCtrls, basa_dan, StdCtrls, DBCtrls, Grids,
-  DBGrids, OleServer, WordXP;
+  Dialogs, Buttons, StdCtrls, Grids, DBGrids, jpeg, ExtCtrls;
 
 type
-  TMenuLectures = class(TForm)
+  TMenuControl = class(TForm)
     Image1: TImage;
-    SpeedButton3: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton5: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    Label1: TLabel;
-    Label2: TLabel;
     DBGrid1: TDBGrid;
+    Label1: TLabel;
     ComboBox1: TComboBox;
+    Label2: TLabel;
+    Label5: TLabel;
     ComboBox2: TComboBox;
     Label3: TLabel;
+    Label7: TLabel;
     ComboBox3: TComboBox;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton5: TSpeedButton;
     Label4: TLabel;
     Label6: TLabel;
-    Label5: TLabel;
-    Label7: TLabel;
-    procedure SpeedButton4Click(Sender: TObject);
-    procedure ComboBox1Change(Sender: TObject);
-    procedure ComboBox2Change(Sender: TObject);
+    SpeedButton4: TSpeedButton;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,22 +37,17 @@ type
   end;
 
 var
-  MenuLectures: TMenuLectures;
-   nameRazdela,str,nameTema:string;
-   kodRazdela,kodTema:integer;
+  MenuControl: TMenuControl;
+    nameRazdela,str,nameTema:string;
+    kodRazdela,kodTema:integer;
 
 implementation
 
-uses Title_Form, config;
+uses config, Title_Form;
 
 {$R *.dfm}
 
-procedure TMenuLectures.SpeedButton4Click(Sender: TObject);
-begin
-    TitleForm.close;
-end;
-
-procedure TMenuLectures.ComboBox1Change(Sender: TObject);
+procedure TMenuControl.ComboBox1Change(Sender: TObject);
 begin
     label2.Visible:=false;
     label3.Visible:=false;
@@ -89,9 +83,7 @@ begin
       label5.Visible:=true;
 end;
 
-
-
-procedure TMenuLectures.ComboBox2Change(Sender: TObject);
+procedure TMenuControl.ComboBox2Change(Sender: TObject);
 begin
     ComboBox3.Visible:=false;
     label3.Visible:=false;
@@ -102,15 +94,15 @@ begin
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);
     kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
 
-    config.selectRequestSQL('SELECT * FROM Лекции WHERE КодТемы='+inttostr(kodTema));
+    config.selectRequestSQL('SELECT * FROM Контроль WHERE КодТемы='+inttostr(kodTema));
     While (DBGrid1.DataSource.DataSet.Eof=false) do
       begin
-        ComboBox3.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString);
+        ComboBox3.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString);
         DBGrid1.DataSource.DataSet.Next;
         ComboBox3.Text:=ComboBox3.Items.Strings[0];
     end;
 
-    if ComboBox3.Items.Count>0 then     // Проверка на наличие лекций в теме
+    if ComboBox3.Items.Count>0 then     // Проверка на наличие контроля знаний в теме
         begin
           label3.Visible:=true;
           Combobox3.Visible:=true;
@@ -119,22 +111,24 @@ begin
       label7.Visible:=true;
 end;
 
-procedure TMenuLectures.ComboBox1KeyPress(Sender: TObject; var Key: Char); // Выпадающий список "Раздел"
+procedure TMenuControl.ComboBox1KeyPress(Sender: TObject; var Key: Char);
 begin
     if not (Key in []) then Key := #0;
 end;
 
-procedure TMenuLectures.ComboBox2KeyPress(Sender: TObject; var Key: Char); // Выпадающий список "Тема"
+procedure TMenuControl.ComboBox2KeyPress(Sender: TObject; var Key: Char);
 begin
     if not (Key in []) then Key := #0;
 end;
 
-procedure TMenuLectures.ComboBox3KeyPress(Sender: TObject; var Key: Char);  // Выпадающий список "Лекция"
+procedure TMenuControl.ComboBox3KeyPress(Sender: TObject; var Key: Char);
 begin
     if not (Key in []) then Key := #0;
+end;
+
+procedure TMenuControl.SpeedButton4Click(Sender: TObject);
+begin
+    TitleForm.close;
 end;
 
 end.
-
-
-
