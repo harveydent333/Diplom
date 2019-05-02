@@ -1,6 +1,6 @@
 object MenuLectures: TMenuLectures
-  Left = 453
-  Top = 199
+  Left = 89
+  Top = 92
   AutoScroll = False
   Caption = 'MenuLectures'
   ClientHeight = 643
@@ -3318,7 +3318,7 @@ object MenuLectures: TMenuLectures
   end
   object Label1: TLabel
     Left = 48
-    Top = 136
+    Top = 128
     Width = 193
     Height = 29
     Alignment = taCenter
@@ -3421,8 +3421,8 @@ object MenuLectures: TMenuLectures
     Visible = False
   end
   object DBGrid1: TDBGrid
-    Left = 296
-    Top = 8
+    Left = 264
+    Top = 0
     Width = 425
     Height = 129
     DataSource = DataModule1.ModuleLecture
@@ -3435,7 +3435,7 @@ object MenuLectures: TMenuLectures
   end
   object ComboBox1: TComboBox
     Left = 48
-    Top = 176
+    Top = 168
     Width = 513
     Height = 37
     Font.Charset = RUSSIAN_CHARSET

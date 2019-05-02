@@ -1,6 +1,6 @@
 object TitleForm: TTitleForm
-  Left = 107
-  Top = 188
+  Left = 71
+  Top = 145
   AutoScroll = False
   Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1080' '#1079#1072#1097#1080#1090#1072' WEB '#1087#1088#1080#1083#1086#1078#1077#1085#1080#1081
   ClientHeight = 643
@@ -4009,6 +4009,34 @@ object TitleForm: TTitleForm
     ParentFont = False
     OnClick = SpeedButton4Click
   end
+  object Label2: TLabel
+    Left = 456
+    Top = 24
+    Width = 32
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Label3: TLabel
+    Left = 600
+    Top = 24
+    Width = 32
+    Height = 13
+    Caption = 'Label3'
+  end
+  object Label4: TLabel
+    Left = 720
+    Top = 24
+    Width = 32
+    Height = 13
+    Caption = 'Label4'
+  end
+  object Label5: TLabel
+    Left = 800
+    Top = 24
+    Width = 32
+    Height = 13
+    Caption = 'Label5'
+  end
   object DBGrid1: TDBGrid
     Left = 88
     Top = 48
@@ -4124,5 +4152,34 @@ object TitleForm: TTitleForm
     Caption = #1050#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
     TabOrder = 11
     OnClick = Button10Click
+  end
+  object Button11: TButton
+    Left = 552
+    Top = 96
+    Width = 75
+    Height = 25
+    Caption = 'Button11'
+    TabOrder = 12
+    OnClick = Button11Click
+  end
+  object StringGrid1: TStringGrid
+    Left = 856
+    Top = 48
+    Width = 320
+    Height = 120
+    ColCount = 10
+    FixedCols = 0
+    RowCount = 10
+    FixedRows = 0
+    TabOrder = 13
+  end
+  object Button12: TButton
+    Left = 304
+    Top = 576
+    Width = 169
+    Height = 25
+    Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1074#1086#1087#1088#1086#1089#1086#1074
+    TabOrder = 14
+    OnClick = Button12Click
   end
 end

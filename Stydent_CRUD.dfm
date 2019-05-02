@@ -1,6 +1,6 @@
 object StydentCRUD: TStydentCRUD
-  Left = 86
-  Top = 134
+  Left = 161
+  Top = 120
   AutoScroll = False
   Caption = 'StydentCRUD'
   ClientHeight = 643

@@ -1,6 +1,6 @@
 object MenuPractic: TMenuPractic
-  Left = 258
-  Top = 272
+  Left = 344
+  Top = 116
   AutoScroll = False
   Caption = 'MenuPractic'
   ClientHeight = 643

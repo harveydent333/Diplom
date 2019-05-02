@@ -26,6 +26,13 @@ type
     Button8: TButton;
     Button9: TButton;
     Button10: TButton;
+    Button11: TButton;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    StringGrid1: TStringGrid;
+    Button12: TButton;
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -39,6 +46,8 @@ type
     procedure Button8Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure Button10Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure Button12Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,7 +61,8 @@ implementation
 
 uses Unit2, Add_Question, Control, PassingKnowledgeControl, Menu_Lectures,
   Menu_Practic, Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD,
-  Control_CRUD, Ycheniki_CRUD, Unit3, config, UpdateUnit, Menu_Control;
+  Control_CRUD, Ycheniki_CRUD, Unit3, config, UpdateUnit, Menu_Control,
+  Main_Menu;
 
 {$R *.dfm}
 
@@ -163,6 +173,39 @@ end;
 procedure TTitleForm.Button9Click(Sender: TObject);
 begin
     Mainmenu.show;
+end;
+
+procedure TTitleForm.Button11Click(Sender: TObject);
+var str:string;
+i,j,beg:integer;
+ar:array[1..50] of string;
+begin
+  str:='qq`ss`dd`ff`ee`sd`';
+  label2.Caption:=inttostr(length(str));
+  beg:=1;
+  j:=1;
+  for i:=1 to length(str) do begin
+    if(str[i]='`') then
+      begin
+        ar[j]:=Copy(str, beg, i-beg);
+        beg:=i+1;
+        inc(j);
+      end;
+     if (pos(str[i],str)= length(str)) then
+       ar[j]:=Copy(str, beg, (length(str))-beg);
+    end;
+
+
+ for i:=1 to length(ar) do
+  stringgrid1.Cells[i,0]:=ar[i];
+
+end;
+
+
+
+procedure TTitleForm.Button12Click(Sender: TObject);
+begin
+    Add_Questions.Show;
 end;
 
 end.

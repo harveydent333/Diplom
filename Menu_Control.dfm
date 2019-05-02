@@ -1,6 +1,6 @@
 object MenuControl: TMenuControl
-  Left = 131
-  Top = 207
+  Left = 393
+  Top = 228
   AutoScroll = False
   Caption = 'MenuControl'
   ClientHeight = 643
@@ -3277,7 +3277,7 @@ object MenuControl: TMenuControl
   end
   object Label1: TLabel
     Left = 48
-    Top = 136
+    Top = 128
     Width = 193
     Height = 29
     Alignment = taCenter
@@ -3307,8 +3307,8 @@ object MenuControl: TMenuControl
     Visible = False
   end
   object Label5: TLabel
-    Left = 48
-    Top = 272
+    Left = 56
+    Top = 288
     Width = 162
     Height = 23
     Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1058#1077#1084
@@ -3337,11 +3337,11 @@ object MenuControl: TMenuControl
     Visible = False
   end
   object Label7: TLabel
-    Left = 48
-    Top = 392
-    Width = 166
+    Left = 56
+    Top = 408
+    Width = 256
     Height = 23
-    Caption = #1042' '#1090#1077#1084#1077' '#1085#1077#1090' '#1051#1077#1082#1094#1080#1081
+    Caption = #1042' '#1090#1077#1084#1077' '#1085#1077#1090' '#1050#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
     Font.Height = -19
@@ -3420,9 +3420,24 @@ object MenuControl: TMenuControl
     ShowHint = True
     OnClick = SpeedButton4Click
   end
+  object SpeedButton1: TSpeedButton
+    Left = 48
+    Top = 480
+    Width = 505
+    Height = 49
+    Caption = #1053#1072#1095#1072#1090#1100' '#1088#1077#1096#1077#1085#1080#1077
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
+  end
   object DBGrid1: TDBGrid
-    Left = 296
-    Top = 8
+    Left = 632
+    Top = 472
     Width = 425
     Height = 129
     DataSource = DataModule1.ModuleLecture
@@ -3435,7 +3450,7 @@ object MenuControl: TMenuControl
   end
   object ComboBox1: TComboBox
     Left = 48
-    Top = 176
+    Top = 168
     Width = 513
     Height = 37
     Font.Charset = RUSSIAN_CHARSET
@@ -3483,6 +3498,136 @@ object MenuControl: TMenuControl
     TabOrder = 3
     Text = 'ComboBox3'
     Visible = False
+    OnChange = ComboBox3Change
     OnKeyPress = ComboBox3KeyPress
+  end
+  object Panel1: TPanel
+    Left = 576
+    Top = 130
+    Width = 593
+    Height = 257
+    Color = clBtnHighlight
+    TabOrder = 4
+    Visible = False
+    object Label12: TLabel
+      Left = 32
+      Top = 24
+      Width = 285
+      Height = 23
+      Caption = #1054#1090#1082#1088#1099#1090' '#1082#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081': " '
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Georgia'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label13: TLabel
+      Left = 32
+      Top = 56
+      Width = 145
+      Height = 23
+      Caption = #1042#1086#1087#1088#1086#1089#1086#1074' '#1074#1089#1077#1075#1086': '
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Georgia'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label14: TLabel
+      Left = 176
+      Top = 56
+      Width = 65
+      Height = 23
+      Caption = 'Label14'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Georgia'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label15: TLabel
+      Left = 32
+      Top = 88
+      Width = 211
+      Height = 23
+      Caption = #1050#1088#1080#1090#1077#1088#1080#1080' '#1086#1094#1077#1085#1080#1074#1072#1085#1080#1103':'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Georgia'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label16: TLabel
+      Left = 40
+      Top = 120
+      Width = 306
+      Height = 18
+      Caption = '"5" '#1085#1077' '#1084#1077#1085#1077#1077' 85% '#1084#1072#1082#1089#1080#1084#1072#1083#1100#1085#1099#1093' '#1073#1072#1083#1083#1086#1074' '
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Georgia'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label17: TLabel
+      Left = 40
+      Top = 144
+      Width = 306
+      Height = 18
+      Caption = '"4" '#1085#1077' '#1084#1077#1085#1077#1077' 70% '#1084#1072#1082#1089#1080#1084#1072#1083#1100#1085#1099#1093' '#1073#1072#1083#1083#1086#1074' '
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Georgia'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label18: TLabel
+      Left = 40
+      Top = 168
+      Width = 307
+      Height = 18
+      Caption = '"3" '#1085#1077' '#1084#1077#1085#1077#1077' 50% '#1084#1072#1082#1089#1080#1084#1072#1083#1100#1085#1099#1093' '#1073#1072#1083#1083#1086#1074' '
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Georgia'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Label19: TLabel
+      Left = 32
+      Top = 192
+      Width = 457
+      Height = 57
+      Caption = 
+        #1044#1083#1103' '#1085#1072#1095#1072#1083#1072' '#1087#1088#1086#1093#1086#1078#1076#1077#1085#1080#1103' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1085#1072#1078#1084#1080#1090#1077' '#1085#1072' '#1082#1085#1086#1087#1082#1091' "'#1053#1072#1095#1072#1090#1100' '#1088#1077#1096#1077#1085#1080 +
+        #1077'"'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Georgia'
+      Font.Style = []
+      ParentFont = False
+      WordWrap = True
+    end
+    object Label20: TLabel
+      Left = 312
+      Top = 24
+      Width = 79
+      Height = 23
+      Caption = 'Label20'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Georgia'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
   end
 end

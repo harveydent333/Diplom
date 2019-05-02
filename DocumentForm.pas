@@ -21,36 +21,7 @@ type
     Button2: TButton;
     SpeedButton5: TSpeedButton;
     SpeedButton6: TSpeedButton;
-    QuickRep1: TQuickRep;
-    DetailBand1: TQRBand;
-    TitleBand1: TQRBand;
-    QRLabel4: TQRLabel;
-    QRDBText4: TQRDBText;
-    QRLabel5: TQRLabel;
-    QRDBText5: TQRDBText;
-    QRLabel6: TQRLabel;
-    QRDBText6: TQRDBText;
-    QRLabel1: TQRLabel;
-    QRDBText1: TQRDBText;
-    QRDBText2: TQRDBText;
-    QRDBText3: TQRDBText;
     Label3: TLabel;
-    QuickRep2: TQuickRep;
-    QRBand1: TQRBand;
-    QRDBText7: TQRDBText;
-    QRDBText8: TQRDBText;
-    QRDBText9: TQRDBText;
-    QRBand2: TQRBand;
-    QRLabel2: TQRLabel;
-    QRLabel3: TQRLabel;
-    QRLabel7: TQRLabel;
-    QRLabel8: TQRLabel;
-    QRLabel9: TQRLabel;
-    QRLabel10: TQRLabel;
-    QRLabel11: TQRLabel;
-    QRDBText10: TQRDBText;
-    QRDBText11: TQRDBText;
-    QRDBText12: TQRDBText;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
@@ -66,7 +37,7 @@ var
   Shyrnal: TShyrnal;
 
 implementation
-     uses basa_dan, Unit3, Unit2, AuthorizationData, Title_Form;
+     uses basa_dan, Unit3, Unit2, AuthorizationData, Title_Form, Main_Menu;
 {$R *.dfm}
 
 procedure TShyrnal.SpeedButton1Click(Sender: TObject);
@@ -97,8 +68,8 @@ end;
 procedure TShyrnal.Button1Click(Sender: TObject);
 begin
 if roleUser='teacher' then
-QuickRep2.Preview else
-QuickRep1.Preview;
+//QuickRep2.Preview else
+//QuickRep1.Preview;
 end;
 
 end.

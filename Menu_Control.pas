@@ -24,12 +24,24 @@ type
     Label4: TLabel;
     Label6: TLabel;
     SpeedButton4: TSpeedButton;
+    Panel1: TPanel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    SpeedButton1: TSpeedButton;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
+    procedure ComboBox3Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +50,7 @@ type
 
 var
   MenuControl: TMenuControl;
-    nameRazdela,str,nameTema:string;
+    nameRazdela,str,nameTema,nameControl:string;
     kodRazdela,kodTema:integer;
 
 implementation
@@ -57,6 +69,8 @@ begin
     ComboBox3.Items.Clear;
     label5.visible:=false;
     label7.Visible:=false;
+    Panel1.Visible:=false;
+    SpeedButton1.Visible:=false;
 
     nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
@@ -89,6 +103,8 @@ begin
     label3.Visible:=false;
     ComboBox3.Items.Clear;
     label7.Visible:=false;
+    Panel1.Visible:=false;
+    SpeedButton1.Visible:=false;
 
     nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);
@@ -109,6 +125,14 @@ begin
         end
     else
       label7.Visible:=true;
+end;
+
+procedure TMenuControl.ComboBox3Change(Sender: TObject);
+begin
+    nameControl:=ComboBox3.Items.Strings[Combobox3.ItemIndex];
+    Panel1.Visible:=true;
+    SpeedButton1.Visible:=true;
+    label20.Caption:=nameControl+'"';
 end;
 
 procedure TMenuControl.ComboBox1KeyPress(Sender: TObject; var Key: Char);

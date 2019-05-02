@@ -1,6 +1,6 @@
 object TemaCRUD: TTemaCRUD
-  Left = 67
-  Top = 154
+  Left = 57
+  Top = 93
   AutoScroll = False
   Caption = 'TemaCRUD'
   ClientHeight = 643

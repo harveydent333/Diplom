@@ -1,6 +1,6 @@
 object RazdelCRUD: TRazdelCRUD
-  Left = 120
-  Top = 122
+  Left = 413
+  Top = 73
   AutoScroll = False
   Caption = 'RazdelCRUD'
   ClientHeight = 643

@@ -1,6 +1,6 @@
 object Add_Questions: TAdd_Questions
-  Left = 92
-  Top = 243
+  Left = 83
+  Top = 249
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 661
@@ -18,38 +18,8 @@ object Add_Questions: TAdd_Questions
   OldCreateOrder = False
   Position = poDesktopCenter
   OnClose = FormClose
-  OnCreate = FormCreate
-  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
-  object Label4: TLabel
-    Left = 328
-    Top = 222
-    Width = 241
-    Height = 16
-    Caption = #1059#1082#1072#1078#1080#1090#1077' '#1086#1076#1080#1085' '#1080#1079' '#1074#1072#1088#1080#1072#1085#1090#1086#1074' '#1086#1090#1074#1077#1090#1086#1074' '
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object Label5: TLabel
-    Left = 184
-    Top = 412
-    Width = 6
-    Height = 13
-    Caption = '1'
-  end
-  object Label6: TLabel
-    Left = 16
-    Top = 352
-    Width = 32
-    Height = 13
-    Caption = 'Label6'
-  end
   object Label2: TLabel
     Left = 200
     Top = 56
@@ -4861,13 +4831,6 @@ object Add_Questions: TAdd_Questions
     ShowHint = True
     OnClick = SpeedButton4Click
   end
-  object Label8: TLabel
-    Left = 200
-    Top = 352
-    Width = 32
-    Height = 13
-    Caption = 'Label8'
-  end
   object Label9: TLabel
     Left = 1000
     Top = 2
@@ -4904,58 +4867,11 @@ object Add_Questions: TAdd_Questions
     Color = clBtnHighlight
     TabOrder = 0
   end
-  object RadioButton1: TRadioButton
-    Left = 328
-    Top = 260
-    Width = 33
-    Height = 17
-    Caption = '1'
-    TabOrder = 1
-    OnClick = RadioButton1Click
-  end
-  object Panel2: TPanel
-    Left = 284
-    Top = 591
-    Width = 875
-    Height = 40
-    Color = clWhite
-    TabOrder = 2
-    object BitBtn1: TBitBtn
-      Left = 16
-      Top = 8
-      Width = 200
-      Height = 25
-      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
-      Enabled = False
-      TabOrder = 0
-      OnClick = BitBtn1Click
-      Kind = bkOK
-    end
-    object BitBtn2: TBitBtn
-      Left = 660
-      Top = 8
-      Width = 200
-      Height = 25
-      Caption = #1057#1073#1088#1086#1089
-      TabOrder = 1
-      OnClick = BitBtn2Click
-      Kind = bkAbort
-    end
-    object BitBtn3: TBitBtn
-      Left = 224
-      Top = 8
-      Width = 425
-      Height = 25
-      Caption = '+ '#1044#1086#1073#1072#1074#1080#1090#1100
-      TabOrder = 2
-      OnClick = BitBtn3Click
-    end
-  end
   object DBLookupListBox1: TDBLookupListBox
     Left = 0
     Top = 53
     Width = 300
-    Height = 349
+    Height = 303
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -4965,134 +4881,7 @@ object Add_Questions: TAdd_Questions
     ListSource = DataModule1.AddQuestionSource
     ParentFont = False
     PopupMenu = PopupMenu1
-    TabOrder = 3
-    OnClick = DBLookupListBox1Click
-  end
-  object RadioButton2: TRadioButton
-    Left = 328
-    Top = 329
-    Width = 33
-    Height = 17
-    Caption = '2'
-    TabOrder = 4
-    OnClick = RadioButton2Click
-  end
-  object RadioButton3: TRadioButton
-    Left = 328
-    Top = 398
-    Width = 33
-    Height = 17
-    Caption = '3'
-    TabOrder = 5
-    OnClick = RadioButton3Click
-  end
-  object RadioButton4: TRadioButton
-    Left = 328
-    Top = 467
-    Width = 33
-    Height = 17
-    Caption = '4'
-    TabOrder = 6
-    OnClick = RadioButton4Click
-  end
-  object RadioButton5: TRadioButton
-    Left = 328
-    Top = 536
-    Width = 33
-    Height = 17
-    Caption = '5'
-    TabOrder = 7
-    OnClick = RadioButton5Click
-  end
-  object DBMemo1: TDBMemo
-    Left = 376
-    Top = 240
-    Width = 795
-    Height = 67
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'1'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 8
-    OnKeyPress = DBMemo1KeyPress
-  end
-  object DBMemo2: TDBMemo
-    Left = 376
-    Top = 308
-    Width = 795
-    Height = 66
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'2'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 9
-    OnKeyPress = DBMemo2KeyPress
-  end
-  object DBMemo3: TDBMemo
-    Left = 376
-    Top = 376
-    Width = 795
-    Height = 66
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'3'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 10
-    OnKeyPress = DBMemo3KeyPress
-  end
-  object DBMemo4: TDBMemo
-    Left = 376
-    Top = 444
-    Width = 795
-    Height = 66
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'4'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 11
-    OnKeyPress = DBMemo4KeyPress
-  end
-  object DBMemo5: TDBMemo
-    Left = 376
-    Top = 512
-    Width = 795
-    Height = 66
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'5'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 12
-    OnKeyPress = DBMemo5KeyPress
+    TabOrder = 1
   end
   object DBMemo6: TDBMemo
     Left = 300
@@ -5111,124 +4900,15 @@ object Add_Questions: TAdd_Questions
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    TabOrder = 13
+    TabOrder = 2
     WordWrap = False
-    OnChange = DBMemo6Change
-  end
-  object DBMemo7: TDBMemo
-    Left = -480
-    Top = 425
-    Width = 795
-    Height = 36
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'6'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 14
-    OnKeyPress = DBMemo7KeyPress
-  end
-  object DBMemo8: TDBMemo
-    Left = -480
-    Top = 462
-    Width = 795
-    Height = 36
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'7'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 15
-    OnKeyPress = DBMemo8KeyPress
-  end
-  object DBMemo9: TDBMemo
-    Left = -480
-    Top = 499
-    Width = 795
-    Height = 36
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'8'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 16
-    OnKeyPress = DBMemo9KeyPress
-  end
-  object DBMemo10: TDBMemo
-    Left = -480
-    Top = 536
-    Width = 795
-    Height = 36
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'9'
-    DataSource = DataModule1.AddQuestionSource
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 17
-    Visible = False
-  end
-  object RadioButton6: TRadioButton
-    Left = 32
-    Top = 485
-    Width = 33
-    Height = 17
-    Caption = '6'
-    TabOrder = 18
-    OnClick = RadioButton6Click
-  end
-  object RadioButton7: TRadioButton
-    Left = 32
-    Top = 522
-    Width = 33
-    Height = 17
-    Caption = '7'
-    TabOrder = 19
-    OnClick = RadioButton7Click
-  end
-  object RadioButton8: TRadioButton
-    Left = 32
-    Top = 559
-    Width = 33
-    Height = 17
-    Caption = '8'
-    TabOrder = 20
-    OnClick = RadioButton8Click
-  end
-  object RadioButton9: TRadioButton
-    Left = 32
-    Top = 596
-    Width = 33
-    Height = 17
-    Caption = '9'
-    TabOrder = 21
-    OnClick = RadioButton9Click
   end
   object DBGrid1: TDBGrid
     Left = 408
     Top = -200
     Width = 320
     Height = 120
-    TabOrder = 22
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -5241,7 +4921,7 @@ object Add_Questions: TAdd_Questions
     Width = 320
     Height = 120
     DataSource = DataModule1.AddQuestionSource
-    TabOrder = 23
+    TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -5257,7 +4937,6 @@ object Add_Questions: TAdd_Questions
     end
     object N2: TMenuItem
       Caption = #1059#1076#1072#1083#1080#1090#1100
-      OnClick = N2Click
     end
   end
 end

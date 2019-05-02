@@ -8,7 +8,7 @@ uses
   Grids, DBGrids;
 
 type
-  TMainMenu = class(TForm)
+  TMainMenu1 = class(TForm)
     Image1: TImage;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
@@ -23,10 +23,7 @@ type
     SpeedButton8: TSpeedButton;
     SpeedButton9: TSpeedButton;
     SpeedButton10: TSpeedButton;
-    procedure SpeedButton6Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure SpeedButton4Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    DBGrid2: TDBGrid;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
   private
@@ -36,68 +33,33 @@ type
   end;
 
 var
-  MainMenu: TMainMenu;
+  MainMenu1: TMainMenu1;
 
 implementation
 
 uses Unit2, Menu_Teacher, Title_Form, basa_dan, Control, DocumentForm,
-  config, ControlCenter;
+  config, ControlCenter, Menu_Lectures, Main_Menu;
 
 {$R *.dfm}
 
-procedure TMainMenu.SpeedButton6Click(Sender: TObject);
-begin
-AuthorizationForm.Edit1.Text:='';
-AuthorizationData.freeDataUser;
-
-AuthorizationForm.Visible:=true;;
-MainMenu.Visible:=false;
-end;
-
-procedure TMainMenu.FormCreate(Sender: TObject);
-begin
-label1.Caption:=AuthorizationData.nameUser;
-end;
-
-procedure TMainMenu.SpeedButton4Click(Sender: TObject);
-begin
-MainMenu.Close;
-TitleForm.Close;
-end;
-
-procedure TMainMenu.SpeedButton2Click(Sender: TObject);
-var str:string;
-begin
-MainMenu.Close;
-Shyrnal.show;
-Shyrnal.Label1.Caption:=nameUser;
-Shyrnal.Label2.Caption:=familyUser;
-
-if roleUser='stydent' then
-  begin
-    config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+loginUser+#39);
-    config.selectRequestSQL('SELECT * FROM Журнал WHERE КодУченика='+dbgrid1.DataSource.DataSet.fieldbyName('КодУченика').AsString);
-  end;
-end;
-
-procedure TMainMenu.SpeedButton1Click(Sender: TObject);
+procedure TMainMenu1.SpeedButton1Click(Sender: TObject);
 begin
     DataManagementCenter.show;
 end;
 
-procedure TMainMenu.SpeedButton5Click(Sender: TObject);
+procedure TMainMenu1.SpeedButton5Click(Sender: TObject);
 begin
     MenuLectures.show;
     MenuLectures.ComboBox1.Items.Clear;
     config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
-    DBGrid2.DataSource.DataSet.First;
-    While (DBGrid2.DataSource.DataSet.Eof=false) do
+    DBGrid1.DataSource.DataSet.First;
+    While (DBGrid1.DataSource.DataSet.Eof=false) do
       begin
-        MenuLectures.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
-        DBGrid2.DataSource.DataSet.Next;
+        MenuLectures.ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+        DBGrid1.DataSource.DataSet.Next;
       end;
-    DBGrid2.DataSource.DataSet.First;
-    MenuLectures.ComboBox1.Text:=DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;  //  конец создания
+    DBGrid1.DataSource.DataSet.First;
+    MenuLectures.ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;  //  конец создания
 end;
 
 end.

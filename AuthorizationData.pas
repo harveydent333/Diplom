@@ -13,28 +13,30 @@ Good_Ball,Bed_Ball:real;
 procedure getDataUser;
 procedure freeDataUser;
 procedure defoltConfigRegistrationForm;
-procedure defoltKnowledgeControl;
-procedure defoltKnowledgeControlStydent;
 procedure getDataAuthUser;
+procedure SetNameAndFamilyAuthUsers;
 
 implementation
 
-uses Unit3 ,Menu_Teacher, Control, config;
-
-
+uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
+  ControlCenter, Lecture_CRUD, Menu_Control, Menu_Lectures, Menu_Practic,
+  Practic_CRUD, Razdel_CRUD, Tema_CRUD, Ycheniki_CRUD;
 
 procedure getDataUser;
 begin
 if AuthorizationForm.teacher_ON.Visible = true then
   begin
     config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
-    getDataAuthUser;
+    getDataAuthUser;            // Заполнение авторизованного пользователя данными
+    SetNameAndFamilyAuthUsers;  // Заполнение Имя и Фамилии Авторизованным пользователям
     roleUser:='teacher';
+
   end;
 if AuthorizationForm.stydent_ON.Visible = true then
     begin
       config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+AuthorizationForm.DBComboBox1.Text+#39);
-      getDataAuthUser;
+      getDataAuthUser;            // Заполнение авторизованного пользователя данными
+      SetNameAndFamilyAuthUsers; // Заполнение Имя и Фамилии Авторизованным пользователям
       roleUser:='stydent';
     end;
 end;
@@ -47,15 +49,53 @@ begin
     loginUser:=DataModule1.ADOModuleLecture.FieldByName('login').AsString;
 end;
 
-
-procedure freeDataUser;
+procedure SetNameAndFamilyAuthUsers;
 begin
-   nameUser:='';
-   familyUser:='';
-   secondNameUser:='';
-   loginUser:='';
-   roleUser:='';
-   kodUser:=0;
+  MainMenu.label1.Caption:=nameUser;
+  MainMenu.label2.Caption:=familyUser;
+
+  ControlCRUD.label1.Caption:=nameUser;
+  ControlCRUD.label2.Caption:=familyUser;
+
+  DataManagementCenter.label1.Caption:=nameUser;
+  DataManagementCenter.label2.Caption:=familyUser;
+
+  LectureCRUD.label1.Caption:=nameUser;
+  LectureCRUD.label2.Caption:=familyUser;
+
+  MenuControl.label4.Caption:=nameUser;
+  MenuControl.label6.Caption:=familyUser;
+
+  MenuLectures.label4.Caption:=nameUser;
+  MenuLectures.label6.Caption:=familyUser;
+
+  MenuPractic.label4.Caption:=nameUser;
+  MenuPractic.label6.Caption:=familyUser;
+
+  PracticCRUD.label1.Caption:=nameUser;
+  PracticCRUD.label2.Caption:=familyUser;
+
+  RazdelCRUD.label1.Caption:=nameUser;
+  RazdelCRUD.label2.Caption:=familyUser;
+
+  RegistrationForm.Label7.Caption:=nameUser;
+  RegistrationForm.Label8.Caption:=familyUser;
+
+  YchenikiCRUD.label1.Caption:=nameUser;
+  YchenikiCRUD.label2.Caption:=familyUser;
+
+  TemaCRUD.label1.Caption:=nameUser;
+  TemaCRUD.label2.Caption:=familyUser;
+end;
+
+procedure freeDataUser;       // logOut
+begin
+    nameUser:='';
+    familyUser:='';
+    secondNameUser:='';
+    loginUser:='';
+    roleUser:='';
+    kodUser:=0;
 end;
 
 procedure defoltConfigRegistrationForm;
@@ -83,95 +123,6 @@ with RegistrationForm do
     label4.Visible:=false;
     label5.Visible:=false;
   end;
-end;
-
-procedure defoltKnowledgeControl;
-begin
-with KnowledgeControl do
-  begin
-    if Treeview1.Items.Count=0 then
-      begin
-        speedbutton8.Visible:=false;
-        label1.Visible:=false;
-        dbedit1.Visible:=false;
-        speedbutton12.Visible:=false;
-        defolt_edit1.Visible:=false;
-        good_edit1.Visible:=false;
-        bed_edit1.Visible:=false;
-      end
-      else
-      begin
-         label1.Visible:=true;
-         label7.Caption:=nameUser;
-         dbedit1.Visible:=true;
-         speedbutton12.Visible:=true;
-         defolt_edit1.Visible:=true;
-         good_edit1.Visible:=false;
-         bed_edit1.Visible:=false;
-         speedbutton8.Visible:=true;
-         speedbutton8.Left:=344; speedbutton8.Top:=144;
-      end;
-        label2.Visible:=false;
-        label8.Caption:=familyUser;
-        dbedit2.Visible:=false;
-        speedbutton13.Visible:=false;
-
-        label3.Visible:=false;
-        dbedit3.Visible:=false;
-        speedbutton14.Visible:=false;
-      speedbutton1.Visible:=true;
-      speedbutton9.Visible:=false;
-      speedbutton7.Visible:=false;
-      speedbutton11.Visible:=false;
-      speedbutton8.Visible:=true;
-      speedbutton10.Visible:=false;
-
-      speedbutton8.Left:=344;
-     speedbutton8.Top:=144;
-
-     speedbutton6.Left:=344;
-     speedbutton6.Top:=192;
-     panel1.Visible:=false;
-     speedbutton15.visible:=false;
-
-  end;
-end;
-
-procedure defoltKnowledgeControlStydent;
-begin
-with KnowledgeControl do
-begin
-panel1.Visible:=false;
-speedbutton15.visible:=false;
-  speedbutton1.visible:=false;
-  speedbutton6.visible:=false;
-  speedbutton7.visible:=false;
-  speedbutton8.visible:=false;
-  speedbutton9.visible:=false;
-  speedbutton10.visible:=false;
-  speedbutton11.visible:=false;
-  speedbutton12.visible:=false;
-  speedbutton13.visible:=false;
-  speedbutton14.visible:=false;
-  label1.visible:=false;
-  label2.visible:=false;
-  label3.visible:=false;
-  label4.visible:=false;
-  label5.visible:=false;
-  label6.visible:=false;
-  label9.visible:=false;
-  label10.visible:=false;
-  label11.visible:=false;
-  dbedit1.Visible:=false;
-  dbedit2.Visible:=false;
-  dbedit3.Visible:=false;
-  good_edit1.Visible:=false;
-  defolt_edit1.Visible:=false;
-  bed_edit1.visible:=false;
-
-label7.Caption:=nameUser;
-label8.Caption:=familyUser;
-   end;
 end;
 
 end.

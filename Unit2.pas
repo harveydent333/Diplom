@@ -45,7 +45,7 @@ var
 
 implementation
 
-uses Unit3, AuthorizationData, Title_Form, config;
+uses Unit3, AuthorizationData, Title_Form, config, Main_Menu;
 
 {$R *.dfm}
 
@@ -62,91 +62,82 @@ end;
 
 procedure TAuthorizationForm.stydent_OFFClick(Sender: TObject);
 begin
-teacher_ON.Visible:=false;
-stydent_OFF.Visible:=false;
-teacher_OFF.Visible:=true;
-stydent_ON.Visible:=true;
+    teacher_ON.Visible:=false;
+    stydent_OFF.Visible:=false;
+    teacher_OFF.Visible:=true;
+    stydent_ON.Visible:=true;
 
-edit2.Visible:=false;
-edit1.Visible:=false;
-label2.Caption:='ФИО Обучающегося:';
-label2.Left:=464;
-label3.Visible:=false;
-DBComboBox1.Visible:=true;
+    Edit2.Visible:=false;
+    Edit1.Visible:=false;
+    Label2.Caption:='ФИО Обучающегося:';
+    Label2.Left:=464;
+    Label3.Visible:=false;
+    DBComboBox1.Visible:=true;
 end;
 
 procedure TAuthorizationForm.teacher_OFFClick(Sender: TObject);
 begin
-teacher_OFF.Visible:=false;
-stydent_ON.Visible:=false;
-teacher_ON.Visible:=true;
-stydent_OFF.Visible:=true;
+    teacher_OFF.Visible:=false;
+    stydent_ON.Visible:=false;
+    teacher_ON.Visible:=true;
+    stydent_OFF.Visible:=true;
 
-edit2.Visible:=true;
-edit1.Visible:=true;
-label2.Caption:='Логин:';
-label2.Left:=261;
-label3.Visible:=true;
-DBComboBox1.Visible:=false;
-
+    Edit2.Visible:=true;
+    Edit1.Visible:=true;
+    Label2.Caption:='Логин:';
+    Label2.Left:=261;
+    Label3.Visible:=true;
+    DBComboBox1.Visible:=false;
 end;
 
 procedure TAuthorizationForm.SpeedButton1Click(Sender: TObject);
 begin
-AuthorizationForm.close;
-TitleForm.Show;
-TitleForm.Position:=poDesktopCenter;
+    AuthorizationForm.close;
+    TitleForm.Show;
+    TitleForm.Position:=poDesktopCenter;
 end;
 
 procedure TAuthorizationForm.SpeedButton3Click(Sender: TObject);
 begin
-AuthorizationForm.Close;
-TitleForm.close;
+    AuthorizationForm.Close;
+    TitleForm.close;
 end;
 
 procedure TAuthorizationForm.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-TitleForm.Show;
-TitleForm.Position:=poDesktopCenter;
+    TitleForm.Show;
+    TitleForm.Position:=poDesktopCenter;
 end;
 
 procedure TAuthorizationForm.teacherAuthorization;
 begin
      config.selectRequestSQL('SELECT password FROM Учитель WHERE login='+#39+edit2.text+#39);
-
      if DataModule1.ADOModuleLecture.IsEmpty then
         MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
      else
-      begin
        if DataModule1.ADOModuleLecture.FieldByName('password').Value<>edit1.Text then
         MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
        else
         begin
-              AuthorizationData.getDataUser;
+           AuthorizationData.getDataUser;
            MainMenu.show;
-           MainMenu.label1.Caption:=nameUser;
-           MainMenu.label2.Caption:=familyUser;
-
-    AuthorizationForm.Visible:=false;
+           AuthorizationForm.Visible:=false;
         end;
 end;
-    end;
+
 procedure TAuthorizationForm.stydentAuthorization;
 begin
       config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+DBComboBox1.Text+#39);
       if DataModule1.ADOModuleLecture.IsEmpty then
         MessageBox(0,'Данный пользователь не найден!','Авторизация', MB_OK+MB_ICONwarning)
       else
-            begin
-           KodUser:=DBGrid1.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
-                AuthorizationData.getDataUser;
-              MainMenu.show;
+           begin
+            KodUser:=DBGrid1.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
+            AuthorizationData.getDataUser;
+            MainMenu.show;
             label1.Caption:=inttostr(KodUser);
-           
-                 MainMenu.label1.Caption:=nameUser;
-                  MainMenu.label2.Caption:=familyUser;
-             AuthorizationForm.Visible:=false;
+            AuthorizationForm.Visible:=false;
 
            // Перенести этот кусок кода в конфиг!!!!
                  MainMenu.SpeedButton1.Caption:='Контроль знаний';
@@ -154,5 +145,7 @@ begin
           //=============================
             end;
     end;
+
+
 
 end.

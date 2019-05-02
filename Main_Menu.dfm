@@ -1,31 +1,30 @@
-object Shyrnal: TShyrnal
-  Left = 93
-  Top = 132
+object MainMenu: TMainMenu
+  Left = 154
+  Top = 114
   AutoScroll = False
-  Caption = #1046#1091#1088#1085#1072#1083
-  ClientHeight = 642
-  ClientWidth = 1184
+  Caption = 'MainMenu'
+  ClientHeight = 643
+  ClientWidth = 1172
   Color = clBtnFace
-  Constraints.MaxHeight = 680
-  Constraints.MaxWidth = 1200
-  Constraints.MinHeight = 680
-  Constraints.MinWidth = 1200
+  Constraints.MaxHeight = 681
+  Constraints.MaxWidth = 1188
+  Constraints.MinHeight = 681
+  Constraints.MinWidth = 1188
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
-  Scaled = False
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1300
-    Height = 670
+    Width = 1702
+    Height = 663
+    Constraints.MaxHeight = 2000
+    Constraints.MaxWidth = 2000
     Picture.Data = {
       0A544A504547496D616765B3950100FFD8FFE107894578696600004D4D002A00
       0000080007011200030000000100010000011A00050000000100000062011B00
@@ -3274,38 +3273,193 @@ object Shyrnal: TShyrnal
       BDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF
       75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BAF7BF75EEBDEFDD7BA
       FFD9}
+    Proportional = True
   end
-  object SpeedButton1: TSpeedButton
+  object Image2: TImage
     Left = 88
-    Top = 0
-    Width = 57
-    Height = 52
-    Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1074' '#1084#1077#1085#1102
-    Flat = True
-    ParentShowHint = False
-    ShowHint = True
-    OnClick = SpeedButton1Click
+    Top = -6
+    Width = 105
+    Height = 57
+    Picture.Data = {
+      0A544A504547496D616765FE040000FFD8FFE000104A46494600010101006000
+      600000FFDB004300020101020101020202020202020203050303030303060404
+      0305070607070706070708090B0908080A0807070A0D0A0A0B0C0C0C0C07090E
+      0F0D0C0E0B0C0C0CFFDB004301020202030303060303060C0807080C0C0C0C0C
+      0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C
+      0C0C0C0C0C0C0C0C0C0C0C0C0CFFC0001108005C01AD03012200021101031101
+      FFC4001F0000010501010101010100000000000000000102030405060708090A
+      0BFFC400B5100002010303020403050504040000017D01020300041105122131
+      410613516107227114328191A1082342B1C11552D1F02433627282090A161718
+      191A25262728292A3435363738393A434445464748494A535455565758595A63
+      6465666768696A737475767778797A838485868788898A92939495969798999A
+      A2A3A4A5A6A7A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6
+      D7D8D9DAE1E2E3E4E5E6E7E8E9EAF1F2F3F4F5F6F7F8F9FAFFC4001F01000301
+      01010101010101010000000000000102030405060708090A0BFFC400B5110002
+      0102040403040705040400010277000102031104052131061241510761711322
+      328108144291A1B1C109233352F0156272D10A162434E125F11718191A262728
+      292A35363738393A434445464748494A535455565758595A636465666768696A
+      737475767778797A82838485868788898A92939495969798999AA2A3A4A5A6A7
+      A8A9AAB2B3B4B5B6B7B8B9BAC2C3C4C5C6C7C8C9CAD2D3D4D5D6D7D8D9DAE2E3
+      E4E5E6E7E8E9EAF2F3F4F5F6F7F8F9FAFFDA000C03010002110311003F00FBE2
+      8A28AFE173FA6028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028
+      A28A0028A28A0028A28A00FFD9}
   end
-  object SpeedButton2: TSpeedButton
-    Left = 12
+  object SpeedButton7: TSpeedButton
+    Left = 8
     Top = 0
-    Width = 57
+    Width = 65
     Height = 52
     Hint = #1057#1087#1088#1072#1074#1082#1072
     Flat = True
     ParentShowHint = False
     ShowHint = True
   end
+  object SpeedButton5: TSpeedButton
+    Left = 88
+    Top = 8
+    Width = 673
+    Height = 49
+    Caption = #1048#1079#1091#1095#1080#1090#1100' '#1083#1077#1082#1094#1080#1080
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton5Click
+  end
+  object SpeedButton8: TSpeedButton
+    Left = 88
+    Top = 64
+    Width = 673
+    Height = 49
+    Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1077' '#1088#1072#1073#1086#1090#1099
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton8Click
+  end
+  object SpeedButton9: TSpeedButton
+    Left = 88
+    Top = 120
+    Width = 673
+    Height = 49
+    Caption = #1055#1088#1086#1081#1090#1080' '#1082#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton9Click
+  end
+  object SpeedButton1: TSpeedButton
+    Left = 224
+    Top = 192
+    Width = 673
+    Height = 49
+    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1076#1072#1085#1085#1099#1093
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton1Click
+  end
+  object SpeedButton2: TSpeedButton
+    Left = 224
+    Top = 256
+    Width = 673
+    Height = 49
+    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1077#1081
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton2Click
+  end
   object SpeedButton3: TSpeedButton
-    Left = 872
-    Top = 0
-    Width = 68
-    Height = 52
-    Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
+    Left = 224
+    Top = 328
+    Width = 673
+    Height = 49
+    Caption = #1060#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1086#1090#1095#1077#1090#1086#1074
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+  end
+  object SpeedButton10: TSpeedButton
+    Left = 88
+    Top = 440
+    Width = 673
+    Height = 49
+    Caption = #1046#1091#1088#1085#1072#1083
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton10Click
+  end
+  object SpeedButton4: TSpeedButton
+    Left = 1119
+    Top = 1
+    Width = 52
+    Height = 51
+    Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
     Flat = True
     ParentShowHint = False
     ShowHint = True
-    OnClick = SpeedButton3Click
+    OnClick = SpeedButton4Click
+  end
+  object SpeedButton6: TSpeedButton
+    Left = 872
+    Top = 0
+    Width = 73
+    Height = 50
+    Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
+    Constraints.MaxHeight = 699
+    Constraints.MaxWidth = 1188
+    Flat = True
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = SpeedButton6Click
   end
   object Label1: TLabel
     Left = 1008
@@ -3324,37 +3478,9 @@ object Shyrnal: TShyrnal
   object Label2: TLabel
     Left = 1008
     Top = 26
-    Width = 57
+    Width = 54
     Height = 23
-    Caption = 'Label2'
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object SpeedButton5: TSpeedButton
-    Left = 1128
-    Top = 96
-    Width = 23
-    Height = 22
-  end
-  object SpeedButton6: TSpeedButton
-    Left = 1120
-    Top = 0
-    Width = 49
-    Height = 49
-    Flat = True
-    OnClick = SpeedButton6Click
-  end
-  object Label3: TLabel
-    Left = 720
-    Top = 16
-    Width = 56
-    Height = 23
-    Caption = 'Label3'
+    Caption = 'Label1'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -3364,142 +3490,16 @@ object Shyrnal: TShyrnal
     Transparent = True
   end
   object DBGrid1: TDBGrid
-    Left = -12
-    Top = 54
-    Width = 1197
-    Height = 225
-    BorderStyle = bsNone
-    FixedColor = clWindow
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ImeMode = imHira
-    ParentFont = False
-    ReadOnly = True
+    Left = 200
+    Top = 504
+    Width = 249
+    Height = 81
+    DataSource = DataModule1.ModuleLecture
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
-    TitleFont.Height = -19
+    TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = #1050#1086#1076#1046#1091#1088#1085#1072#1083#1072
-        Visible = False
-      end
-      item
-        Expanded = False
-        FieldName = #1060#1072#1084#1080#1083#1080#1103
-        Title.Alignment = taCenter
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -19
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = []
-        Width = 200
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = #1048#1084#1103
-        Title.Alignment = taCenter
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -19
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = []
-        Width = 200
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = #1054#1090#1095#1077#1089#1090#1074#1086
-        Title.Alignment = taCenter
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -19
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = []
-        Width = 200
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
-        Title.Alignment = taCenter
-        Title.Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1058#1077#1084#1099
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -19
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = []
-        Width = 250
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = #1044#1072#1090#1072#1055#1088#1086#1074#1077#1076#1077#1085#1080#1103
-        Title.Alignment = taCenter
-        Title.Caption = #1044#1072#1090#1072
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -19
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = []
-        Width = 150
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = #1054#1094#1077#1085#1082#1072
-        Title.Alignment = taCenter
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -19
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = []
-        Width = 100
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = #1050#1086#1076#1059#1095#1077#1085#1080#1082#1072
-        Visible = False
-      end
-      item
-        Expanded = False
-        FieldName = #1050#1086#1076#1058#1077#1084#1099
-        Visible = False
-      end>
-  end
-  object Edit1: TEdit
-    Left = 256
-    Top = 290
-    Width = 153
-    Height = 21
-    TabOrder = 1
-    Text = 'Edit1'
-    Visible = False
-  end
-  object Button1: TButton
-    Left = 16
-    Top = 320
-    Width = 233
-    Height = 25
-    Caption = #1056#1072#1089#1087#1077#1095#1072#1090#1072#1090#1100' '#1074#1077#1076#1086#1084#1086#1089#1090#1100' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
-    TabOrder = 2
-    OnClick = Button1Click
-  end
-  object Button2: TButton
-    Left = 16
-    Top = 288
-    Width = 233
-    Height = 25
-    Caption = #1056#1072#1089#1087#1077#1095#1072#1090#1072#1090#1100' '#1074#1077#1076#1086#1084#1086#1089#1090#1100' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
-    TabOrder = 3
-    Visible = False
   end
 end

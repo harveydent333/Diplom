@@ -4,7 +4,6 @@ uses
   Forms,
   Title_Form in 'Title_Form.pas' {TitleForm},
   Unit2 in 'Unit2.pas' {AuthorizationForm},
-  Unit3 in 'Unit3.pas' {MainMenu},
   Menu_Teacher in 'Menu_Teacher.pas' {RegistrationForm},
   basa_dan in 'basa_dan.pas' {DataModule1: TDataModule},
   Add_Question in 'Add_Question.pas' {Add_Questions},
@@ -24,7 +23,6 @@ uses
   Lecture_CRUD in 'Lecture_CRUD.pas' {LectureCRUD},
   Practic_CRUD in 'Practic_CRUD.pas' {PracticCRUD},
   Control_CRUD in 'Control_CRUD.pas' {ControlCRUD},
-  Stydent_CRUD in 'Stydent_CRUD.pas' {StydentCRUD},
   AddLecture in 'AddLecture.pas' {AddLectureModalForm},
   AddPractic in 'AddPractic.pas' {AddPracticModalForm},
   Ycheniki_CRUD in 'Ycheniki_CRUD.pas' {YchenikiCRUD},
@@ -36,7 +34,9 @@ uses
   UpdatePractic in 'UpdatePractic.pas' {UpdatePracticModalForm},
   UpdateControl in 'UpdateControl.pas' {UpdateControlModalForm},
   ControlCenter in 'ControlCenter.pas' {DataManagementCenter},
-  Menu_Control in 'Menu_Control.pas' {MenuControl};
+  Menu_Control in 'Menu_Control.pas' {MenuControl},
+  Main_Menu in 'Main_Menu.pas' {MainMenu},
+  Variants_Question in 'Variants_Question.pas' {VariantsQuestion: TFrame};
 
 {$R *.res}
 
@@ -44,7 +44,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TTitleForm, TitleForm);
   Application.CreateForm(TAuthorizationForm, AuthorizationForm);
-  Application.CreateForm(TMainMenu, MainMenu);
   Application.CreateForm(TRegistrationForm, RegistrationForm);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TAdd_Questions, Add_Questions);
@@ -59,9 +58,9 @@ begin
   Application.CreateForm(TLectureCRUD, LectureCRUD);
   Application.CreateForm(TPracticCRUD, PracticCRUD);
   Application.CreateForm(TControlCRUD, ControlCRUD);
-  Application.CreateForm(TStydentCRUD, StydentCRUD);
   Application.CreateForm(TYchenikiCRUD, YchenikiCRUD);
   Application.CreateForm(TDataManagementCenter, DataManagementCenter);
   Application.CreateForm(TMenuControl, MenuControl);
+  Application.CreateForm(TMainMenu, MainMenu);
   Application.Run;
 end.

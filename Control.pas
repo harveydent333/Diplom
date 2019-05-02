@@ -108,7 +108,7 @@ var
 implementation
 
 uses AddTema, AddControl, Title_Form, Add_Question, Unit3, AuthorizationData,
-  Unit2, PassingKnowledgeControl , defoltTest, Result;
+  Unit2, PassingKnowledgeControl , defoltTest, Result, Main_Menu;
 
 
 {$R *.dfm}
@@ -170,16 +170,7 @@ while not dbgrid4.DataSource.DataSet.Eof do
       end;
        dbgrid4.DataSource.DataSet.Next;
     end;
-
-
-
 end;
-
-
-
-
-
-
 
 procedure TKnowledgeControl.SpeedButton2Click(Sender: TObject);
 begin
@@ -437,38 +428,7 @@ with Add_Questions do
   begin
   label5.Caption:='0';
   label2.caption:=inttostr(DataModule1.AddQuestionADO.RecordCount);
-   DBMemo7.Visible:=false; RadioButton6.Visible:=false;
-   DBMemo8.Visible:=false;  RadioButton7.Visible:=false;
-   DBMemo9.Visible:=false;  RadioButton8.Visible:=false;
-   DBMemo10.Visible:=false;  RadioButton9.Visible:=false;
 
-   with DBMemo1 do
-    begin
-       Height:=67; Width:=795; Left:=376; Top:=240;
-    end;
-   with DBMemo2 do
-    begin
-       Height:=66; Width:=795; Left:=376; Top:=308;
-    end;
-    with DBMemo3 do
-    begin
-       Height:=66; Width:=795; Left:=376; Top:=376;
-    end;
-    with DBMemo4 do
-    begin
-       Height:=66; Width:=795; Left:=376; Top:=444;
-    end;
-    with DBMemo5 do
-    begin
-       Height:=66; Width:=795; Left:=376; Top:=512;
-    end;
-    RadioButton1.Top:=260; 
-    RadioButton2.Top:=329;
-    RadioButton3.Top:=398;
-    RadioButton4.Top:=467;
-    RadioButton5.Top:=536;
-
-Bitbtn1.Enabled:=false;
 
 
   end;

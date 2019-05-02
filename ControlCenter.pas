@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, jpeg, ExtCtrls, Buttons;
+  Dialogs, jpeg, ExtCtrls, Buttons, StdCtrls;
 
 type
   TDataManagementCenter = class(TForm)
@@ -14,6 +14,8 @@ type
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
     SpeedButton5: TSpeedButton;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);

@@ -1,6 +1,6 @@
 object YchenikiCRUD: TYchenikiCRUD
-  Left = 60
-  Top = 116
+  Left = 136
+  Top = 111
   AutoScroll = False
   Caption = 'YchenikiCRUD'
   ClientHeight = 643

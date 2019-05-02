@@ -1,10 +1,10 @@
-object MainMenu: TMainMenu
-  Left = 174
-  Top = 127
+object MainMenu1: TMainMenu1
+  Left = 67
+  Top = 90
   AutoScroll = False
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102
   ClientHeight = 631
-  ClientWidth = 1164
+  ClientWidth = 1156
   Color = clBtnFace
   Constraints.MaxHeight = 669
   Constraints.MaxWidth = 1180
@@ -17,7 +17,6 @@ object MainMenu: TMainMenu
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3165,7 +3164,6 @@ object MainMenu: TMainMenu
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    OnClick = SpeedButton2Click
   end
   object SpeedButton6: TSpeedButton
     Left = 856
@@ -3178,7 +3176,6 @@ object MainMenu: TMainMenu
     Flat = True
     ParentShowHint = False
     ShowHint = True
-    OnClick = SpeedButton6Click
   end
   object SpeedButton4: TSpeedButton
     Left = 1102
@@ -3189,7 +3186,6 @@ object MainMenu: TMainMenu
     Flat = True
     ParentShowHint = False
     ShowHint = True
-    OnClick = SpeedButton4Click
   end
   object SpeedButton7: TSpeedButton
     Left = 8
@@ -3307,6 +3303,19 @@ object MainMenu: TMainMenu
     Height = 81
     DataSource = DataModule1.ModuleLecture
     TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+  end
+  object DBGrid2: TDBGrid
+    Left = 208
+    Top = -142
+    Width = 249
+    Height = 81
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11

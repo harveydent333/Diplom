@@ -49,27 +49,21 @@ procedure TYchenikiCRUD.SpeedButton6Click(Sender: TObject);       // Добавление 
 begin
     RegistrationForm.Show;
     DataModule1.YchenikADO.Append;
-
     RegistrationForm.SpeedButton2.Visible:=true;
-
-    RegistrationForm.Position:=poDesktopCenter;
     AuthorizationData.defoltConfigRegistrationForm;
-
-    RegistrationForm.label7.Caption:=nameUser;
-    RegistrationForm.label8.Caption:=familyUser;
 end;
 
 procedure TYchenikiCRUD.SpeedButton1Click(Sender: TObject);       // Удаление ученика
 begin
-  config.execRequestSQL('DELETE FROM Ученик WHERE login='+#39+login+#39);
-  config.rebootRequestsCRUD;
+    config.execRequestSQL('DELETE FROM Ученик WHERE login='+#39+login+#39);
+    config.rebootRequestsCRUD;
 end;
 
 procedure TYchenikiCRUD.SpeedButton7Click(Sender: TObject);
 begin
     login:=DBGrid1.DataSource.DataSet.FieldByName('Фамилия').AsString+' '+
-       DBGrid1.DataSource.DataSet.FieldByName('Имя').AsString+' '+
-       DBGrid1.DataSource.DataSet.FieldByName('Отчество').AsString;
+      DBGrid1.DataSource.DataSet.FieldByName('Имя').AsString+' '+
+      DBGrid1.DataSource.DataSet.FieldByName('Отчество').AsString;
     config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+login+#39);
     updateKodYchenika:=DBGrid2.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
 end;

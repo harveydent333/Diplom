@@ -1,6 +1,6 @@
 object DataManagementCenter: TDataManagementCenter
-  Left = 64
-  Top = 135
+  Left = -8
+  Top = 161
   AutoScroll = False
   Caption = 'DataManagementCenter'
   ClientHeight = 631
@@ -3210,5 +3210,33 @@ object DataManagementCenter: TDataManagementCenter
     Font.Style = []
     ParentFont = False
     OnClick = SpeedButton5Click
+  end
+  object Label1: TLabel
+    Left = 1008
+    Top = 2
+    Width = 54
+    Height = 23
+    Caption = 'Label1'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Label2: TLabel
+    Left = 1008
+    Top = 26
+    Width = 54
+    Height = 23
+    Caption = 'Label1'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
   end
 end
