@@ -1,6 +1,6 @@
 object ControlCRUD: TControlCRUD
-  Left = 65
-  Top = 219
+  Left = 58
+  Top = 130
   AutoScroll = False
   Caption = 'ControlCRUD'
   ClientHeight = 643
@@ -3296,6 +3296,7 @@ object ControlCRUD: TControlCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton2Click
   end
   object SpeedButton5: TSpeedButton
     Left = 874
@@ -3390,6 +3391,28 @@ object ControlCRUD: TControlCRUD
     Font.Style = []
     ParentFont = False
     OnClick = SpeedButton7Click
+  end
+  object SpeedButton8: TSpeedButton
+    Left = 200
+    Top = 584
+    Width = 425
+    Height = 49
+    Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton8Click
+  end
+  object Label3: TLabel
+    Left = 96
+    Top = 456
+    Width = 32
+    Height = 13
+    Caption = 'Label3'
   end
   object DBGrid1: TDBGrid
     Left = 8

@@ -1,6 +1,6 @@
 object MenuLectures: TMenuLectures
-  Left = 89
-  Top = 92
+  Left = 51
+  Top = 132
   AutoScroll = False
   Caption = 'MenuLectures'
   ClientHeight = 643

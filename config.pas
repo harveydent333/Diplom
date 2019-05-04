@@ -1,9 +1,9 @@
 unit config;
 
 interface
-uses basa_dan, Control, Control_CRUD, defoltTest, DocumentForm, Lecture_CRUD, Menu_CRUD,
+uses basa_dan, Control_CRUD, Control,defoltTest, DocumentForm, Lecture_CRUD, Menu_CRUD,
 Menu_Lectures, Menu_Practic, Menu_Teacher, PassingKnowledgeControl, Practic_CRUD, Result,
-Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, Unit3, UpdateLecture, UpdateTema, UpdateUnit, Ycheniki_CRUD, AddTema;
+Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUnit, Ycheniki_CRUD, AddTema;
 
 var  x:integer;
 
@@ -12,6 +12,8 @@ procedure execRequestSQL(str:string);
 procedure rebootRequestsCRUD;
 
 implementation
+
+uses Add_Question;
 
 procedure selectRequestSQL(str:string);
 begin
@@ -47,5 +49,6 @@ begin
     DataModule1.YchenikADO.Active:=false;
     DataModule1.YchenikADO.Active:=true;
 end;
+
 end.
 

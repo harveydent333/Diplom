@@ -70,8 +70,12 @@ begin
 end;
 
 procedure TTemaCRUD.SpeedButton4Click(Sender: TObject);  // Завершение работы программы
+var temp:word;
 begin
-    TitleForm.close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 end.

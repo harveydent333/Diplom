@@ -1,6 +1,6 @@
 object PracticCRUD: TPracticCRUD
-  Left = 292
-  Top = 65
+  Left = 83
+  Top = 207
   AutoScroll = False
   Caption = 'PracticCRUD'
   ClientHeight = 643
@@ -16,6 +16,7 @@ object PracticCRUD: TPracticCRUD
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

@@ -20,7 +20,7 @@ implementation
 
 uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
   ControlCenter, Lecture_CRUD, Menu_Control, Menu_Lectures, Menu_Practic,
-  Practic_CRUD, Razdel_CRUD, Tema_CRUD, Ycheniki_CRUD;
+  Practic_CRUD, Razdel_CRUD, Tema_CRUD, Ycheniki_CRUD, Add_Question;
 
 procedure getDataUser;
 begin
@@ -45,7 +45,7 @@ procedure getDataAuthUser;
 begin
     nameUser:=DataModule1.ADOModuleLecture.FieldByName('Имя').AsString;
     familyUser:=DataModule1.ADOModuleLecture.FieldByName('Фамилия').AsString;
-    secondNameUser:=DataModule1.ADOModuleLecture.FieldByName('Отчество').AsString;      // ВЫТИАЩИТЬ ЭТО ГОВНО В ОДИН МЕТОД
+    secondNameUser:=DataModule1.ADOModuleLecture.FieldByName('Отчество').AsString;
     loginUser:=DataModule1.ADOModuleLecture.FieldByName('login').AsString;
 end;
 
@@ -86,6 +86,9 @@ begin
 
   TemaCRUD.label1.Caption:=nameUser;
   TemaCRUD.label2.Caption:=familyUser;
+
+  Add_Questions.Label9.Caption:=nameUser;
+  Add_Questions.Label10.Caption:=familyUser;
 end;
 
 procedure freeDataUser;       // logOut

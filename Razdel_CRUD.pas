@@ -24,6 +24,7 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -38,11 +39,6 @@ implementation
 uses Title_Form, AddRazdel, UpdateUnit, UpdateRazdel;
 
 {$R *.dfm}
-
-procedure TRazdelCRUD.SpeedButton4Click(Sender: TObject);    // Завершение программы
-begin
-TitleForm.close;
-end;
 
 procedure TRazdelCRUD.SpeedButton1Click(Sender: TObject);  // Добавление нового раздела
 begin
@@ -73,5 +69,22 @@ begin
     config.rebootRequestsCRUD;
 end;
 
+procedure TRazdelCRUD.SpeedButton4Click(Sender: TObject);    // Завершение программы
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
+end;
+
+procedure TRazdelCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
+end;
 
 end.

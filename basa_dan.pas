@@ -18,8 +18,6 @@ type
     ShowControl: TDataSource;
     EditRazdel: TDataSource;
     EditRazdelADO: TADOQuery;
-    Test: TADOQuery;
-    Tests: TDataSource;
     EditTemaADO: TADOQuery;
     EditTema: TDataSource;
     EditControl: TDataSource;

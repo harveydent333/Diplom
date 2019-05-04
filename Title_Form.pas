@@ -27,12 +27,9 @@ type
     Button9: TButton;
     Button10: TButton;
     Button11: TButton;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
     StringGrid1: TStringGrid;
     Button12: TButton;
+    Button13: TButton;
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -48,6 +45,7 @@ type
     procedure Button10Click(Sender: TObject);
     procedure Button11Click(Sender: TObject);
     procedure Button12Click(Sender: TObject);
+    procedure Button13Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,16 +57,20 @@ var
 
 implementation
 
-uses Unit2, Add_Question, Control, PassingKnowledgeControl, Menu_Lectures,
-  Menu_Practic, Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD,
-  Control_CRUD, Ycheniki_CRUD, Unit3, config, UpdateUnit, Menu_Control,
-  Main_Menu;
+uses Unit2, Menu_Lectures, Menu_Practic, Menu_Control, Tema_CRUD,
+  Practic_CRUD, Razdel_CRUD, Lecture_CRUD, Control_CRUD, Ycheniki_CRUD,
+  Main_Menu, Add_Question, EditLecture, config;
+
 
 {$R *.dfm}
 
 procedure TTitleForm.SpeedButton2Click(Sender: TObject);
+var temp:word;
 begin
-close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 procedure TTitleForm.FormCreate(Sender: TObject);
@@ -128,6 +130,7 @@ end;
 procedure TTitleForm.Button10Click(Sender: TObject);  //  РАБОТА С Контролем знаний - УЧЕНИК
 begin
     MenuControl.show;
+    MenuControl.ComboBox1.Items.Clear;
     MenuControl.ComboBox2.Items.Clear;
     config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
     DBGrid2.DataSource.DataSet.First;
@@ -181,7 +184,6 @@ i,j,beg:integer;
 ar:array[1..50] of string;
 begin
   str:='qq`ss`dd`ff`ee`sd`';
-  label2.Caption:=inttostr(length(str));
   beg:=1;
   j:=1;
   for i:=1 to length(str) do begin
@@ -194,11 +196,6 @@ begin
      if (pos(str[i],str)= length(str)) then
        ar[j]:=Copy(str, beg, (length(str))-beg);
     end;
-
-
- for i:=1 to length(ar) do
-  stringgrid1.Cells[i,0]:=ar[i];
-
 end;
 
 
@@ -206,6 +203,11 @@ end;
 procedure TTitleForm.Button12Click(Sender: TObject);
 begin
     Add_Questions.Show;
+end;
+
+procedure TTitleForm.Button13Click(Sender: TObject);
+begin
+    Edit_Lecture.show;
 end;
 
 end.

@@ -1,6 +1,6 @@
 object RazdelCRUD: TRazdelCRUD
-  Left = 413
-  Top = 73
+  Left = 82
+  Top = 183
   AutoScroll = False
   Caption = 'RazdelCRUD'
   ClientHeight = 643
@@ -16,6 +16,8 @@ object RazdelCRUD: TRazdelCRUD
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

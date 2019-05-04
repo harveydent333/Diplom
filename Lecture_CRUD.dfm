@@ -1,6 +1,6 @@
 object LectureCRUD: TLectureCRUD
-  Left = 169
-  Top = 110
+  Left = 57
+  Top = 169
   AutoScroll = False
   Caption = 'LectureCRUD'
   ClientHeight = 643
@@ -16,6 +16,7 @@ object LectureCRUD: TLectureCRUD
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3389,6 +3390,21 @@ object LectureCRUD: TLectureCRUD
     ParentShowHint = False
     ShowHint = True
     OnClick = SpeedButton4Click
+  end
+  object SpeedButton8: TSpeedButton
+    Left = 200
+    Top = 576
+    Width = 425
+    Height = 49
+    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1083#1077#1082#1094#1080#1102
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton8Click
   end
   object DBGrid1: TDBGrid
     Left = 8

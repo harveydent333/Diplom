@@ -1,15 +1,14 @@
 object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
-  Left = 195
-  Top = 90
-  AutoScroll = False
-  Caption = '132'
-  ClientHeight = 692
-  ClientWidth = 984
+  Left = 245
+  Top = 157
+  Width = 896
+  Height = 850
+  Caption = 'PassingKnowledgeControlForm'
   Color = clBtnFace
-  Constraints.MaxHeight = 730
-  Constraints.MaxWidth = 1000
-  Constraints.MinHeight = 730
-  Constraints.MinWidth = 992
+  Constraints.MaxHeight = 850
+  Constraints.MaxWidth = 896
+  Constraints.MinHeight = 850
+  Constraints.MinWidth = 896
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -17,307 +16,188 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 8
-    Top = 224
-    Width = 206
-    Height = 13
-    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1086#1076#1080#1085' '#1080#1079' 3 '#1074#1072#1088#1080#1072#1085#1090#1086#1074' '#1086#1090#1074#1077#1090#1086#1074'::'
-  end
-  object Label5: TLabel
-    Left = 224
-    Top = 160
-    Width = 32
-    Height = 13
-    Caption = 'Label5'
-  end
-  object Label2: TLabel
-    Left = 792
-    Top = 88
-    Width = 32
-    Height = 13
-    Caption = 'Label2'
-  end
-  object DBMemo1: TDBMemo
-    Left = 64
-    Top = 248
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'1'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ReadOnly = True
-    ScrollBars = ssVertical
-    TabOrder = 0
-  end
-  object DBMemo2: TDBMemo
-    Left = 64
-    Top = 292
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'2'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ReadOnly = True
-    ScrollBars = ssVertical
+  inline VariantsQuestionMore1: TVariantsQuestionMore
+    Left = -4
+    Top = 32
+    Width = 877
+    Height = 777
     TabOrder = 1
-  end
-  object DBMemo3: TDBMemo
-    Left = 64
-    Top = 336
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'3'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ReadOnly = True
-    ScrollBars = ssVertical
-    TabOrder = 2
-  end
-  object DBMemo4: TDBMemo
-    Left = 64
-    Top = 380
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'4'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 3
-  end
-  object DBMemo5: TDBMemo
-    Left = 64
-    Top = 424
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'5'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 4
-  end
-  object RadioButton1: TRadioButton
-    Left = 232
-    Top = 221
-    Width = 33
-    Height = 17
-    Caption = '1'
-    TabOrder = 5
-    OnClick = RadioButton1Click
-  end
-  object DBMemo6: TDBMemo
-    Left = 8
-    Top = 16
-    Width = 969
-    Height = 201
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1042#1086#1087#1088#1086#1089#1072
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -21
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 6
-  end
-  object Button1: TButton
-    Left = 8
-    Top = 648
-    Width = 961
-    Height = 33
-    Caption = #1044#1072#1083#1077#1077
-    TabOrder = 7
-    OnClick = Button1Click
-  end
-  object RadioButton2: TRadioButton
-    Left = 272
-    Top = 218
-    Width = 33
-    Height = 17
-    Caption = '2'
-    TabOrder = 8
-    OnClick = RadioButton2Click
-  end
-  object RadioButton3: TRadioButton
-    Left = 312
-    Top = 221
-    Width = 33
-    Height = 17
-    Caption = '3'
-    TabOrder = 9
-    OnClick = RadioButton3Click
-  end
-  object RadioButton4: TRadioButton
-    Left = 352
-    Top = 224
-    Width = 33
-    Height = 17
-    Caption = '4'
-    TabOrder = 10
-    OnClick = RadioButton4Click
-  end
-  object RadioButton5: TRadioButton
-    Left = 392
-    Top = 219
-    Width = 33
-    Height = 17
-    Caption = '5'
-    TabOrder = 11
-    OnClick = RadioButton5Click
-  end
-  object DBMemo7: TDBMemo
-    Left = 64
-    Top = 468
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'6'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 12
     Visible = False
-  end
-  object DBMemo8: TDBMemo
-    Left = 64
-    Top = 512
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'7'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 13
-    Visible = False
-  end
-  object DBMemo9: TDBMemo
-    Left = 64
-    Top = 556
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'8'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 14
-    Visible = False
-  end
-  object DBMemo10: TDBMemo
-    Left = 64
-    Top = 600
-    Width = 921
-    Height = 40
-    BorderStyle = bsNone
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1054#1090#1074#1077#1090#1072'9'
-    DataSource = DataModule1.Tests
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
-    Font.Style = []
-    ParentFont = False
-    ScrollBars = ssVertical
-    TabOrder = 15
-    Visible = False
+    inherited hint: TLabel
+      Left = 440
+      Top = 110
+      Width = 5
+      Height = 25
+      Caption = ''
+      Font.Height = -21
+    end
+    inherited Label1: TLabel
+      Top = 43
+      Width = 31
+      Caption = #8470'1'
+    end
+    inherited Label2: TLabel
+      Top = 121
+      Width = 34
+      Caption = #8470'2'
+    end
+    inherited Label3: TLabel
+      Top = 183
+      Width = 33
+      Caption = #8470'3'
+    end
+    inherited Label4: TLabel
+      Left = 7
+      Top = 245
+      Width = 39
+      Caption = ' '#8470'4'
+    end
+    inherited Label5: TLabel
+      Top = 315
+      Width = 33
+      Caption = #8470'5'
+    end
+    inherited Label6: TLabel
+      Top = 385
+      Width = 34
+      Caption = #8470'6'
+    end
+    inherited Label7: TLabel
+      Top = 455
+      Width = 33
+      Caption = #8470'7'
+    end
+    inherited Label8: TLabel
+      Top = 525
+      Width = 34
+      Caption = #8470'8'
+    end
+    inherited Label9: TLabel
+      Top = 595
+      Width = 34
+      Caption = #8470'9'
+    end
+    inherited Label10: TLabel
+      Left = 10
+      Top = 673
+      Width = 43
+      Caption = #8470'10'
+    end
+    inherited Memo1: TMemo
+      Top = 65
+      Height = 56
+      ReadOnly = True
+    end
+    inherited Memo2: TMemo
+      Top = 135
+      Height = 56
+    end
+    inherited Memo3: TMemo
+      Top = 205
+      Height = 56
+    end
+    inherited Memo4: TMemo
+      Top = 275
+      Height = 56
+    end
+    inherited Memo5: TMemo
+      Top = 345
+      Height = 56
+    end
+    inherited Memo6: TMemo
+      Top = 415
+      Height = 56
+    end
+    inherited Memo7: TMemo
+      Top = 485
+      Height = 56
+    end
+    inherited Memo8: TMemo
+      Top = 555
+      Height = 56
+    end
+    inherited Memo9: TMemo
+      Top = 625
+      Height = 56
+    end
+    inherited Memo10: TMemo
+      Top = 695
+      Height = 56
+    end
+    inherited RadioButton1: TRadioButton
+      Top = 75
+    end
+    inherited RadioButton2: TRadioButton
+      Top = 145
+    end
+    inherited RadioButton3: TRadioButton
+      Top = 215
+    end
+    inherited RadioButton4: TRadioButton
+      Top = 285
+    end
+    inherited RadioButton5: TRadioButton
+      Top = 355
+    end
+    inherited RadioButton6: TRadioButton
+      Top = 425
+    end
+    inherited RadioButton7: TRadioButton
+      Top = 495
+    end
+    inherited RadioButton8: TRadioButton
+      Top = 565
+    end
+    inherited RadioButton9: TRadioButton
+      Top = 635
+    end
+    inherited RadioButton10: TRadioButton
+      Top = 700
+    end
   end
   object DBGrid1: TDBGrid
-    Left = 544
-    Top = -199
-    Width = 320
-    Height = 153
-    DataSource = DataModule1.Tests
-    TabOrder = 16
+    Left = 584
+    Top = 288
+    Width = 281
+    Height = 89
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
   end
-  object RadioButton6: TRadioButton
-    Left = 440
-    Top = 218
-    Width = 33
-    Height = 17
-    Caption = '6'
-    TabOrder = 17
-    OnClick = RadioButton6Click
+  object Button1: TButton
+    Left = 208
+    Top = 776
+    Width = 441
+    Height = 25
+    Caption = #1057#1083#1077#1076#1091#1102#1097#1080#1081' '#1074#1086#1087#1088#1086#1089
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    OnClick = Button1Click
   end
-  object RadioButton7: TRadioButton
-    Left = 480
-    Top = 217
-    Width = 33
-    Height = 17
-    Caption = '7'
-    TabOrder = 18
-    OnClick = RadioButton7Click
-  end
-  object RadioButton8: TRadioButton
-    Left = 520
-    Top = 221
-    Width = 33
-    Height = 17
-    Caption = '8'
-    TabOrder = 19
-    OnClick = RadioButton8Click
-  end
-  object RadioButton9: TRadioButton
-    Left = 560
-    Top = 216
-    Width = 33
-    Height = 17
-    Caption = '9'
-    TabOrder = 20
-    OnClick = RadioButton9Click
+  object Memo1: TMemo
+    Left = 72
+    Top = 0
+    Width = 737
+    Height = 89
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Georgia'
+    Font.Style = []
+    Lines.Strings = (
+      'Memo1')
+    ParentFont = False
+    TabOrder = 3
   end
 end

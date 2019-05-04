@@ -90,7 +90,22 @@ end;
 procedure TMainMenu.SpeedButton9Click(Sender: TObject); // Пройти контроль знаний {Ученик}
 begin
     MenuControl.show;
-    MenuControl.ComboBox2.Items.Clear;
+    with MenuControl do
+      begin
+        ComboBox1.Items.Clear;
+        ComboBox2.Items.Clear;
+        label2.Visible:=false;
+        label3.Visible:=false;
+        ComboBox2.Visible:=false;
+        ComboBox2.Items.Clear;
+        ComboBox3.Visible:=false;
+        ComboBox3.Items.Clear;
+        label5.visible:=false;
+        label7.Visible:=false;
+        Panel1.Visible:=false;
+        SpeedButton1.Visible:=false;
+        SpeedButton1.Enabled:=false;
+      end;
     config.selectRequestSQL('SELECT * FROM Раздел');
     DBGrid1.DataSource.DataSet.First;
     While (DBGrid1.DataSource.DataSet.Eof=false) do
@@ -103,8 +118,12 @@ begin
 end;
 
 procedure TMainMenu.SpeedButton4Click(Sender: TObject);
+var temp:word;
 begin
-    TitleForm.Close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 procedure TMainMenu.SpeedButton6Click(Sender: TObject);

@@ -1,343 +1,511 @@
 unit defoltTest;
 
 interface
-
-//var
-procedure question2;
-procedure question3;
-procedure question4;
-procedure question5;
-procedure question6;
-procedure question7;
-procedure question8;
-procedure question9;
+procedure countQuest(count:integer);
+procedure setMemoLines;
+procedure memoClear;
+procedure clearStrokiMemo;
+procedure RadioButtonClear;
 
 implementation
-uses PassingKnowledgeControl;
 
-procedure question2;
+uses PassingKnowledgeControl, Variants_Question_More, Control_CRUD,
+  Add_Question, Menu_Control;
+
+
+
+procedure setMemoLines;
 begin
-  with PassingKnowledgeControlForm do
-    begin
-      with DBMemo1 do
-        begin
-          Height:=190; Width:=921; Left:=64; Top:=312; Font.Size:=28; Visible:=true;
-        end;
-       with DBMemo2 do
-        begin
-          Height:=190; Width:=921; Left:=64; Top:=509; Font.Size:=28; Visible:=true;
-        end;
-  Radiobutton1.Visible:=true; Radiobutton1.Left:=24; RadioButton1.Top:=395;
-   Radiobutton2.Visible:=true; Radiobutton2.Left:=24; RadioButton2.Top:=590;
-         Radiobutton3.Visible:=false;
-           Radiobutton4.Visible:=false;
-             Radiobutton5.Visible:=false;
-               Radiobutton6.Visible:=false;
-                Radiobutton7.Visible:=false;
-                 Radiobutton8.Visible:=false;
-                   Radiobutton9.Visible:=false;
-DBMemo3.Visible:=false; DBMemo4.Visible:=false; DBMemo5.Visible:=false; DBMemo7.Visible:=false; DBMemo8.Visible:=false;
-DBMemo9.Visible:=false; DBMemo10.Visible:=false;
-   label1.Caption:='Выберите один из 2 вариантов ответов:';
-    end;
-end;
-                                ///====================3========================
-procedure question3;
-begin
-  with PassingKnowledgeControlForm do
-    begin
-      with DBMemo1 do
-        begin
-          Height:=130; Width:=921; Left:=64; Top:=312; Font.Size:=28; Visible:=true;
-        end;
-       with DBMemo2 do
-        begin
-          Height:=130; Width:=921; Left:=64; Top:=449; Font.Size:=28; Visible:=true;
-        end;
-       with DBMemo3 do
-        begin
-          Height:=120; Width:=921; Left:=64; Top:=586; Font.Size:=28; Visible:=true;
-        end;
-        Radiobutton1.Visible:=true; Radiobutton1.Left:=24; RadioButton1.Top:=380;
-         Radiobutton2.Visible:=true; Radiobutton2.Left:=24; RadioButton2.Top:=502;
-          Radiobutton3.Visible:=true; Radiobutton3.Left:=24; RadioButton3.Top:=638;
-            Radiobutton4.Visible:=false;
-             Radiobutton5.Visible:=false;
-               Radiobutton6.Visible:=false;
-                Radiobutton7.Visible:=false;
-                 Radiobutton8.Visible:=false;
-                   Radiobutton9.Visible:=false;
-DBMemo4.Visible:=false; DBMemo5.Visible:=false; DBMemo7.Visible:=false; DBMemo8.Visible:=false;
-DBMemo9.Visible:=false; DBMemo10.Visible:=false;
-   label1.Caption:='Выберите один из 3 вариантов ответов:';
-    end;
-end;
-                                //=================4============================
-procedure question4;
-begin
-  with PassingKnowledgeControlForm do
-    begin
-      with DBMemo1 do
-        begin
-          Height:=95; Width:=921; Left:=64; Top:=312; Font.Size:=24; Visible:=true;
-        end;
-       with DBMemo2 do
-        begin
-          Height:=95; Width:=921; Left:=64; Top:=412; Font.Size:=24; Visible:=true;
-        end;
-       with DBMemo3 do
-        begin
-          Height:=95; Width:=921; Left:=64; Top:=512; Font.Size:=24; Visible:=true;
-        end;
-       with DBMemo4 do
-        begin
-          Height:=95; Width:=921; Left:=64; Top:=611; Font.Size:=24; Visible:=true;
-        end;
-        Radiobutton1.Visible:=true; Radiobutton1.Left:=24; RadioButton1.Top:=348;
-         Radiobutton2.Visible:=true; Radiobutton2.Left:=24; RadioButton2.Top:=446;
-          Radiobutton3.Visible:=true; Radiobutton3.Left:=24; RadioButton3.Top:=550;
-           Radiobutton4.Visible:=true; Radiobutton4.Left:=24; RadioButton4.Top:=651;
-           Radiobutton5.Visible:=false;
-            Radiobutton6.Visible:=false;
-                Radiobutton7.Visible:=false;
-                 Radiobutton8.Visible:=false;
-                   Radiobutton9.Visible:=false;
-DBMemo5.Visible:=false; DBMemo7.Visible:=false; DBMemo8.Visible:=false; DBMemo9.Visible:=false; DBMemo10.Visible:=false;
-    label1.Caption:='Выберите один из 4 вариантов ответов:';
-    end;
+    with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+      begin
+         Memo1.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв1').AsString);
+         Memo2.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв2').AsString);
+         Memo3.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв3').AsString);
+         Memo4.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв4').AsString);
+         Memo5.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв5').AsString);
+         Memo6.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв6').AsString);
+         Memo7.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв7').AsString);
+         Memo8.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв8').AsString);
+         Memo9.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв9').AsString);
+         Memo10.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв10').AsString);
+      end;
 end;
 
-                                //=================5============================
-procedure question5;
+procedure countQuest(count:integer);
 begin
-  with PassingKnowledgeControlForm do
-    begin
-      with DBMemo1 do
-        begin
-          Height:=75; Width:=921; Left:=64; Top:=320; Font.Size:=20; Visible:=true;
+    case count of
+    2:
+       begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+              countQuestion:=2;
+
+              memoClear;
+              RadioButtonClear;
+
+               Memo2.Visible:=true;
+               label2.Visible:=true;
+               RadioButton2.Visible:=true;
+
+               Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=false;
+               Memo4.Clear;
+               label4.Visible:=false;
+               RadioButton4.Visible:=false;
+
+               Memo5.Visible:=false;
+               Memo5.Clear;
+               label5.Visible:=false;
+               RadioButton5.Visible:=false;
+
+               Memo6.Visible:=false;
+               Memo6.Clear;
+               label6.Visible:=false;
+               RadioButton6.Visible:=false;
+
+               Memo7.Visible:=false;
+               Memo7.Clear;
+               label7.Visible:=false;
+               RadioButton7.Visible:=false;
+
+               Memo8.Visible:=false;
+               Memo8.Clear;
+               label8.Visible:=false;
+               RadioButton8.Visible:=false;
+
+               Memo9.Visible:=false;
+               Memo9.Clear;
+               label9.Visible:=false;
+               RadioButton9.Visible:=false;
+
+               Memo10.Visible:=false;
+               Memo10.Clear;
+               label10.Visible:=false;
+               RadioButton10.Visible:=false;
+
+            end;
         end;
-       with DBMemo2 do
-        begin
-          Height:=75; Width:=921; Left:=64; Top:=400; Font.Size:=20; Visible:=true;
+      3:
+       begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+              countQuestion:=3;
+
+              memoClear;
+              RadioButtonClear;
+
+               Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=false;
+               Memo4.Clear;
+               label4.Visible:=false;
+               RadioButton4.Visible:=false;
+
+               Memo5.Visible:=false;
+               Memo5.Clear;
+               label5.Visible:=false;
+               RadioButton5.Visible:=false;
+
+               Memo6.Visible:=false;
+               Memo6.Clear;
+               label6.Visible:=false;
+               RadioButton6.Visible:=false;
+
+               Memo7.Visible:=false;
+               Memo7.Clear;
+               label7.Visible:=false;
+               RadioButton7.Visible:=false;
+
+               Memo8.Visible:=false;
+               Memo8.Clear;
+               label8.Visible:=false;
+               RadioButton8.Visible:=false;
+
+               Memo9.Visible:=false;
+               Memo9.Clear;
+               label9.Visible:=false;
+               RadioButton9.Visible:=false;
+
+               Memo10.Visible:=false;
+               Memo10.Clear;
+               label10.Visible:=false;
+               RadioButton10.Visible:=false;
+
+            end;
         end;
-       with DBMemo3 do
-        begin
-          Height:=75; Width:=921; Left:=64; Top:=480; Font.Size:=20; Visible:=true;
+      4:
+       begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+               countQuestion:=4;
+
+                 memoClear;
+                 RadioButtonClear;
+
+               Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=true;
+               label4.Visible:=true;
+               RadioButton4.Visible:=true;
+
+               Memo5.Visible:=false;
+               label5.Visible:=false;
+               RadioButton5.Visible:=false;
+
+               Memo6.Visible:=false;
+               label6.Visible:=false;
+               RadioButton6.Visible:=false;
+
+               Memo7.Visible:=false;
+               label7.Visible:=false;
+               RadioButton7.Visible:=false;
+
+               Memo8.Visible:=false;
+               label8.Visible:=false;
+               RadioButton8.Visible:=false;
+
+               Memo9.Visible:=false;
+               label9.Visible:=false;
+               RadioButton9.Visible:=false;
+
+               Memo10.Visible:=false;
+               label10.Visible:=false;
+               RadioButton10.Visible:=false;
+            end;
         end;
-       with DBMemo4 do
-        begin
-          Height:=75; Width:=921; Left:=64; Top:=560; Font.Size:=20; Visible:=true;
+      5:
+       begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+              countQuestion:=5;
+
+                memoClear;
+                RadioButtonClear;
+
+                Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=true;
+               label4.Visible:=true;
+               RadioButton4.Visible:=true;
+
+
+               Memo5.Visible:=true;
+               label5.Visible:=true;
+               RadioButton5.Visible:=true;
+
+               Memo6.Visible:=false;
+               label6.Visible:=false;
+               RadioButton6.Visible:=false;
+
+               Memo7.Visible:=false;
+               label7.Visible:=false;
+               RadioButton7.Visible:=false;
+
+               Memo8.Visible:=false;
+               label8.Visible:=false;
+               RadioButton8.Visible:=false;
+
+               Memo9.Visible:=false;
+               label9.Visible:=false;
+               RadioButton9.Visible:=false;
+
+               Memo10.Visible:=false;
+               label10.Visible:=false;
+               RadioButton10.Visible:=false;
+            end;
         end;
-       with DBMemo5 do
-        begin
-          Height:=75; Width:=921; Left:=64; Top:=640; Font.Size:=20; Visible:=true;
+      6:
+       begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+               countQuestion:=6;
+
+               memoClear;
+               RadioButtonClear;
+
+               Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=true;
+               label4.Visible:=true;
+               RadioButton4.Visible:=true;
+
+               Memo5.Visible:=true;
+               label5.Visible:=true;
+               RadioButton5.Visible:=true;
+
+               Memo6.Visible:=true;
+               label6.Visible:=true;
+               RadioButton6.Visible:=true;
+
+               Memo7.Visible:=false;
+               label7.Visible:=false;
+               RadioButton7.Visible:=false;
+
+               Memo8.Visible:=false;
+               label8.Visible:=false;
+               RadioButton8.Visible:=false;
+
+               Memo9.Visible:=false;
+               label9.Visible:=false;
+               RadioButton9.Visible:=false;
+
+               Memo10.Visible:=false;
+               label10.Visible:=false;
+               RadioButton10.Visible:=false;
+            end;
         end;
-        Radiobutton1.Visible:=true; Radiobutton1.Left:=24; RadioButton1.Top:=356;
-         Radiobutton2.Visible:=true; Radiobutton2.Left:=24; RadioButton2.Top:=430;
-          Radiobutton3.Visible:=true; Radiobutton3.Left:=24; RadioButton3.Top:=510;
-           Radiobutton4.Visible:=true; Radiobutton4.Left:=24; RadioButton4.Top:=595;
-            Radiobutton5.Visible:=true; Radiobutton5.Left:=24; RadioButton5.Top:=672;
-              Radiobutton6.Visible:=false;
-                Radiobutton7.Visible:=false;
-                 Radiobutton8.Visible:=false;
-                   Radiobutton9.Visible:=false;
-DBMemo7.Visible:=false; DBMemo8.Visible:=false; DBMemo9.Visible:=false; DBMemo10.Visible:=false;
-   label1.Caption:='Выберите один из 5 вариантов ответов:';
+      7:
+       begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+              countQuestion:=7;
+
+               memoClear;
+               RadioButtonClear;
+
+               Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=true;
+               label4.Visible:=true;
+               RadioButton4.Visible:=true;
+
+               Memo5.Visible:=true;
+               label5.Visible:=true;
+               RadioButton5.Visible:=true;
+
+               Memo6.Visible:=true;
+               label6.Visible:=true;
+               RadioButton6.Visible:=true;
+
+               Memo7.Visible:=true;
+               label7.Visible:=true;
+               RadioButton7.Visible:=true;
+
+               Memo8.Visible:=false;
+               label8.Visible:=false;
+               RadioButton8.Visible:=false;
+
+               Memo9.Visible:=false;
+               label9.Visible:=false;
+               RadioButton9.Visible:=false;
+
+               Memo10.Visible:=false;
+               label10.Visible:=false;
+               RadioButton10.Visible:=false;
+            end;
+        end;
+      8:
+       begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+              countQuestion:=8;
+
+               memoClear;
+               RadioButtonClear;
+
+               Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=true;
+               label4.Visible:=true;
+               RadioButton4.Visible:=true;
+
+               Memo5.Visible:=true;
+               label5.Visible:=true;
+               RadioButton5.Visible:=true;
+
+               Memo6.Visible:=true;
+               label6.Visible:=true;
+               RadioButton6.Visible:=true;
+
+               Memo7.Visible:=true;
+               label7.Visible:=true;
+               RadioButton7.Visible:=true;
+
+               Memo8.Visible:=true;
+               label8.Visible:=true;
+               RadioButton8.Visible:=true;
+
+               Memo9.Visible:=false;
+               label9.Visible:=false;
+               RadioButton9.Visible:=false;
+
+               Memo10.Visible:=false;
+               label10.Visible:=false;
+               RadioButton10.Visible:=false;
+            end;
+        end;
+      9:
+       begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+                countQuestion:=9;
+
+               memoClear;
+               RadioButtonClear;
+
+               Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=true;
+               label4.Visible:=true;
+               RadioButton4.Visible:=true;
+
+               Memo5.Visible:=true;
+               label5.Visible:=true;
+               RadioButton5.Visible:=true;
+
+               Memo6.Visible:=true;
+               label6.Visible:=true;
+               RadioButton6.Visible:=true;
+
+               Memo7.Visible:=true;
+               label7.Visible:=true;
+               RadioButton7.Visible:=true;
+
+               Memo8.Visible:=true;
+               label8.Visible:=true;
+               RadioButton8.Visible:=true;
+
+               Memo9.Visible:=true;
+               label9.Visible:=true;
+               RadioButton9.Visible:=true;
+
+               Memo10.Visible:=false;
+               label10.Visible:=false;
+               RadioButton10.Visible:=false;
+            end;
+        end;
+     10:
+      begin
+          with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+            begin
+               countQuestion:=10;
+
+               memoClear;
+               RadioButtonClear;
+
+               Memo3.Visible:=true;
+               label3.Visible:=true;
+               RadioButton3.Visible:=true;
+
+               Memo4.Visible:=true;
+               label4.Visible:=true;
+               RadioButton4.Visible:=true;
+
+               Memo5.Visible:=true;
+               label5.Visible:=true;
+               RadioButton5.Visible:=true;
+
+               Memo6.Visible:=true;
+               label6.Visible:=true;
+               RadioButton6.Visible:=true;
+
+               Memo7.Visible:=true;
+               label7.Visible:=true;
+               RadioButton7.Visible:=true;
+
+               Memo8.Visible:=true;
+               label8.Visible:=true;
+               RadioButton8.Visible:=true;
+
+               Memo9.Visible:=true;
+               label9.Visible:=true;
+               RadioButton9.Visible:=true;
+
+               Memo10.Visible:=true;
+               label10.Visible:=true;
+               RadioButton10.Visible:=true;
+            end;
+        end;
     end;
 end;
 
-                                //=================6============================
-procedure question6;
+procedure memoClear;
 begin
-  with PassingKnowledgeControlForm do
+  with PassingKnowledgeControlForm.VariantsQuestionMore1 do
     begin
-      with DBMemo1 do
-        begin
-          Height:=60; Width:=921; Left:=64; Top:=320; Font.Size:=18; Visible:=true;
-        end;
-       with DBMemo2 do
-        begin
-          Height:=60; Width:=921; Left:=64; Top:=380; Font.Size:=18; Visible:=true;
-        end;
-       with DBMemo3 do
-        begin
-          Height:=60; Width:=921; Left:=64; Top:=450; Font.Size:=18; Visible:=true;
-        end;
-       with DBMemo4 do
-        begin
-          Height:=60; Width:=921; Left:=64; Top:=515; Font.Size:=18; Visible:=true;
-        end;
-       with DBMemo5 do
-        begin
-          Height:=60; Width:=921; Left:=64; Top:=580; Font.Size:=18; Visible:=true;
-        end;
-       with DBMemo7 do
-        begin
-          Height:=60; Width:=921; Left:=64; Top:=645; Font.Size:=18; Visible:=true;
-        end;
-        Radiobutton1.Visible:=true; Radiobutton1.Left:=24; RadioButton1.Top:=348;
-         Radiobutton2.Visible:=true; Radiobutton2.Left:=24; RadioButton2.Top:=406;
-          Radiobutton3.Visible:=true; Radiobutton3.Left:=24; RadioButton3.Top:=470;
-           Radiobutton4.Visible:=true; Radiobutton4.Left:=24; RadioButton4.Top:=531;
-            Radiobutton5.Visible:=true; Radiobutton5.Left:=24; RadioButton5.Top:=600;
-             Radiobutton6.Visible:=true; Radiobutton6.Left:=24; RadioButton6.Top:=664;
-               Radiobutton7.Visible:=false;
-                 Radiobutton8.Visible:=false;
-                   Radiobutton9.Visible:=false;
-DBMemo8.Visible:=false; DBMemo9.Visible:=false; DBMemo10.Visible:=false;
-label1.Caption:='Выберите один из 6 вариантов ответов:';
+        Memo1.Clear;
+        Memo2.Clear;
+        Memo3.Clear;
+        Memo4.Clear;
+        Memo5.Clear;
+        Memo6.Clear;
+        Memo7.Clear;
+        Memo8.Clear;
+        Memo9.Clear;
+        Memo10.Clear;
     end;
 end;
 
-                                //=================7============================
-procedure question7;
+procedure clearStrokiMemo;
+var i:integer;
 begin
-  with PassingKnowledgeControlForm do
-    begin
-      with DBMemo1 do
-        begin
-          Height:=50; Width:=921; Left:=64; Top:=320; Font.Size:=16; Visible:=true;
-        end;
-       with DBMemo2 do
-        begin
-          Height:=50; Width:=921; Left:=64; Top:=375; Font.Size:=16; Visible:=true;
-        end;
-       with DBMemo3 do
-        begin
-          Height:=50; Width:=921; Left:=64; Top:=430; Font.Size:=16; Visible:=true;
-        end;
-       with DBMemo4 do
-        begin
-          Height:=50; Width:=921; Left:=64; Top:=485; Font.Size:=16; Visible:=true;
-        end;
-       with DBMemo5 do
-        begin
-          Height:=50; Width:=921; Left:=64; Top:=540; Font.Size:=16; Visible:=true;
-        end;
-       with DBMemo7 do
-        begin
-          Height:=50; Width:=921; Left:=64; Top:=595; Font.Size:=16; Visible:=true;
-        end;
-       with DBMemo8 do
-        begin
-          Height:=50; Width:=921; Left:=64; Top:=650; Font.Size:=16; Visible:=true;
-        end;
-        Radiobutton1.Visible:=true; Radiobutton1.Left:=24; RadioButton1.Top:=340;
-         Radiobutton2.Visible:=true; Radiobutton2.Left:=24; RadioButton2.Top:=395;
-          Radiobutton3.Visible:=true; Radiobutton3.Left:=24; RadioButton3.Top:=445;
-           Radiobutton4.Visible:=true; Radiobutton4.Left:=24; RadioButton4.Top:=500;
-            Radiobutton5.Visible:=true; Radiobutton5.Left:=24; RadioButton5.Top:=558;
-             Radiobutton6.Visible:=true; Radiobutton6.Left:=24; RadioButton6.Top:=610;
-              Radiobutton7.Visible:=true; Radiobutton7.Left:=24; RadioButton7.Top:=665;
-                Radiobutton8.Visible:=false;
-                 Radiobutton9.Visible:=false;
-DBMemo9.Visible:=false; DBMemo10.Visible:=false;
-label1.Caption:='Выберите один из 7 вариантов ответов:';
-    end;
+with PassingKnowledgeControlForm.VariantsQuestionMore1 do
+begin
+
+for i:=Memo1.Lines.Count-1 downto  0 do
+  if Memo1.Lines.Strings[i]='' then Memo1.Lines.Delete(i);
+
+for i:=Memo2.Lines.Count-1 downto  0 do
+if Memo2.Lines.Strings[i]='' then Memo2.Lines.Delete(i);
+
+for i:=Memo3.Lines.Count-1 downto  0 do
+if Memo3.Lines.Strings[i]='' then Memo3.Lines.Delete(i);
+
+for i:=Memo4.Lines.Count-1 downto  0 do
+if Memo4.Lines.Strings[i]='' then Memo4.Lines.Delete(i);
+
+for i:=Memo5.Lines.Count-1 downto  0 do
+if Memo5.Lines.Strings[i]='' then Memo5.Lines.Delete(i);
+
+for i:=Memo6.Lines.Count-1 downto  0 do
+if Memo6.Lines.Strings[i]='' then Memo6.Lines.Delete(i);
+
+for i:=Memo7.Lines.Count-1 downto  0 do
+if Memo7.Lines.Strings[i]='' then Memo7.Lines.Delete(i);
+
+for i:=Memo8.Lines.Count-1 downto  0 do
+if Memo8.Lines.Strings[i]='' then Memo8.Lines.Delete(i);
+
+for i:=Memo9.Lines.Count-1 downto  0 do
+if Memo9.Lines.Strings[i]='' then Memo9.Lines.Delete(i);
+
+for i:=Memo10.Lines.Count-1 downto  0 do
+if Memo10.Lines.Strings[i]='' then Memo10.Lines.Delete(i);
+
+end;
 end;
 
-                                //=================8============================
-procedure question8;
+procedure RadioButtonClear;
 begin
-  with PassingKnowledgeControlForm do
+  with PassingKnowledgeControlForm.VariantsQuestionMore1 do
     begin
-      with DBMemo1 do
-        begin
-          Height:=45; Width:=921; Left:=64; Top:=320; Font.Size:=14; Visible:=true;
-        end;
-       with DBMemo2 do
-        begin
-          Height:=45; Width:=921; Left:=64; Top:=370; Font.Size:=14; Visible:=true;
-        end;
-       with DBMemo3 do
-        begin
-          Height:=45; Width:=921; Left:=64; Top:=420; Font.Size:=14; Visible:=true;
-        end;
-       with DBMemo4 do
-        begin
-          Height:=45; Width:=921; Left:=64; Top:=470; Font.Size:=14; Visible:=true;
-        end;
-       with DBMemo5 do
-        begin
-          Height:=45; Width:=921; Left:=64; Top:=520; Font.Size:=14; Visible:=true;
-        end;
-       with DBMemo7 do
-        begin
-          Height:=45; Width:=921; Left:=64; Top:=570; Font.Size:=14; Visible:=true;
-        end;
-       with DBMemo8 do
-        begin
-          Height:=45; Width:=921; Left:=64; Top:=620; Font.Size:=14; Visible:=true;
-        end;
-       with DBMemo9 do
-        begin
-          Height:=45; Width:=921; Left:=64; Top:=670; Font.Size:=14; Visible:=true;
-        end;
-        Radiobutton1.Visible:=true; Radiobutton1.Left:=24; RadioButton1.Top:=340;
-         Radiobutton2.Visible:=true; Radiobutton2.Left:=24; RadioButton2.Top:=387;
-          Radiobutton3.Visible:=true; Radiobutton3.Left:=24; RadioButton3.Top:=437;
-           Radiobutton4.Visible:=true; Radiobutton4.Left:=24; RadioButton4.Top:=492;
-            Radiobutton5.Visible:=true; Radiobutton5.Left:=24; RadioButton5.Top:=534;
-             Radiobutton6.Visible:=true; Radiobutton6.Left:=24; RadioButton6.Top:=586;
-              Radiobutton7.Visible:=true; Radiobutton7.Left:=24; RadioButton7.Top:=633;
-               Radiobutton8.Visible:=true; Radiobutton8.Left:=24; RadioButton8.Top:=685;
-                Radiobutton9.Visible:=false;
-DBMemo10.Visible:=false;
-label1.Caption:='Выберите один из 8 вариантов ответов:';
-    end;
-end;
-
-                                //=================9============================
-procedure question9;
-begin
-  with PassingKnowledgeControlForm do
-    begin
-      with DBMemo1 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=320; Font.Size:=12; Visible:=true;
-        end;
-       with DBMemo2 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=364; Font.Size:=12; Visible:=true;
-        end;
-       with DBMemo3 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=408; Font.Size:=12; Visible:=true;
-        end;
-       with DBMemo4 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=452; Font.Size:=12; Visible:=true;
-        end;
-       with DBMemo5 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=496; Font.Size:=12; Visible:=true;
-        end;
-       with DBMemo7 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=540; Font.Size:=12; Visible:=true;
-        end;
-       with DBMemo8 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=584; Font.Size:=12; Visible:=true;
-        end;
-       with DBMemo9 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=628; Font.Size:=12; Visible:=true;
-        end;
-         with DBMemo10 do
-        begin
-          Height:=40; Width:=921; Left:=64; Top:=672; Font.Size:=12; Visible:=true;
-        end;
-        label1.Caption:='Выберите один из 9 вариантов ответов:';
-        Radiobutton1.Visible:=true; Radiobutton1.Left:=24; RadioButton1.Top:=333;
-         Radiobutton2.Visible:=true; Radiobutton2.Left:=24; RadioButton2.Top:=378;
-          Radiobutton3.Visible:=true; Radiobutton3.Left:=24; RadioButton3.Top:=421;
-           Radiobutton4.Visible:=true; Radiobutton4.Left:=24; RadioButton4.Top:=464;
-            Radiobutton5.Visible:=true; Radiobutton5.Left:=24; RadioButton5.Top:=507;
-             Radiobutton6.Visible:=true; Radiobutton6.Left:=24; RadioButton6.Top:=554;
-              Radiobutton7.Visible:=true; Radiobutton7.Left:=24; RadioButton7.Top:=593;
-               Radiobutton8.Visible:=true; Radiobutton8.Left:=24; RadioButton8.Top:=637;
-                Radiobutton9.Visible:=true; Radiobutton9.Left:=24; RadioButton9.Top:=686;
+       RadioButton1.Checked:=false;
+       RadioButton2.Checked:=false;
+       RadioButton3.Checked:=false;
+       RadioButton4.Checked:=false;
+       RadioButton5.Checked:=false;
+       RadioButton6.Checked:=false;
+       RadioButton7.Checked:=false;
+       RadioButton8.Checked:=false;
+       RadioButton9.Checked:=false;
+       RadioButton10.Checked:=false;
     end;
 end;
 

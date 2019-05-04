@@ -1,9 +1,9 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 467
-  Top = 143
-  Height = 537
-  Width = 813
+  Left = 254
+  Top = 282
+  Height = 547
+  Width = 856
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
@@ -24,8 +24,8 @@ object DataModule1: TDataModule1
   end
   object AddQuestionSource: TDataSource
     DataSet = AddQuestionADO
-    Left = 24
-    Top = 144
+    Left = 656
+    Top = 208
   end
   object AddQuestionADO: TADOQuery
     Active = True
@@ -34,8 +34,8 @@ object DataModule1: TDataModule1
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM '#1042#1086#1087#1088#1086#1089#1099';')
-    Left = 24
-    Top = 88
+    Left = 656
+    Top = 152
   end
   object ShowRazdel: TDataSource
     DataSet = ShowRazdelADO
@@ -96,18 +96,6 @@ object DataModule1: TDataModule1
       'SELECT * FROM '#1056#1072#1079#1076#1077#1083';')
     Left = 568
     Top = 16
-  end
-  object Test: TADOQuery
-    Connection = ADOConnection1
-    CursorType = ctStatic
-    Parameters = <>
-    Left = 576
-    Top = 152
-  end
-  object Tests: TDataSource
-    DataSet = Test
-    Left = 576
-    Top = 208
   end
   object EditTemaADO: TADOQuery
     Active = True
@@ -171,13 +159,13 @@ object DataModule1: TDataModule1
   end
   object ModuleLecture: TDataSource
     DataSet = ADOModuleLecture
-    Left = 24
+    Left = 32
     Top = 296
   end
   object ADOModuleLecture: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
-    Left = 24
+    Left = 32
     Top = 240
   end
   object TemaCRUD: TDataSource

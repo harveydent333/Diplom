@@ -1,6 +1,6 @@
 object MainMenu: TMainMenu
-  Left = 154
-  Top = 114
+  Left = 57
+  Top = 192
   AutoScroll = False
   Caption = 'MainMenu'
   ClientHeight = 643

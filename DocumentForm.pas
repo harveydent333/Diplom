@@ -42,27 +42,35 @@ implementation
 
 procedure TShyrnal.SpeedButton1Click(Sender: TObject);
 begin
-MainMenu.show;
-Shyrnal.Close;
+    MainMenu.show;
+    Shyrnal.Close;
 end;
 
 procedure TShyrnal.SpeedButton3Click(Sender: TObject);
 begin
-AuthorizationForm.Edit1.Text:='';
-AuthorizationData.freeDataUser;
-AuthorizationForm.show;
-Shyrnal.Close;
-MainMenu.Close;
-   end;
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.show;
+    Shyrnal.Close;
+    MainMenu.Close;
+end;
+
 procedure TShyrnal.SpeedButton6Click(Sender: TObject);
+var temp:word;
 begin
-Shyrnal.Close;
-TitleForm.close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 procedure TShyrnal.FormClose(Sender: TObject; var Action: TCloseAction);
+var temp:word;
 begin
-MainMenu.Show;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 procedure TShyrnal.Button1Click(Sender: TObject);

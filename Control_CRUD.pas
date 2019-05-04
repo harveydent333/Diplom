@@ -20,10 +20,14 @@ type
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
     DBGrid2: TDBGrid;
+    SpeedButton8: TSpeedButton;
+    Label3: TLabel;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,13 +39,18 @@ var
 
 implementation
 
-uses Title_Form, config, UpdateUnit, AddControl, UpdateControl;
+uses Title_Form, config, UpdateUnit, AddControl, UpdateControl,
+  Add_Question;
 
 {$R *.dfm}
 
 procedure TControlCRUD.SpeedButton4Click(Sender: TObject);
+var temp:word;
 begin
-TitleForm.close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 procedure TControlCRUD.SpeedButton1Click(Sender: TObject);    // Добавление нового контроля
@@ -74,6 +83,38 @@ begin
       finally
         Free;
     end;
+end;
+
+procedure TControlCRUD.SpeedButton8Click(Sender: TObject);  // Переход в редактор вопросов
+begin
+    if DBGrid1.DataSource.DataSet.RecordCount = 0 then
+      MessageBox(0,'Ни одного контроля знаний не выбрано!','',MB_OK+MB_ICONWARNING)
+    else
+      begin
+        // дефолт при создании вопросов //
+        //
+        // =====
+        config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
+        updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+        updateKodControl:=DBGrid2.DataSource.DataSet.FieldByName('КодКонтроля').AsInteger;
+
+        config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+        Add_Questions.ListBox1.Clear;
+        Add_Questions.DBGrid1.DataSource.DataSet.First;
+        While (Add_Questions.DBGrid1.DataSource.DataSet.Eof=false) do
+          begin
+            Add_Questions.ListBox1.Items.Add(Add_Questions.DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
+            Add_Questions.DBGrid1.DataSource.DataSet.Next;
+          end;
+         Add_Questions.VariantsQuestionSingle1.Visible:=false;
+         Add_Questions.Button2.Enabled:=false;
+        Add_Questions.show;
+      end;
+end;
+
+procedure TControlCRUD.SpeedButton2Click(Sender: TObject);
+begin
+    ControlCRUD.Close;
 end;
 
 end.

@@ -1,14 +1,14 @@
 object Add_Questions: TAdd_Questions
-  Left = 83
-  Top = 249
+  Left = 90
+  Top = 150
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
-  ClientHeight = 661
+  ClientHeight = 672
   ClientWidth = 1172
   Color = clBtnFace
-  Constraints.MaxHeight = 699
+  Constraints.MaxHeight = 710
   Constraints.MaxWidth = 1188
-  Constraints.MinHeight = 699
+  Constraints.MinHeight = 710
   Constraints.MinWidth = 1188
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,23 +17,8 @@ object Add_Questions: TAdd_Questions
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
-  object Label2: TLabel
-    Left = 200
-    Top = 56
-    Width = 32
-    Height = 13
-    Caption = 'Label2'
-  end
-  object Label7: TLabel
-    Left = 224
-    Top = 56
-    Width = 32
-    Height = 13
-    Caption = 'Label7'
-  end
   object Label1: TLabel
     Left = 96
     Top = 8
@@ -4797,7 +4782,6 @@ object Add_Questions: TAdd_Questions
     Flat = True
     ParentShowHint = False
     ShowHint = True
-    OnClick = SpeedButton1Click
   end
   object SpeedButton2: TSpeedButton
     Left = 4
@@ -4859,84 +4843,134 @@ object Add_Questions: TAdd_Questions
     ParentFont = False
     Transparent = True
   end
-  object Panel1: TPanel
-    Left = 0
-    Top = 632
-    Width = 1177
-    Height = 33
-    Color = clBtnHighlight
-    TabOrder = 0
-  end
-  object DBLookupListBox1: TDBLookupListBox
-    Left = 0
-    Top = 53
-    Width = 300
-    Height = 303
+  object Label2: TLabel
+    Left = 8
+    Top = 54
+    Width = 261
+    Height = 23
+    Caption = #1050#1088#1072#1090#1082#1086#1077' '#1089#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1074#1086#1087#1088#1086#1089#1072
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
-    KeyField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1042#1086#1087#1088#1086#1089#1072
-    ListSource = DataModule1.AddQuestionSource
     ParentFont = False
-    PopupMenu = PopupMenu1
+    Transparent = True
+  end
+  object Label3: TLabel
+    Left = 568
+    Top = 56
+    Width = 187
+    Height = 23
+    Caption = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1074#1086#1087#1088#1086#1089#1072
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Memo1: TMemo
+    Left = 272
+    Top = 80
+    Width = 901
+    Height = 105
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 1
   end
-  object DBMemo6: TDBMemo
-    Left = 300
-    Top = 53
-    Width = 870
-    Height = 170
-    Constraints.MaxHeight = 170
-    Constraints.MaxWidth = 870
-    Constraints.MinHeight = 170
-    Constraints.MinWidth = 870
-    DataField = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077#1042#1086#1087#1088#1086#1089#1072
-    DataSource = DataModule1.AddQuestionSource
+  object ListBox1: TListBox
+    Left = 0
+    Top = 80
+    Width = 273
+    Height = 553
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ItemHeight = 23
+    ParentFont = False
+    TabOrder = 2
+    OnClick = ListBox1Click
+  end
+  object DBGrid1: TDBGrid
+    Left = 424
+    Top = 0
+    Width = 329
+    Height = 57
+    DataSource = DataModule1.ModuleLecture
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+  end
+  inline VariantsQuestionSingle1: TVariantsQuestionSingle
+    Left = 280
+    Top = 184
+    Width = 892
+    Height = 473
+    Color = clBtnFace
+    ParentColor = False
+    TabOrder = 3
+    Visible = False
+    inherited Label4: TLabel
+      Visible = True
+    end
+    inherited Panel2: TPanel
+      Visible = True
+      inherited BitBtn1: TBitBtn
+        OnClick = VariantsQuestionSingle1BitBtn1Click
+      end
+      inherited BitBtn2: TBitBtn
+        OnClick = VariantsQuestionSingle1BitBtn2Click
+      end
+      inherited BitBtn3: TBitBtn
+        Visible = True
+      end
+      inherited BitBtn4: TBitBtn
+        OnClick = VariantsQuestionSingle1BitBtn4Click
+      end
+    end
+    inherited Memo4: TMemo
+      Visible = True
+    end
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 640
+    Width = 120
+    Height = 25
+    Caption = #1044#1086#1073#1072#1074#1080#1090#1100
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    TabOrder = 2
-    WordWrap = False
-  end
-  object DBGrid1: TDBGrid
-    Left = 408
-    Top = -200
-    Width = 320
-    Height = 120
-    TabOrder = 3
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-  end
-  object DBGrid2: TDBGrid
-    Left = 376
-    Top = -200
-    Width = 320
-    Height = 120
-    DataSource = DataModule1.AddQuestionSource
     TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
+    OnClick = Button1Click
   end
-  object PopupMenu1: TPopupMenu
-    Left = 320
-    Top = 16
-    object N1: TMenuItem
-      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
-      OnClick = N1Click
-    end
-    object N2: TMenuItem
-      Caption = #1059#1076#1072#1083#1080#1090#1100
-    end
+  object Button2: TButton
+    Left = 144
+    Top = 640
+    Width = 120
+    Height = 25
+    Caption = #1059#1076#1072#1083#1080#1090#1100
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    OnClick = Button2Click
   end
 end
