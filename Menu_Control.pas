@@ -42,6 +42,7 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure ComboBox3Change(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,7 +56,8 @@ var
 
 implementation
 
-uses config, Title_Form;
+uses config, Title_Form, UpdateUnit, PassingKnowledgeControl, basa_dan,
+  defoltTest;
 
 {$R *.dfm}
 
@@ -71,6 +73,7 @@ begin
     label7.Visible:=false;
     Panel1.Visible:=false;
     SpeedButton1.Visible:=false;
+    SpeedButton1.Enabled:=false;
 
     nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
@@ -105,6 +108,7 @@ begin
     label7.Visible:=false;
     Panel1.Visible:=false;
     SpeedButton1.Visible:=false;
+    SpeedButton1.Enabled:=false;
 
     nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);
@@ -133,6 +137,17 @@ begin
     Panel1.Visible:=true;
     SpeedButton1.Visible:=true;
     label20.Caption:=nameControl+'"';
+
+    config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+nameControl+#39);
+    updateKodControl:=DBGrid1.DataSource.DataSet.FieldByName('КодКонтроля').AsInteger;
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+    label14.Caption:=IntToStr(DBGrid1.DataSource.DataSet.RecordCount);
+
+
+    if DBGrid1.DataSource.DataSet.RecordCount>0 then
+      SpeedButton1.Enabled:=true
+    else
+      SpeedButton1.Enabled:=false;
 end;
 
 procedure TMenuControl.ComboBox1KeyPress(Sender: TObject; var Key: Char);
@@ -151,8 +166,27 @@ begin
 end;
 
 procedure TMenuControl.SpeedButton4Click(Sender: TObject);
+var temp:word;
 begin
-    TitleForm.close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
+end;
+
+procedure TMenuControl.SpeedButton1Click(Sender: TObject);
+begin
+  with PassingKnowledgeControlForm do
+    begin
+      show;
+      VariantsQuestionMore1.Visible:=true;
+      DBGrid1.DataSource.DataSet.First;
+      Memo1.Clear;
+      Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
+      defoltTest.countQuest(DBGrid1.DataSource.DataSet.FieldByName('КоличествоОтветов').AsInteger);
+      defoltTest.setMemoLines;
+      defoltTest.clearStrokiMemo;
+    end;
 end;
 
 end.

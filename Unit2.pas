@@ -31,7 +31,6 @@ type
     procedure teacher_OFFClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure teacherAuthorization;
     procedure stydentAuthorization;
@@ -45,7 +44,7 @@ var
 
 implementation
 
-uses Unit3, AuthorizationData, Title_Form, config, Main_Menu;
+uses AuthorizationData, Title_Form, config, Main_Menu;
 
 {$R *.dfm}
 
@@ -94,20 +93,15 @@ procedure TAuthorizationForm.SpeedButton1Click(Sender: TObject);
 begin
     AuthorizationForm.close;
     TitleForm.Show;
-    TitleForm.Position:=poDesktopCenter;
 end;
 
 procedure TAuthorizationForm.SpeedButton3Click(Sender: TObject);
+var temp:word;
 begin
-    AuthorizationForm.Close;
-    TitleForm.close;
-end;
-
-procedure TAuthorizationForm.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-    TitleForm.Show;
-    TitleForm.Position:=poDesktopCenter;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 procedure TAuthorizationForm.teacherAuthorization;

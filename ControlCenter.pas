@@ -16,11 +16,13 @@ type
     SpeedButton5: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
+    SpeedButton6: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,7 +34,8 @@ var
 
 implementation
 
-uses Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD, Control_CRUD;
+uses Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD, Control_CRUD,
+  Title_Form;
 
 {$R *.dfm}
 
@@ -59,6 +62,15 @@ end;
 procedure TDataManagementCenter.SpeedButton5Click(Sender: TObject);
 begin
     ControlCRUD.show;
+end;
+
+procedure TDataManagementCenter.SpeedButton6Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 end.

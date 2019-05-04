@@ -1,6 +1,6 @@
 object DataManagementCenter: TDataManagementCenter
-  Left = -8
-  Top = 161
+  Left = 67
+  Top = 143
   AutoScroll = False
   Caption = 'DataManagementCenter'
   ClientHeight = 631
@@ -3137,7 +3137,7 @@ object DataManagementCenter: TDataManagementCenter
     Proportional = True
   end
   object SpeedButton1: TSpeedButton
-    Left = 350
+    Left = 382
     Top = 200
     Width = 385
     Height = 49
@@ -3152,7 +3152,7 @@ object DataManagementCenter: TDataManagementCenter
     OnClick = SpeedButton1Click
   end
   object SpeedButton2: TSpeedButton
-    Left = 350
+    Left = 382
     Top = 100
     Width = 385
     Height = 49
@@ -3167,7 +3167,7 @@ object DataManagementCenter: TDataManagementCenter
     OnClick = SpeedButton2Click
   end
   object SpeedButton3: TSpeedButton
-    Left = 350
+    Left = 382
     Top = 300
     Width = 385
     Height = 49
@@ -3182,7 +3182,7 @@ object DataManagementCenter: TDataManagementCenter
     OnClick = SpeedButton3Click
   end
   object SpeedButton4: TSpeedButton
-    Left = 350
+    Left = 382
     Top = 400
     Width = 385
     Height = 49
@@ -3197,7 +3197,7 @@ object DataManagementCenter: TDataManagementCenter
     OnClick = SpeedButton4Click
   end
   object SpeedButton5: TSpeedButton
-    Left = 350
+    Left = 382
     Top = 500
     Width = 385
     Height = 49
@@ -3238,5 +3238,13 @@ object DataManagementCenter: TDataManagementCenter
     Font.Style = []
     ParentFont = False
     Transparent = True
+  end
+  object SpeedButton6: TSpeedButton
+    Left = 1096
+    Top = 0
+    Width = 57
+    Height = 51
+    Flat = True
+    OnClick = SpeedButton6Click
   end
 end

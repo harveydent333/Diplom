@@ -7,7 +7,6 @@ uses
   Menu_Teacher in 'Menu_Teacher.pas' {RegistrationForm},
   basa_dan in 'basa_dan.pas' {DataModule1: TDataModule},
   Add_Question in 'Add_Question.pas' {Add_Questions},
-  Control in 'Control.pas' {KnowledgeControl},
   AddRazdel in 'AddRazdel.pas' {AddRazdelModalForm},
   AddTema in 'AddTema.pas' {AddTemaModalForm},
   AuthorizationData in 'AuthorizationData.pas',
@@ -36,7 +35,12 @@ uses
   ControlCenter in 'ControlCenter.pas' {DataManagementCenter},
   Menu_Control in 'Menu_Control.pas' {MenuControl},
   Main_Menu in 'Main_Menu.pas' {MainMenu},
-  Variants_Question in 'Variants_Question.pas' {VariantsQuestion: TFrame};
+  Variants_Question in 'Variants_Question.pas' {VariantsQuestionSingle: TFrame},
+  Variants_Question_More in 'Variants_Question_More.pas' {VariantsQuestionMore: TFrame},
+  Variants_Question_Write in 'Variants_Question_Write.pas' {VariantsQuestionWrite: TFrame},
+  QuestionsMemo in 'QuestionsMemo.pas',
+  AddQuestionModal in 'AddQuestionModal.pas' {AddQuestionModalForm},
+  EditLecture in 'EditLecture.pas' {Edit_Lecture};
 
 {$R *.res}
 
@@ -47,8 +51,6 @@ begin
   Application.CreateForm(TRegistrationForm, RegistrationForm);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TAdd_Questions, Add_Questions);
-  Application.CreateForm(TKnowledgeControl, KnowledgeControl);
-  Application.CreateForm(TPassingKnowledgeControlForm, PassingKnowledgeControlForm);
   Application.CreateForm(TShyrnal, Shyrnal);
   Application.CreateForm(TResultForm, ResultForm);
   Application.CreateForm(TMenuLectures, MenuLectures);
@@ -62,5 +64,7 @@ begin
   Application.CreateForm(TDataManagementCenter, DataManagementCenter);
   Application.CreateForm(TMenuControl, MenuControl);
   Application.CreateForm(TMainMenu, MainMenu);
+  Application.CreateForm(TEdit_Lecture, Edit_Lecture);
+  Application.CreateForm(TPassingKnowledgeControlForm, PassingKnowledgeControlForm);
   Application.Run;
 end.

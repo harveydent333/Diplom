@@ -1,6 +1,6 @@
 object MenuControl: TMenuControl
-  Left = 393
-  Top = 228
+  Left = 71
+  Top = 219
   AutoScroll = False
   Caption = 'MenuControl'
   ClientHeight = 643
@@ -16,6 +16,7 @@ object MenuControl: TMenuControl
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3426,6 +3427,7 @@ object MenuControl: TMenuControl
     Width = 505
     Height = 49
     Caption = #1053#1072#1095#1072#1090#1100' '#1088#1077#1096#1077#1085#1080#1077
+    Enabled = False
     Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -3434,6 +3436,7 @@ object MenuControl: TMenuControl
     Font.Style = []
     ParentFont = False
     Visible = False
+    OnClick = SpeedButton1Click
   end
   object DBGrid1: TDBGrid
     Left = 632
@@ -3603,8 +3606,8 @@ object MenuControl: TMenuControl
     object Label19: TLabel
       Left = 32
       Top = 192
-      Width = 457
-      Height = 57
+      Width = 436
+      Height = 46
       Caption = 
         #1044#1083#1103' '#1085#1072#1095#1072#1083#1072' '#1087#1088#1086#1093#1086#1078#1076#1077#1085#1080#1103' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1085#1072#1078#1084#1080#1090#1077' '#1085#1072' '#1082#1085#1086#1087#1082#1091' "'#1053#1072#1095#1072#1090#1100' '#1088#1077#1096#1077#1085#1080 +
         #1077'"'

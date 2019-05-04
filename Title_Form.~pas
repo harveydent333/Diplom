@@ -1,0 +1,213 @@
+unit Title_Form;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, jpeg, ExtCtrls, Grids, DBGrids, basa_dan, StdCtrls, AuthorizationData;
+
+type
+  TTitleForm = class(TForm)
+    Image1: TImage;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    Label1: TLabel;
+    DBGrid1: TDBGrid;
+    Image2: TImage;
+    SpeedButton4: TSpeedButton;
+    Button1: TButton;
+    DBGrid2: TDBGrid;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
+    Button10: TButton;
+    Button11: TButton;
+    StringGrid1: TStringGrid;
+    Button12: TButton;
+    Button13: TButton;
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure Button12Click(Sender: TObject);
+    procedure Button13Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TitleForm: TTitleForm;
+
+implementation
+
+uses Unit2, Add_Question, Control, PassingKnowledgeControl, Menu_Lectures,
+  Menu_Practic, Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD,
+  Control_CRUD, Ycheniki_CRUD, config, UpdateUnit, Menu_Control,
+  Main_Menu, EditLecture;
+
+{$R *.dfm}
+
+procedure TTitleForm.SpeedButton2Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
+end;
+
+procedure TTitleForm.FormCreate(Sender: TObject);
+begin
+with TitleForm do
+  begin
+    Height:=699;
+    Width:=1188;
+  end;
+end;
+
+procedure TTitleForm.SpeedButton4Click(Sender: TObject);
+var i:integer;
+begin
+   AuthorizationForm.Show;
+   AuthorizationForm.Position:=poDesktopCenter;
+  // TitleForm.Top:=-2000;
+   dbgrid1.DataSource.DataSet.First;
+   for i:=1 to dbgrid1.DataSource.DataSet.RecordCount do
+      begin
+        AuthorizationForm.DBComboBox1.Items.Add(dbgrid1.DataSource.DataSet.FieldByName('login').AsString);
+        DBGrid1.DataSource.DataSet.Next;
+      end;
+
+end;
+
+procedure TTitleForm.Button1Click(Sender: TObject);    //  РАБОТА С  ЛЕКЦИИ - УЧЕНИК
+begin
+    MenuLectures.show;
+    MenuLectures.ComboBox1.Items.Clear;
+    config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
+    DBGrid2.DataSource.DataSet.First;
+    While (DBGrid2.DataSource.DataSet.Eof=false) do
+      begin
+        MenuLectures.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+        DBGrid2.DataSource.DataSet.Next;
+      end;
+    DBGrid2.DataSource.DataSet.First;
+    MenuLectures.ComboBox1.Text:=DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;  //  конец создания
+end;
+
+procedure TTitleForm.Button2Click(Sender: TObject);     //  РАБОТА С  ПРАКТИКЧЕСКИМИ - УЧЕНИК
+begin
+    MenuPractic.show;
+    MenuPractic.ComboBox2.Items.Clear;
+    config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
+    DBGrid2.DataSource.DataSet.First;
+    While (DBGrid2.DataSource.DataSet.Eof=false) do
+      begin
+        MenuPractic.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+        DBGrid2.DataSource.DataSet.Next;
+      end;
+    DBGrid2.DataSource.DataSet.First;
+    MenuPractic.ComboBox1.Text:=DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;  //  конец создания
+end;
+
+procedure TTitleForm.Button10Click(Sender: TObject);  //  РАБОТА С Контролем знаний - УЧЕНИК
+begin
+    MenuControl.show;
+    MenuControl.ComboBox1.Items.Clear;
+    MenuControl.ComboBox2.Items.Clear;
+    config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
+    DBGrid2.DataSource.DataSet.First;
+    While (DBGrid2.DataSource.DataSet.Eof=false) do
+      begin
+        MenuControl.ComboBox1.Items.Add(DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
+        DBGrid2.DataSource.DataSet.Next;
+      end;
+    DBGrid2.DataSource.DataSet.First;
+    MenuControl.ComboBox1.Text:=DBGrid2.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;  //  конец создания
+end;
+
+procedure TTitleForm.Button3Click(Sender: TObject);
+begin
+    TemaCRUD.show;
+end;
+
+procedure TTitleForm.Button4Click(Sender: TObject);
+begin
+    PracticCRUD.show;
+end;
+
+procedure TTitleForm.Button5Click(Sender: TObject);
+begin
+    RazdelCRUD.Show;
+end;
+
+procedure TTitleForm.Button6Click(Sender: TObject);
+begin
+    LectureCRUD.show;
+end;
+
+procedure TTitleForm.Button7Click(Sender: TObject);
+begin
+    ControlCRUD.show;
+end;
+
+procedure TTitleForm.Button8Click(Sender: TObject);
+begin
+    YchenikiCRUD.show;
+end;
+
+procedure TTitleForm.Button9Click(Sender: TObject);
+begin
+    Mainmenu.show;
+end;
+
+procedure TTitleForm.Button11Click(Sender: TObject);
+var str:string;
+i,j,beg:integer;
+ar:array[1..50] of string;
+begin
+  str:='qq`ss`dd`ff`ee`sd`';
+  beg:=1;
+  j:=1;
+  for i:=1 to length(str) do begin
+    if(str[i]='`') then
+      begin
+        ar[j]:=Copy(str, beg, i-beg);
+        beg:=i+1;
+        inc(j);
+      end;
+     if (pos(str[i],str)= length(str)) then
+       ar[j]:=Copy(str, beg, (length(str))-beg);
+    end;
+end;
+
+
+
+procedure TTitleForm.Button12Click(Sender: TObject);
+begin
+    Add_Questions.Show;
+end;
+
+procedure TTitleForm.Button13Click(Sender: TObject);
+begin
+    Edit_Lecture.show;
+end;
+
+end.

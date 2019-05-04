@@ -1,6 +1,6 @@
 object AuthorizationForm: TAuthorizationForm
-  Left = 402
-  Top = 179
+  Left = 82
+  Top = 154
   AutoScroll = False
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103
   ClientHeight = 643
@@ -17,7 +17,6 @@ object AuthorizationForm: TAuthorizationForm
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

@@ -1,6 +1,6 @@
 object TitleForm: TTitleForm
-  Left = 71
-  Top = 145
+  Left = 100
+  Top = 179
   AutoScroll = False
   Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1080' '#1079#1072#1097#1080#1090#1072' WEB '#1087#1088#1080#1083#1086#1078#1077#1085#1080#1081
   ClientHeight = 643
@@ -3314,8 +3314,8 @@ object TitleForm: TTitleForm
     ShowHint = True
   end
   object Label1: TLabel
-    Left = 40
-    Top = 144
+    Left = 80
+    Top = 176
     Width = 1105
     Height = 137
     Alignment = taCenter
@@ -4009,34 +4009,6 @@ object TitleForm: TTitleForm
     ParentFont = False
     OnClick = SpeedButton4Click
   end
-  object Label2: TLabel
-    Left = 456
-    Top = 24
-    Width = 32
-    Height = 13
-    Caption = 'Label2'
-  end
-  object Label3: TLabel
-    Left = 600
-    Top = 24
-    Width = 32
-    Height = 13
-    Caption = 'Label3'
-  end
-  object Label4: TLabel
-    Left = 720
-    Top = 24
-    Width = 32
-    Height = 13
-    Caption = 'Label4'
-  end
-  object Label5: TLabel
-    Left = 800
-    Top = 24
-    Width = 32
-    Height = 13
-    Caption = 'Label5'
-  end
   object DBGrid1: TDBGrid
     Left = 88
     Top = 48
@@ -4181,5 +4153,14 @@ object TitleForm: TTitleForm
     Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1074#1086#1087#1088#1086#1089#1086#1074
     TabOrder = 14
     OnClick = Button12Click
+  end
+  object Button13: TButton
+    Left = 304
+    Top = 536
+    Width = 161
+    Height = 25
+    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077#1051#1077#1082#1094#1080#1080
+    TabOrder = 15
+    OnClick = Button13Click
   end
 end
