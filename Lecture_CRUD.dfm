@@ -1,6 +1,6 @@
 object LectureCRUD: TLectureCRUD
-  Left = 137
-  Top = 252
+  Left = 71
+  Top = 181
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1083#1077#1082#1094#1080#1103#1084#1080
   ClientHeight = 643
@@ -4584,7 +4584,7 @@ object LectureCRUD: TLectureCRUD
   object SpeedButton1: TSpeedButton
     Left = 200
     Top = 408
-    Width = 425
+    Width = 457
     Height = 49
     Caption = #1057#1086#1079#1076#1072#1090#1100
     Flat = True
@@ -4597,7 +4597,7 @@ object LectureCRUD: TLectureCRUD
     OnClick = SpeedButton1Click
   end
   object SpeedButton6: TSpeedButton
-    Left = 200
+    Left = 232
     Top = 464
     Width = 425
     Height = 49
@@ -4614,7 +4614,7 @@ object LectureCRUD: TLectureCRUD
   object SpeedButton7: TSpeedButton
     Left = 200
     Top = 520
-    Width = 425
+    Width = 457
     Height = 49
     Caption = #1059#1076#1072#1083#1080#1090#1100
     Flat = True
@@ -4700,13 +4700,13 @@ object LectureCRUD: TLectureCRUD
   object SpeedButton8: TSpeedButton
     Left = 200
     Top = 576
-    Width = 425
+    Width = 457
     Height = 49
-    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1083#1077#1082#1094#1080#1102
+    Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1089#1086#1076#1077#1088#1078#1080#1084#1086#1077' '#1083#1077#1082#1094#1080#1080
     Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -32
+    Font.Height = -27
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False

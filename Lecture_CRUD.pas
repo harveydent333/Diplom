@@ -98,6 +98,7 @@ begin
         Memo1.Height:=833;
         Memo1.Width:=1190;
         Button1.Left:=8;
+        Button1.Visible:=true;
         Button3.Left:=128;
         Button4.Visible:=true;
         Button5.Visible:=true;
