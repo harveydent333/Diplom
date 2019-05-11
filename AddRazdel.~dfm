@@ -1,8 +1,8 @@
 object AddRazdelModalForm: TAddRazdelModalForm
-  Left = 390
-  Top = 216
+  Left = 471
+  Top = 210
   AutoScroll = False
-  Caption = #1057#1086#1079#1076#1072#1085#1080'e '#1085#1086#1074#1086#1075#1086' '#1088#1072#1079#1076#1077#1083#1072
+  Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
   ClientHeight = 310
   ClientWidth = 644
   Color = clBtnFace
@@ -684,8 +684,8 @@ object AddRazdelModalForm: TAddRazdelModalForm
       0514514005145140051451400514514005145140051451401FFFD9}
   end
   object Label1: TLabel
-    Left = 192
-    Top = 80
+    Left = 112
+    Top = 88
     Width = 238
     Height = 23
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072

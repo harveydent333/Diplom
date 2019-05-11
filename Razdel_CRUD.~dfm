@@ -1,8 +1,8 @@
 object RazdelCRUD: TRazdelCRUD
-  Left = 82
-  Top = 183
+  Left = 273
+  Top = 256
   AutoScroll = False
-  Caption = 'RazdelCRUD'
+  Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1088#1072#1079#1076#1077#1083#1072#1084#1080
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -3332,6 +3332,7 @@ object RazdelCRUD: TRazdelCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton2Click
   end
   object SpeedButton3: TSpeedButton
     Left = 11
@@ -3352,6 +3353,7 @@ object RazdelCRUD: TRazdelCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton5Click
   end
   object SpeedButton4: TSpeedButton
     Left = 1120

@@ -24,6 +24,9 @@ type
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,14 +39,11 @@ var
 
 implementation
 
-uses basa_dan, Title_Form, Menu_Teacher, AuthorizationData, config, UpdateUnit;
+uses basa_dan, Title_Form, Menu_Teacher, AuthorizationData, config, UpdateUnit,
+  ControlCenter,
+  Unit2;
 
 {$R *.dfm}
-
-procedure TYchenikiCRUD.SpeedButton4Click(Sender: TObject);
-begin
-TitleForm.close;
-end;
 
 procedure TYchenikiCRUD.SpeedButton6Click(Sender: TObject);       // Добавление нового ученика
 begin
@@ -66,6 +66,38 @@ begin
       DBGrid1.DataSource.DataSet.FieldByName('Отчество').AsString;
     config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+login+#39);
     updateKodYchenika:=DBGrid2.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
+end;
+
+procedure TYchenikiCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    YchenikiCRUD.Visible:=false;
+end;
+
+procedure TYchenikiCRUD.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    YchenikiCRUD.Visible:=false;
+end;
+
+procedure TYchenikiCRUD.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
+end;
+procedure TYchenikiCRUD.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    YchenikiCRUD.Visible:=false;
 end;
 
 end.

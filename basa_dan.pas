@@ -8,22 +8,12 @@ uses
 type
   TDataModule1 = class(TDataModule)
     ADOConnection1: TADOConnection;
-    AddQuestionSource: TDataSource;
-    AddQuestionADO: TADOQuery;
-    ShowRazdel: TDataSource;
-    ShowRazdelADO: TADOQuery;
-    ShowTemaADO: TADOQuery;
-    ShowTema: TDataSource;
-    ShowControlADO: TADOQuery;
-    ShowControl: TDataSource;
     EditRazdel: TDataSource;
     EditRazdelADO: TADOQuery;
     EditTemaADO: TADOQuery;
     EditTema: TDataSource;
     EditControl: TDataSource;
     EditControlADO: TADOQuery;
-    ShyrnalADO: TADOQuery;
-    Shyrnal: TDataSource;
     YchenikADO: TADOQuery;
     Ychenik: TDataSource;
     ModuleLecture: TDataSource;
@@ -38,10 +28,8 @@ type
     ADOPracticCRUD: TADOQuery;
     ControlCRUD: TDataSource;
     ADOControlCRUD: TADOQuery;
-    Update: TDataSource;
-    ADOUpdate: TADOQuery;
-    ShowLectureADO: TADOQuery;
-    ShowLecture: TDataSource;
+    ADOMultimediaCRUD: TADOQuery;
+    MultimediaCRUD: TDataSource;
   private
     { Private declarations }
   public

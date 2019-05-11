@@ -8,7 +8,7 @@ uses
   DBGrids, DBCtrls ;
 
 type
-  TAuthorizationForm = class(TForm)
+    TAuthorizationForm = class(TForm)
     Edit2: TEdit;
     Edit1: TEdit;
     SpeedButton2: TSpeedButton;
@@ -31,6 +31,7 @@ type
     procedure teacher_OFFClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure teacherAuthorization;
     procedure stydentAuthorization;
@@ -44,19 +45,19 @@ var
 
 implementation
 
-uses AuthorizationData, Title_Form, config, Main_Menu;
+uses AuthorizationData, Title_Form, config, Main_Menu,
+  Restore_Account;
 
 {$R *.dfm}
 
 procedure TAuthorizationForm.SpeedButton2Click(Sender: TObject);   // Нажатие кнопки  "Войти"
 var KodUser:integer;
 begin
-if teacher_ON.Visible = true then         // Авторизация под учителем
-  teacherAuthorization;
+    if teacher_ON.Visible = true then         // Авторизация под учителем
+      teacherAuthorization;
 
-if stydent_ON.Visible = true then         // Авторизация под студентом
-  stydentAuthorization;
-
+    if stydent_ON.Visible = true then         // Авторизация под студентом
+      stydentAuthorization;
 end;
 
 procedure TAuthorizationForm.stydent_OFFClick(Sender: TObject);
@@ -65,6 +66,7 @@ begin
     stydent_OFF.Visible:=false;
     teacher_OFF.Visible:=true;
     stydent_ON.Visible:=true;
+
 
     Edit2.Visible:=false;
     Edit1.Visible:=false;
@@ -91,9 +93,60 @@ end;
 
 procedure TAuthorizationForm.SpeedButton1Click(Sender: TObject);
 begin
-    AuthorizationForm.close;
+    AuthorizationForm.Visible:=false;
     TitleForm.Show;
+    TitleForm.Position:=poDesktopCenter;
 end;
+
+
+procedure TAuthorizationForm.teacherAuthorization;
+begin
+    config.selectRequestSQL('SELECT password FROM Учитель WHERE login='+#39+edit2.text+#39);
+    if DataModule1.ADOModuleLecture.IsEmpty then
+        MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
+    else
+       if DataModule1.ADOModuleLecture.FieldByName('password').Value<>edit1.Text then
+        MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
+       else
+        begin
+           AuthorizationData.getDataUser;
+           MainMenu.show;
+           AuthorizationForm.Visible:=false;
+        end;
+    with MainMenu do
+      begin
+         SpeedButton5.Visible:=false;
+         SpeedButton8.Visible:=false;
+         SpeedButton9.Visible:=false;
+         SpeedButton1.Visible:=true;
+         SpeedButton2.Visible:=true;
+         SpeedButton10.top:=328;
+      end;
+end;
+
+procedure TAuthorizationForm.stydentAuthorization;
+begin
+      config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+DBComboBox1.Text+#39);
+      if DataModule1.ADOModuleLecture.IsEmpty then
+        MessageBox(0,'Данный пользователь не найден!','Авторизация', MB_OK+MB_ICONwarning)
+      else
+          begin
+            KodUser:=DBGrid1.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
+            AuthorizationData.getDataUser;
+            MainMenu.show;
+            label1.Caption:=inttostr(KodUser);
+            AuthorizationForm.Visible:=false;
+          end;
+      with MainMenu do
+        begin
+          SpeedButton5.Visible:=true;
+          SpeedButton8.Visible:=true;
+          SpeedButton9.Visible:=true;
+          SpeedButton1.Visible:=false;
+          SpeedButton2.Visible:=false;
+          SpeedButton10.top:=384;
+        end;
+    end;
 
 procedure TAuthorizationForm.SpeedButton3Click(Sender: TObject);
 var temp:word;
@@ -104,42 +157,14 @@ begin
       TitleForm.close;
 end;
 
-procedure TAuthorizationForm.teacherAuthorization;
+procedure TAuthorizationForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+var temp:word;
 begin
-     config.selectRequestSQL('SELECT password FROM Учитель WHERE login='+#39+edit2.text+#39);
-     if DataModule1.ADOModuleLecture.IsEmpty then
-        MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
-     else
-       if DataModule1.ADOModuleLecture.FieldByName('password').Value<>edit1.Text then
-        MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
-       else
-        begin
-           AuthorizationData.getDataUser;
-           MainMenu.show;
-           AuthorizationForm.Visible:=false;
-        end;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
-
-procedure TAuthorizationForm.stydentAuthorization;
-begin
-      config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+DBComboBox1.Text+#39);
-      if DataModule1.ADOModuleLecture.IsEmpty then
-        MessageBox(0,'Данный пользователь не найден!','Авторизация', MB_OK+MB_ICONwarning)
-      else
-           begin
-            KodUser:=DBGrid1.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
-            AuthorizationData.getDataUser;
-            MainMenu.show;
-            label1.Caption:=inttostr(KodUser);
-            AuthorizationForm.Visible:=false;
-
-           // Перенести этот кусок кода в конфиг!!!!
-                 MainMenu.SpeedButton1.Caption:='Контроль знаний';
-                 MainMenu.SpeedButton2.Caption:='Журнал';
-          //=============================
-            end;
-    end;
-
-
 
 end.

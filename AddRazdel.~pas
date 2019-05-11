@@ -47,10 +47,7 @@ end;
 
 procedure TAddRazdelModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    DataModule1.ShowRazdelADO.Append;
-    DataModule1.ShowRazdelADO.Edit;
-    DataModule1.ShowRazdelADO.FieldByName('НазваниеРаздела').AsString:=edit1.Text;
-    DataModule1.ShowRazdelADO.Post;
+    config.execRequestSQL('INSERT INTO Раздел (НазваниеРаздела) VALUES ('+#39+Edit1.Text+#39+')');
     MessageBox(0,'Раздел был успешно Создан!','Создание Раздела', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
     Edit1.Text:='';
@@ -58,7 +55,6 @@ end;
 
 procedure TAddRazdelModalForm.checkUniqueData; // Проверка на уникальные данные
 begin
-    // Вызов процедуры проверки
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Edit1.Text+#39);
     if DataModule1.ADOModuleLecture.IsEmpty then
       unique_razdel:=true

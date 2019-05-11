@@ -25,12 +25,18 @@ type
     Label6: TLabel;
     Label5: TLabel;
     Label7: TLabel;
+    SpeedButton1: TSpeedButton;
     procedure SpeedButton4Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ComboBox3Change(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,7 +50,12 @@ var
 
 implementation
 
-uses Title_Form, config;
+uses Title_Form, config,
+  Main_Menu,
+  Unit2,
+  AuthorizationData,
+  UpdateUnit,
+  EditLecture;
 
 {$R *.dfm}
 
@@ -67,6 +78,7 @@ begin
     ComboBox3.Items.Clear;
     label5.visible:=false;
     label7.Visible:=false;
+    SpeedButton1.Visible:=false;
 
     nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
@@ -101,6 +113,7 @@ begin
     label3.Visible:=false;
     ComboBox3.Items.Clear;
     label7.Visible:=false;
+    SpeedButton1.Visible:=false;
 
     nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);
@@ -121,6 +134,62 @@ begin
         end
     else
       label7.Visible:=true;
+end;
+
+procedure TMenuLectures.SpeedButton2Click(Sender: TObject);
+begin
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
+    MenuLectures.Visible:=false;
+end;
+
+procedure TMenuLectures.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    MenuLectures.Visible:=false;
+end;
+
+procedure TMenuLectures.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
+    MenuLectures.Visible:=false;
+end;
+
+procedure TMenuLectures.ComboBox3Change(Sender: TObject);
+begin
+    config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+ComboBox3.Text+#39);
+    updateKodLecture:=DBGrid1.DataSource.DataSet.FieldByName('КодЛекции').AsInteger;      // Код  Лекции
+    SpeedButton1.Visible:=true;
+end;
+
+procedure TMenuLectures.SpeedButton1Click(Sender: TObject);
+begin
+    Edit_Lecture.show;
+    Edit_Lecture.Position:=poDesktopCenter;
+    MenuLectures.Visible:=false;
+    Edit_Lecture.Memo1.Clear;
+    Edit_Lecture.Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('Содержание').AsString);
+
+    //сделаю в конфиге
+    with Edit_Lecture do
+      begin
+        Height:=920;
+        Width:=1201;
+        Memo1.Height:=833;
+        Memo1.Width:=1190;
+        Memo1.ReadOnly:=true;
+        Button6.Left:=128;
+        Button1.Visible:=false;
+        Button4.Visible:=false;
+        Button5.Visible:=false;
+        Button3.Left:=3;
+      end;
+    //
 end;
 
 procedure TMenuLectures.ComboBox1KeyPress(Sender: TObject; var Key: Char); // Выпадающий список "Раздел"

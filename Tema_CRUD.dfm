@@ -1,6 +1,6 @@
 object TemaCRUD: TTemaCRUD
-  Left = 57
-  Top = 93
+  Left = 101
+  Top = 138
   AutoScroll = False
   Caption = 'TemaCRUD'
   ClientHeight = 643
@@ -17,6 +17,7 @@ object TemaCRUD: TTemaCRUD
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3296,6 +3297,7 @@ object TemaCRUD: TTemaCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton2Click
   end
   object SpeedButton5: TSpeedButton
     Left = 874
@@ -3306,6 +3308,7 @@ object TemaCRUD: TTemaCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton5Click
   end
   object SpeedButton4: TSpeedButton
     Left = 1120

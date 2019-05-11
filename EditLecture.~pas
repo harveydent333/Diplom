@@ -38,7 +38,8 @@ var
 
 implementation
 
-uses config, UpdateUnit, Lecture_CRUD;
+uses config, UpdateUnit, Lecture_CRUD,
+  Menu_Lectures;
 
 {$R *.dfm}
 
@@ -82,14 +83,24 @@ end;
 
 procedure TEdit_Lecture.Button6Click(Sender: TObject);
 begin
-    LectureCRUD.show;
-    Edit_Lecture.Close;
+    if Memo1.ReadOnly=true then
+      begin
+        MenuLectures.show;
+        Edit_Lecture.Visible:=false;
+      end
+    else
+      begin
+        LectureCRUD.show;
+        Edit_Lecture.Visible:=false;
+      end;
 end;
 
 procedure TEdit_Lecture.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
     LectureCRUD.show;
+    LectureCRUD.Position:=poDesktopCenter;
+    Edit_Lecture.Visible:=false;
 end;
 
 end.

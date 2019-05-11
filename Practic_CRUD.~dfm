@@ -1,8 +1,8 @@
 object PracticCRUD: TPracticCRUD
-  Left = 292
-  Top = 65
+  Left = 256
+  Top = 193
   AutoScroll = False
-  Caption = 'PracticCRUD'
+  Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1084#1080' '#1088#1072#1073#1086#1090#1072#1084#1080
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -16,6 +16,8 @@ object PracticCRUD: TPracticCRUD
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3285,6 +3287,7 @@ object PracticCRUD: TPracticCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton2Click
   end
   object SpeedButton3: TSpeedButton
     Left = 11
@@ -3300,11 +3303,12 @@ object PracticCRUD: TPracticCRUD
     Left = 874
     Top = 0
     Width = 67
-    Height = 49
+    Height = 52
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton5Click
   end
   object SpeedButton4: TSpeedButton
     Left = 1120
@@ -3440,7 +3444,7 @@ object PracticCRUD: TPracticCRUD
   end
   object DBGrid2: TDBGrid
     Left = 696
-    Top = 432
+    Top = 650
     Width = 320
     Height = 120
     DataSource = DataModule1.ModuleLecture

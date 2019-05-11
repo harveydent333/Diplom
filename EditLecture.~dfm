@@ -1,10 +1,13 @@
 object Edit_Lecture: TEdit_Lecture
-  Left = 210
-  Top = 155
-  Width = 988
-  Height = 768
-  Caption = 'Edit_Lecture'
+  Left = 117
+  Top = 97
+  AutoScroll = False
+  Caption = #1051#1077#1082#1094#1080#1103
+  ClientHeight = 860
+  ClientWidth = 1193
   Color = clBtnFace
+  Constraints.MinHeight = 300
+  Constraints.MinWidth = 300
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -18,8 +21,8 @@ object Edit_Lecture: TEdit_Lecture
   object Memo1: TMemo
     Left = 0
     Top = 48
-    Width = 969
-    Height = 681
+    Width = 1190
+    Height = 833
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -77,7 +80,7 @@ object Edit_Lecture: TEdit_Lecture
     OnClick = Button5Click
   end
   object Button6: TButton
-    Left = 888
+    Left = 632
     Top = 8
     Width = 75
     Height = 25

@@ -21,13 +21,14 @@ type
     SpeedButton7: TSpeedButton;
     DBGrid2: TDBGrid;
     SpeedButton8: TSpeedButton;
-    Label3: TLabel;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton8Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -40,18 +41,12 @@ var
 implementation
 
 uses Title_Form, config, UpdateUnit, AddControl, UpdateControl,
-  Add_Question;
+  Add_Question,
+  Unit2,
+  AuthorizationData,
+  ControlCenter;
 
 {$R *.dfm}
-
-procedure TControlCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
-end;
 
 procedure TControlCRUD.SpeedButton1Click(Sender: TObject);    // Добавление нового контроля
 begin
@@ -108,13 +103,44 @@ begin
           end;
          Add_Questions.VariantsQuestionSingle1.Visible:=false;
          Add_Questions.Button2.Enabled:=false;
-        Add_Questions.show;
+         ControlCRUD.Visible:=false;
+         Add_Questions.show;
+         Add_Questions.Memo1.Clear;
+         Add_Questions.Position:=poDesktopCenter;
       end;
+end;
+
+procedure TControlCRUD.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    ControlCRUD.Visible:=false;
+end;
+
+procedure TControlCRUD.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    ControlCRUD.Visible:=false;
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
 end;
 
 procedure TControlCRUD.SpeedButton2Click(Sender: TObject);
 begin
-    ControlCRUD.Close;
+    ControlCRUD.Visible:=false;
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+end;
+
+procedure TControlCRUD.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 end.

@@ -2786,13 +2786,6 @@ object UpdateControlModalForm: TUpdateControlModalForm
     Transparent = True
     Visible = False
   end
-  object Label4: TLabel
-    Left = 40
-    Top = 288
-    Width = 32
-    Height = 13
-    Caption = 'Label4'
-  end
   object ComboBox1: TComboBox
     Left = 120
     Top = 40

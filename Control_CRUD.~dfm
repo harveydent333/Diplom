@@ -1,8 +1,8 @@
 object ControlCRUD: TControlCRUD
-  Left = 29
-  Top = 107
+  Left = 362
+  Top = 199
   AutoScroll = False
-  Caption = 'ControlCRUD'
+  Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1077#1084' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -3308,6 +3308,7 @@ object ControlCRUD: TControlCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton5Click
   end
   object SpeedButton4: TSpeedButton
     Left = 1120
@@ -3408,13 +3409,6 @@ object ControlCRUD: TControlCRUD
     ParentFont = False
     OnClick = SpeedButton8Click
   end
-  object Label3: TLabel
-    Left = 96
-    Top = 456
-    Width = 32
-    Height = 13
-    Caption = 'Label3'
-  end
   object DBGrid1: TDBGrid
     Left = 8
     Top = 56
@@ -3450,7 +3444,7 @@ object ControlCRUD: TControlCRUD
         Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
         Title.Alignment = taCenter
-        Title.Caption = #1058#1077#1084#1099
+        Title.Caption = #1058#1077#1084#1072
         Width = 340
         Visible = True
       end
@@ -3465,7 +3459,7 @@ object ControlCRUD: TControlCRUD
   end
   object DBGrid2: TDBGrid
     Left = 680
-    Top = 416
+    Top = 650
     Width = 320
     Height = 120
     DataSource = DataModule1.ModuleLecture

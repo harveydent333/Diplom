@@ -20,7 +20,6 @@ type
     Label3: TLabel;
     Label2: TLabel;
     DBGrid1: TDBGrid;
-    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
@@ -152,7 +151,6 @@ begin
 
       if ((Edit1.Text<>'')and(unique_user<>false) and (Edit1.Visible=true)) then
         begin
-          label4.Caption:='UPDATE Контроль SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+edit1.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl);
           config.execRequestSQL('UPDATE Контроль SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+edit1.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
           config.rebootRequestsCRUD;
           MessageBox(0,'Контроль знаний был успешно изменен!','Редактирование контроля знаний', MB_OK+MB_ICONINFORMATION);

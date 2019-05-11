@@ -4,13 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, 
-  Dialogs, StdCtrls, Buttons, ExtCtrls;
+  Dialogs, StdCtrls, Buttons, ExtCtrls,
+  Grids, DBGrids,
+  jpeg;
 
 type
   TVariantsQuestionMore = class(TFrame)
     hint: TLabel;
     Label1: TLabel;
-    Memo1: TMemo;
+    Memo11: TMemo;
     Label2: TLabel;
     Memo2: TMemo;
     Label3: TLabel;
@@ -39,8 +41,10 @@ type
     RadioButton8: TRadioButton;
     RadioButton9: TRadioButton;
     RadioButton10: TRadioButton;
+    Image1: TImage;
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +53,11 @@ type
 
 implementation
 
-uses Add_Question;
+uses Add_Question,
+  config,
+  basa_dan,
+  UpdateUnit,
+  defoltTest;
 
 {$R *.dfm}
 
@@ -146,6 +154,11 @@ begin
           
         end;
   end;
+end;
+
+procedure TVariantsQuestionMore.Button1Click(Sender: TObject);
+begin
+    defoltTest.clearStrokiMemo;
 end;
 
 end.

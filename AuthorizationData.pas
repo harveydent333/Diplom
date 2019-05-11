@@ -20,7 +20,8 @@ implementation
 
 uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
   ControlCenter, Lecture_CRUD, Menu_Control, Menu_Lectures, Menu_Practic,
-  Practic_CRUD, Razdel_CRUD, Tema_CRUD, Ycheniki_CRUD, Add_Question;
+  Practic_CRUD, Razdel_CRUD, Tema_CRUD, Ycheniki_CRUD, Add_Question,
+  DocumentForm, SysUtils;
 
 procedure getDataUser;
 begin
@@ -37,6 +38,7 @@ if AuthorizationForm.stydent_ON.Visible = true then
       config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+AuthorizationForm.DBComboBox1.Text+#39);
       getDataAuthUser;            // Заполнение авторизованного пользователя данными
       SetNameAndFamilyAuthUsers; // Заполнение Имя и Фамилии Авторизованным пользователям
+      KodUser:=AuthorizationForm.DBGrid1.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
       roleUser:='stydent';
     end;
 end;
@@ -51,44 +53,47 @@ end;
 
 procedure SetNameAndFamilyAuthUsers;
 begin
-  MainMenu.label1.Caption:=nameUser;
-  MainMenu.label2.Caption:=familyUser;
+    MainMenu.label1.Caption:=nameUser;
+    MainMenu.label2.Caption:=familyUser;
 
-  ControlCRUD.label1.Caption:=nameUser;
-  ControlCRUD.label2.Caption:=familyUser;
+    ControlCRUD.label1.Caption:=nameUser;
+    ControlCRUD.label2.Caption:=familyUser;
 
-  DataManagementCenter.label1.Caption:=nameUser;
-  DataManagementCenter.label2.Caption:=familyUser;
+    DataManagementCenter.label1.Caption:=nameUser;
+    DataManagementCenter.label2.Caption:=familyUser;
 
-  LectureCRUD.label1.Caption:=nameUser;
-  LectureCRUD.label2.Caption:=familyUser;
+    LectureCRUD.label1.Caption:=nameUser;
+    LectureCRUD.label2.Caption:=familyUser;
 
-  MenuControl.label4.Caption:=nameUser;
-  MenuControl.label6.Caption:=familyUser;
+    MenuControl.label4.Caption:=nameUser;
+    MenuControl.label6.Caption:=familyUser;
 
-  MenuLectures.label4.Caption:=nameUser;
-  MenuLectures.label6.Caption:=familyUser;
+    MenuLectures.label4.Caption:=nameUser;
+    MenuLectures.label6.Caption:=familyUser;
 
-  MenuPractic.label4.Caption:=nameUser;
-  MenuPractic.label6.Caption:=familyUser;
+    MenuPractic.label4.Caption:=nameUser;
+    MenuPractic.label6.Caption:=familyUser;
 
-  PracticCRUD.label1.Caption:=nameUser;
-  PracticCRUD.label2.Caption:=familyUser;
+    PracticCRUD.label1.Caption:=nameUser;
+    PracticCRUD.label2.Caption:=familyUser;
 
-  RazdelCRUD.label1.Caption:=nameUser;
-  RazdelCRUD.label2.Caption:=familyUser;
+    RazdelCRUD.label1.Caption:=nameUser;
+    RazdelCRUD.label2.Caption:=familyUser;
 
-  RegistrationForm.Label7.Caption:=nameUser;
-  RegistrationForm.Label8.Caption:=familyUser;
+    RegistrationForm.Label7.Caption:=nameUser;
+    RegistrationForm.Label8.Caption:=familyUser;
 
-  YchenikiCRUD.label1.Caption:=nameUser;
-  YchenikiCRUD.label2.Caption:=familyUser;
+    YchenikiCRUD.label1.Caption:=nameUser;
+    YchenikiCRUD.label2.Caption:=familyUser;
 
-  TemaCRUD.label1.Caption:=nameUser;
-  TemaCRUD.label2.Caption:=familyUser;
+    TemaCRUD.label1.Caption:=nameUser;
+    TemaCRUD.label2.Caption:=familyUser;
 
-  Add_Questions.Label9.Caption:=nameUser;
-  Add_Questions.Label10.Caption:=familyUser;
+    Add_Questions.Label9.Caption:=nameUser;
+    Add_Questions.Label10.Caption:=familyUser;
+
+    Shyrnal.Label1.Caption:=nameUser;
+    Shyrnal.Label2.Caption:=familyUser;
 end;
 
 procedure freeDataUser;       // logOut

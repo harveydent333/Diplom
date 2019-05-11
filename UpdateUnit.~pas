@@ -6,7 +6,9 @@ var
 updateKodRazdela,
 updateKodTema,
 updateKodLecture,
+updateKodControl,
 updateKodPractic,
+countQuestion,
 updateKodYchenika:integer;
 
 implementation

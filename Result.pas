@@ -51,9 +51,8 @@ uses basa_dan, PassingKnowledgeControl;
 
 procedure TResultForm.BitBtn1Click(Sender: TObject);
 begin
-ResultForm.Close;
-DataModule1.ShyrnalADO.Post;
-PassingKnowledgeControlForm.close;
+    ResultForm.Close;
+    PassingKnowledgeControlForm.Visible:=False;
 end;
 
 end.

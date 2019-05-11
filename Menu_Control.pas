@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, Grids, DBGrids, jpeg, ExtCtrls;
+  Dialogs, Buttons, StdCtrls, Grids, DBGrids, jpeg, ExtCtrls,
+  ComCtrls;
 
 type
   TMenuControl = class(TForm)
-    Image1: TImage;
     DBGrid1: TDBGrid;
     Label1: TLabel;
     ComboBox1: TComboBox;
@@ -35,6 +35,8 @@ type
     Label19: TLabel;
     Label20: TLabel;
     SpeedButton1: TSpeedButton;
+    DateTimePicker1: TDateTimePicker;
+    Image1: TImage;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
@@ -43,6 +45,8 @@ type
     procedure ComboBox2Change(Sender: TObject);
     procedure ComboBox3Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,7 +61,11 @@ var
 implementation
 
 uses config, Title_Form, UpdateUnit, PassingKnowledgeControl, basa_dan,
-  defoltTest;
+  defoltTest,
+  Main_Menu,
+  Unit2,
+  AuthorizationData,
+  Result;
 
 {$R *.dfm}
 
@@ -137,17 +145,54 @@ begin
     Panel1.Visible:=true;
     SpeedButton1.Visible:=true;
     label20.Caption:=nameControl+'"';
+    ResultForm.Label20.Caption:=nameControl+'"';
 
     config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+nameControl+#39);
     updateKodControl:=DBGrid1.DataSource.DataSet.FieldByName('КодКонтроля').AsInteger;
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
     label14.Caption:=IntToStr(DBGrid1.DataSource.DataSet.RecordCount);
-
+    updateUnit.countQuestion:=DBGrid1.DataSource.DataSet.RecordCount;
 
     if DBGrid1.DataSource.DataSet.RecordCount>0 then
       SpeedButton1.Enabled:=true
     else
       SpeedButton1.Enabled:=false;
+end;
+
+procedure TMenuControl.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
+end;
+
+procedure TMenuControl.SpeedButton1Click(Sender: TObject);
+begin
+    DateTimePicker1.DateTime:=Now;
+    config.execRequestSQL('INSERT INTO Журнал (КодУченика, КодТемы, НазваниеТемы, НазваниеКонтроля, ДатаПроведения, Фамилия, Имя, Отчество) VALUES('+
+      IntToStr(KodUser)+', '+IntToStr(KodTema)+', '+#39+nameTema+#39+', '+#39+ComboBox3.Text+#39+', '+
+      #39+DateTimeToStr(DateTimePicker1.DateTime)+#39+', '+#39+familyUser+#39+', '+#39+nameUser+#39+', '+#39+secondNameUser+#39+')');
+    config.selectRequestSQL('SELECT * FROM Журнал');
+    DBGrid1.DataSource.DataSet.Last;
+    kodLastControl:=DBGrid1.DataSource.DataSet.FieldByName('КодЖурнала').AsInteger;
+    defoltTest.countBall:=0;
+    defoltTest.exitPoint:=1;
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+    with PassingKnowledgeControlForm do
+      begin
+        Button1.Caption:='Следующий вопрос';
+        show;
+        VariantsQuestionMore1.Visible:=true;
+        DBGrid1.DataSource.DataSet.First;
+        Memo1.Clear;
+        Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
+        defoltTest.countQuest(DBGrid1.DataSource.DataSet.FieldByName('КоличествоОтветов').AsInteger);
+        defoltTest.setMemoLines;
+        defoltTest.clearStrokiMemo;
+        PassingKnowledgeControlForm.Enabled:=true;
+      end;
 end;
 
 procedure TMenuControl.ComboBox1KeyPress(Sender: TObject; var Key: Char);
@@ -165,28 +210,20 @@ begin
     if not (Key in []) then Key := #0;
 end;
 
-procedure TMenuControl.SpeedButton4Click(Sender: TObject);
-var temp:word;
+procedure TMenuControl.SpeedButton2Click(Sender: TObject);
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
+    MenuControl.Visible:=false;
 end;
 
-procedure TMenuControl.SpeedButton1Click(Sender: TObject);
+procedure TMenuControl.SpeedButton5Click(Sender: TObject);
 begin
-  with PassingKnowledgeControlForm do
-    begin
-      show;
-      VariantsQuestionMore1.Visible:=true;
-      DBGrid1.DataSource.DataSet.First;
-      Memo1.Clear;
-      Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-      defoltTest.countQuest(DBGrid1.DataSource.DataSet.FieldByName('КоличествоОтветов').AsInteger);
-      defoltTest.setMemoLines;
-      defoltTest.clearStrokiMemo;
-    end;
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    MenuControl.Visible:=false;
 end;
 
 end.

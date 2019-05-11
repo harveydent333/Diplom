@@ -8,6 +8,8 @@ updateKodTema,
 updateKodLecture,
 updateKodControl,
 updateKodPractic,
+countQuestion,
+kodLastControl,
 updateKodYchenika:integer;
 
 implementation

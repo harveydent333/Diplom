@@ -73,18 +73,6 @@ begin
       end;
 end;
 
-procedure TAddControlModalForm.ComboBox1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
-procedure TAddControlModalForm.ComboBox2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
 procedure TAddControlModalForm.FormCreate(Sender: TObject);
 begin
     config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
@@ -141,6 +129,18 @@ begin
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);  // Получение код темы
     kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
     label2.Visible:=true;
+end;
+
+procedure TAddControlModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TAddControlModalForm.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

@@ -34,6 +34,8 @@ type
     procedure VariantsQuestionSingle1BitBtn4Click(Sender: TObject);
     procedure VariantsQuestionSingle1BitBtn1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -47,7 +49,8 @@ var
 implementation
 
 uses Unit3, Unit2, Title_Form, Control, Main_Menu, UpdateUnit, config,
-  QuestionsMemo, AddQuestionModal;
+  QuestionsMemo, AddQuestionModal,
+  Control_CRUD;
 
 {$R *.dfm}
 
@@ -56,16 +59,21 @@ begin
     AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
     AuthorizationForm.show;
-    Add_Questions.Close;
-    MainMenu.Close;
+    Add_Questions.Visible:=false;
+    AuthorizationForm.Position:=poDesktopCenter;
 end;
 
 procedure TAdd_Questions.SpeedButton4Click(Sender: TObject);
+var temp:word;
 begin
-    TitleForm.close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 procedure TAdd_Questions.ListBox1Click(Sender: TObject);
+var i:integer;
 begin
     Memo1.Clear;
     Button2.Enabled:=true;
@@ -76,12 +84,14 @@ begin
     QuestionsMemo.setRadioButton(DBGrid1.DataSource.DataSet.FieldByName('ВерныйОтвет').AsString);
     kodVoprosa:=DBGrid1.DataSource.DataSet.FieldByName('КодВопроса').AsInteger;
     Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
+    for i:=Memo1.Lines.Count-1 downto  0 do
+      if Memo1.Lines.Strings[i]='' then Memo1.Lines.Delete(i);
     QuestionsMemo.clearStrokiMemo;
 end;
 
 procedure TAdd_Questions.Button1Click(Sender: TObject);
 begin
-with TAddQuestionModalForm.Create(nil) do
+    with TAddQuestionModalForm.Create(nil) do
       try
         ShowModal;
       finally
@@ -92,15 +102,8 @@ end;
 procedure TAdd_Questions.VariantsQuestionSingle1BitBtn2Click(
   Sender: TObject);
 begin
-  QuestionsMemo.memoClear;
-  QuestionsMemo.RadioButtonClear;
-  VariantsQuestionSingle1.BitBtn4Click(Sender);
-  VariantsQuestionSingle1.BitBtn4Click(Sender);
-  VariantsQuestionSingle1.BitBtn4Click(Sender);
-  VariantsQuestionSingle1.BitBtn4Click(Sender);
-  VariantsQuestionSingle1.BitBtn4Click(Sender);
-  VariantsQuestionSingle1.BitBtn4Click(Sender);
-  
+    QuestionsMemo.memoClear;
+    QuestionsMemo.RadioButtonClear;
 end;
 
 procedure TAdd_Questions.VariantsQuestionSingle1BitBtn4Click(
@@ -110,22 +113,22 @@ begin
 
 end;
 
-procedure TAdd_Questions.VariantsQuestionSingle1BitBtn1Click(
-  Sender: TObject);
-  var vernieOtvet:string;
-  begin
-with Add_Questions.VariantsQuestionSingle1 do
-  begin
-  if RadioButton1.Checked=true then vernieOtvet:=Memo1.Text;
-  if RadioButton2.Checked=true then vernieOtvet:=Memo2.Text;
-  if RadioButton3.Checked=true then vernieOtvet:=Memo3.Text;
-  if RadioButton4.Checked=true then vernieOtvet:=Memo4.Text;
-  if RadioButton5.Checked=true then vernieOtvet:=Memo5.Text;
-  if RadioButton6.Checked=true then vernieOtvet:=Memo6.Text;
-  if RadioButton7.Checked=true then vernieOtvet:=Memo7.Text;
-  if RadioButton8.Checked=true then vernieOtvet:=Memo8.Text;
-  if RadioButton9.Checked=true then vernieOtvet:=Memo9.Text;
-  if RadioButton10.Checked=true then vernieOtvet:=Memo10.Text;
+procedure TAdd_Questions.VariantsQuestionSingle1BitBtn1Click(Sender: TObject);
+var vernieOtvet:string;
+begin
+    clearStrokiMemo;  
+    with Add_Questions.VariantsQuestionSingle1 do
+      begin
+        if RadioButton1.Checked=true then vernieOtvet:=Memo1.Text;
+        if RadioButton2.Checked=true then vernieOtvet:=Memo2.Text;
+        if RadioButton3.Checked=true then vernieOtvet:=Memo3.Text;
+        if RadioButton4.Checked=true then vernieOtvet:=Memo4.Text;
+        if RadioButton5.Checked=true then vernieOtvet:=Memo5.Text;
+        if RadioButton6.Checked=true then vernieOtvet:=Memo6.Text;
+        if RadioButton7.Checked=true then vernieOtvet:=Memo7.Text;
+        if RadioButton8.Checked=true then vernieOtvet:=Memo8.Text;
+        if RadioButton9.Checked=true then vernieOtvet:=Memo9.Text;
+        if RadioButton10.Checked=true then vernieOtvet:=Memo10.Text;
 
  config.execRequestSQL('UPDATE Вопросы SET КодКонтроля='+IntToStr(updateKodControl)+', СодержаниеВопроса='+#39+Add_Questions.Memo1.Text+#39+', ВерныйОтвет='
  +#39+vernieOtvet+#39+', КоличествоОтветов='+#39+IntToStr(countQuestion)+#39+', Отв1='
@@ -159,6 +162,21 @@ begin
     Add_Questions.VariantsQuestionSingle1.Visible:=false;
     Add_Questions.Memo1.Clear;
     Button2.Enabled:=false;
+end;
+
+procedure TAdd_Questions.SpeedButton1Click(Sender: TObject);
+begin
+    Add_Questions.visible:=false;
+    ControlCRUD.Visible:=true;
+    ControlCRUD.Position:=poDesktopCenter;
+end;
+
+procedure TAdd_Questions.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    Add_Questions.visible:=false;
+    ControlCRUD.Visible:=true;
+    ControlCRUD.Position:=poDesktopCenter;
 end;
 
 end.

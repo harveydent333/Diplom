@@ -25,6 +25,8 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,7 +38,10 @@ var
 
 implementation
 
-uses Title_Form, AddRazdel, UpdateUnit, UpdateRazdel;
+uses Title_Form, AddRazdel, UpdateUnit, UpdateRazdel,
+  ControlCenter,
+  Unit2,
+  AuthorizationData;
 
 {$R *.dfm}
 
@@ -79,12 +84,26 @@ begin
 end;
 
 procedure TRazdelCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
-var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    RazdelCRUD.Visible:=false;
+end;
+
+procedure TRazdelCRUD.SpeedButton2Click(Sender: TObject);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    RazdelCRUD.Visible:=false;
+end;
+
+procedure TRazdelCRUD.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    RazdelCRUD.Visible:=false;
 end;
 
 end.

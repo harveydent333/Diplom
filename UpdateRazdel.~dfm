@@ -4118,7 +4118,7 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
   end
   object DBGrid1: TDBGrid
     Left = 320
-    Top = 8
+    Top = 350
     Width = 320
     Height = 64
     DataSource = DataModule1.ModuleLecture

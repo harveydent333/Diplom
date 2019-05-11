@@ -1,8 +1,8 @@
 object MenuControl: TMenuControl
-  Left = 71
-  Top = 219
+  Left = 147
+  Top = 146
   AutoScroll = False
-  Caption = 'MenuControl'
+  Caption = #1050#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -17,7 +17,6 @@ object MenuControl: TMenuControl
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3326,9 +3325,9 @@ object MenuControl: TMenuControl
   object Label3: TLabel
     Left = 48
     Top = 360
-    Width = 204
+    Width = 311
     Height = 29
-    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1083#1077#1082#1094#1080#1102
+    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1082#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -24
@@ -3362,6 +3361,7 @@ object MenuControl: TMenuControl
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton2Click
   end
   object SpeedButton3: TSpeedButton
     Left = 11
@@ -3382,6 +3382,7 @@ object MenuControl: TMenuControl
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton5Click
   end
   object Label4: TLabel
     Left = 1010
@@ -3440,8 +3441,8 @@ object MenuControl: TMenuControl
     OnClick = SpeedButton1Click
   end
   object DBGrid1: TDBGrid
-    Left = 632
-    Top = 472
+    Left = 376
+    Top = 700
     Width = 425
     Height = 129
     DataSource = DataModule1.ModuleLecture
@@ -3581,9 +3582,9 @@ object MenuControl: TMenuControl
     object Label17: TLabel
       Left = 40
       Top = 144
-      Width = 306
+      Width = 305
       Height = 18
-      Caption = '"4" '#1085#1077' '#1084#1077#1085#1077#1077' 70% '#1084#1072#1082#1089#1080#1084#1072#1083#1100#1085#1099#1093' '#1073#1072#1083#1083#1086#1074' '
+      Caption = '"4" '#1085#1077' '#1084#1077#1085#1077#1077' 75% '#1084#1072#1082#1089#1080#1084#1072#1083#1100#1085#1099#1093' '#1073#1072#1083#1083#1086#1074' '
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -3633,5 +3634,14 @@ object MenuControl: TMenuControl
       Font.Style = [fsBold]
       ParentFont = False
     end
+  end
+  object DateTimePicker1: TDateTimePicker
+    Left = 152
+    Top = 800
+    Width = 186
+    Height = 21
+    Date = 43592.851977881950000000
+    Time = 43592.851977881950000000
+    TabOrder = 5
   end
 end

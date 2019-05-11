@@ -24,6 +24,9 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -35,7 +38,10 @@ var
 
 implementation
 
-uses AddPractic, Title_Form, updateUnit, config, UpdatePractic;
+uses AddPractic, Title_Form, updateUnit, config, UpdatePractic,
+  Unit2,
+  ControlCenter,
+  AuthorizationData;
 
 {$R *.dfm}
 
@@ -78,6 +84,30 @@ procedure TPracticCRUD.SpeedButton7Click(Sender: TObject); // Удаление лекции
 begin
     config.execRequestSQL('DELETE FROM Практические WHERE НазваниеПрактической='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеПрактической').AsString+#39);
     config.rebootRequestsCRUD;
+end;
+
+procedure TPracticCRUD.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    PracticCRUD.Visible:=false;
+end;
+
+procedure TPracticCRUD.SpeedButton2Click(Sender: TObject);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    PracticCRUD.Visible:=false;
+end;
+
+procedure TPracticCRUD.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    PracticCRUD.Visible:=false;
 end;
 
 end.

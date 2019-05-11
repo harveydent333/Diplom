@@ -1,8 +1,8 @@
 object AddControlModalForm: TAddControlModalForm
-  Left = 605
-  Top = 322
+  Left = 550
+  Top = 468
   AutoScroll = False
-  Caption = 'AddControlModalForm'
+  Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1050#1086#1085#1090#1088#1086#1083#1103
   ClientHeight = 310
   ClientWidth = 644
   Color = clBtnFace

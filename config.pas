@@ -3,7 +3,7 @@ unit config;
 interface
 uses basa_dan, Control_CRUD, Control,defoltTest, DocumentForm, Lecture_CRUD, Menu_CRUD,
 Menu_Lectures, Menu_Practic, Menu_Teacher, PassingKnowledgeControl, Practic_CRUD, Result,
-Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUnit, Ycheniki_CRUD, AddTema;
+Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUnit, Ycheniki_CRUD, AddTema, DateUtils;
 
 var  x:integer;
 
@@ -30,25 +30,25 @@ begin
 end;
 
 procedure rebootRequestsCRUD;
-begin
-    DataModule1.ADORazdelCRUD.Active:=False;
-    DataModule1.ADORazdelCRUD.Active:=True;
+    begin
+      DataModule1.ADORazdelCRUD.Active:=False;
+      DataModule1.ADORazdelCRUD.Active:=True;
 
-    DataModule1.ADOTemaCRUD.Active:=False;
-    DataModule1.ADOTemaCRUD.Active:=True;
+      DataModule1.ADOTemaCRUD.Active:=False;
+      DataModule1.ADOTemaCRUD.Active:=True;
 
-    DataModule1.ADOLectureCRUD.Active:=False;
-    DataModule1.ADOLectureCRUD.Active:=True;
+      DataModule1.ADOLectureCRUD.Active:=False;
+      DataModule1.ADOLectureCRUD.Active:=True;
 
-    DataModule1.ADOPracticCRUD.Active:=False;
-    DataModule1.ADOPracticCRUD.Active:=True;
+      DataModule1.ADOPracticCRUD.Active:=False;
+      DataModule1.ADOPracticCRUD.Active:=True;
 
-    DataModule1.ADOControlCRUD.Active:=False;
-    DataModule1.ADOControlCRUD.Active:=True;
+      DataModule1.ADOControlCRUD.Active:=False;
+      DataModule1.ADOControlCRUD.Active:=True;
 
-    DataModule1.YchenikADO.Active:=false;
-    DataModule1.YchenikADO.Active:=true;
-end;
+      DataModule1.YchenikADO.Active:=false;
+      DataModule1.YchenikADO.Active:=true;
+  end;
 
 end.
 

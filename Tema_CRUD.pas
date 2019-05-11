@@ -24,6 +24,9 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -35,7 +38,10 @@ var
 
 implementation
 
-uses Title_Form, UpdateTema, UpdateUnit, config;
+uses Title_Form, UpdateTema, UpdateUnit, config,
+  ControlCenter,
+  Unit2,
+  AuthorizationData;
 
 {$R *.dfm}
 
@@ -76,6 +82,29 @@ begin
     MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
       TitleForm.close;
+end;
+
+procedure TTemaCRUD.SpeedButton2Click(Sender: TObject);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    TemaCRUD.Visible:=false;
+end;
+
+procedure TTemaCRUD.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    TemaCRUD.Visible:=false;
+end;
+
+procedure TTemaCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    TemaCRUD.Visible:=false;
 end;
 
 end.

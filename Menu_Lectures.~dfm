@@ -1,8 +1,8 @@
 object MenuLectures: TMenuLectures
-  Left = 89
-  Top = 92
+  Left = 225
+  Top = 179
   AutoScroll = False
-  Caption = 'MenuLectures'
+  Caption = #1051#1077#1082#1094#1080#1080
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -16,6 +16,7 @@ object MenuLectures: TMenuLectures
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3294,6 +3295,7 @@ object MenuLectures: TMenuLectures
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton2Click
   end
   object SpeedButton5: TSpeedButton
     Left = 874
@@ -3304,6 +3306,7 @@ object MenuLectures: TMenuLectures
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton5Click
   end
   object SpeedButton4: TSpeedButton
     Left = 1121
@@ -3420,9 +3423,25 @@ object MenuLectures: TMenuLectures
     Transparent = True
     Visible = False
   end
+  object SpeedButton1: TSpeedButton
+    Left = 48
+    Top = 480
+    Width = 505
+    Height = 49
+    Caption = #1048#1079#1091#1095#1072#1090#1100' '#1083#1077#1082#1094#1080#1102
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
+    OnClick = SpeedButton1Click
+  end
   object DBGrid1: TDBGrid
     Left = 264
-    Top = 0
+    Top = 700
     Width = 425
     Height = 129
     DataSource = DataModule1.ModuleLecture
@@ -3483,6 +3502,7 @@ object MenuLectures: TMenuLectures
     TabOrder = 3
     Text = 'ComboBox3'
     Visible = False
+    OnChange = ComboBox3Change
     OnKeyPress = ComboBox3KeyPress
   end
 end

@@ -64,7 +64,8 @@ var
 
 implementation
 
-uses Unit3, basa_dan, Unit2, Title_Form, config, Main_Menu;
+uses Unit3, basa_dan, Unit2, Title_Form, config, Main_Menu,
+  Ycheniki_CRUD;
 
 {$R *.dfm}
 
@@ -156,8 +157,9 @@ end;
 
 procedure TRegistrationForm.SpeedButton2Click(Sender: TObject);
 begin
-    RegistrationForm.Close;
-    MainMenu.Show;
+    RegistrationForm.visible:=false;
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
 end;
 
 procedure TRegistrationForm.SpeedButton1Click(Sender: TObject);    // КНОПКА ЗАРЕГИСТРИРОВАТЬ
@@ -245,21 +247,26 @@ procedure TRegistrationForm.SpeedButton5Click(Sender: TObject);
 begin
     AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Show;
-    RegistrationForm.Close;
-    MainMenu.Close;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    RegistrationForm.Visible:=false;
 end;
 
 procedure TRegistrationForm.SpeedButton4Click(Sender: TObject);
+var temp:word;
 begin
-    RegistrationForm.Close;
-    TitleForm.close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
+    MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 procedure TRegistrationForm.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-    // MainMenu.Show;
+    RegistrationForm.visible:=false;
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
 end;
 
 procedure TRegistrationForm.last_nameChange(Sender: TObject);

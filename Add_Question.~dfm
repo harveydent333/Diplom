@@ -1,15 +1,15 @@
 object Add_Questions: TAdd_Questions
-  Left = 90
-  Top = 150
+  Left = 63
+  Top = 118
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 672
-  ClientWidth = 1172
+  ClientWidth = 1185
   Color = clBtnFace
   Constraints.MaxHeight = 710
-  Constraints.MaxWidth = 1188
+  Constraints.MaxWidth = 1201
   Constraints.MinHeight = 710
-  Constraints.MinWidth = 1188
+  Constraints.MinWidth = 1201
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -17,6 +17,7 @@ object Add_Questions: TAdd_Questions
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -4782,6 +4783,7 @@ object Add_Questions: TAdd_Questions
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton1Click
   end
   object SpeedButton2: TSpeedButton
     Left = 4
@@ -4805,9 +4807,9 @@ object Add_Questions: TAdd_Questions
     OnClick = SpeedButton3Click
   end
   object SpeedButton4: TSpeedButton
-    Left = 1128
+    Left = 1125
     Top = 0
-    Width = 50
+    Width = 57
     Height = 54
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
     Flat = True
@@ -4874,7 +4876,7 @@ object Add_Questions: TAdd_Questions
   object Memo1: TMemo
     Left = 272
     Top = 80
-    Width = 901
+    Width = 911
     Height = 105
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -4901,7 +4903,7 @@ object Add_Questions: TAdd_Questions
   end
   object DBGrid1: TDBGrid
     Left = 424
-    Top = 0
+    Top = 500
     Width = 329
     Height = 57
     DataSource = DataModule1.ModuleLecture
@@ -4915,7 +4917,7 @@ object Add_Questions: TAdd_Questions
   inline VariantsQuestionSingle1: TVariantsQuestionSingle
     Left = 280
     Top = 184
-    Width = 892
+    Width = 905
     Height = 473
     Color = clBtnFace
     ParentColor = False
