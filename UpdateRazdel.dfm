@@ -9294,17 +9294,4 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
     ParentFont = False
     TabOrder = 1
   end
-  object DBGrid1: TDBGrid
-    Left = 320
-    Top = 350
-    Width = 320
-    Height = 64
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 2
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-  end
 end

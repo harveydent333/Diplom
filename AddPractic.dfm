@@ -1,6 +1,6 @@
 object AddPracticModalForm: TAddPracticModalForm
-  Left = 245
-  Top = 256
+  Left = 76
+  Top = 515
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
   ClientHeight = 310
@@ -2647,18 +2647,5 @@ object AddPracticModalForm: TAddPracticModalForm
     Visible = False
     OnChange = ComboBox2Change
     OnKeyPress = ComboBox2KeyPress
-  end
-  object DBGrid1: TDBGrid
-    Left = 552
-    Top = 480
-    Width = 320
-    Height = 65
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

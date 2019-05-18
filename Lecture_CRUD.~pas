@@ -98,6 +98,7 @@ begin
         Memo1.Height:=833;
         Memo1.Width:=1190;
         Button1.Left:=8;
+        Button1.Visible:=true;
         Button3.Left:=128;
         Button4.Visible:=true;
         Button5.Visible:=true;
@@ -133,10 +134,9 @@ end;
 procedure TLectureCRUD.SpeedButton4Click(Sender: TObject);  // Завершение работы программы
 var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
-      TitleForm.close;
+        TitleForm.close;
 end;
 
 end.

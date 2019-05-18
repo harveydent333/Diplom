@@ -1,6 +1,6 @@
 object UpdateLectureModalForm: TUpdateLectureModalForm
-  Left = 318
-  Top = 468
+  Left = 356
+  Top = 361
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1051#1077#1082#1094#1080#1080
   ClientHeight = 310
@@ -4089,26 +4089,13 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Transparent = True
     Visible = False
   end
-  object DBGrid1: TDBGrid
-    Left = 544
-    Top = 350
-    Width = 193
-    Height = 73
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-  end
   object Panel2: TPanel
     Left = 112
     Top = 240
     Width = 420
     Height = 35
     Caption = 'Panel1'
-    TabOrder = 1
+    TabOrder = 0
     object Image2: TImage
       Left = 0
       Top = 0
@@ -4930,7 +4917,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Font.Style = []
     ItemHeight = 23
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     OnChange = ComboBox1Change
     OnKeyPress = ComboBox1KeyPress
   end
@@ -4946,7 +4933,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Font.Style = []
     ItemHeight = 23
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
     Visible = False
     OnChange = ComboBox2Change
     OnKeyPress = ComboBox2KeyPress
@@ -4962,7 +4949,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
   end
 end

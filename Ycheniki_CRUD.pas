@@ -24,9 +24,9 @@ type
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
-    procedure SpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,16 +41,16 @@ implementation
 
 uses basa_dan, Title_Form, Menu_Teacher, AuthorizationData, config, UpdateUnit,
   ControlCenter,
-  Unit2;
+  Unit2,
+  Manager_Users;
 
 {$R *.dfm}
 
 procedure TYchenikiCRUD.SpeedButton6Click(Sender: TObject);       // Добавление нового ученика
 begin
     RegistrationForm.Show;
-    DataModule1.YchenikADO.Append;
-    RegistrationForm.SpeedButton2.Visible:=true;
     AuthorizationData.defoltConfigRegistrationForm;
+    YchenikiCRUD.Visible:=false;
 end;
 
 procedure TYchenikiCRUD.SpeedButton1Click(Sender: TObject);       // Удаление ученика
@@ -68,29 +68,14 @@ begin
     updateKodYchenika:=DBGrid2.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
 end;
 
-procedure TYchenikiCRUD.SpeedButton3Click(Sender: TObject);
-begin
-    DataManagementCenter.show;
-    DataManagementCenter.position:=poDesktopCenter;
-    YchenikiCRUD.Visible:=false;
-end;
-
 procedure TYchenikiCRUD.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-    DataManagementCenter.show;
-    DataManagementCenter.position:=poDesktopCenter;
+    ManagerUsers.show;
+    ManagerUsers.position:=poDesktopCenter;
     YchenikiCRUD.Visible:=false;
 end;
 
-procedure TYchenikiCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
-end;
 procedure TYchenikiCRUD.SpeedButton5Click(Sender: TObject);
 begin
     AuthorizationForm.Edit1.Text:='';
@@ -98,6 +83,21 @@ begin
     AuthorizationForm.Visible:=true;;
     AuthorizationForm.Position:=poDesktopCenter;
     YchenikiCRUD.Visible:=false;
+end;
+
+procedure TYchenikiCRUD.SpeedButton2Click(Sender: TObject);
+begin
+    ManagerUsers.show;
+    ManagerUsers.position:=poDesktopCenter;
+    YchenikiCRUD.Visible:=false;
+end;
+
+procedure TYchenikiCRUD.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+        TitleForm.close;
 end;
 
 end.

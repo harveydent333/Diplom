@@ -1,6 +1,6 @@
 object RazdelCRUD: TRazdelCRUD
-  Left = 31
-  Top = 288
+  Left = 86
+  Top = 108
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1088#1072#1079#1076#1077#1083#1072#1084#1080
   ClientHeight = 643
@@ -4702,7 +4702,7 @@ object RazdelCRUD: TRazdelCRUD
     Top = 56
     Width = 800
     Height = 337
-    DataSource = DataModule1.RazdelCRUD
+    DataSource = BD.Razdel
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -4734,7 +4734,7 @@ object RazdelCRUD: TRazdelCRUD
     Top = 900
     Width = 320
     Height = 120
-    DataSource = DataModule1.ModuleLecture
+    DataSource = BD.Request
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

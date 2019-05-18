@@ -17,7 +17,6 @@ type
     Panel2: TPanel;
     Image2: TImage;
     SpeedButton1: TSpeedButton;
-    DBGrid1: TDBGrid;
     Label5: TLabel;
     Label1: TLabel;
     procedure FormCreate(Sender: TObject);
@@ -47,14 +46,14 @@ uses basa_dan, config;
 procedure TAddLectureModalForm.FormCreate(Sender: TObject);
 begin
     config.selectRequestSQL('SELECT * FROM Раздел');  //Заполнение ComboBox при создании
-    DBGrid1.DataSource.DataSet.First;
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+        BD.Request.DataSet.Next;
       end;
-    DBGrid1.DataSource.DataSet.First;
-    ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;           //  конец создания
+    BD.Request.DataSet.First;
+    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;           //  конец создания
 end;
 
 procedure TAddLectureModalForm.ComboBox1Change(Sender: TObject);
@@ -69,14 +68,14 @@ begin
 
     nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
-    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
      // Проверка на наличие потомков у Раздела
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
 
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
 
@@ -86,7 +85,7 @@ begin
         combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+        kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
       end
     else
       label5.Visible:=true;
@@ -98,7 +97,7 @@ begin
     nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
 
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);  // Получение код темы
-    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
     label2.Visible:=true;
 end;
 
@@ -108,7 +107,7 @@ begin
     if Edit1.Text<>'' then
       begin
         config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+Edit1.Text+#39);
-        if DataModule1.ADOModuleLecture.IsEmpty then
+        if BD.RequestSQL.IsEmpty then
           unique_user:=true
         else
           MessageBox(0,'Данная лекция уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);

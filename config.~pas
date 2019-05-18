@@ -3,7 +3,7 @@ unit config;
 interface
 uses basa_dan, Control_CRUD, Control,defoltTest, DocumentForm, Lecture_CRUD, Menu_CRUD,
 Menu_Lectures, Menu_Practic, Menu_Teacher, PassingKnowledgeControl, Practic_CRUD, Result,
-Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUnit, Ycheniki_CRUD, AddTema;
+Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUnit, Ycheniki_CRUD, AddTema, DateUtils;
 
 var  x:integer;
 
@@ -17,38 +17,38 @@ uses Add_Question;
 
 procedure selectRequestSQL(str:string);
 begin
-    DataModule1.ADOModuleLecture.SQL.Clear;
-    DataModule1.ADOModuleLecture.SQL.Add(str);
-    DataModule1.ADOModuleLecture.Open;
+    DataModule1.RequestSQL.SQL.Clear;
+    DataModule1.RequestSQL.SQL.Add(str);
+    DataModule1.RequestSQL.Open;
 end;
 
 procedure execRequestSQL(str:string);
 begin
-    DataModule1.ADOModuleLecture.SQL.Clear;
-    DataModule1.ADOModuleLecture.SQL.Add(str);
-    DataModule1.ADOModuleLecture.ExecSQL;
+    DataModule1.RequestSQL.SQL.Clear;
+    DataModule1.RequestSQL.SQL.Add(str);
+    DataModule1.RequestSQL.ExecSQL;
 end;
 
 procedure rebootRequestsCRUD;
-begin
-    DataModule1.ADORazdelCRUD.Active:=False;
-    DataModule1.ADORazdelCRUD.Active:=True;
+    begin
+      DataModule1.RazdelADO.Active:=False;
+      DataModule1.RazdelADO.Active:=True;
 
-    DataModule1.ADOTemaCRUD.Active:=False;
-    DataModule1.ADOTemaCRUD.Active:=True;
+      DataModule1.TemaADO.Active:=False;
+      DataModule1.TemaADO.Active:=True;
 
-    DataModule1.ADOLectureCRUD.Active:=False;
-    DataModule1.ADOLectureCRUD.Active:=True;
+      DataModule1.LectureADO.Active:=False;
+      DataModule1.LectureADO.Active:=True;
 
-    DataModule1.ADOPracticCRUD.Active:=False;
-    DataModule1.ADOPracticCRUD.Active:=True;
+      DataModule1.PracticADO.Active:=False;
+      DataModule1.PracticADO.Active:=True;
 
-    DataModule1.ADOControlCRUD.Active:=False;
-    DataModule1.ADOControlCRUD.Active:=True;
+      DataModule1.ControlADO.Active:=False;
+      DataModule1.ControlADO.Active:=True;
 
-    DataModule1.YchenikADO.Active:=false;
-    DataModule1.YchenikADO.Active:=true;
-end;
+      DataModule1.YchenikADO.Active:=false;
+      DataModule1.YchenikADO.Active:=true;
+  end;
 
 end.
 

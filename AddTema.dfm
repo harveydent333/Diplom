@@ -2001,13 +2001,6 @@ object AddTemaModalForm: TAddTemaModalForm
     ParentFont = False
     Transparent = True
   end
-  object Label3: TLabel
-    Left = 40
-    Top = 350
-    Width = 32
-    Height = 13
-    Caption = 'Label3'
-  end
   object Label2: TLabel
     Left = 120
     Top = 140
@@ -2605,18 +2598,5 @@ object AddTemaModalForm: TAddTemaModalForm
     TabOrder = 2
     OnChange = ComboBox1Change
     OnKeyPress = ComboBox1KeyPress
-  end
-  object DBGrid1: TDBGrid
-    Left = 384
-    Top = 1000
-    Width = 353
-    Height = 49
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 3
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

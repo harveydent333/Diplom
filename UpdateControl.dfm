@@ -1,6 +1,6 @@
 object UpdateControlModalForm: TUpdateControlModalForm
-  Left = 326
-  Top = 495
+  Left = 371
+  Top = 291
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1047#1085#1072#1085#1080#1081
   ClientHeight = 310
@@ -4951,18 +4951,5 @@ object UpdateControlModalForm: TUpdateControlModalForm
       Flat = True
       OnClick = SpeedButton1Click
     end
-  end
-  object DBGrid1: TDBGrid
-    Left = 528
-    Top = 500
-    Width = 320
-    Height = 120
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

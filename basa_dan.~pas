@@ -6,30 +6,26 @@ uses
   SysUtils, Classes, DB, ADODB;
 
 type
-  TDataModule1 = class(TDataModule)
+  TBD = class(TDataModule)
     ADOConnection1: TADOConnection;
-    EditRazdel: TDataSource;
-    EditRazdelADO: TADOQuery;
-    EditTemaADO: TADOQuery;
-    EditTema: TDataSource;
-    EditControl: TDataSource;
-    EditControlADO: TADOQuery;
     YchenikADO: TADOQuery;
     Ychenik: TDataSource;
-    ModuleLecture: TDataSource;
-    ADOModuleLecture: TADOQuery;
-    TemaCRUD: TDataSource;
-    ADOTemaCRUD: TADOQuery;
-    RazdelCRUD: TDataSource;
-    ADORazdelCRUD: TADOQuery;
-    LectureCRUD: TDataSource;
-    ADOLectureCRUD: TADOQuery;
-    PracticCRUD: TDataSource;
-    ADOPracticCRUD: TADOQuery;
-    ControlCRUD: TDataSource;
-    ADOControlCRUD: TADOQuery;
-    ADOMultimediaCRUD: TADOQuery;
-    MultimediaCRUD: TDataSource;
+    Request: TDataSource;
+    RequestSQL: TADOQuery;
+    Tema: TDataSource;
+    TemaADO: TADOQuery;
+    Razdel: TDataSource;
+    RazdelADO: TADOQuery;
+    Lecture: TDataSource;
+    LectureADO: TADOQuery;
+    Practic: TDataSource;
+    PracticADO: TADOQuery;
+    Control: TDataSource;
+    ControlADO: TADOQuery;
+    MultimediaADO: TADOQuery;
+    Multimedia: TDataSource;
+    TeacherADO: TADOQuery;
+    Teacher: TDataSource;
   private
     { Private declarations }
   public
@@ -37,7 +33,7 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  BD: TBD;
 
 implementation
 

@@ -1,6 +1,6 @@
 object DataManagementCenter: TDataManagementCenter
-  Left = -38
-  Top = 309
+  Left = 92
+  Top = 260
   AutoScroll = False
   Caption = #1062#1077#1085#1090#1088' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103
   ClientHeight = 631
@@ -4720,7 +4720,7 @@ object DataManagementCenter: TDataManagementCenter
     Top = 525
     Width = 385
     Height = 49
-    Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1072
+    Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
     Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText

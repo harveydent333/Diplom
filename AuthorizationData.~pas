@@ -4,7 +4,7 @@ interface
 uses basa_dan, Unit2;
 
 var
-nameUser, familyUser, secondNameUser, loginUser, roleUser, DataControl:string;
+nameUser, familyUser, secondNameUser, loginUser, roleUser, groupUser, DataControl:string;
 KodControla, Mark, KodUser:integer;
 
 Good_Ball,Bed_Ball:real;
@@ -12,44 +12,52 @@ Good_Ball,Bed_Ball:real;
 
 procedure getDataUser;
 procedure freeDataUser;
-procedure defoltConfigRegistrationForm;
 procedure getDataAuthUser;
 procedure SetNameAndFamilyAuthUsers;
+procedure defoltConfigRegistrationForm;
+procedure defoltConfigRegistrationTeacherForm;
 
 implementation
 
 uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
   ControlCenter, Lecture_CRUD, Menu_Control, Menu_Lectures, Menu_Practic,
   Practic_CRUD, Razdel_CRUD, Tema_CRUD, Ycheniki_CRUD, Add_Question,
-  DocumentForm;
+  DocumentForm, SysUtils,
+  MultiMedia_CRUD,
+  AddControl,
+  Manager_Users,
+  Teacher_CRUD,
+  Registration_Teacher;
 
 procedure getDataUser;
 begin
-if AuthorizationForm.teacher_ON.Visible = true then
-  begin
-    config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
-    getDataAuthUser;            // Заполнение авторизованного пользователя данными
-    SetNameAndFamilyAuthUsers;  // Заполнение Имя и Фамилии Авторизованным пользователям
-    roleUser:='teacher';
+    if AuthorizationForm.teacher_ON.Visible = true then
+        begin
+            config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
+            getDataAuthUser;            // Заполнение авторизованного пользователя данными
+            SetNameAndFamilyAuthUsers;  // Заполнение Имя и Фамилии Авторизованным пользователям
+            roleUser:='teacher';
+        end;
 
-  end;
-if AuthorizationForm.stydent_ON.Visible = true then
-    begin
-      config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+AuthorizationForm.DBComboBox1.Text+#39);
-      getDataAuthUser;            // Заполнение авторизованного пользователя данными
-      SetNameAndFamilyAuthUsers; // Заполнение Имя и Фамилии Авторизованным пользователям
-      KodUser:=AuthorizationForm.DBGrid1.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
-      MainMenu.Label3.Caption:=IntToStr(KodUser);
-      roleUser:='stydent';
-    end;
+    if AuthorizationForm.stydent_ON.Visible = true then
+        begin
+            config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+AuthorizationForm.DBComboBox1.Text+#39);
+            getDataAuthUser;            // Заполнение авторизованного пользователя данными
+            SetNameAndFamilyAuthUsers; // Заполнение Имя и Фамилии Авторизованным пользователям
+            KodUser:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;
+            roleUser:='stydent';
+            groupUser:=IntToStr(AuthorizationForm.ComboBox1.ItemIndex+1);
+        end;
 end;
 
 procedure getDataAuthUser;
 begin
-    nameUser:=DataModule1.ADOModuleLecture.FieldByName('Имя').AsString;
-    familyUser:=DataModule1.ADOModuleLecture.FieldByName('Фамилия').AsString;
-    secondNameUser:=DataModule1.ADOModuleLecture.FieldByName('Отчество').AsString;
-    loginUser:=DataModule1.ADOModuleLecture.FieldByName('login').AsString;
+    with BD.RequestSQL do
+        begin
+            nameUser:=FieldByName('Имя').AsString;
+            familyUser:=FieldByName('Фамилия').AsString;
+            secondNameUser:=FieldByName('Отчество').AsString;
+        end;
 end;
 
 procedure SetNameAndFamilyAuthUsers;
@@ -75,6 +83,9 @@ begin
     MenuPractic.label4.Caption:=nameUser;
     MenuPractic.label6.Caption:=familyUser;
 
+    MultimediaCRUD.label1.Caption:=nameUser;
+    MultimediaCRUD.label2.Caption:=familyUser;
+
     PracticCRUD.label1.Caption:=nameUser;
     PracticCRUD.label2.Caption:=familyUser;
 
@@ -84,8 +95,17 @@ begin
     RegistrationForm.Label7.Caption:=nameUser;
     RegistrationForm.Label8.Caption:=familyUser;
 
+    RegistrationTeacher.Label7.Caption:=nameUser;
+    RegistrationTeacher.Label8.Caption:=familyUser;
+
+    ManagerUsers.label1.Caption:=nameUser;
+    ManagerUsers.label2.Caption:=familyUser;
+
     YchenikiCRUD.label1.Caption:=nameUser;
     YchenikiCRUD.label2.Caption:=familyUser;
+
+    TeacherCRUD.label1.Caption:=nameUser;
+    TeacherCRUD.label2.Caption:=familyUser;
 
     TemaCRUD.label1.Caption:=nameUser;
     TemaCRUD.label2.Caption:=familyUser;
@@ -98,40 +118,100 @@ begin
 end;
 
 procedure freeDataUser;       // logOut
+var i:integer; fio:string;
 begin
     nameUser:='';
     familyUser:='';
     secondNameUser:='';
     loginUser:='';
     roleUser:='';
+    groupUser:='';
     kodUser:=0;
+
+   AuthorizationForm.ComboBox1.Clear;
+   AuthorizationForm.ComboBox2.Clear;
+   config.selectRequestSQL('SELECT * FROM Ученик WHERE КодГруппы=1');
+   BD.Request.DataSet.First;
+   for i:=1 to BD.Request.DataSet.RecordCount do
+      begin
+        with BD.Request.DataSet do
+          begin
+              fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
+          end;
+        AuthorizationForm.ComboBox2.Items.Add(fio);
+        BD.Request.DataSet.Next;
+      end;
+   AuthorizationForm.ComboBox2.ItemIndex:=0;
+   config.selectRequestSQL('SELECT * FROM Группа');
+   BD.Request.DataSet.First;
+   for i:=1 to BD.Request.DataSet.RecordCount do
+      begin
+        AuthorizationForm.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеГруппы').AsString);
+        BD.Request.DataSet.Next;
+      end;
+   AuthorizationForm.ComboBox1.ItemIndex:=0;
 end;
 
 procedure defoltConfigRegistrationForm;
 begin
-with RegistrationForm do
-  begin
-    defolt_edit1.Visible:=true;
-    defolt_edit2.Visible:=true;
-    defolt_edit3.Visible:=true;
-    defolt_edit4.Visible:=true;
+    with RegistrationForm do
+        begin
+            defolt_edit1.Visible:=true;
+            defolt_edit2.Visible:=true;
+            defolt_edit3.Visible:=true;
+            defolt_edit4.Visible:=true;
 
-    good_edit1.Visible:=false;
-    good_edit2.Visible:=false;
-    good_edit3.Visible:=false;
-    good_edit4.Visible:=false;
+            good_edit1.Visible:=false;
+            good_edit2.Visible:=false;
+            good_edit3.Visible:=false;
+            good_edit4.Visible:=false;
 
-    bed_edit1.Visible:=false;
-    bed_edit2.Visible:=false;
-    bed_edit3.Visible:=false;
-    bed_edit4.Visible:=false;
+            bed_edit1.Visible:=false;
+            bed_edit2.Visible:=false;
+            bed_edit3.Visible:=false;
+            bed_edit4.Visible:=false;
 
-    label1.Visible:=false;
-    label2.Visible:=false;
-    label3.Visible:=false;
-    label4.Visible:=false;
-    label5.Visible:=false;
-  end;
+            label1.Visible:=false;
+            label2.Visible:=false;
+            label3.Visible:=false;
+            label4.Visible:=false;
+            label5.Visible:=false;
+        end;
+end;
+
+procedure defoltConfigRegistrationTeacherForm;
+begin
+    with RegistrationTeacher do
+        begin
+            defolt_edit1.Visible:=true;
+            defolt_edit2.Visible:=true;
+            defolt_edit3.Visible:=true;
+            defolt_edit4.Visible:=true;
+            defolt_edit5.Visible:=true;
+            defolt_edit6.Visible:=true;
+
+            good_edit1.Visible:=false;
+            good_edit2.Visible:=false;
+            good_edit3.Visible:=false;
+            good_edit4.Visible:=false;
+            good_edit5.Visible:=false;
+            good_edit6.Visible:=false;
+
+            bed_edit1.Visible:=false;
+            bed_edit2.Visible:=false;
+            bed_edit3.Visible:=false;
+            bed_edit4.Visible:=false;
+            bed_edit5.Visible:=false;
+            bed_edit6.Visible:=false;
+
+            label1.Visible:=false;
+            label2.Visible:=false;
+            label3.Visible:=false;
+            label4.Visible:=false;
+            label5.Visible:=false;
+            label6.Visible:=false;
+            label10.Visible:=false;
+        end;
 end;
 
 end.

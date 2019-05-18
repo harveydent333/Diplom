@@ -19,7 +19,6 @@ type
     Label3: TLabel;
     Label2: TLabel;
     Label5: TLabel;
-    DBGrid1: TDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
@@ -47,37 +46,37 @@ procedure TUpdatePracticModalForm.FormCreate(Sender: TObject);
 begin
  // Получение всех разделов
     config.selectRequestSQL('SELECT * FROM Раздел');
-    DBGrid1.DataSource.DataSet.First;
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
-      begin
-      ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
-      DBGrid1.DataSource.DataSet.Next;
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
+        begin
+            ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+            BD.Request.DataSet.Next;
     end;
 
     // Получение Раздела к которому относиться наша изменяемая лекция
     config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
-    ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;
+    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
 
     // Получение всех Тем раздела к которомой относиться наша изменяемая лекция
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
 
     ComboBox2.Visible:=true;
     label3.Visible:=true;
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
       end;
 
    // Получение название Темы нашей зменяемой лекции
    config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-   ComboBox2.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString;
+   ComboBox2.Text:=BD.Request.DataSet.FieldByName('НазваниеТемы').AsString;
 
    // Получение названия Практики к которомой относитсья наша изменяемая Практическая             +
    Edit1.Visible:=true;
    label2.Visible:=true;
    config.selectRequestSQL('SELECT * FROM Практические WHERE КодПрактической='+IntToStr(updateKodPractic));
-   Edit1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеПрактической').AsString;
+   Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеПрактической').AsString;
 
     kodRazdela:=updateKodRazdela;
     kodTema:=updateKodTema;
@@ -87,7 +86,7 @@ procedure TUpdatePracticModalForm.ComboBox2Change(Sender: TObject);
 begin
     nameTema:=Combobox2.Text;
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
 end;
 
 procedure TUpdatePracticModalForm.ComboBox1Change(Sender: TObject);
@@ -100,14 +99,14 @@ begin
     label5.visible:=false;
 
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
-    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
 
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
 
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
 
@@ -119,7 +118,7 @@ begin
         Combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+        kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
       end
     else
       label5.Visible:=true;
@@ -131,7 +130,7 @@ begin
     if Edit1.Text<>'' then
       begin
         config.selectRequestSQL('SELECT * FROM Практические WHERE НазваниеПрактической='+#39+Edit1.Text+#39);
-        if ((DataModule1.ADOModuleLecture.IsEmpty) or (updateKodPractic=DBGrid1.DataSource.DataSet.FieldByName('КодПрактической').AsInteger)) then
+        if ((BD.RequestSQL.IsEmpty) or (updateKodPractic=BD.Request.DataSet.FieldByName('КодПрактической').AsInteger)) then
           unique_user:=true
         else
           MessageBox(0,'Даннный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);

@@ -1,6 +1,6 @@
 object Edit_Lecture: TEdit_Lecture
-  Left = 44
-  Top = 228
+  Left = 53
+  Top = 140
   AutoScroll = False
   Caption = #1051#1077#1082#1094#1080#1103
   ClientHeight = 860

@@ -40,7 +40,7 @@ begin
     if Edit1.Text<>'' then
       begin
         config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+Edit1.Text+#39);
-        if DataModule1.ADOModuleLecture.IsEmpty then
+        if BD.RequestSQL.IsEmpty then
           unique_user:=true
         else
           MessageBox(0,'Данный вопрос уже существует!','Создание вопроса', MB_OK+MB_ICONwarning);

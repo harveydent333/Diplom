@@ -1,6 +1,6 @@
 object UpdateTemaModalForm: TUpdateTemaModalForm
-  Left = 307
-  Top = 130
+  Left = 335
+  Top = 136
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1058#1077#1084#1099
   ClientHeight = 310
@@ -4609,7 +4609,7 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
     Top = 400
     Width = 320
     Height = 65
-    DataSource = DataModule1.ModuleLecture
+    DataSource = BD.Request
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -5461,18 +5461,5 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
     TabOrder = 3
     OnChange = ComboBox1Change
     OnKeyPress = ComboBox1KeyPress
-  end
-  object DBGrid2: TDBGrid
-    Left = 16
-    Top = 400
-    Width = 249
-    Height = 49
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

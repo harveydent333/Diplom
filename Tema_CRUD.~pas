@@ -26,6 +26,7 @@ type
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -96,6 +97,13 @@ begin
     AuthorizationData.freeDataUser;
     AuthorizationForm.Visible:=true;;
     AuthorizationForm.Position:=poDesktopCenter;
+    TemaCRUD.Visible:=false;
+end;
+
+procedure TTemaCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
     TemaCRUD.Visible:=false;
 end;
 

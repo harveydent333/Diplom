@@ -15,7 +15,6 @@ type
     SpeedButton1: TSpeedButton;
     Label3: TLabel;
     Edit1: TEdit;
-    DBGrid1: TDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
   private
@@ -34,26 +33,27 @@ implementation
 
 procedure TUpdateRazdelModalForm.FormCreate(Sender: TObject);
 begin
-    Edit1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;
+    Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
 end;
 
 procedure TUpdateRazdelModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_user:=false;
     if Edit1.Text<>'' then
-      begin
-        config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Edit1.Text+#39);
-        if ((DataModule1.ADOModuleLecture.IsEmpty)) then
-          unique_user:=true
-        else
-          MessageBox(0,'Данный раздел уже сущетсвует!','Изменение раздела', MB_OK+MB_ICONwarning);
-      end;
+        begin
+            config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Edit1.Text+#39);
+            if ((BD.RequestSQL.IsEmpty)) then
+                unique_user:=true
+            else
+                MessageBox(0,'Данный раздел уже сущетсвует!','Изменение раздела', MB_OK+MB_ICONwarning);
+        end;
 
     if ((Edit1.Text<>'')and(unique_user<>false)) then
-      begin
-        config.execRequestSQL('UPDATE Раздел SET НазваниеРаздела='+#39+Edit1.Text+#39+' WHERE КодРаздела ='+IntToStr(updateKodRazdela));
-        config.rebootRequestsCRUD;
-    end;
+        begin
+            config.execRequestSQL('UPDATE Раздел SET НазваниеРаздела='+#39+Edit1.Text+#39+' WHERE КодРаздела ='+IntToStr(updateKodRazdela));
+            config.rebootRequestsCRUD;
+            MessageBox(0,'Раздел был успешно изменен!','Редактирование раздела', MB_OK+MB_ICONINFORMATION);
+        end;
 end;
 
 end.

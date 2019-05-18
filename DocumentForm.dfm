@@ -1,6 +1,6 @@
 object Shyrnal: TShyrnal
-  Left = 57
-  Top = 188
+  Left = 82
+  Top = 281
   AutoScroll = False
   Caption = #1046#1091#1088#1085#1072#1083
   ClientHeight = 642
@@ -4742,7 +4742,7 @@ object Shyrnal: TShyrnal
     Width = 1190
     Height = 225
     BorderStyle = bsNone
-    DataSource = DataModule1.ModuleLecture
+    DataSource = BD.Request
     FixedColor = clWindow
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText

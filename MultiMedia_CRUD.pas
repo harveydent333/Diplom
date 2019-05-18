@@ -24,6 +24,8 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +37,8 @@ var
 
 implementation
 
-uses config, basa_dan, ControlCenter, Title_Form, Unit2, AuthorizationData;
+uses config, basa_dan, ControlCenter, Title_Form, Unit2, AuthorizationData,
+  AddMultimedia, UpdateUnit, UpdateMultimedia;
 
 {$R *.dfm}
 
@@ -49,10 +52,9 @@ end;
 procedure TMultiMediaCRUD.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
-      TitleForm.close;
+        TitleForm.close;
 end;
 
 procedure TMultiMediaCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -72,13 +74,35 @@ begin
 end;
 
 procedure TMultiMediaCRUD.SpeedButton1Click(Sender: TObject);
-begin{
- with TAddControlModalForm.Create(nil) do
+begin
+ with TAddMultimediaModalForm.Create(nil) do
       try
         ShowModal;
       finally
         Free;
-    end;  }
+    end;
+end;
+
+procedure TMultiMediaCRUD.SpeedButton6Click(Sender: TObject);
+begin
+    config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеМультимедии').AsString+#39);
+    updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемой Мультимедии
+    updateKodPractic:=BD.Request.DataSet.FieldByName('КодМультимедии').AsInteger;      // Код изменяемой Мультимедии
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
+    updateKodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой Мультимедии
+
+    with TUpdateMultimediaModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TMultiMediaCRUD.SpeedButton7Click(Sender: TObject);
+begin
+    config.execRequestSQL('DELETE FROM Мультимедиа WHERE НазваниеМультимедии='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеМультимедии').AsString+#39);
+    config.rebootRequestsCRUD;
 end;
 
 end.

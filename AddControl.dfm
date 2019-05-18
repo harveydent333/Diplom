@@ -1,6 +1,6 @@
 object AddControlModalForm: TAddControlModalForm
-  Left = 550
-  Top = 468
+  Left = 355
+  Top = 202
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1050#1086#1085#1090#1088#1086#1083#1103
   ClientHeight = 310
@@ -2645,18 +2645,5 @@ object AddControlModalForm: TAddControlModalForm
       Flat = True
       OnClick = SpeedButton1Click
     end
-  end
-  object DBGrid1: TDBGrid
-    Left = 544
-    Top = 450
-    Width = 320
-    Height = 120
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

@@ -1,6 +1,6 @@
 object Add_Questions: TAdd_Questions
-  Left = 53
-  Top = 108
+  Left = 83
+  Top = 202
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 672
@@ -6209,7 +6209,7 @@ object Add_Questions: TAdd_Questions
     Top = 680
     Width = 329
     Height = 57
-    DataSource = DataModule1.ModuleLecture
+    DataSource = BD.Request
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

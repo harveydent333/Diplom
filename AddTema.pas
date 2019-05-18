@@ -14,10 +14,8 @@ type
     Panel2: TPanel;
     Image2: TImage;
     SpeedButton1: TSpeedButton;
-    Label3: TLabel;
     Edit1: TEdit;
     ComboBox1: TComboBox;
-    DBGrid1: TDBGrid;
     Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -45,13 +43,13 @@ procedure TAddTemaModalForm.FormCreate(Sender: TObject);
 begin
     Edit1.Text:='';
     config.selectRequestSQL('SELECT * FROM Раздел');
-    DBGrid1.DataSource.DataSet.First;
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+        BD.Request.DataSet.Next;
       end;
-    DBGrid1.DataSource.DataSet.First;
+    BD.Request.DataSet.First;
     ComboBox1.ItemIndex:=0;
 
     if ComboBox1.ItemIndex=-1 then
@@ -70,7 +68,7 @@ begin
 
         nameRazdel:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
         config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdel+#39);
-        kodRazdel:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+        kodRazdel:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
       end;
 end;
 
@@ -83,7 +81,7 @@ begin
     nameRazdel:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
 
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdel+#39);
-    kodRazdel:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    kodRazdel:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
     if ComboBox1.ItemIndex=-1 then
       begin
         Edit1.Text:='';
@@ -99,7 +97,7 @@ begin
     if Edit1.Text<>'' then
       begin
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+Edit1.Text+#39);
-        if DataModule1.ADOModuleLecture.IsEmpty then
+        if BD.RequestSQL.IsEmpty then
           unique_user:=true
         else
           MessageBox(0,'Данная тема уже сущетсвует!','Создание темы', MB_OK+MB_ICONwarning);

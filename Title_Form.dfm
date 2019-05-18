@@ -1,6 +1,6 @@
 object TitleForm: TTitleForm
-  Left = 29
-  Top = 153
+  Left = 83
+  Top = 186
   AutoScroll = False
   Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1080' '#1079#1072#1097#1080#1090#1072' WEB '#1087#1088#1080#1083#1086#1078#1077#1085#1080#1081
   ClientHeight = 642
@@ -4633,8 +4633,8 @@ object TitleForm: TTitleForm
     WordWrap = True
   end
   object Image2: TImage
-    Left = 400
-    Top = 248
+    Left = 416
+    Top = 240
     Width = 401
     Height = 105
     Picture.Data = {
@@ -5297,8 +5297,8 @@ object TitleForm: TTitleForm
       0514514005145140051451400514514005145140051451401FFFD9}
   end
   object SpeedButton4: TSpeedButton
-    Left = 424
-    Top = 296
+    Left = 440
+    Top = 272
     Width = 297
     Height = 41
     Caption = #1053#1072#1095#1072#1090#1100' '#1088#1072#1073#1086#1090#1091
@@ -5605,17 +5605,13 @@ object TitleForm: TTitleForm
     Flat = True
     OnClick = SpeedButton1Click
   end
-  object DBGrid1: TDBGrid
-    Left = 752
-    Top = 700
-    Width = 320
-    Height = 88
-    DataSource = DataModule1.ModuleLecture
+  object Button1: TButton
+    Left = 424
+    Top = 448
+    Width = 129
+    Height = 25
+    Caption = 'Multimedia'
     TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
+    OnClick = Button1Click
   end
 end

@@ -16,7 +16,6 @@ type
     SpeedButton4: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
-    DBGrid1: TDBGrid;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
     Label3: TLabel;
@@ -82,14 +81,14 @@ begin
 
     nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
-    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
      // Проверка на наличие потомков у Раздела
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
 
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
 
@@ -99,7 +98,7 @@ begin
         combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+        kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
       end
     else
       label5.Visible:=true;
@@ -117,13 +116,13 @@ begin
 
     nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);
-    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
 
     config.selectRequestSQL('SELECT * FROM Лекции WHERE КодТемы='+inttostr(kodTema));
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox3.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox3.Items.Add(BD.Request.DataSet.FieldByName('НазваниеЛекции').AsString);
+        BD.Request.DataSet.Next;
         ComboBox3.Text:=ComboBox3.Items.Strings[0];
     end;
 
@@ -163,7 +162,7 @@ end;
 procedure TMenuLectures.ComboBox3Change(Sender: TObject);
 begin
     config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+ComboBox3.Text+#39);
-    updateKodLecture:=DBGrid1.DataSource.DataSet.FieldByName('КодЛекции').AsInteger;      // Код  Лекции
+    updateKodLecture:=BD.Request.DataSet.FieldByName('КодЛекции').AsInteger;      // Код  Лекции
     SpeedButton1.Visible:=true;
 end;
 
@@ -173,7 +172,7 @@ begin
     Edit_Lecture.Position:=poDesktopCenter;
     MenuLectures.Visible:=false;
     Edit_Lecture.Memo1.Clear;
-    Edit_Lecture.Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('Содержание').AsString);
+    Edit_Lecture.Memo1.Lines.Add(BD.Request.DataSet.FieldByName('Содержание').AsString);
 
     //сделаю в конфиге
     with Edit_Lecture do

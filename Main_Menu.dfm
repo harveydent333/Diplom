@@ -1,6 +1,6 @@
 object MainMenu: TMainMenu
-  Left = 44
-  Top = 259
+  Left = 122
+  Top = 255
   AutoScroll = False
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102
   ClientHeight = 643
@@ -4779,17 +4779,18 @@ object MainMenu: TMainMenu
     ParentFont = False
     Transparent = True
   end
-  object DBGrid1: TDBGrid
-    Left = 200
-    Top = 650
-    Width = 249
-    Height = 81
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
+  object SpeedButton3: TSpeedButton
+    Left = 224
+    Top = 128
+    Width = 673
+    Height = 49
+    Caption = 'Mutimedia'
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
   end
 end

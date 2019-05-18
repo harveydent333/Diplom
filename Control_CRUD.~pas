@@ -19,7 +19,7 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
-    DBGrid2: TDBGrid;
+    DBGrid22: TDBGrid;
     SpeedButton8: TSpeedButton;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -67,10 +67,10 @@ end;
 procedure TControlCRUD.SpeedButton6Click(Sender: TObject);   // Изменение Контроля
 begin
     config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
-    updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемого Контроля
-    updateKodControl:=DBGrid2.DataSource.DataSet.FieldByName('КодКонтроля').AsInteger;      // Код изменяемого Контроля
+    updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемого Контроля
+    updateKodControl:=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger;      // Код изменяемого Контроля
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-    updateKodRazdela:=DBGrid2.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой лекции
+    updateKodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой лекции
 
     with TUpdateControlModalForm.Create(nil) do
       try
@@ -83,31 +83,32 @@ end;
 procedure TControlCRUD.SpeedButton8Click(Sender: TObject);  // Переход в редактор вопросов
 begin
     if DBGrid1.DataSource.DataSet.RecordCount = 0 then
-      MessageBox(0,'Ни одного контроля знаний не выбрано!','',MB_OK+MB_ICONWARNING)
+        MessageBox(0,'Ни одного контроля знаний не выбрано!','',MB_OK+MB_ICONWARNING)
     else
-      begin
-        // дефолт при создании вопросов //
-        //
-        // =====
-        config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
-        updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
-        updateKodControl:=DBGrid2.DataSource.DataSet.FieldByName('КодКонтроля').AsInteger;
+        begin
+            config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
+            updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
+            updateKodControl:=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger;
 
-        config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
-        Add_Questions.ListBox1.Clear;
-        Add_Questions.DBGrid1.DataSource.DataSet.First;
-        While (Add_Questions.DBGrid1.DataSource.DataSet.Eof=false) do
-          begin
-            Add_Questions.ListBox1.Items.Add(Add_Questions.DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-            Add_Questions.DBGrid1.DataSource.DataSet.Next;
-          end;
-         Add_Questions.VariantsQuestionSingle1.Visible:=false;
-         Add_Questions.Button2.Enabled:=false;
-         ControlCRUD.Visible:=false;
-         Add_Questions.show;
-         Add_Questions.Memo1.Clear;
-         Add_Questions.Position:=poDesktopCenter;
-      end;
+            config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+            with Add_Questions do
+                begin
+                    ListBox1.Clear;
+                    DBGrid1.DataSource.DataSet.First;
+                    While (DBGrid1.DataSource.DataSet.Eof=false) do
+                        begin
+                            ListBox1.Items.Add(Add_Questions.DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
+                            DBGrid1.DataSource.DataSet.Next;
+                        end;
+
+                    VariantsQuestionSingle1.Visible:=false;
+                    Button2.Enabled:=false;
+                    Show;
+                    Memo1.Clear;
+                    Position:=poDesktopCenter;
+                end;
+            ControlCRUD.Visible:=false;
+        end;
 end;
 
 procedure TControlCRUD.SpeedButton5Click(Sender: TObject);

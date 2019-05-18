@@ -9,7 +9,6 @@ uses
 type
   TUpdateLectureModalForm = class(TForm)
     Image1: TImage;
-    DBGrid1: TDBGrid;
     Panel2: TPanel;
     Image2: TImage;
     SpeedButton1: TSpeedButton;
@@ -46,37 +45,37 @@ procedure TUpdateLectureModalForm.FormCreate(Sender: TObject);
 begin
     // Получение всех разделов
     config.selectRequestSQL('SELECT * FROM Раздел');
-    DBGrid1.DataSource.DataSet.First;
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
       begin
-      ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
-      DBGrid1.DataSource.DataSet.Next;
+      ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+      BD.Request.DataSet.Next;
     end;
 
     // Получение Раздела к которому относиться наша изменяемая лекция
     config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
-    ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;
+    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
 
     // Получение всех Тем раздела к которомой относиться наша изменяемая лекция
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
 
     ComboBox2.Visible:=true;
     label3.Visible:=true;
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
       end;
 
    // Получение название Темы нашей зменяемой лекции
    config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-   ComboBox2.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString;
+   ComboBox2.Text:=BD.Request.DataSet.FieldByName('НазваниеТемы').AsString;
 
    // Получение названия Лекции к которомой относитсья наша изменяемая лекция
    Edit1.Visible:=true;
    label2.Visible:=true;
    config.selectRequestSQL('SELECT * FROM Лекции WHERE КодЛекции='+IntToStr(updateKodLecture));
-   Edit1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString;
+   Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеЛекции').AsString;
 
     kodRazdela:=updateKodRazdela;
     kodTema:=updateKodTema;
@@ -92,14 +91,14 @@ begin
     label5.visible:=false;
 
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
-    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
 
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
 
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
 
@@ -111,7 +110,7 @@ begin
         Combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+        kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
       end
     else
       label5.Visible:=true;
@@ -131,7 +130,7 @@ procedure TUpdateLectureModalForm.ComboBox2Change(Sender: TObject);
 begin
     nameTema:=Combobox2.Text;
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
 end;
 
 procedure TUpdateLectureModalForm.ComboBox1KeyPress(Sender: TObject;

@@ -56,7 +56,7 @@ end;
 procedure TAddRazdelModalForm.checkUniqueData; // Проверка на уникальные данные
 begin
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Edit1.Text+#39);
-    if DataModule1.ADOModuleLecture.IsEmpty then
+    if BD.RequestSQL.IsEmpty then
       unique_razdel:=true
     else
        MessageBox(0,'Данный раздел уже сущетсвует!','Создание раздела', MB_OK+MB_ICONwarning);

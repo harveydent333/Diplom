@@ -9,7 +9,6 @@ uses
 
 type
   TMenuControl = class(TForm)
-    DBGrid1: TDBGrid;
     Label1: TLabel;
     ComboBox1: TComboBox;
     Label2: TLabel;
@@ -85,14 +84,14 @@ begin
 
     nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
-    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
      // Проверка на наличие потомков у Раздела
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
 
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
 
@@ -102,7 +101,7 @@ begin
         combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+        kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
       end
     else
       label5.Visible:=true;
@@ -120,13 +119,13 @@ begin
 
     nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);
-    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
 
     config.selectRequestSQL('SELECT * FROM Контроль WHERE КодТемы='+inttostr(kodTema));
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox3.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox3.Items.Add(BD.Request.DataSet.FieldByName('НазваниеКонтроля').AsString);
+        BD.Request.DataSet.Next;
         ComboBox3.Text:=ComboBox3.Items.Strings[0];
     end;
 
@@ -148,12 +147,12 @@ begin
     ResultForm.Label20.Caption:=nameControl+'"';
 
     config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+nameControl+#39);
-    updateKodControl:=DBGrid1.DataSource.DataSet.FieldByName('КодКонтроля').AsInteger;
+    updateKodControl:=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger;
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
-    label14.Caption:=IntToStr(DBGrid1.DataSource.DataSet.RecordCount);
-    updateUnit.countQuestion:=DBGrid1.DataSource.DataSet.RecordCount;
+    label14.Caption:=IntToStr(BD.Request.DataSet.RecordCount);
+    updateUnit.countQuestion:=BD.Request.DataSet.RecordCount;
 
-    if DBGrid1.DataSource.DataSet.RecordCount>0 then
+    if BD.Request.DataSet.RecordCount>0 then
       SpeedButton1.Enabled:=true
     else
       SpeedButton1.Enabled:=false;
@@ -175,8 +174,8 @@ begin
       IntToStr(KodUser)+', '+IntToStr(KodTema)+', '+#39+nameTema+#39+', '+#39+ComboBox3.Text+#39+', '+
       #39+DateTimeToStr(DateTimePicker1.DateTime)+#39+', '+#39+familyUser+#39+', '+#39+nameUser+#39+', '+#39+secondNameUser+#39+')');
     config.selectRequestSQL('SELECT * FROM Журнал');
-    DBGrid1.DataSource.DataSet.Last;
-    kodLastControl:=DBGrid1.DataSource.DataSet.FieldByName('КодЖурнала').AsInteger;
+    BD.Request.DataSet.Last;
+    kodLastControl:=BD.Request.DataSet.FieldByName('КодЖурнала').AsInteger;
     defoltTest.countBall:=0;
     defoltTest.exitPoint:=1;
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));

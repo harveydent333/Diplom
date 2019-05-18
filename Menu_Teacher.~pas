@@ -8,7 +8,6 @@ uses
 
 type
   TRegistrationForm = class(TForm)
-    fon: TImage;
     defolt_edit1: TImage;
     bed_edit1: TImage;
     good_edit1: TImage;
@@ -33,11 +32,11 @@ type
     SpeedButton5: TSpeedButton;
     Label7: TLabel;
     Label8: TLabel;
-    Image1: TImage;
     last_name: TEdit;
     first_name: TEdit;
     second_name: TEdit;
     number_group: TEdit;
+    Image1: TImage;
     procedure last_name3Change(Sender: TObject);
     procedure first_name3Change(Sender: TObject);
     procedure second_name3Change(Sender: TObject);
@@ -158,8 +157,8 @@ end;
 procedure TRegistrationForm.SpeedButton2Click(Sender: TObject);
 begin
     RegistrationForm.visible:=false;
-    MainMenu.show;
-    MainMenu.position:=poDesktopCenter;
+    YchenikiCRUD.show;
+    YchenikiCRUD.position:=poDesktopCenter;
 end;
 
 procedure TRegistrationForm.SpeedButton1Click(Sender: TObject);    //  ÕŒœ ¿ «¿–≈√»—“–»–Œ¬¿“‹

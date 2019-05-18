@@ -20,18 +20,17 @@ type
     SpeedButton1: TSpeedButton;
     Image5: TImage;
     SpeedButton3: TSpeedButton;
-    DBGrid1: TDBGrid;
-    Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
-    DBComboBox1: TDBComboBox;
-    Label4: TLabel;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
     procedure SpeedButton2Click(Sender: TObject);
     procedure stydent_OFFClick(Sender: TObject);
     procedure teacher_OFFClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ComboBox1Change(Sender: TObject);
   private
     procedure teacherAuthorization;
     procedure stydentAuthorization;
@@ -70,10 +69,11 @@ begin
 
     Edit2.Visible:=false;
     Edit1.Visible:=false;
-    Label2.Caption:='ФИО Обучающегося:';
-    Label2.Left:=464;
-    Label3.Visible:=false;
-    DBComboBox1.Visible:=true;
+    Label2.Caption:='Группа:';
+    Label3.Caption:='ФИО:';
+    Label3.Left:=280;
+    ComboBox1.Visible:=true;
+    ComboBox2.Visible:=true;
 end;
 
 procedure TAuthorizationForm.teacher_OFFClick(Sender: TObject);
@@ -86,9 +86,10 @@ begin
     Edit2.Visible:=true;
     Edit1.Visible:=true;
     Label2.Caption:='Логин:';
-    Label2.Left:=261;
-    Label3.Visible:=true;
-    DBComboBox1.Visible:=false;
+    Label3.Caption:='Пароль:';
+    Label3.Left:=256;
+    ComboBox1.Visible:=false;
+    ComboBox2.Visible:=false;
 end;
 
 procedure TAuthorizationForm.SpeedButton1Click(Sender: TObject);
@@ -101,11 +102,11 @@ end;
 
 procedure TAuthorizationForm.teacherAuthorization;
 begin
-    config.selectRequestSQL('SELECT password FROM Учитель WHERE login='+#39+edit2.text+#39);
-    if DataModule1.ADOModuleLecture.IsEmpty then
+    config.selectRequestSQL('SELECT pass FROM Учитель WHERE login='+#39+edit2.text+#39);
+    if BD.RequestSQL.IsEmpty then
         MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
     else
-       if DataModule1.ADOModuleLecture.FieldByName('password').Value<>edit1.Text then
+       if BD.RequestSQL.FieldByName('pass').Value<>edit1.Text then
         MessageBox(0,'Неверный логин или пароль!','Авторизация', MB_OK+MB_ICONwarning)
        else
         begin
@@ -125,19 +126,33 @@ begin
 end;
 
 procedure TAuthorizationForm.stydentAuthorization;
+var str:string;
+i,j,beg:integer;
+ar:array[1..50] of string;
 begin
-      config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+DBComboBox1.Text+#39);
-      if DataModule1.ADOModuleLecture.IsEmpty then
+    str:=ComboBox2.Text+' ';
+    beg:=1;
+    j:=1;
+    for i:=1 to length(str) do
+        begin
+            if(str[i]=' ') then
+              begin
+                  ar[j]:=Copy(str, beg, i-beg);
+                  beg:=i+1;
+                  inc(j);
+              end;
+        end;
+    config.selectRequestSQL('SELECT * FROM Ученик WHERE Имя='+#39+ar[2]+#39+' AND Фамилия='+#39+ar[1]+#39+' AND Отчество='+#39+ar[3]+#39+' AND КодГруппы='+IntToStr(ComboBox1.ItemIndex+1));
+    if BD.RequestSQL.IsEmpty then
         MessageBox(0,'Данный пользователь не найден!','Авторизация', MB_OK+MB_ICONwarning)
-      else
-          begin
-            KodUser:=DBGrid1.DataSource.DataSet.FieldByName('КодУченика').AsInteger;
-            AuthorizationData.getDataUser;
-            MainMenu.show;
-            label1.Caption:=inttostr(KodUser);
-            AuthorizationForm.Visible:=false;
-          end;
-      with MainMenu do
+    else
+      begin
+          KodUser:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;
+          AuthorizationData.getDataUser;
+          MainMenu.show;
+          AuthorizationForm.Visible:=false;
+      end;
+    with MainMenu do
         begin
           SpeedButton5.Visible:=true;
           SpeedButton8.Visible:=true;
@@ -165,6 +180,24 @@ begin
     MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
       TitleForm.close;
+end;
+
+procedure TAuthorizationForm.ComboBox1Change(Sender: TObject);
+var i:integer; fio:string;
+begin
+   ComboBox2.Clear;
+   config.selectRequestSQL('SELECT * FROM Ученик WHERE КодГруппы='+IntToStr(ComboBox1.ItemIndex+1));
+   BD.Request.DataSet.First;
+   for i:=1 to BD.Request.DataSet.RecordCount do
+      begin
+        with BD.Request.DataSet do
+          begin
+              fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
+          end;
+        AuthorizationForm.ComboBox2.Items.Add(fio);
+        BD.Request.DataSet.Next;
+      end;
+   AuthorizationForm.ComboBox2.ItemIndex:=0;
 end;
 
 end.

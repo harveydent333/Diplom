@@ -1,6 +1,6 @@
 object MainMenu: TMainMenu
-  Left = 166
-  Top = 200
+  Left = 183
+  Top = 236
   AutoScroll = False
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102
   ClientHeight = 643
@@ -4778,18 +4778,5 @@ object MainMenu: TMainMenu
     Font.Style = []
     ParentFont = False
     Transparent = True
-  end
-  object DBGrid1: TDBGrid
-    Left = 200
-    Top = 650
-    Width = 249
-    Height = 81
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

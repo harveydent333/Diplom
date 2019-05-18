@@ -35,7 +35,7 @@ object VariantsQuestionWrite: TVariantsQuestionWrite
     Left = 112
     Top = 72
     Width = 713
-    Height = 33
+    Height = 31
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19

@@ -108,7 +108,7 @@ begin
     if Edit1.Text<>'' then
       begin
         config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+Edit1.Text+#39);
-        if DataModule1.ADOModuleLecture.IsEmpty then
+        if BD.RequestSQL.IsEmpty then
           unique_user:=true
         else
           MessageBox(0,'Данная лекция уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);

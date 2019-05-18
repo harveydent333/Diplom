@@ -1,6 +1,6 @@
 object YchenikiCRUD: TYchenikiCRUD
-  Left = 61
-  Top = 192
+  Left = 360
+  Top = 120
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1086#1073#1091#1095#1072#1102#1097#1080#1084#1080#1089#1103
   ClientHeight = 643
@@ -4589,6 +4589,7 @@ object YchenikiCRUD: TYchenikiCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton2Click
   end
   object SpeedButton3: TSpeedButton
     Left = 11
@@ -4599,7 +4600,6 @@ object YchenikiCRUD: TYchenikiCRUD
     Flat = True
     ParentShowHint = False
     ShowHint = True
-    OnClick = SpeedButton3Click
   end
   object SpeedButton5: TSpeedButton
     Left = 874
@@ -4701,7 +4701,7 @@ object YchenikiCRUD: TYchenikiCRUD
     Top = 56
     Width = 929
     Height = 337
-    DataSource = DataModule1.Ychenik
+    DataSource = BD.Ychenik
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -4756,7 +4756,7 @@ object YchenikiCRUD: TYchenikiCRUD
     Top = 416
     Width = 320
     Height = 120
-    DataSource = DataModule1.ModuleLecture
+    DataSource = BD.Request
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

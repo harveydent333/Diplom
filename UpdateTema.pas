@@ -17,7 +17,6 @@ type
     SpeedButton1: TSpeedButton;
     ComboBox1: TComboBox;
     Label3: TLabel;
-    DBGrid2: TDBGrid;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
@@ -72,7 +71,7 @@ begin
     if Edit1.Text<>'' then
       begin
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+Edit1.Text+#39);
-        if ((DataModule1.ADOModuleLecture.IsEmpty) or (updateKodTema=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger)) then
+        if ((BD.RequestSQL.IsEmpty) or (updateKodTema=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger)) then
           unique_user:=true
         else
           MessageBox(0,'Данная тема уже сущетсвует!','Создание темы', MB_OK+MB_ICONwarning);

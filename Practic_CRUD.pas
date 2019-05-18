@@ -19,7 +19,7 @@ type
     SpeedButton7: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
-    DBGrid2: TDBGrid;
+    DBGrid21: TDBGrid;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
@@ -67,10 +67,10 @@ end;
 procedure TPracticCRUD.SpeedButton6Click(Sender: TObject);    // Изменение Практики
 begin
     config.selectRequestSQL('SELECT * FROM Практические WHERE НазваниеПрактической='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеПрактической').AsString+#39);
-    updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемой Практики
-    updateKodPractic:=DBGrid2.DataSource.DataSet.FieldByName('КодПрактической').AsInteger;      // Код изменяемой Практики
+    updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемой Практики
+    updateKodPractic:=BD.Request.DataSet.FieldByName('КодПрактической').AsInteger;      // Код изменяемой Практики
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-    updateKodRazdela:=DBGrid2.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой Практики
+    updateKodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой Практики
 
     with TUpdatePracticModalForm.Create(nil) do
       try

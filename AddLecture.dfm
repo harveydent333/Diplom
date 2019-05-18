@@ -2646,17 +2646,4 @@ object AddLectureModalForm: TAddLectureModalForm
       OnClick = SpeedButton1Click
     end
   end
-  object DBGrid1: TDBGrid
-    Left = 700
-    Top = 16
-    Width = 165
-    Height = 65
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-  end
 end

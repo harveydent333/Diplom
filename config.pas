@@ -17,37 +17,49 @@ uses Add_Question;
 
 procedure selectRequestSQL(str:string);
 begin
-    DataModule1.ADOModuleLecture.SQL.Clear;
-    DataModule1.ADOModuleLecture.SQL.Add(str);
-    DataModule1.ADOModuleLecture.Open;
+    with BD.RequestSQL do
+      begin
+         SQL.Clear;
+         SQL.Add(str);
+         Open;
+      end;
 end;
 
 procedure execRequestSQL(str:string);
 begin
-    DataModule1.ADOModuleLecture.SQL.Clear;
-    DataModule1.ADOModuleLecture.SQL.Add(str);
-    DataModule1.ADOModuleLecture.ExecSQL;
+    with BD.RequestSQL do
+      begin
+         SQL.Clear;
+         SQL.Add(str);
+         ExecSQL;
+      end;
 end;
 
 procedure rebootRequestsCRUD;
-    begin
-      DataModule1.ADORazdelCRUD.Active:=False;
-      DataModule1.ADORazdelCRUD.Active:=True;
+begin
+    with BD do
+      begin
+        RazdelADO.Active:=False;
+        RazdelADO.Active:=True;
 
-      DataModule1.ADOTemaCRUD.Active:=False;
-      DataModule1.ADOTemaCRUD.Active:=True;
+        TemaADO.Active:=False;
+        TemaADO.Active:=True;
 
-      DataModule1.ADOLectureCRUD.Active:=False;
-      DataModule1.ADOLectureCRUD.Active:=True;
+        LectureADO.Active:=False;
+        LectureADO.Active:=True;
 
-      DataModule1.ADOPracticCRUD.Active:=False;
-      DataModule1.ADOPracticCRUD.Active:=True;
+        PracticADO.Active:=False;
+        PracticADO.Active:=True;
 
-      DataModule1.ADOControlCRUD.Active:=False;
-      DataModule1.ADOControlCRUD.Active:=True;
+        ControlADO.Active:=False;
+        ControlADO.Active:=True;
 
-      DataModule1.YchenikADO.Active:=false;
-      DataModule1.YchenikADO.Active:=true;
+        YchenikADO.Active:=false;
+        YchenikADO.Active:=true;
+
+        MultimediaADO.Active:=false;
+        MultimediaADO.Active:=true;
+      end;
   end;
 
 end.

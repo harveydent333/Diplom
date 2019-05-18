@@ -88,10 +88,9 @@ end;
 procedure TDataManagementCenter.SpeedButton6Click(Sender: TObject);
 var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
-      TitleForm.close;
+        TitleForm.close;
 end;
 
 procedure TDataManagementCenter.SpeedButton8Click(Sender: TObject);

@@ -1,6 +1,6 @@
 object AuthorizationForm: TAuthorizationForm
-  Left = 107
-  Top = 280
+  Left = 88
+  Top = 135
   AutoScroll = False
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103
   ClientHeight = 643
@@ -29651,13 +29651,6 @@ object AuthorizationForm: TAuthorizationForm
     Flat = True
     OnClick = SpeedButton3Click
   end
-  object Label1: TLabel
-    Left = 176
-    Top = -50
-    Width = 32
-    Height = 13
-    Caption = 'Label1'
-  end
   object Label2: TLabel
     Left = 264
     Top = 224
@@ -29685,13 +29678,6 @@ object AuthorizationForm: TAuthorizationForm
     Font.Style = []
     ParentFont = False
     Transparent = True
-  end
-  object Label4: TLabel
-    Left = 656
-    Top = 800
-    Width = 32
-    Height = 13
-    Caption = 'Label4'
   end
   object Edit2: TEdit
     Left = 336
@@ -29726,26 +29712,28 @@ object AuthorizationForm: TAuthorizationForm
     PasswordChar = '*'
     TabOrder = 1
   end
-  object DBGrid1: TDBGrid
-    Left = 248
-    Top = -200
-    Width = 320
-    Height = 120
-    DataSource = DataModule1.ModuleLecture
+  object ComboBox1: TComboBox
+    Left = 336
+    Top = 224
+    Width = 537
+    Height = 31
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ItemHeight = 23
+    ParentFont = False
     TabOrder = 2
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
+    Text = 'ComboBox1'
+    Visible = False
+    OnChange = ComboBox1Change
   end
-  object DBComboBox1: TDBComboBox
+  object ComboBox2: TComboBox
     Left = 336
     Top = 264
-    Width = 545
+    Width = 537
     Height = 31
-    DataField = 'login'
-    DataSource = DataModule1.Ychenik
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -29754,6 +29742,7 @@ object AuthorizationForm: TAuthorizationForm
     ItemHeight = 23
     ParentFont = False
     TabOrder = 3
+    Text = 'ComboBox1'
     Visible = False
   end
 end

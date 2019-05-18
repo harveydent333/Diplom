@@ -1,6 +1,6 @@
 object ControlCRUD: TControlCRUD
-  Left = -64
-  Top = 295
+  Left = 81
+  Top = 230
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1077#1084' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 643
@@ -4717,7 +4717,7 @@ object ControlCRUD: TControlCRUD
     Top = 56
     Width = 1065
     Height = 337
-    DataSource = DataModule1.ControlCRUD
+    DataSource = BD.Control
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -4759,18 +4759,5 @@ object ControlCRUD: TControlCRUD
         Width = 363
         Visible = True
       end>
-  end
-  object DBGrid2: TDBGrid
-    Left = 680
-    Top = 650
-    Width = 320
-    Height = 120
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

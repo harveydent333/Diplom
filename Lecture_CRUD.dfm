@@ -1,6 +1,6 @@
 object LectureCRUD: TLectureCRUD
-  Left = 71
-  Top = 181
+  Left = 11
+  Top = 356
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1083#1077#1082#1094#1080#1103#1084#1080
   ClientHeight = 643
@@ -4717,7 +4717,7 @@ object LectureCRUD: TLectureCRUD
     Top = 56
     Width = 1065
     Height = 337
-    DataSource = DataModule1.LectureCRUD
+    DataSource = BD.Lecture
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -4765,7 +4765,7 @@ object LectureCRUD: TLectureCRUD
     Top = 800
     Width = 320
     Height = 56
-    DataSource = DataModule1.ModuleLecture
+    DataSource = BD.Request
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

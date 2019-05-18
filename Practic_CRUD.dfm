@@ -1,6 +1,6 @@
 object PracticCRUD: TPracticCRUD
-  Left = 64
-  Top = 268
+  Left = 373
+  Top = 234
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1084#1080' '#1088#1072#1073#1086#1090#1072#1084#1080
   ClientHeight = 643
@@ -4702,7 +4702,7 @@ object PracticCRUD: TPracticCRUD
     Top = 56
     Width = 1073
     Height = 337
-    DataSource = DataModule1.PracticCRUD
+    DataSource = BD.Practic
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -4745,12 +4745,12 @@ object PracticCRUD: TPracticCRUD
         Visible = True
       end>
   end
-  object DBGrid2: TDBGrid
+  object DBGrid21: TDBGrid
     Left = 696
     Top = 650
     Width = 320
     Height = 120
-    DataSource = DataModule1.ModuleLecture
+    DataSource = BD.Request
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

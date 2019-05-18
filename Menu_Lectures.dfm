@@ -1,6 +1,6 @@
 object MenuLectures: TMenuLectures
-  Left = 84
-  Top = 205
+  Left = 38
+  Top = 231
   AutoScroll = False
   Caption = #1051#1077#1082#1094#1080#1080
   ClientHeight = 643
@@ -4742,19 +4742,6 @@ object MenuLectures: TMenuLectures
     Visible = False
     OnClick = SpeedButton1Click
   end
-  object DBGrid1: TDBGrid
-    Left = 264
-    Top = 700
-    Width = 425
-    Height = 129
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-  end
   object ComboBox1: TComboBox
     Left = 48
     Top = 168
@@ -4767,7 +4754,7 @@ object MenuLectures: TMenuLectures
     Font.Style = []
     ItemHeight = 29
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     Text = 'ComboBox1'
     OnChange = ComboBox1Change
     OnKeyPress = ComboBox1KeyPress
@@ -4784,7 +4771,7 @@ object MenuLectures: TMenuLectures
     Font.Style = []
     ItemHeight = 29
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox2Change
@@ -4802,7 +4789,7 @@ object MenuLectures: TMenuLectures
     Font.Style = []
     ItemHeight = 29
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
     Text = 'ComboBox3'
     Visible = False
     OnChange = ComboBox3Change

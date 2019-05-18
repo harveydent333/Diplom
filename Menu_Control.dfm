@@ -1,6 +1,6 @@
 object MenuControl: TMenuControl
-  Left = 133
-  Top = 220
+  Left = 245
+  Top = 379
   AutoScroll = False
   Caption = #1050#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 643
@@ -4743,19 +4743,6 @@ object MenuControl: TMenuControl
     Visible = False
     OnClick = SpeedButton1Click
   end
-  object DBGrid1: TDBGrid
-    Left = 376
-    Top = 700
-    Width = 425
-    Height = 129
-    DataSource = DataModule1.ModuleLecture
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-  end
   object ComboBox1: TComboBox
     Left = 48
     Top = 168
@@ -4768,7 +4755,7 @@ object MenuControl: TMenuControl
     Font.Style = []
     ItemHeight = 29
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     Text = 'ComboBox1'
     OnChange = ComboBox1Change
     OnKeyPress = ComboBox1KeyPress
@@ -4785,7 +4772,7 @@ object MenuControl: TMenuControl
     Font.Style = []
     ItemHeight = 29
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox2Change
@@ -4803,7 +4790,7 @@ object MenuControl: TMenuControl
     Font.Style = []
     ItemHeight = 29
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
     Text = 'ComboBox3'
     Visible = False
     OnChange = ComboBox3Change
@@ -4815,7 +4802,7 @@ object MenuControl: TMenuControl
     Width = 593
     Height = 257
     Color = clBtnHighlight
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
     object Label12: TLabel
       Left = 32
@@ -4945,6 +4932,6 @@ object MenuControl: TMenuControl
     Height = 21
     Date = 43592.851977881950000000
     Time = 43592.851977881950000000
-    TabOrder = 5
+    TabOrder = 4
   end
 end
