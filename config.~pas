@@ -7,48 +7,97 @@ Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUn
 
 var  x:integer;
 
-procedure selectRequestSQL(str:string);
-procedure execRequestSQL(str:string);
+procedure selectRequestSQL(request:string);
+procedure execRequestSQL(request:string);
 procedure rebootRequestsCRUD;
+procedure checkOnThePresenceOfTheCompositionsOfRazdels;
+procedure checkOnThePresenceOfTheCompositionsOfTems;
+procedure checkOnThePresenceOfTheCompositionsOfLectures;
+procedure checkOnThePresenceOfTheCompositionsOfPractics;
+procedure checkOnThePresenceOfTheCompositionsOfControls;
+procedure checkOnThePresenceOfTheCompositionsOfYcheniks;
+procedure checkOnThePresenceOfTheCompositionsOfMultimedia;
 
 implementation
 
-uses Add_Question;
+uses Add_Question, AddLecture;
 
-procedure selectRequestSQL(str:string);
+procedure selectRequestSQL(request:string);   // Запрос данных из БД
 begin
-    DataModule1.RequestSQL.SQL.Clear;
-    DataModule1.RequestSQL.SQL.Add(str);
-    DataModule1.RequestSQL.Open;
+    with BD.RequestSQL do
+      begin
+         SQL.Clear;
+         SQL.Add(request);
+         Open;
+      end;
 end;
 
-procedure execRequestSQL(str:string);
+procedure execRequestSQL(request:string);   // Запрос на редактирование данных в БД
 begin
-    DataModule1.RequestSQL.SQL.Clear;
-    DataModule1.RequestSQL.SQL.Add(str);
-    DataModule1.RequestSQL.ExecSQL;
+    with BD.RequestSQL do
+      begin
+         SQL.Clear;
+         SQL.Add(request);
+         ExecSQL;
+      end;
 end;
 
-procedure rebootRequestsCRUD;
-    begin
-      DataModule1.RazdelADO.Active:=False;
-      DataModule1.RazdelADO.Active:=True;
+procedure rebootRequestsCRUD;       // Перезагрузка таблиц отображения
+var i:integer; bool:boolean;
+begin
+bool:=false;
+    with BD do
+      begin
+        for i:=1 to 2 do
+          begin
+            RazdelADO.Active:=bool;
+            checkOnThePresenceOfTheCompositionsOfRazdels;
+            TemaADO.Active:=bool;
+            checkOnThePresenceOfTheCompositionsOfTems;
+            LectureADO.Active:=bool;
+            checkOnThePresenceOfTheCompositionsOfLectures;
+            PracticADO.Active:=bool;
+            checkOnThePresenceOfTheCompositionsOfPractics;
+            ControlADO.Active:=bool;
+            checkOnThePresenceOfTheCompositionsOfControls;
+            YchenikADO.Active:=bool;
+            checkOnThePresenceOfTheCompositionsOfYcheniks;
+            MultimediaADO.Active:=bool;
+            checkOnThePresenceOfTheCompositionsOfMultimedia;
+            bool:=true;
+          end;
+      end;
+end;
 
-      DataModule1.TemaADO.Active:=False;
-      DataModule1.TemaADO.Active:=True;
+procedure checkOnThePresenceOfTheCompositionsOfRazdels;
+begin
+// ЕСЛИ ПУСТО ВЫКЛ
+// ИНАЧЕ ВКЛ
+end;
 
-      DataModule1.LectureADO.Active:=False;
-      DataModule1.LectureADO.Active:=True;
+procedure checkOnThePresenceOfTheCompositionsOfTems;
+begin
+end;
 
-      DataModule1.PracticADO.Active:=False;
-      DataModule1.PracticADO.Active:=True;
+procedure checkOnThePresenceOfTheCompositionsOfLectures;
+begin
+end;
 
-      DataModule1.ControlADO.Active:=False;
-      DataModule1.ControlADO.Active:=True;
+procedure checkOnThePresenceOfTheCompositionsOfPractics;
+begin
+end;
 
-      DataModule1.YchenikADO.Active:=false;
-      DataModule1.YchenikADO.Active:=true;
-  end;
+procedure checkOnThePresenceOfTheCompositionsOfControls;
+begin
+end;
+
+procedure checkOnThePresenceOfTheCompositionsOfYcheniks;
+begin
+end;
+
+procedure checkOnThePresenceOfTheCompositionsOfMultimedia;
+begin
+end;
 
 end.
 

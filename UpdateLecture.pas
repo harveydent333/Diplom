@@ -19,13 +19,19 @@ type
     Label2: TLabel;
     Edit1: TEdit;
     Label5: TLabel;
+    Edit2: TEdit;
+    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
   private
+    procedure saveDataInBD;
+    procedure checkUniqueData;
+    procedure defaultSetting;
     { Private declarations }
   public
     { Public declarations }
@@ -35,6 +41,7 @@ var
   UpdateLectureModalForm: TUpdateLectureModalForm;
    nameTema, nameRazdela:string;
     kodTema, kodRazdela:integer;
+     unique_lecture,unique_number_lecture:boolean;
 
 implementation
 
@@ -73,22 +80,20 @@ begin
 
    // Получение названия Лекции к которомой относитсья наша изменяемая лекция
    Edit1.Visible:=true;
+   Edit2.Visible:=true;
    label2.Visible:=true;
+   label4.Visible:=true;
    config.selectRequestSQL('SELECT * FROM Лекции WHERE КодЛекции='+IntToStr(updateKodLecture));
    Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеЛекции').AsString;
+   Edit2.Text:=BD.Request.DataSet.FieldByName('НомерЛекции').AsString;
 
-    kodRazdela:=updateKodRazdela;
-    kodTema:=updateKodTema;
+   kodRazdela:=updateKodRazdela;
+   kodTema:=updateKodTema;
 end;
 
 procedure TUpdateLectureModalForm.ComboBox1Change(Sender: TObject);
 begin
-    Edit1.Visible:=false;
-    label2.Visible:=false;
-    label3.Visible:=false;
-    ComboBox2.Visible:=false;
-    ComboBox2.Items.Clear;
-    label5.visible:=false;
+    defaultSetting;
 
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
     kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
@@ -101,12 +106,14 @@ begin
         BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
-
+    // Если раздел не пустой
     if ComboBox2.Items.Count>0 then
-      begin                                                                      // Проверка на наличие тем в разделе
-        label3.Visible:=true;
-        edit1.visible:=true;
+      begin
+        Edit1.visible:=true;
+        Edit2.Visible:=true;
         label2.Visible:=true;
+        label3.Visible:=true;
+        label4.Visible:=true;
         Combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
@@ -116,21 +123,58 @@ begin
       label5.Visible:=true;
 end;
 
-procedure TUpdateLectureModalForm.SpeedButton1Click(Sender: TObject);       // Кнопка сохранить изменения
-begin
- if ((Edit1.Text<>'') and (Edit1.Visible=true)) then
-    begin
-      config.execRequestSQL('UPDATE Лекции SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеЛекции='+#39+Edit1.Text+#39+' WHERE КодЛекции ='+IntToStr(updateKodLecture));
-      config.rebootRequestsCRUD;
-      MessageBox(0,'Лекция была успешно Изменена!','Редактирование Лекции', MB_OK+MB_ICONINFORMATION);
-   end;
-end;
-
 procedure TUpdateLectureModalForm.ComboBox2Change(Sender: TObject);
 begin
     nameTema:=Combobox2.Text;
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
     kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
+end;
+
+procedure TUpdateLectureModalForm.SpeedButton1Click(Sender: TObject);       // Кнопка сохранить изменения
+begin
+    unique_lecture:=false;
+    unique_number_lecture:=false;
+    
+    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        checkUniqueData;
+
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_lecture<>false) and(unique_number_lecture<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        saveDataInBD;
+end;
+
+procedure TUpdateLectureModalForm.saveDataInBD; // Внесение данных в БД
+begin
+    config.execRequestSQL('UPDATE Лекции SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеЛекции='+#39+Edit1.Text+#39+', НомерЛекции='+#39+Edit2.Text+#39+' WHERE КодЛекции ='+IntToStr(updateKodLecture));
+    MessageBox(0,'Лекция была успешно Изменена!','Редактирование Лекции', MB_OK+MB_ICONINFORMATION);
+    config.rebootRequestsCRUD;
+
+end;
+
+procedure TUpdateLectureModalForm.checkUniqueData; // Проверка на уникальные данные
+begin
+    config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+Edit1.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodLecture=BD.Request.DataSet.FieldByName('КодЛекции').AsInteger)) then
+      unique_lecture:=true
+    else
+      MessageBox(0,'Данная лекция уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);
+
+    config.selectRequestSQL('SELECT * FROM Лекции WHERE НомерЛекции='+#39+Edit2.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodLecture=BD.Request.DataSet.FieldByName('КодЛекции').AsInteger)) then
+      unique_number_lecture:=true
+    else
+      MessageBox(0,'Данный номер лекции уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);
+end;
+
+procedure TUpdateLectureModalForm.defaultSetting;
+begin
+    Edit1.Visible:=false;
+    Edit2.Visible:=false;
+    label2.Visible:=false;
+    label3.Visible:=false;
+    label4.Visible:=false;
+    label5.visible:=false;
+    ComboBox2.Visible:=false;
+    ComboBox2.Items.Clear;
 end;
 
 procedure TUpdateLectureModalForm.ComboBox1KeyPress(Sender: TObject;
@@ -143,6 +187,11 @@ procedure TUpdateLectureModalForm.ComboBox2KeyPress(Sender: TObject;
   var Key: Char);
 begin
      if not (Key in []) then Key := #0;
+end;
+
+procedure TUpdateLectureModalForm.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in ['0'..'9', #8]) then Key:=#0;
 end;
 
 end.

@@ -19,7 +19,6 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
-    DBGrid22: TDBGrid;
     SpeedButton8: TSpeedButton;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);

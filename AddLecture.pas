@@ -19,13 +19,19 @@ type
     SpeedButton1: TSpeedButton;
     Label5: TLabel;
     Label1: TLabel;
+    Label4: TLabel;
+    Edit2: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
   private
+    procedure saveDataInBD;
+    procedure checkUniqueData;
+    procedure defaultSetting;
     { Private declarations }
   public
     { Public declarations }
@@ -35,7 +41,7 @@ var
   AddLectureModalForm: TAddLectureModalForm;
    nameRazdela,str,nameTema:string;
    kodRazdela,kodTema:integer;
-   unique_user:boolean;
+   unique_lecture,unique_number_lecture:boolean;
 
 implementation
 
@@ -58,13 +64,7 @@ end;
 
 procedure TAddLectureModalForm.ComboBox1Change(Sender: TObject);
 begin
-    Edit1.Visible:=false;
-    Edit1.Text:='';
-    label2.Visible:=false;
-    label3.Visible:=false;
-    ComboBox2.Visible:=false;
-    ComboBox2.Items.Clear;
-    label5.visible:=false;
+    defaultSetting;
 
     nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
@@ -94,40 +94,63 @@ end;
 procedure TAddLectureModalForm.ComboBox2Change(Sender: TObject);
 begin
     Edit1.Visible:=true;
-    nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
+    Edit2.Visible:=true;
+    label2.Visible:=true;
+    label4.Visible:=true;
 
+    nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);  // Получение код темы
     kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
-    label2.Visible:=true;
 end;
 
 procedure TAddLectureModalForm.SpeedButton1Click(Sender: TObject);
 begin
-    unique_user:=false;
-    if Edit1.Text<>'' then
-      begin
-        config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+Edit1.Text+#39);
-        if BD.RequestSQL.IsEmpty then
-          unique_user:=true
-        else
-          MessageBox(0,'Данная лекция уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);
-      end;
+    unique_lecture:=false;
+    unique_number_lecture:=false;
+    
+    if ((Edit1.Text<>'') and (Edit2.Text<>'')) then
+        checkUniqueData;
 
-    if ((Edit1.Text<>'')and(unique_user<>false)) then
-      begin
-        // Добавление новой Лекции
-        config.execRequestSQL('INSERT INTO Лекции (КодТемы, НазваниеЛекции) VALUES('+IntToStr(kodTema)+','+#39+Edit1.Text+#39+')');
-        MessageBox(0,'Лекция была успешно создана!','Создание Лекции', MB_OK+MB_ICONINFORMATION);
-        config.rebootRequestsCRUD;
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and(unique_lecture<>false) and(unique_number_lecture<>false)) then
+        saveDataInBD;
+end;
 
-        Edit1.Visible:=false;
-        Edit1.Text:='';
-        label2.Visible:=false;
-        label3.Visible:=false;
-        ComboBox2.Visible:=false;
-        ComboBox2.Items.Clear;
-        label5.visible:=false;
-      end;
+procedure TAddLectureModalForm.saveDataInBD; // Внесение данных в БД
+begin
+    config.execRequestSQL('INSERT INTO Лекции (КодТемы, НазваниеЛекции, НомерЛекции) VALUES('+IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+')');
+    MessageBox(0,'Лекция была успешно создана!','Создание Лекции', MB_OK+MB_ICONINFORMATION);
+    config.rebootRequestsCRUD;
+
+    defaultSetting;
+end;
+
+procedure TAddLectureModalForm.checkUniqueData; // Проверка на уникальные данные
+begin
+    config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+Edit1.Text+#39);
+    if BD.RequestSQL.IsEmpty then
+      unique_lecture:=true
+    else
+      MessageBox(0,'Данная лекция уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);
+
+    config.selectRequestSQL('SELECT * FROM Лекции WHERE НомерЛекции='+#39+Edit2.Text+#39);
+    if BD.RequestSQL.IsEmpty then
+      unique_number_lecture:=true
+    else
+      MessageBox(0,'Данный номер лекции уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);
+end;
+
+procedure TAddLectureModalForm.defaultSetting;
+begin
+    Edit1.Visible:=false;
+    Edit2.Visible:=false;
+    Edit1.Text:='';
+    Edit2.Text:='';
+    label2.Visible:=false;
+    label3.Visible:=false;
+    label4.Visible:=false;
+    label5.visible:=false;
+    ComboBox2.Visible:=false;
+    ComboBox2.Items.Clear;
 end;
 
 procedure TAddLectureModalForm.ComboBox1KeyPress(Sender: TObject;
@@ -141,6 +164,12 @@ procedure TAddLectureModalForm.ComboBox2KeyPress(Sender: TObject;
   var Key: Char);
 begin
     if not (Key in []) then Key := #0;
+end;
+
+procedure TAddLectureModalForm.Edit2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in ['0'..'9', #8]) then Key:=#0;
 end;
 
 end.

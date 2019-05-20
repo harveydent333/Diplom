@@ -19,14 +19,19 @@ type
     Label1: TLabel;
     Label3: TLabel;
     Label2: TLabel;
-    DBGrid1: TDBGrid;
+    Edit2: TEdit;
+    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
   private
+    procedure saveDataInBD;
+    procedure checkUniqueData;
+    procedure defaultSetting;
     { Private declarations }
   public
     { Public declarations }
@@ -36,7 +41,7 @@ var
   UpdateControlModalForm: TUpdateControlModalForm;
    nameTema, nameRazdela:string;
     kodTema, kodRazdela:integer;
-    unique_user:boolean;
+    unique_control,unique_number_control:boolean;
 implementation
 
 uses basa_dan, config, UpdateUnit;
@@ -47,40 +52,137 @@ procedure TUpdateControlModalForm.FormCreate(Sender: TObject);
 begin
    // Получение всех разделов
     config.selectRequestSQL('SELECT * FROM Раздел');
-    DBGrid1.DataSource.DataSet.First;
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
       begin
-      ComboBox1.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString);
-      DBGrid1.DataSource.DataSet.Next;
+      ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+      BD.Request.DataSet.Next;
     end;
 
     // Получение Раздела к которому относиться наша изменяемый контроль
     config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
-    ComboBox1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString;
+    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
 
     // Получение всех Тем раздела к которомой относиться наш изменяемый контроль знаний
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
 
     ComboBox2.Visible:=true;
     label3.Visible:=true;
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
       end;
 
    // Получение название Темы нашего изменяемого Контроля знаний
    config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-   ComboBox2.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString;
+   ComboBox2.Text:=BD.Request.DataSet.FieldByName('НазваниеТемы').AsString;
 
    // Получение названия Контроля знаний, который изменяем
    Edit1.Visible:=true;
+   Edit2.Visible:=true;
    label2.Visible:=true;
+   label4.Visible:=true;
+
    config.selectRequestSQL('SELECT * FROM Контроль WHERE КодКонтроля='+IntToStr(updateKodControl));
-   Edit1.Text:=DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString;
+   Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеКонтроля').AsString;
 
     kodRazdela:=updateKodRazdela;
     kodTema:=updateKodTema;
+end;
+
+procedure TUpdateControlModalForm.ComboBox1Change(Sender: TObject);
+begin
+    defaultSetting;
+
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
+    kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
+
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
+
+    While (BD.Request.DataSet.Eof=false) do
+      begin
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
+        ComboBox2.Text:=ComboBox2.Items.Strings[0];
+      end;
+     // Если раздел не пустой
+    if ComboBox2.Items.Count>0 then
+      begin
+        Edit1.visible:=true;
+        Edit2.Visible:=true;
+        label2.Visible:=true;
+        label3.Visible:=true;
+        label4.Visible:=true;
+        Combobox2.Visible:=true;
+        nameTema:=ComboBox2.Items.Strings[0];
+        config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
+        kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
+      end
+    else
+      label5.Visible:=true;
+end;
+
+procedure TUpdateControlModalForm.ComboBox2Change(Sender: TObject);
+begin
+    nameTema:=Combobox2.Text;
+    config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
+    kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
+end;
+
+procedure TUpdateControlModalForm.SpeedButton1Click(Sender: TObject);
+begin
+    unique_user:=false;
+    if Edit1.Text<>'' then
+      begin
+        config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Edit1.Text+#39);
+        if ((BD.RequestSQL.IsEmpty) or (updateKodControl=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
+          unique_user:=true
+        else
+          MessageBox(0,'Даннный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
+      end;
+
+      if ((Edit1.Text<>'')and(unique_user<>false) and (Edit1.Visible=true)) then
+        begin
+          config.execRequestSQL('UPDATE Контроль SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+edit1.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
+          config.rebootRequestsCRUD;
+          MessageBox(0,'Контроль знаний был успешно изменен!','Редактирование контроля знаний', MB_OK+MB_ICONINFORMATION);
+        end;
+end;
+
+procedure TUpdateControlModalForm.saveDataInBD; // Внесение данных в БД
+begin
+    config.execRequestSQL('UPDATE Лекции SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+Edit1.Text+#39+', НомерКонтроля='+#39+Edit2.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
+    MessageBox(0,'Контроль знаний был успешно изменен!','Редактирование контроля знаний', MB_OK+MB_ICONINFORMATION);
+    config.rebootRequestsCRUD;
+
+end;
+
+procedure TUpdateControlModalForm.checkUniqueData; // Проверка на уникальные данные
+begin
+    config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Edit1.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodLecture=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
+      unique_lecture:=true
+    else
+      MessageBox(0,'Данный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
+
+    config.selectRequestSQL('SELECT * FROM Контроль WHERE НомерКонтроля='+#39+Edit2.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodLecture=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
+      unique_number_lecture:=true
+    else
+      MessageBox(0,'Данный номер контроля знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
+end;
+
+procedure TUpdateControlModalForm.defaultSetting;
+begin
+    Edit1.Visible:=false;
+    Edit2.Visible:=false;
+    label2.Visible:=false;
+    label3.Visible:=false;
+    label4.Visible:=false;
+    label5.visible:=false;
+    ComboBox2.Visible:=false;
+    ComboBox2.Items.Clear;
 end;
 
 procedure TUpdateControlModalForm.ComboBox1KeyPress(Sender: TObject;
@@ -95,66 +197,10 @@ begin
     if not (Key in []) then Key := #0;
 end;
 
-procedure TUpdateControlModalForm.ComboBox1Change(Sender: TObject);
+procedure TUpdateControlModalForm.Edit2KeyPress(Sender: TObject;
+  var Key: Char);
 begin
-   Edit1.Visible:=false;
-    label2.Visible:=false;
-    label3.Visible:=false;
-    ComboBox2.Visible:=false;
-    ComboBox2.Items.Clear;
-    label5.visible:=false;
-
-    config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
-    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
-
-    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
-
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
-      begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
-        ComboBox2.Text:=ComboBox2.Items.Strings[0];
-      end;
-
-    if ComboBox2.Items.Count>0 then
-      begin                                                                      // Проверка на наличие тем в разделе
-        label3.Visible:=true;
-        edit1.visible:=true;
-        label2.Visible:=true;
-        Combobox2.Visible:=true;
-        nameTema:=ComboBox2.Items.Strings[0];
-        config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
-      end
-    else
-      label5.Visible:=true;
-end;
-
-procedure TUpdateControlModalForm.ComboBox2Change(Sender: TObject);
-begin
-    nameTema:=Combobox2.Text;
-    config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
-end;
-
-procedure TUpdateControlModalForm.SpeedButton1Click(Sender: TObject);
-begin
-    unique_user:=false;
-    if Edit1.Text<>'' then
-      begin
-        config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Edit1.Text+#39);
-        if ((BD.RequestSQL.IsEmpty) or (updateKodControl=DBGrid1.DataSource.DataSet.FieldByName('КодКонтроля').AsInteger)) then
-          unique_user:=true
-        else
-          MessageBox(0,'Даннный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
-      end;
-
-      if ((Edit1.Text<>'')and(unique_user<>false) and (Edit1.Visible=true)) then
-        begin
-          config.execRequestSQL('UPDATE Контроль SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+edit1.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
-          config.rebootRequestsCRUD;
-          MessageBox(0,'Контроль знаний был успешно изменен!','Редактирование контроля знаний', MB_OK+MB_ICONINFORMATION);
-        end;
+    if not (Key in ['0'..'9', #8]) then Key:=#0;
 end;
 
 end.

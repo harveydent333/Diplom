@@ -1,6 +1,6 @@
 object UpdateLectureModalForm: TUpdateLectureModalForm
-  Left = 356
-  Top = 361
+  Left = 425
+  Top = 288
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1051#1077#1082#1094#1080#1080
   ClientHeight = 310
@@ -4032,7 +4032,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   end
   object Label1: TLabel
     Left = 120
-    Top = 8
+    Top = 10
     Width = 153
     Height = 23
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
@@ -4046,7 +4046,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   end
   object Label3: TLabel
     Left = 120
-    Top = 80
+    Top = 70
     Width = 135
     Height = 23
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1058#1077#1084#1091
@@ -4061,7 +4061,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   end
   object Label2: TLabel
     Left = 120
-    Top = 160
+    Top = 184
     Width = 231
     Height = 23
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1083#1077#1082#1094#1080#1080
@@ -4076,7 +4076,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   end
   object Label5: TLabel
     Left = 120
-    Top = 120
+    Top = 104
     Width = 164
     Height = 23
     Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1090#1077#1084'.'
@@ -4089,9 +4089,24 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Transparent = True
     Visible = False
   end
+  object Label4: TLabel
+    Left = 120
+    Top = 130
+    Width = 206
+    Height = 23
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1051#1077#1082#1094#1080#1080
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
   object Panel2: TPanel
     Left = 112
-    Top = 240
+    Top = 255
     Width = 420
     Height = 35
     Caption = 'Panel1'
@@ -4907,7 +4922,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   end
   object ComboBox1: TComboBox
     Left = 120
-    Top = 40
+    Top = 38
     Width = 400
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
@@ -4923,7 +4938,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   end
   object ComboBox2: TComboBox
     Left = 120
-    Top = 120
+    Top = 98
     Width = 400
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
@@ -4940,7 +4955,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   end
   object Edit1: TEdit
     Left = 120
-    Top = 200
+    Top = 216
     Width = 400
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
@@ -4951,5 +4966,20 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     ParentFont = False
     TabOrder = 3
     Visible = False
+  end
+  object Edit2: TEdit
+    Left = 120
+    Top = 154
+    Width = 400
+    Height = 31
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    Visible = False
+    OnKeyPress = Edit2KeyPress
   end
 end

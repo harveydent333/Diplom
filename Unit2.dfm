@@ -1321,6 +1321,7 @@ object AuthorizationForm: TAuthorizationForm
   OldCreateOrder = False
   Position = poDesktopCenter
   OnClose = FormClose
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -29694,6 +29695,7 @@ object AuthorizationForm: TAuthorizationForm
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    OnKeyPress = Edit2KeyPress
   end
   object Edit1: TEdit
     Left = 336
@@ -29711,6 +29713,7 @@ object AuthorizationForm: TAuthorizationForm
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 1
+    OnKeyPress = Edit1KeyPress
   end
   object ComboBox1: TComboBox
     Left = 336

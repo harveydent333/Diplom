@@ -31,6 +31,9 @@ type
     procedure SpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox1Change(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     procedure teacherAuthorization;
     procedure stydentAuthorization;
@@ -41,7 +44,6 @@ type
 
 var
   AuthorizationForm: TAuthorizationForm;
-
 implementation
 
 uses AuthorizationData, Title_Form, config, Main_Menu,
@@ -78,10 +80,10 @@ end;
 
 procedure TAuthorizationForm.teacher_OFFClick(Sender: TObject);
 begin
-    teacher_OFF.Visible:=false;
-    stydent_ON.Visible:=false;
     teacher_ON.Visible:=true;
+    teacher_OFF.Visible:=false;
     stydent_OFF.Visible:=true;
+    stydent_ON.Visible:=false;
 
     Edit2.Visible:=true;
     Edit1.Visible:=true;
@@ -98,7 +100,6 @@ begin
     TitleForm.Show;
     TitleForm.Position:=poDesktopCenter;
 end;
-
 
 procedure TAuthorizationForm.teacherAuthorization;
 begin
@@ -163,25 +164,6 @@ begin
         end;
     end;
 
-procedure TAuthorizationForm.SpeedButton3Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
-end;
-
-procedure TAuthorizationForm.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
-end;
-
 procedure TAuthorizationForm.ComboBox1Change(Sender: TObject);
 var i:integer; fio:string;
 begin
@@ -191,13 +173,40 @@ begin
    for i:=1 to BD.Request.DataSet.RecordCount do
       begin
         with BD.Request.DataSet do
-          begin
-              fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
-          end;
+            fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
         AuthorizationForm.ComboBox2.Items.Add(fio);
         BD.Request.DataSet.Next;
       end;
    AuthorizationForm.ComboBox2.ItemIndex:=0;
+end;
+
+procedure TAuthorizationForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    AuthorizationForm.Visible:=false;
+    TitleForm.Show;
+    TitleForm.Position:=poDesktopCenter;
+end;
+
+procedure TAuthorizationForm.SpeedButton3Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then TitleForm.close;
+end;
+
+procedure TAuthorizationForm.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+    if Key=#13 then SpeedButton2.Click;
+end;
+
+procedure TAuthorizationForm.Edit1KeyPress(Sender: TObject; var Key: Char);
+begin
+    if Key=#13 then SpeedButton2.Click;
+end;
+
+procedure TAuthorizationForm.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+    if Key=#13 then SpeedButton2.Click;
 end;
 
 end.

@@ -17,9 +17,6 @@ type
     good_edit3: TImage;
     defolt_edit3: TImage;
     bed_edit3: TImage;
-    bed_edit4: TImage;
-    good_edit4: TImage;
-    defolt_edit4: TImage;
     SpeedButton1: TSpeedButton;
     SpeedButton4: TSpeedButton;
     SpeedButton2: TSpeedButton;
@@ -27,7 +24,6 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     SpeedButton3: TSpeedButton;
     SpeedButton5: TSpeedButton;
     Label7: TLabel;
@@ -35,12 +31,16 @@ type
     last_name: TEdit;
     first_name: TEdit;
     second_name: TEdit;
-    number_group: TEdit;
     Image1: TImage;
+    ComboBox1: TComboBox;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    SpeedButton6: TSpeedButton;
     procedure last_name3Change(Sender: TObject);
     procedure first_name3Change(Sender: TObject);
     procedure second_name3Change(Sender: TObject);
-    procedure number_group3Change(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure login_fieldChange(Sender: TObject);
@@ -50,7 +50,8 @@ type
     procedure last_nameChange(Sender: TObject);
     procedure first_nameChange(Sender: TObject);
     procedure second_nameChange(Sender: TObject);
-    procedure number_groupChange(Sender: TObject);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -64,7 +65,7 @@ var
 implementation
 
 uses Unit3, basa_dan, Unit2, Title_Form, config, Main_Menu,
-  Ycheniki_CRUD;
+  Ycheniki_CRUD, UpdateUnit;
 
 {$R *.dfm}
 
@@ -84,7 +85,7 @@ begin
         label2.Visible:=false;
       end;
 
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>''))then
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
       label1.Visible:=false;
 end;
 
@@ -104,7 +105,7 @@ begin
         label3.Visible:=false;
       end;
 
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'') and (number_group.text<>''))then
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
       label1.Visible:=false;
 end;
 
@@ -124,33 +125,13 @@ begin
         label4.Visible:=false;
       end;
 
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>''))then
-      label1.Visible:=false;
-end;
-
-procedure TRegistrationForm.number_group3Change(Sender: TObject);
-begin
-    defolt_edit4.Visible:=false;
-    if number_group.Text='' then
-      begin
-        good_edit4.Visible:=false;
-        bed_edit4.Visible:=true;
-        label5.Visible:=true;
-      end
-    else
-      begin
-        good_edit4.Visible:=true;
-        bed_edit4.Visible:=false;
-        label5.Visible:=false;
-      end;
-
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>''))then
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
       label1.Visible:=false;
 end;
 
 procedure TRegistrationForm.login_fieldChange(Sender: TObject);
 begin
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>''))then
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
       label1.Visible:=false;
 end;
 
@@ -190,24 +171,13 @@ begin
         bed_edit3.Visible:=true;
       end;
 
-    if number_group.Text='' then     //ПУСТОЕ ПОЛЕ ГРУППА ПРИ НАЖАТИИ КНОПКИ ЗАРЕГИСТРИРОВАТЬ
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')) then
       begin
-        label1.Visible:=true;
-        label5.Visible:=true;
-        defolt_edit4.Visible:=false;
-        good_edit4.Visible:=false;
-        bed_edit4.Visible:=true;
-      end;
-
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>'')) then
-      begin
-        login:=last_name.Text+' '+first_name.Text+' '+second_name.Text;
-        config.execRequestSQL('INSERT INTO Ученик(Фамилия, Имя, Отчество, Группа, login) VALUES('+
+        config.execRequestSQL('INSERT INTO Ученик(Фамилия, Имя, Отчество, КодГруппы) VALUES('+
           #39+last_name.Text+#39+','+
           #39+first_name.Text+#39+','+
           #39+second_name.Text+#39+','+
-          #39+number_group.Text+#39+', '+
-          #39+login+#39+')'
+          #39+IntToStr(ComboBox1.ItemIndex+1)+#39+')'
         );
         config.rebootRequestsCRUD;
         label1.Visible:=false;
@@ -215,32 +185,66 @@ begin
         defolt_edit1.Visible:=true;
         defolt_edit2.Visible:=true;
         defolt_edit3.Visible:=true;
-        defolt_edit4.Visible:=true;
 
         good_edit1.Visible:=false;
         good_edit2.Visible:=false;
         good_edit3.Visible:=false;
-        good_edit4.Visible:=false;
 
         bed_edit1.Visible:=false;
         bed_edit2.Visible:=false;
         bed_edit3.Visible:=false;
-        bed_edit4.Visible:=false;
 
         label1.Visible:=false;
         label2.Visible:=false;
         label3.Visible:=false;
         label4.Visible:=false;
-        label5.Visible:=false;
 
         last_name.Text:='';
         first_name.Text:='';
         second_name.text:='';
-        number_group.text:='';
       end;
 end;
 
+procedure TRegistrationForm.SpeedButton6Click(Sender: TObject); // КНОПКА ИЗМЕНИТЬ
+begin
+    if last_name.Text='' then   // ПУСТОЕ ПОЛЕ ФАМИЛИЯ ПРИ НАЖАТИИ КНОПКИ ИЗМЕНИТЬ
+      begin
+        label1.Visible:=true;
+        label2.Visible:=true;
+        defolt_edit1.Visible:=false;
+        good_edit1.Visible:=false;
+        bed_edit1.Visible:=true;
+      end;
 
+    if first_name.Text='' then        //ПУСТОЕ ПОЛЕ ИМЯ ПРИ НАЖАТИИ КНОПКИ ИЗМЕНИТЬ
+      begin
+        label1.Visible:=true;
+        label3.Visible:=true;
+        defolt_edit2.Visible:=false;
+        good_edit2.Visible:=false;
+        bed_edit2.Visible:=true;
+      end;
+
+    if second_name.Text='' then       //ПУСТОЕ ПОЛЕ ОТЧЕСТВО ПРИ НАЖАТИИ КНОПКИ ИЗМЕНИТЬ
+      begin
+        label1.Visible:=true;
+        label4.Visible:=true;
+        defolt_edit3.Visible:=false;
+        good_edit3.Visible:=false;
+        bed_edit3.Visible:=true;
+      end;
+
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')) then
+      begin
+        config.execRequestSQL('UPDATE Ученик SET Фамилия='+
+          #39+last_name.Text+#39+', Имя='+
+          #39+first_name.Text+#39+', Отчество='+
+          #39+second_name.Text+#39+', КодГруппы='+
+          IntToStr(ComboBox1.ItemIndex+1)+' WHERE КодУченика='+IntToStr(updateKodYchenika)
+        );
+        config.rebootRequestsCRUD;
+      end;
+end;
 
 procedure TRegistrationForm.SpeedButton5Click(Sender: TObject);
 begin
@@ -249,15 +253,6 @@ begin
     AuthorizationForm.Visible:=true;;
     AuthorizationForm.Position:=poDesktopCenter;
     RegistrationForm.Visible:=false;
-end;
-
-procedure TRegistrationForm.SpeedButton4Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
 end;
 
 procedure TRegistrationForm.FormClose(Sender: TObject;
@@ -284,7 +279,7 @@ begin
         label2.Visible:=false;
       end;
 
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>''))then
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
       label1.Visible:=false;
 end;
 
@@ -304,7 +299,7 @@ begin
         label3.Visible:=false;
       end;
 
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>''))then
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
     Label1.Visible:=false;
 end;
 
@@ -324,28 +319,20 @@ begin
         label4.Visible:=false;
       end;
 
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>''))then
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
       label1.Visible:=false;
 end;
 
-procedure TRegistrationForm.number_groupChange(Sender: TObject);
+procedure TRegistrationForm.SpeedButton4Click(Sender: TObject);
+var temp:word;
 begin
-    defolt_edit4.Visible:=false;
-    if number_group.Text='' then
-      begin
-        good_edit4.Visible:=false;
-        bed_edit4.Visible:=true;
-        label5.Visible:=true;
-      end
-    else
-      begin
-        good_edit4.Visible:=true;
-        bed_edit4.Visible:=false;
-        label5.Visible:=false;
-      end;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then TitleForm.close;
+end;
 
-    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (number_group.text<>''))then
-      label1.Visible:=false;
+procedure TRegistrationForm.ComboBox1KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

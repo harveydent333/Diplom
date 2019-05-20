@@ -1,6 +1,6 @@
 object UpdateRazdelModalForm: TUpdateRazdelModalForm
-  Left = 309
-  Top = 306
+  Left = 437
+  Top = 384
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
   ClientHeight = 310
@@ -8453,10 +8453,24 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
   end
   object Label3: TLabel
     Left = 120
-    Top = 84
+    Top = 100
     Width = 238
     Height = 23
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Label2: TLabel
+    Left = 120
+    Top = 32
+    Width = 210
+    Height = 23
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1056#1072#1079#1076#1077#1083#1072
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -9293,5 +9307,19 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+  end
+  object Edit2: TEdit
+    Left = 120
+    Top = 68
+    Width = 400
+    Height = 31
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    OnKeyPress = Edit2KeyPress
   end
 end

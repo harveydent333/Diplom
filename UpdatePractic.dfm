@@ -1,6 +1,6 @@
 object UpdatePracticModalForm: TUpdatePracticModalForm
-  Left = 555
-  Top = 125
+  Left = 462
+  Top = 261
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081' '#1088#1072#1073#1086#1090#1099
   ClientHeight = 310
@@ -4032,7 +4032,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
   end
   object Label1: TLabel
     Left = 120
-    Top = 8
+    Top = 10
     Width = 153
     Height = 23
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
@@ -4046,7 +4046,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
   end
   object Label3: TLabel
     Left = 120
-    Top = 80
+    Top = 70
     Width = 135
     Height = 23
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1058#1077#1084#1091
@@ -4061,7 +4061,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
   end
   object Label2: TLabel
     Left = 120
-    Top = 160
+    Top = 184
     Width = 359
     Height = 23
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081' '#1088#1072#1073#1086#1090#1099
@@ -4076,7 +4076,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
   end
   object Label5: TLabel
     Left = 128
-    Top = 128
+    Top = 104
     Width = 164
     Height = 23
     Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1090#1077#1084'.'
@@ -4089,9 +4089,24 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
     Transparent = True
     Visible = False
   end
+  object Label4: TLabel
+    Left = 120
+    Top = 130
+    Width = 331
+    Height = 23
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081' '#1088#1072#1073#1086#1090#1099
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
   object ComboBox1: TComboBox
     Left = 120
-    Top = 40
+    Top = 38
     Width = 400
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
@@ -4107,7 +4122,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
   end
   object ComboBox2: TComboBox
     Left = 120
-    Top = 120
+    Top = 98
     Width = 400
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
@@ -4124,7 +4139,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
   end
   object Edit1: TEdit
     Left = 120
-    Top = 200
+    Top = 216
     Width = 400
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
@@ -4138,7 +4153,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
   end
   object Panel2: TPanel
     Left = 112
-    Top = 240
+    Top = 255
     Width = 420
     Height = 35
     Caption = 'Panel1'
@@ -4951,5 +4966,20 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
       Flat = True
       OnClick = SpeedButton1Click
     end
+  end
+  object Edit2: TEdit
+    Left = 120
+    Top = 154
+    Width = 400
+    Height = 31
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    Visible = False
+    OnKeyPress = Edit2KeyPress
   end
 end

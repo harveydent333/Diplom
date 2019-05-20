@@ -46,12 +46,13 @@ uses Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD, Control_CRUD,
   Unit2,
   Main_Menu,
   AuthorizationData,
-  MultiMedia_CRUD;
+  MultiMedia_CRUD, config;
 
 {$R *.dfm}
 
 procedure TDataManagementCenter.SpeedButton1Click(Sender: TObject);
 begin
+    rebootRequestsCRUD;
     TemaCRUD.show;
     TemaCRUD.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
@@ -59,6 +60,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton2Click(Sender: TObject);
 begin
+    rebootRequestsCRUD;
     RazdelCRUD.Show;
     RazdelCRUD.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
@@ -66,6 +68,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton3Click(Sender: TObject);
 begin
+    rebootRequestsCRUD;
     LectureCRUD.show;
     LectureCRUD.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
@@ -73,6 +76,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton4Click(Sender: TObject);
 begin
+    rebootRequestsCRUD;
     PracticCRUD.show;
     PracticCRUD.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
@@ -80,6 +84,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton5Click(Sender: TObject);
 begin
+    rebootRequestsCRUD;
     ControlCRUD.show;
     ControlCRUD.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
@@ -89,8 +94,7 @@ procedure TDataManagementCenter.SpeedButton6Click(Sender: TObject);
 var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-        TitleForm.close;
+    if idyes=temp then TitleForm.close;
 end;
 
 procedure TDataManagementCenter.SpeedButton8Click(Sender: TObject);
@@ -119,6 +123,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton9Click(Sender: TObject);
 begin
+    rebootRequestsCRUD;
     MultiMediaCRUD.show;
     MultiMediaCRUD.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;

@@ -1989,9 +1989,9 @@ object AddQuestionModalForm: TAddQuestionModalForm
   object Label1: TLabel
     Left = 120
     Top = 44
-    Width = 239
+    Width = 318
     Height = 23
-    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1042#1086#1087#1088#1086#1089#1072
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1082#1088#1072#1090#1082#1086#1077' '#1086#1087#1080#1089#1072#1085#1080#1077' '#1074#1086#1087#1088#1086#1089#1072':'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -2002,10 +2002,24 @@ object AddQuestionModalForm: TAddQuestionModalForm
   end
   object Label2: TLabel
     Left = 120
-    Top = 140
-    Width = 265
+    Top = 196
+    Width = 271
     Height = 23
-    Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086' '#1074#1072#1088#1080#1072#1085#1090#1086#1074' '#1086#1090#1074#1077#1090#1072
+    Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086' '#1074#1072#1088#1080#1072#1085#1090#1086#1074' '#1086#1090#1074#1077#1090#1072':'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object Label3: TLabel
+    Left = 120
+    Top = 124
+    Width = 209
+    Height = 23
+    Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1090#1080#1087' '#1074#1086#1087#1088#1086#1089#1072':'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -2581,8 +2595,8 @@ object AddQuestionModalForm: TAddQuestionModalForm
     TabOrder = 1
   end
   object ComboBox1: TComboBox
-    Left = 392
-    Top = 140
+    Left = 408
+    Top = 196
     Width = 97
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
@@ -2606,5 +2620,26 @@ object AddQuestionModalForm: TAddQuestionModalForm
       '8'
       '9'
       '10')
+  end
+  object ComboBox2: TComboBox
+    Left = 120
+    Top = 156
+    Width = 393
+    Height = 31
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ItemHeight = 23
+    ItemIndex = 0
+    ParentFont = False
+    TabOrder = 3
+    Text = #1054#1076#1080#1085' '#1074#1077#1088#1085#1099#1081' '#1086#1090#1074#1077#1090
+    OnKeyPress = ComboBox2KeyPress
+    Items.Strings = (
+      #1054#1076#1080#1085' '#1074#1077#1088#1085#1099#1081' '#1086#1090#1074#1077#1090
+      #1052#1085#1086#1078#1077#1089#1090#1074#1086' '#1074#1077#1088#1085#1099#1093' '#1086#1090#1074#1077#1090#1086#1074
+      #1056#1091#1095#1085#1086#1081' '#1074#1074#1086#1076)
   end
 end

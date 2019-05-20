@@ -40,11 +40,7 @@ var
 implementation
 
 uses Title_Form, config, UpdateUnit, AddControl, UpdateControl,
-  Add_Question,
-  Unit2,
-  AuthorizationData,
-  ControlCenter;
-
+  Add_Question, Unit2, AuthorizationData, ControlCenter;
 {$R *.dfm}
 
 procedure TControlCRUD.SpeedButton1Click(Sender: TObject);    // Добавление нового контроля
@@ -137,8 +133,7 @@ end;
 procedure TControlCRUD.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений', MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
       TitleForm.close;
 end;

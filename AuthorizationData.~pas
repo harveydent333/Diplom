@@ -41,7 +41,6 @@ begin
 
     if AuthorizationForm.stydent_ON.Visible = true then
         begin
-            config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+AuthorizationForm.DBComboBox1.Text+#39);
             getDataAuthUser;            // Заполнение авторизованного пользователя данными
             SetNameAndFamilyAuthUsers; // Заполнение Имя и Фамилии Авторизованным пользователям
             KodUser:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;

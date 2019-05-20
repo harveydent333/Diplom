@@ -19,7 +19,7 @@ type
     SpeedButton7: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
-    DBGrid2: TDBGrid;
+    DBGrid21: TDBGrid;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
@@ -39,10 +39,7 @@ var
 implementation
 
 uses AddPractic, Title_Form, updateUnit, config, UpdatePractic,
-  Unit2,
-  ControlCenter,
-  AuthorizationData;
-
+  Unit2, ControlCenter, AuthorizationData;
 {$R *.dfm}
 
 procedure TPracticCRUD.SpeedButton1Click(Sender: TObject);  // Добавление новой практики
@@ -55,22 +52,13 @@ begin
     end;
 end;
 
-procedure TPracticCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
-end;
-
 procedure TPracticCRUD.SpeedButton6Click(Sender: TObject);    // Изменение Практики
 begin
     config.selectRequestSQL('SELECT * FROM Практические WHERE НазваниеПрактической='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеПрактической').AsString+#39);
-    updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемой Практики
-    updateKodPractic:=DBGrid2.DataSource.DataSet.FieldByName('КодПрактической').AsInteger;      // Код изменяемой Практики
+    updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемой Практики
+    updateKodPractic:=BD.Request.DataSet.FieldByName('КодПрактической').AsInteger;      // Код изменяемой Практики
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-    updateKodRazdela:=DBGrid2.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой Практики
+    updateKodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой Практики
 
     with TUpdatePracticModalForm.Create(nil) do
       try
@@ -108,6 +96,14 @@ begin
     DataManagementCenter.show;
     DataManagementCenter.position:=poDesktopCenter;
     PracticCRUD.Visible:=false;
+end;
+
+procedure TPracticCRUD.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений', MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 end.

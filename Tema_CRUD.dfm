@@ -1,8 +1,8 @@
 object TemaCRUD: TTemaCRUD
-  Left = 115
-  Top = 251
+  Left = 112
+  Top = 143
   AutoScroll = False
-  Caption = 'TemaCRUD'
+  Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1090#1077#1084#1072#1084#1080
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -4721,20 +4721,30 @@ object TemaCRUD: TTemaCRUD
     TitleFont.Style = [fsBold]
     Columns = <
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
-        ReadOnly = False
         Title.Alignment = taCenter
         Title.Caption = #1056#1072#1079#1076#1077#1083
-        Width = 390
+        Width = 300
         Visible = True
       end
       item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = #1053#1086#1084#1077#1088#1058#1077#1084#1099
+        Title.Alignment = taCenter
+        Title.Caption = #8470' '#1090#1077#1084#1099
+        Width = 200
+        Visible = True
+      end
+      item
+        Alignment = taCenter
         Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
         Title.Alignment = taCenter
         Title.Caption = #1058#1077#1084#1072
-        Width = 400
+        Width = 288
         Visible = True
       end>
   end

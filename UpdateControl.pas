@@ -19,13 +19,19 @@ type
     Label1: TLabel;
     Label3: TLabel;
     Label2: TLabel;
+    Edit2: TEdit;
+    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
   private
+    procedure saveDataInBD;
+    procedure checkUniqueData;
+    procedure defaultSetting;
     { Private declarations }
   public
     { Public declarations }
@@ -35,7 +41,7 @@ var
   UpdateControlModalForm: TUpdateControlModalForm;
    nameTema, nameRazdela:string;
     kodTema, kodRazdela:integer;
-    unique_user:boolean;
+    unique_control,unique_number_control:boolean;
 implementation
 
 uses basa_dan, config, UpdateUnit;
@@ -74,34 +80,20 @@ begin
 
    // Получение названия Контроля знаний, который изменяем
    Edit1.Visible:=true;
+   Edit2.Visible:=true;
    label2.Visible:=true;
+   label4.Visible:=true;
+
    config.selectRequestSQL('SELECT * FROM Контроль WHERE КодКонтроля='+IntToStr(updateKodControl));
    Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеКонтроля').AsString;
-
+   Edit2.Text:=BD.Request.DataSet.FieldByName('НомерКонтроля').AsString;
     kodRazdela:=updateKodRazdela;
     kodTema:=updateKodTema;
 end;
 
-procedure TUpdateControlModalForm.ComboBox1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
-procedure TUpdateControlModalForm.ComboBox2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
 procedure TUpdateControlModalForm.ComboBox1Change(Sender: TObject);
 begin
-   Edit1.Visible:=false;
-    label2.Visible:=false;
-    label3.Visible:=false;
-    ComboBox2.Visible:=false;
-    ComboBox2.Items.Clear;
-    label5.visible:=false;
+    defaultSetting;
 
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
     kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
@@ -114,12 +106,14 @@ begin
         BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
-
+     // Если раздел не пустой
     if ComboBox2.Items.Count>0 then
-      begin                                                                      // Проверка на наличие тем в разделе
-        label3.Visible:=true;
-        edit1.visible:=true;
+      begin
+        Edit1.visible:=true;
+        Edit2.Visible:=true;
         label2.Visible:=true;
+        label3.Visible:=true;
+        label4.Visible:=true;
         Combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
@@ -138,22 +132,67 @@ end;
 
 procedure TUpdateControlModalForm.SpeedButton1Click(Sender: TObject);
 begin
-    unique_user:=false;
-    if Edit1.Text<>'' then
-      begin
-        config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Edit1.Text+#39);
-        if ((BD.RequestSQL.IsEmpty) or (updateKodControl=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
-          unique_user:=true
-        else
-          MessageBox(0,'Даннный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
-      end;
+    unique_control:=false;
+    unique_number_control:=false;
+    
+    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        checkUniqueData;
 
-      if ((Edit1.Text<>'')and(unique_user<>false) and (Edit1.Visible=true)) then
-        begin
-          config.execRequestSQL('UPDATE Контроль SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+edit1.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
-          config.rebootRequestsCRUD;
-          MessageBox(0,'Контроль знаний был успешно изменен!','Редактирование контроля знаний', MB_OK+MB_ICONINFORMATION);
-        end;
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_control<>false) and(unique_number_control<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        saveDataInBD;
+end;
+
+procedure TUpdateControlModalForm.saveDataInBD; // Внесение данных в БД
+begin
+    config.execRequestSQL('UPDATE Контроль SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+Edit1.Text+#39+', НомерКонтроля='+#39+Edit2.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
+    MessageBox(0,'Контроль знаний был успешно изменен!','Редактирование контроля знаний', MB_OK+MB_ICONINFORMATION);
+    config.rebootRequestsCRUD;
+
+end;
+
+procedure TUpdateControlModalForm.checkUniqueData; // Проверка на уникальные данные
+begin
+    config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Edit1.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodControl=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
+      unique_control:=true
+    else
+      MessageBox(0,'Данный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
+
+    config.selectRequestSQL('SELECT * FROM Контроль WHERE НомерКонтроля='+#39+Edit2.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodControl=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
+      unique_number_control:=true
+    else
+      MessageBox(0,'Данный номер контроля знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
+end;
+
+procedure TUpdateControlModalForm.defaultSetting;
+begin
+    Edit1.Visible:=false;
+    Edit2.Visible:=false;
+    label2.Visible:=false;
+    label3.Visible:=false;
+    label4.Visible:=false;
+    label5.visible:=false;
+    ComboBox2.Visible:=false;
+    ComboBox2.Items.Clear;
+end;
+
+procedure TUpdateControlModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TUpdateControlModalForm.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TUpdateControlModalForm.Edit2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in ['0'..'9', #8]) then Key:=#0;
 end;
 
 end.

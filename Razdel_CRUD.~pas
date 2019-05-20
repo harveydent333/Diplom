@@ -77,10 +77,9 @@ end;
 procedure TRazdelCRUD.SpeedButton4Click(Sender: TObject);    // Завершение программы
 var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
-      TitleForm.close;
+        TitleForm.close;
 end;
 
 procedure TRazdelCRUD.FormClose(Sender: TObject; var Action: TCloseAction);

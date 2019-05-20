@@ -19,6 +19,8 @@ type
     Panel2: TPanel;
     Image2: TImage;
     SpeedButton1: TSpeedButton;
+    Label4: TLabel;
+    Edit2: TEdit;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);

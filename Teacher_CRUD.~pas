@@ -37,7 +37,7 @@ var
 implementation
 
 uses Title_Form, Unit2, Manager_Users, Add_Question, basa_dan, config,
-  UpdateUnit, AuthorizationData, Menu_Teacher;
+  UpdateUnit, AuthorizationData, Menu_Teacher, Registration_Teacher;
 
 {$R *.dfm}
 
@@ -81,9 +81,9 @@ end;
 
 procedure TTeacherCRUD.SpeedButton6Click(Sender: TObject);
 begin
-    RegistrationForm.Show;
-    RegistrationForm.SpeedButton2.Visible:=true;
+    RegistrationTeacher.Show;
     AuthorizationData.defoltConfigRegistrationTeacherForm;
+    TeacherCRUD.Visible:=false;
 end;
 
 end.

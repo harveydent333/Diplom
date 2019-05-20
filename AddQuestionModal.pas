@@ -16,8 +16,11 @@ type
     Edit1: TEdit;
     Label2: TLabel;
     ComboBox1: TComboBox;
+    Label3: TLabel;
+    ComboBox2: TComboBox;
     procedure SpeedButton1Click(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -66,6 +69,11 @@ end;
 
 procedure TAddQuestionModalForm.ComboBox1KeyPress(Sender: TObject;
   var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TAddQuestionModalForm.ComboBox2KeyPress(Sender: TObject; var Key: Char);
 begin
     if not (Key in []) then Key := #0;
 end;

@@ -1,6 +1,6 @@
 object AddTemaModalForm: TAddTemaModalForm
-  Left = 255
-  Top = 198
+  Left = 138
+  Top = 189
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1058#1077#1084#1099
   ClientHeight = 310
@@ -1989,7 +1989,7 @@ object AddTemaModalForm: TAddTemaModalForm
   end
   object Label1: TLabel
     Left = 120
-    Top = 60
+    Top = 20
     Width = 153
     Height = 23
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
@@ -2003,7 +2003,7 @@ object AddTemaModalForm: TAddTemaModalForm
   end
   object Label2: TLabel
     Left = 120
-    Top = 140
+    Top = 148
     Width = 215
     Height = 23
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1058#1077#1084#1099
@@ -2015,6 +2015,20 @@ object AddTemaModalForm: TAddTemaModalForm
     ParentFont = False
     Transparent = True
     Visible = False
+  end
+  object Label3: TLabel
+    Left = 120
+    Top = 92
+    Width = 187
+    Height = 23
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1058#1077#1084#1099
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
   end
   object Panel2: TPanel
     Left = 112
@@ -2585,7 +2599,7 @@ object AddTemaModalForm: TAddTemaModalForm
   end
   object ComboBox1: TComboBox
     Left = 120
-    Top = 100
+    Top = 52
     Width = 400
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
@@ -2598,5 +2612,19 @@ object AddTemaModalForm: TAddTemaModalForm
     TabOrder = 2
     OnChange = ComboBox1Change
     OnKeyPress = ComboBox1KeyPress
+  end
+  object Edit2: TEdit
+    Left = 120
+    Top = 116
+    Width = 400
+    Height = 31
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnKeyPress = Edit2KeyPress
   end
 end

@@ -39,10 +39,7 @@ var
 implementation
 
 uses AddPractic, Title_Form, updateUnit, config, UpdatePractic,
-  Unit2,
-  ControlCenter,
-  AuthorizationData;
-
+  Unit2, ControlCenter, AuthorizationData;
 {$R *.dfm}
 
 procedure TPracticCRUD.SpeedButton1Click(Sender: TObject);  // Добавление новой практики
@@ -53,15 +50,6 @@ begin
       finally
         Free;
     end;
-end;
-
-procedure TPracticCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
 end;
 
 procedure TPracticCRUD.SpeedButton6Click(Sender: TObject);    // Изменение Практики
@@ -108,6 +96,14 @@ begin
     DataManagementCenter.show;
     DataManagementCenter.position:=poDesktopCenter;
     PracticCRUD.Visible:=false;
+end;
+
+procedure TPracticCRUD.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений', MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      TitleForm.close;
 end;
 
 end.

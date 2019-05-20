@@ -41,11 +41,7 @@ var
 implementation
 
 uses Title_Form, AddLecture, UpdateLecture, config, UpdateUnit,
-  EditLecture,
-  ControlCenter,
-  Unit2,
-  AuthorizationData;
-
+  EditLecture, ControlCenter, Unit2, AuthorizationData;
 {$R *.dfm}
 
 procedure TLectureCRUD.SpeedButton1Click(Sender: TObject); // Добавление новой лекции

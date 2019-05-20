@@ -1,6 +1,6 @@
 object MultiMediaCRUD: TMultiMediaCRUD
-  Left = 72
-  Top = 164
+  Left = 60
+  Top = 311
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 643
@@ -4700,7 +4700,7 @@ object MultiMediaCRUD: TMultiMediaCRUD
   object DBGrid1: TDBGrid
     Left = 8
     Top = 56
-    Width = 1081
+    Width = 1145
     Height = 337
     DataSource = BD.Multimedia
     FixedColor = clMoneyGreen
@@ -4721,24 +4721,39 @@ object MultiMediaCRUD: TMultiMediaCRUD
     TitleFont.Style = [fsBold]
     Columns = <
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
+        Title.Alignment = taCenter
         Title.Caption = #1056#1072#1079#1076#1077#1083
-        Width = 340
+        Width = 300
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
-        Title.Caption = #1058#1077#1084#1072
-        Width = 340
+        Title.Alignment = taCenter
+        Title.Caption = #1058#1077#1084#1099
+        Width = 250
         Visible = True
       end
       item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = #1053#1086#1084#1077#1088#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
+        Title.Alignment = taCenter
+        Title.Caption = #8470' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
+        Width = 250
+        Visible = True
+      end
+      item
+        Alignment = taCenter
         Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
+        Title.Alignment = taCenter
         Title.Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
-        Width = 380
+        Width = 320
         Visible = True
       end>
   end

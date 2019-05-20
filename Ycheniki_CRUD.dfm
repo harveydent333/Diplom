@@ -1,6 +1,6 @@
 object YchenikiCRUD: TYchenikiCRUD
-  Left = 219
-  Top = 155
+  Left = 245
+  Top = 289
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1086#1073#1091#1095#1072#1102#1097#1080#1084#1080#1089#1103
   ClientHeight = 643
@@ -4699,7 +4699,7 @@ object YchenikiCRUD: TYchenikiCRUD
   object DBGrid1: TDBGrid
     Left = 8
     Top = 56
-    Width = 929
+    Width = 1145
     Height = 337
     DataSource = BD.Ychenik
     FixedColor = clMoneyGreen
@@ -4724,7 +4724,7 @@ object YchenikiCRUD: TYchenikiCRUD
         Expanded = False
         FieldName = #1060#1072#1084#1080#1083#1080#1103
         Title.Alignment = taCenter
-        Width = 250
+        Width = 280
         Visible = True
       end
       item
@@ -4732,7 +4732,7 @@ object YchenikiCRUD: TYchenikiCRUD
         Expanded = False
         FieldName = #1048#1084#1103
         Title.Alignment = taCenter
-        Width = 250
+        Width = 270
         Visible = True
       end
       item
@@ -4740,29 +4740,17 @@ object YchenikiCRUD: TYchenikiCRUD
         Expanded = False
         FieldName = #1054#1090#1095#1077#1089#1090#1074#1086
         Title.Alignment = taCenter
-        Width = 250
+        Width = 280
         Visible = True
       end
       item
         Alignment = taCenter
         Expanded = False
-        FieldName = #1043#1088#1091#1087#1087#1072
+        FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1043#1088#1091#1087#1087#1099
         Title.Alignment = taCenter
-        Width = 200
+        Title.Caption = #1043#1088#1091#1087#1087#1072
+        Width = 290
         Visible = True
       end>
-  end
-  object DBGrid2: TDBGrid
-    Left = 800
-    Top = 416
-    Width = 320
-    Height = 120
-    DataSource = BD.Request
-    TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

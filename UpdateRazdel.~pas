@@ -15,8 +15,13 @@ type
     SpeedButton1: TSpeedButton;
     Label3: TLabel;
     Edit1: TEdit;
+    Edit2: TEdit;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure saveDataInBD;
+    procedure checkUniqueData;
   private
     { Private declarations }
   public
@@ -25,7 +30,7 @@ type
 
 var
   UpdateRazdelModalForm: TUpdateRazdelModalForm;
-  unique_user:boolean;
+  unique_razdel,unique_number_razdel:boolean;
 
 implementation
 
@@ -34,25 +39,48 @@ implementation
 procedure TUpdateRazdelModalForm.FormCreate(Sender: TObject);
 begin
     Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
+    Edit2.Text:=BD.Request.DataSet.FieldByName('НомерРаздела').AsString;
 end;
 
 procedure TUpdateRazdelModalForm.SpeedButton1Click(Sender: TObject);
 begin
-    unique_user:=false;
-    if Edit1.Text<>'' then
-      begin
-        config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Edit1.Text+#39);
-        if ((BD.RequestSQL.IsEmpty)) then
-          unique_user:=true
-        else
-          MessageBox(0,'Данный раздел уже сущетсвует!','Изменение раздела', MB_OK+MB_ICONwarning);
-      end;
+    unique_razdel:=false;
+    unique_number_razdel:=false;
 
-    if ((Edit1.Text<>'')and(unique_user<>false)) then
-      begin
-        config.execRequestSQL('UPDATE Раздел SET НазваниеРаздела='+#39+Edit1.Text+#39+' WHERE КодРаздела ='+IntToStr(updateKodRazdela));
-        config.rebootRequestsCRUD;
-    end;
+    if Edit1.Text<>'' then
+        checkUniqueData;
+
+    if ((Edit1.Text<>'')and(unique_razdel<>false) and (unique_number_razdel<>false)) then
+        saveDataInBD;
+end;
+
+procedure TUpdateRazdelModalForm.saveDataInBD; // Внесение данных в БД
+begin
+    config.execRequestSQL('UPDATE Раздел SET НазваниеРаздела='+#39+Edit1.Text+#39+', НомерРаздела='+#39+Edit2.Text+#39+' WHERE КодРаздела ='+IntToStr(updateKodRazdela));
+    MessageBox(0,'Раздел был успешно изменен!','Редактирование раздела', MB_OK+MB_ICONINFORMATION);;
+    config.rebootRequestsCRUD;
+end;
+
+procedure TUpdateRazdelModalForm.checkUniqueData; // Проверка на уникальные данные
+begin
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+Edit1.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodRazdela=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger)) then
+      unique_razdel:=true
+    else
+      MessageBox(0,'Данный раздел уже сущетсвует!','Создание раздела', MB_OK+MB_ICONwarning);
+
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE НомерРаздела='+#39+Edit2.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodRazdela=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger)) then
+      unique_number_razdel:=true
+    else
+          MessageBox(0,'Данный номер раздела уже сущетсвует!','Создание раздела', MB_OK+MB_ICONwarning);
+end;
+
+procedure TUpdateRazdelModalForm.Edit2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+If not (Key in ['0'..'9', #8]) then
+Key:=#0;
 end;
 
 end.
