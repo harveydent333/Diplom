@@ -34,6 +34,8 @@ type
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure Edit1KeyPress(Sender: TObject; var Key: Char);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
   private
     procedure teacherAuthorization;
     procedure stydentAuthorization;
@@ -207,6 +209,16 @@ end;
 procedure TAuthorizationForm.FormKeyPress(Sender: TObject; var Key: Char);
 begin
     if Key=#13 then SpeedButton2.Click;
+end;
+
+procedure TAuthorizationForm.ComboBox1KeyPress(Sender: TObject;var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TAuthorizationForm.ComboBox2KeyPress(Sender: TObject;var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

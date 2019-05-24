@@ -31,17 +31,21 @@ type
     Label8: TLabel;
     Label9: TLabel;
     Label10: TLabel;
-    RadioButton1: TRadioButton;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
-    RadioButton4: TRadioButton;
-    RadioButton5: TRadioButton;
-    RadioButton6: TRadioButton;
-    RadioButton7: TRadioButton;
-    RadioButton8: TRadioButton;
-    RadioButton9: TRadioButton;
-    RadioButton10: TRadioButton;
-    Image1: TImage;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    CheckBox4: TCheckBox;
+    CheckBox5: TCheckBox;
+    CheckBox6: TCheckBox;
+    CheckBox7: TCheckBox;
+    CheckBox8: TCheckBox;
+    CheckBox9: TCheckBox;
+    CheckBox10: TCheckBox;
+    Panel2: TPanel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -53,11 +57,11 @@ type
 
 implementation
 
-uses Add_Question,
-  config,
-  basa_dan,
-  UpdateUnit,
-  defoltTest;
+uses Add_Question, Variants_Question, Variants_Question_Write, basa_dan,
+  Manager_Users, Menu_Control, Menu_Lectures, Menu_Multimedai,
+  Menu_Practic, Menu_Teacher,  PassingKnowledgeControl,
+   QuestionsMemo,Unit2, AuthorizationData, config, ControlCenter, defoltTest,
+  DocumentForm;
 
 {$R *.dfm}
 
@@ -69,40 +73,43 @@ begin
     2: begin
           label3.Visible:=false;
           Memo3.Visible:=false;
+          CheckBox3.Visible:=false;
         end;
     3: begin
           label4.Visible:=false;
           Memo4.Visible:=false;
+          CheckBox4.Visible:=false;
         end;
     4:  begin
           label5.Visible:=false;
           Memo5.Visible:=false;
-
+          CheckBox5.Visible:=false;
         end;
     5: begin
           label6.Visible:=false;
           Memo6.Visible:=false;
-
+          CheckBox6.Visible:=false;
         end;
     6: begin
           label7.Visible:=false;
           Memo7.Visible:=false;
-
+          CheckBox7.Visible:=false;
         end;
     7: begin
           label8.Visible:=false;
           Memo8.Visible:=false;
-
+          CheckBox8.Visible:=false;
         end;
     8: begin
           label9.Visible:=false;
           Memo9.Visible:=false;
-
+          CheckBox9.Visible:=false;
+          BitBtn3.Enabled:=true;
         end;
     9:  begin
           label10.Visible:=false;
           Memo10.Visible:=false;
-
+          CheckBox10.Visible:=false;
 
         end;
   end;
@@ -115,43 +122,64 @@ begin
     3: begin
           label3.Visible:=true;
           Memo3.Visible:=true;
-
-
+          Memo3.Clear;
+          CheckBox3.Visible:=true;
+          CheckBox3.Checked:=false;
         end;
     4: begin
           label4.Visible:=true;
           Memo4.Visible:=true;
-
+          Memo4.Clear;
+          CheckBox4.Visible:=true;
+          CheckBox4.Checked:=false;
         end;
     5:  begin
           label5.Visible:=true;
           Memo5.Visible:=true;
-
+          Memo5.Clear;
+          CheckBox5.Visible:=true;
+          CheckBox5.Checked:=false;
+          CheckBox5.Visible:=true;
         end;
     6: begin
           label6.Visible:=true;
           Memo6.Visible:=true;
-
+          Memo6.Clear;
+          CheckBox6.Visible:=true;
+          CheckBox6.Checked:=false;
+          CheckBox6.Visible:=true;
         end;
     7: begin
           label7.Visible:=true;
           Memo7.Visible:=true;
-
+          Memo7.Clear;
+          CheckBox7.Visible:=true;
+          CheckBox7.Checked:=false;
+          CheckBox7.Visible:=true;
         end;
     8: begin
           label8.Visible:=true;
           Memo8.Visible:=true;
-
+          Memo8.Clear;
+          CheckBox8.Visible:=true;
+          CheckBox8.Checked:=false;
+          CheckBox8.Visible:=true;
         end;
     9: begin
           label9.Visible:=true;
           Memo9.Visible:=true;
-
+          Memo9.Clear;
+          CheckBox9.Visible:=true;
+          CheckBox9.Checked:=false;
+          CheckBox9.Visible:=true;
         end;
     10:  begin
           label10.Visible:=true;
           Memo10.Visible:=true;
-          
+          Memo10.Clear;
+          CheckBox10.Visible:=true;
+          CheckBox10.Checked:=false;
+          CheckBox10.Visible:=true;
         end;
   end;
 end;

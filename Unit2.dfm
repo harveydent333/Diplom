@@ -1,6 +1,6 @@
 object AuthorizationForm: TAuthorizationForm
-  Left = 88
-  Top = 135
+  Left = 132
+  Top = 201
   AutoScroll = False
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103
   ClientHeight = 643
@@ -29731,6 +29731,7 @@ object AuthorizationForm: TAuthorizationForm
     Text = 'ComboBox1'
     Visible = False
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
     Left = 336
@@ -29747,5 +29748,6 @@ object AuthorizationForm: TAuthorizationForm
     TabOrder = 3
     Text = 'ComboBox1'
     Visible = False
+    OnKeyPress = ComboBox2KeyPress
   end
 end

@@ -127,7 +127,7 @@ end;
 
 procedure TVariantsQuestionSingle.BitBtn3Click(Sender: TObject);
 begin
-    inc(countQuestion);
+  inc(countQuestion);
   case countQuestion of
     3: begin
           label3.Visible:=true;

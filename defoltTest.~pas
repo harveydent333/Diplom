@@ -92,8 +92,6 @@ begin
               if ((userAnswer = posetivAnswer ))then
                 inc(countBall);
             end;
-
-        PassingKnowledgeControlForm.Label1.Caption:=intTostr(countBall);
   end;
 end;
 

@@ -168,7 +168,7 @@ begin
 end;
 
 procedure TMenuControl.SpeedButton1Click(Sender: TObject);
-begin
+begin     {
     DateTimePicker1.DateTime:=Now;
     config.execRequestSQL('INSERT INTO Журнал (КодУченика, КодТемы, НазваниеТемы, НазваниеКонтроля, ДатаПроведения, Фамилия, Имя, Отчество) VALUES('+
       IntToStr(KodUser)+', '+IntToStr(KodTema)+', '+#39+nameTema+#39+', '+#39+ComboBox3.Text+#39+', '+
@@ -191,7 +191,7 @@ begin
         defoltTest.setMemoLines;
         defoltTest.clearStrokiMemo;
         PassingKnowledgeControlForm.Enabled:=true;
-      end;
+      end;      }
 end;
 
 procedure TMenuControl.ComboBox1KeyPress(Sender: TObject; var Key: Char);

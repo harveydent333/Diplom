@@ -1335,200 +1335,6 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
   end
-  inline VariantsQuestionMore1: TVariantsQuestionMore
-    Left = 0
-    Top = 40
-    Width = 877
-    Height = 769
-    TabOrder = 1
-    Visible = False
-    inherited Image1: TImage
-      Left = -168
-      Top = 58
-      Width = 1041
-      Height = 650
-    end
-    inherited hint: TLabel
-      Left = 440
-      Top = 110
-      Width = 5
-      Height = 25
-      Caption = ''
-      Font.Height = -21
-    end
-    inherited Label2: TLabel [2]
-      Top = 121
-      Width = 34
-      Caption = #8470'2'
-      Transparent = True
-    end
-    inherited Label3: TLabel [3]
-      Top = 183
-      Width = 33
-      Caption = #8470'3'
-      Transparent = True
-    end
-    inherited Label4: TLabel [4]
-      Left = 7
-      Top = 245
-      Width = 39
-      Caption = ' '#8470'4'
-      Transparent = True
-    end
-    inherited Label5: TLabel [5]
-      Top = 315
-      Width = 33
-      Caption = #8470'5'
-      Transparent = True
-    end
-    inherited Label6: TLabel [6]
-      Top = 385
-      Width = 34
-      Caption = #8470'6'
-      Transparent = True
-    end
-    inherited Label7: TLabel [7]
-      Top = 463
-      Width = 33
-      Caption = #8470'7'
-      Transparent = True
-    end
-    inherited Label8: TLabel [8]
-      Top = 533
-      Width = 34
-      Caption = #8470'8'
-      Transparent = True
-    end
-    inherited Label9: TLabel [9]
-      Top = 595
-      Width = 34
-      Caption = #8470'9'
-      Transparent = True
-    end
-    inherited Label10: TLabel [10]
-      Left = 10
-      Top = 673
-      Width = 43
-      Caption = #8470'10'
-      Transparent = True
-    end
-    inherited Label1: TLabel [11]
-      Top = 51
-      Width = 31
-      Caption = #8470'1'
-      Transparent = True
-    end
-    inherited Memo11: TMemo
-      Top = 65
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo2: TMemo
-      Top = 135
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo3: TMemo
-      Top = 205
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo4: TMemo
-      Top = 275
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo5: TMemo
-      Top = 345
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo6: TMemo
-      Top = 415
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo7: TMemo
-      Top = 485
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo8: TMemo
-      Top = 555
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo9: TMemo
-      Top = 625
-      Height = 56
-      ReadOnly = True
-    end
-    inherited Memo10: TMemo
-      Top = 695
-      Height = 56
-      ReadOnly = True
-    end
-    inherited RadioButton1: TRadioButton
-      Left = 20
-      Top = 85
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton2: TRadioButton
-      Left = 20
-      Top = 155
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton3: TRadioButton
-      Left = 20
-      Top = 225
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton4: TRadioButton
-      Left = 20
-      Top = 295
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton5: TRadioButton
-      Left = 20
-      Top = 355
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton6: TRadioButton
-      Left = 20
-      Top = 435
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton7: TRadioButton
-      Left = 20
-      Top = 505
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton8: TRadioButton
-      Left = 20
-      Top = 575
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton9: TRadioButton
-      Left = 20
-      Top = 645
-      Width = 15
-      Height = 15
-    end
-    inherited RadioButton10: TRadioButton
-      Left = 20
-      Top = 716
-      Width = 15
-      Height = 15
-    end
-  end
   object Button1: TButton
     Left = 208
     Top = 776
@@ -1541,8 +1347,7 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    TabOrder = 2
-    OnClick = Button1Click
+    TabOrder = 1
   end
   object Memo1: TMemo
     Left = 0
@@ -1557,6 +1362,6 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     Lines.Strings = (
       'Memo1')
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
   end
 end

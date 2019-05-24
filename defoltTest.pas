@@ -18,7 +18,7 @@ uses PassingKnowledgeControl, Variants_Question_More, Control_CRUD,
   Add_Question, Menu_Control, SysUtils;
 
 procedure checkOtvet;
-begin
+begin   {
     posetivAnswer:=getClearString(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('ВерныйОтвет').AsString);
     
     with PassingKnowledgeControlForm.VariantsQuestionMore1 do
@@ -92,7 +92,7 @@ begin
               if ((userAnswer = posetivAnswer ))then
                 inc(countBall);
             end;
-  end;
+  end;     }
 end;
 
 Function getClearString(answer :string ) : String;
@@ -109,7 +109,7 @@ begin
 end;
 
 procedure setMemoLines;
-begin
+begin       {
     with PassingKnowledgeControlForm.VariantsQuestionMore1 do
       begin
          Memo11.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв1').AsString);
@@ -122,11 +122,11 @@ begin
          Memo8.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв8').AsString);
          Memo9.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв9').AsString);
          Memo10.Lines.Add(PassingKnowledgeControlForm.DBGrid1.DataSource.DataSet.FieldByName('Отв10').AsString);
-      end;
+      end;  }
 end;
 
 procedure countQuest(count:integer);
-begin
+begin     {
     case count of
     2:
        begin
@@ -527,11 +527,11 @@ begin
                RadioButton10.Visible:=true;
             end;
         end;
-    end;
+    end;    }
 end;
 
 procedure memoClear;
-begin
+begin     {
   with PassingKnowledgeControlForm.VariantsQuestionMore1 do
     begin
         Memo11.Clear;
@@ -544,12 +544,12 @@ begin
         Memo8.Clear;
         Memo9.Clear;
         Memo10.Clear;
-    end;
+    end;        }
 end;
 
 procedure clearStrokiMemo;
 var i:integer;
-begin
+begin     {
     with PassingKnowledgeControlForm.VariantsQuestionMore1 do
       begin
         for i:=Memo11.Lines.Count-1 downto  0 do
@@ -592,11 +592,11 @@ begin
         Memo8.SelStart:= 1;
         Memo9.SelStart:= 1;
         Memo10.SelStart:= 1;
-  end;
+  end;    }
 end;
 
 procedure RadioButtonClear;
-begin
+begin {
   with PassingKnowledgeControlForm.VariantsQuestionMore1 do
     begin
        RadioButton1.Checked:=false;
@@ -609,7 +609,7 @@ begin
        RadioButton8.Checked:=false;
        RadioButton9.Checked:=false;
        RadioButton10.Checked:=false;
-    end;
+    end;  }
 end;
 
 end.

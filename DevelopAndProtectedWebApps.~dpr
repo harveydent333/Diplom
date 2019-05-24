@@ -47,7 +47,7 @@ uses
   Registration_Teacher in 'Registration_Teacher.pas' {RegistrationTeacher},
   Teacher_CRUD in 'Teacher_CRUD.pas' {TeacherCRUD},
   Manager_Users in 'Manager_Users.pas' {ManagerUsers},
-  Menu_Multimedai in 'Menu_Multimedai.pas' {Form1};
+  Menu_Multimedai in 'Menu_Multimedai.pas' {MenuMultimedia};
 
 {$R *.res}
 
@@ -78,6 +78,6 @@ begin
   Application.CreateForm(TRegistrationTeacher, RegistrationTeacher);
   Application.CreateForm(TTeacherCRUD, TeacherCRUD);
   Application.CreateForm(TManagerUsers, ManagerUsers);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TMenuMultimedia, MenuMultimedia);
   Application.Run;
 end.

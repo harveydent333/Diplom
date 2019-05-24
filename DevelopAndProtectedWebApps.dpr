@@ -47,7 +47,8 @@ uses
   Registration_Teacher in 'Registration_Teacher.pas' {RegistrationTeacher},
   Teacher_CRUD in 'Teacher_CRUD.pas' {TeacherCRUD},
   Manager_Users in 'Manager_Users.pas' {ManagerUsers},
-  Menu_Multimedai in 'Menu_Multimedai.pas' {MenuMultimedia};
+  Menu_Multimedai in 'Menu_Multimedai.pas' {MenuMultimedia},
+  QuestionsMoreMemo in 'QuestionsMoreMemo.pas';
 
 {$R *.res}
 

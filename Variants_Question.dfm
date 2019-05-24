@@ -4,7 +4,13 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   Width = 892
   Height = 375
   Color = clBtnFace
+  Font.Charset = RUSSIAN_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'Georgia'
+  Font.Style = []
   ParentColor = False
+  ParentFont = False
   TabOrder = 0
   object hint: TLabel
     Left = 288
@@ -164,7 +170,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -226,7 +232,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -242,7 +248,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -258,7 +264,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -275,7 +281,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -292,7 +298,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -309,7 +315,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -317,7 +323,6 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     ParentFont = False
     ScrollBars = ssVertical
     TabOrder = 7
-    Visible = False
   end
   object Memo8: TMemo
     Left = 54
@@ -326,7 +331,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -343,7 +348,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (
@@ -360,7 +365,7 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     Height = 65
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     Lines.Strings = (

@@ -10,6 +10,7 @@ updateKodControl,
 updateKodPractic,
 countQuestion,
 kodLastControl,
+kodVoprosa,
 updateKodYchenika:integer;
 
 implementation

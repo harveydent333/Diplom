@@ -26,16 +26,34 @@ type
     Button2: TButton;
     Label2: TLabel;
     Label3: TLabel;
+    VariantsQuestionMore1: TVariantsQuestionMore;
+    Panel2: TPanel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    Panel1: TPanel;
+    BitBtn5: TBitBtn;
+    BitBtn6: TBitBtn;
+    BitBtn7: TBitBtn;
+    BitBtn8: TBitBtn;
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
-    procedure ListBox1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure VariantsQuestionSingle1BitBtn2Click(Sender: TObject);
-    procedure VariantsQuestionSingle1BitBtn4Click(Sender: TObject);
-    procedure VariantsQuestionSingle1BitBtn1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure VariantsQuestionSingle1BitBtn3Click(Sender: TObject);
+    procedure ListBox1Click(Sender: TObject);
+    procedure VariantsQuestionMore1BitBtn2Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn6Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn7Click(Sender: TObject);
+    procedure BitBtn8Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,7 +68,7 @@ implementation
 
 uses Unit3, Unit2, Title_Form, Control, Main_Menu, UpdateUnit, config,
   QuestionsMemo, AddQuestionModal,
-  Control_CRUD;
+  Control_CRUD, QuestionsMoreMemo;
 
 {$R *.dfm}
 
@@ -66,27 +84,8 @@ end;
 procedure TAdd_Questions.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
-end;
-
-procedure TAdd_Questions.ListBox1Click(Sender: TObject);
-var i:integer;
-begin
-    Memo1.Clear;
-    Button2.Enabled:=true;
-    VariantsQuestionSingle1.Visible:=true;
-    config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.ItemIndex]+#39);
-    QuestionsMemo.countQuest(DBGrid1.DataSource.DataSet.FieldByName('КоличествоОтветов').AsInteger);
-    QuestionsMemo.setMemoLines;
-    QuestionsMemo.setRadioButton(DBGrid1.DataSource.DataSet.FieldByName('ВерныйОтвет').AsString);
-    kodVoprosa:=DBGrid1.DataSource.DataSet.FieldByName('КодВопроса').AsInteger;
-    Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-    for i:=Memo1.Lines.Count-1 downto  0 do
-      if Memo1.Lines.Strings[i]='' then Memo1.Lines.Delete(i);
-    QuestionsMemo.clearStrokiMemo;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then TitleForm.close;
 end;
 
 procedure TAdd_Questions.Button1Click(Sender: TObject);
@@ -97,71 +96,6 @@ begin
       finally
         Free;
     end;
-end;
-
-procedure TAdd_Questions.VariantsQuestionSingle1BitBtn2Click(
-  Sender: TObject);
-begin
-    QuestionsMemo.memoClear;
-    QuestionsMemo.RadioButtonClear;
-end;
-
-procedure TAdd_Questions.VariantsQuestionSingle1BitBtn4Click(
-  Sender: TObject);
-begin
-  VariantsQuestionSingle1.BitBtn4Click(Sender);
-
-end;
-
-procedure TAdd_Questions.VariantsQuestionSingle1BitBtn1Click(Sender: TObject);
-var vernieOtvet:string;
-begin
-    clearStrokiMemo;  
-    with Add_Questions.VariantsQuestionSingle1 do
-      begin
-        if RadioButton1.Checked=true then vernieOtvet:=Memo1.Text;
-        if RadioButton2.Checked=true then vernieOtvet:=Memo2.Text;
-        if RadioButton3.Checked=true then vernieOtvet:=Memo3.Text;
-        if RadioButton4.Checked=true then vernieOtvet:=Memo4.Text;
-        if RadioButton5.Checked=true then vernieOtvet:=Memo5.Text;
-        if RadioButton6.Checked=true then vernieOtvet:=Memo6.Text;
-        if RadioButton7.Checked=true then vernieOtvet:=Memo7.Text;
-        if RadioButton8.Checked=true then vernieOtvet:=Memo8.Text;
-        if RadioButton9.Checked=true then vernieOtvet:=Memo9.Text;
-        if RadioButton10.Checked=true then vernieOtvet:=Memo10.Text;
-
- config.execRequestSQL('UPDATE Вопросы SET КодКонтроля='+IntToStr(updateKodControl)+', СодержаниеВопроса='+#39+Add_Questions.Memo1.Text+#39+', ВерныйОтвет='
- +#39+vernieOtvet+#39+', КоличествоОтветов='+#39+IntToStr(countQuestion)+#39+', Отв1='
- +#39+Memo1.Text+#39+', Отв2='+#39+Memo2.Text+#39+', Отв3='+#39+Memo3.Text+#39+', Отв4='+#39+Memo4.Text+#39+', Отв5='+#39+Memo5.Text+#39+',Отв6='
- +#39+Memo6.Text+#39+', Отв7='+#39+Memo7.Text+#39+', Отв8='+#39+Memo8.Text+#39+', Отв9='+#39+Memo9.Text+#39+', Отв10='+#39+Memo10.Text+#39+' WHERE КодВопроса='+IntToStr(kodVoprosa));
-
- config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
-
- Add_Questions.ListBox1.Clear;
-        Add_Questions.DBGrid1.DataSource.DataSet.First;
-        While (Add_Questions.DBGrid1.DataSource.DataSet.Eof=false) do
-          begin
-            Add_Questions.ListBox1.Items.Add(Add_Questions.DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-            Add_Questions.DBGrid1.DataSource.DataSet.Next;
-          end;
-   end;
-end;
-
-procedure TAdd_Questions.Button2Click(Sender: TObject);
-begin
-    config.execRequestSQL('DELETE FROM Вопросы WHERE КодВопроса='+DBGrid1.DataSource.DataSet.FieldByName('КодВопроса').AsString);
-    config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
-
-    Add_Questions.ListBox1.Clear;
-    Add_Questions.DBGrid1.DataSource.DataSet.First;
-    While (Add_Questions.DBGrid1.DataSource.DataSet.Eof=false) do
-      begin
-        Add_Questions.ListBox1.Items.Add(Add_Questions.DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-        Add_Questions.DBGrid1.DataSource.DataSet.Next;
-      end;
-    Add_Questions.VariantsQuestionSingle1.Visible:=false;
-    Add_Questions.Memo1.Clear;
-    Button2.Enabled:=false;
 end;
 
 procedure TAdd_Questions.SpeedButton1Click(Sender: TObject);
@@ -177,6 +111,269 @@ begin
     Add_Questions.visible:=false;
     ControlCRUD.Visible:=true;
     ControlCRUD.Position:=poDesktopCenter;
+end;
+
+procedure TAdd_Questions.VariantsQuestionSingle1BitBtn3Click(
+  Sender: TObject);
+begin
+  VariantsQuestionSingle1.BitBtn3Click(Sender);
+
+end;
+
+procedure TAdd_Questions.ListBox1Click(Sender: TObject);
+begin
+    VariantsQuestionSingle1.Visible:=false;
+    VariantsQuestionMore1.Visible:=false;
+    Panel1.Visible:=false;
+    Panel2.Visible:=false;
+    Button2.Enabled:=true;
+    Memo1.ReadOnly:=false;
+
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.Itemindex]+#39);
+    kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
+    Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=1 then
+      begin
+        VariantsQuestionSingle1.Visible:=true;
+        Panel1.Visible:=true;
+        QuestionsMemo.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+        QuestionsMemo.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+        QuestionsMemo.putRightAnswer(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Проставляем верные ответы
+        QuestionsMemo.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+     end;
+
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.Itemindex]+#39);
+    kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
+    Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=2 then
+      begin
+        VariantsQuestionMore1.Visible:=true;
+        Panel2.Visible:=true;
+        QuestionsMoreMemo.moreMemoClear;
+        QuestionsMoreMemo.CheckBoxClear;
+        QuestionsMoreMemo.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+        QuestionsMoreMemo.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+        QuestionsMoreMemo.setRightQuestionInArrayAnswers(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Получаем массив верных ответов
+        QuestionsMoreMemo.putRightAnswer; // Проставляем верные CheckBox
+        QuestionsMoreMemo.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+     end;
+
+end;
+
+procedure TAdd_Questions.VariantsQuestionMore1BitBtn2Click(Sender: TObject);
+begin
+  with Add_Questions.VariantsQuestionMore1 do
+    begin
+      countQuestion:=3;
+      moreMemoClear;
+      CheckBoxClear;
+      Memo3.Visible:=true; label3.Visible:=true; CheckBox3.Visible:=true;
+      Memo4.Visible:=false; label4.Visible:=false; CheckBox4.Visible:=false;
+      Memo5.Visible:=false; label5.Visible:=false; CheckBox5.Visible:=false;
+      Memo6.Visible:=false; label6.Visible:=false; CheckBox6.Visible:=false;
+      Memo7.Visible:=false; label7.Visible:=false; CheckBox7.Visible:=false;
+      Memo8.Visible:=false; label8.Visible:=false; CheckBox8.Visible:=false;
+      Memo9.Visible:=false; label9.Visible:=false; CheckBox9.Visible:=false;
+      Memo10.Visible:=false; label10.Visible:=false; CheckBox10.Visible:=false;
+    end;
+end;
+
+procedure TAdd_Questions.BitBtn2Click(Sender: TObject);
+begin
+     with Add_Questions.VariantsQuestionMore1 do
+            begin
+               countQuestion:=3;
+               moreMemoClear;
+               CheckBoxClear;
+               Memo3.Visible:=true; label3.Visible:=true; CheckBox3.Visible:=true;
+               Memo4.Visible:=false; label4.Visible:=false; CheckBox4.Visible:=false;
+               Memo5.Visible:=false; label5.Visible:=false; CheckBox5.Visible:=false;
+               Memo6.Visible:=false; label6.Visible:=false; CheckBox6.Visible:=false;
+               Memo7.Visible:=false; label7.Visible:=false; CheckBox7.Visible:=false;
+               Memo8.Visible:=false; label8.Visible:=false; CheckBox8.Visible:=false;
+               Memo9.Visible:=false; label9.Visible:=false; CheckBox9.Visible:=false;
+               Memo10.Visible:=false; label10.Visible:=false; CheckBox10.Visible:=false;
+            end;
+end;
+
+procedure TAdd_Questions.BitBtn6Click(Sender: TObject);
+begin
+  with Add_Questions.VariantsQuestionSingle1 do
+            begin
+               countQuestion:=3;
+               singleMemoClear;
+               RadioButtonClear;
+               Memo3.Visible:=true; label3.Visible:=true; RadioButton3.Visible:=true;
+               Memo4.Visible:=false; label4.Visible:=false; RadioButton4.Visible:=false;
+               Memo5.Visible:=false; label5.Visible:=false; RadioButton5.Visible:=false;
+               Memo6.Visible:=false; label6.Visible:=false; RadioButton6.Visible:=false;
+               Memo7.Visible:=false; label7.Visible:=false; RadioButton7.Visible:=false;
+               Memo8.Visible:=false; label8.Visible:=false; RadioButton8.Visible:=false;
+               Memo9.Visible:=false; label9.Visible:=false; RadioButton9.Visible:=false;
+               Memo10.Visible:=false; label10.Visible:=false; RadioButton10.Visible:=false;
+            end;
+end;
+
+procedure TAdd_Questions.BitBtn3Click(Sender: TObject);
+begin
+    VariantsQuestionMore1.BitBtn4.Click;
+    if countQuestion = 10 then Add_Questions.BitBtn3.Enabled:=false;
+    if countQuestion = 3 then Add_Questions.BitBtn4.Enabled:=true;
+end;
+
+procedure TAdd_Questions.BitBtn4Click(Sender: TObject);
+begin
+    VariantsQuestionMore1.BitBtn3.Click;
+    if countQuestion = 2 then Add_Questions.BitBtn4.Enabled:=false;
+    if countQuestion = 9 then Add_Questions.BitBtn3.Enabled:=true;
+end;
+
+procedure TAdd_Questions.BitBtn7Click(Sender: TObject);
+begin
+    VariantsQuestionSingle1.BitBtn3.Click;
+    if countQuestion = 10 then
+      begin
+         BitBtn7.Enabled:=false;
+         Add_Questions.VariantsQuestionSingle1.RadioButton10.Checked:=false;
+      end;
+
+     if countQuestion = 3 then BitBtn8.Enabled:=true;
+end;
+
+procedure TAdd_Questions.BitBtn8Click(Sender: TObject);
+begin
+    VariantsQuestionSingle1.BitBtn4.Click;
+     if countQuestion = 2 then Add_Questions.BitBtn8.Enabled:=false;
+     if countQuestion = 9 then Add_Questions.BitBtn7.Enabled:=true;
+end;
+
+procedure TAdd_Questions.BitBtn5Click(Sender: TObject);
+var varianti,otvet,memoText:string;
+begin
+    with VariantsQuestionSingle1 do
+      begin
+        varianti:=varianti+Memo1.Text+'©';
+         varianti:=varianti+Memo2.Text+'©';
+        varianti:=varianti+Memo3.Text+'©';
+         varianti:=varianti+Memo4.Text+'©';
+         varianti:=varianti+Memo5.Text+'©';
+         varianti:=varianti+Memo6.Text+'©';
+         varianti:=varianti+Memo7.Text+'©';
+         varianti:=varianti+Memo8.Text+'©';
+       varianti:=varianti+Memo9.Text+'©';
+         varianti:=varianti+Memo10.Text+'©';
+
+        if RadioButton1.Checked=true then otvet:=Memo1.Text;
+        if RadioButton2.Checked=true then otvet:=Memo2.Text;
+        if RadioButton3.Checked=true then otvet:=Memo3.Text;
+        if RadioButton4.Checked=true then otvet:=Memo4.Text;
+        if RadioButton5.Checked=true then otvet:=Memo5.Text;
+        if RadioButton6.Checked=true then otvet:=Memo6.Text;
+        if RadioButton7.Checked=true then otvet:=Memo7.Text;
+        if RadioButton8.Checked=true then otvet:=Memo8.Text;
+        if RadioButton9.Checked=true then otvet:=Memo9.Text;
+        if RadioButton10.Checked=true then otvet:=Memo10.Text;
+      end;
+
+    randomize;
+    if Add_Questions.Memo1.Text=''then
+       memoText:='Вопрос '+IntToStr(random(999999))
+    else memoText:=Add_Questions.Memo1.Text;
+
+    config.execRequestSQL('UPDATE Вопросы SET КоличествоОтветов='+IntToStr(countQuestion)+', СодержаниеВопроса='+#39+memoText+#39+', ВариантыОтветов='+
+    #39+varianti+#39+', ВерныйОтвет='+#39+otvet+#39+' WHERE КодВопроса='+IntToStr(kodVoprosa));
+
+
+    Add_Questions.ListBox1.Clear;
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+       with Add_Questions do
+                begin
+                    ListBox1.Clear;
+                    BD.Request.DataSet.First;
+                    While (BD.Request.DataSet.Eof=false) do
+                        begin
+                            ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
+                            BD.Request.DataSet.Next;
+                        end;
+                end;
+end;
+
+procedure TAdd_Questions.BitBtn1Click(Sender: TObject);
+var varianti,otveti,memoText:string;
+begin
+    otveti:='';
+    with VariantsQuestionMore1 do
+      begin
+         varianti:=varianti+Memo11.Text+'©';
+        varianti:=varianti+Memo2.Text+'©';
+         varianti:=varianti+Memo3.Text+'©';
+         varianti:=varianti+Memo4.Text+'©';
+         varianti:=varianti+Memo5.Text+'©';
+         varianti:=varianti+Memo6.Text+'©';
+        varianti:=varianti+Memo7.Text+'©';
+         varianti:=varianti+Memo8.Text+'©';
+         varianti:=varianti+Memo9.Text+'©';
+        varianti:=varianti+Memo10.Text+'©';
+
+        if CheckBox1.Checked=true  then otveti:=otveti+Memo11.Text+'©';
+        if CheckBox2.Checked=true then otveti:=otveti+Memo2.Text+'©';
+        if CheckBox3.Checked=true then otveti:=otveti+Memo3.Text+'©';
+        if CheckBox4.Checked=true then otveti:=otveti+Memo4.Text+'©';
+        if CheckBox5.Checked=true then otveti:=otveti+Memo5.Text+'©';
+        if CheckBox6.Checked=true then otveti:=otveti+Memo6.Text+'©';
+        if CheckBox7.Checked=true then otveti:=otveti+Memo7.Text+'©';
+        if CheckBox8.Checked=true then otveti:=otveti+Memo8.Text+'©';
+        if CheckBox9.Checked=true then otveti:=otveti+Memo9.Text+'©';
+        if CheckBox10.Checked=true then otveti:=otveti+Memo10.Text+'©';
+      end;
+
+    randomize;
+    if Add_Questions.Memo1.Text=''then
+       memoText:='Вопрос '+IntToStr(random(999999))
+    else memoText:=Add_Questions.Memo1.Text;
+
+    config.execRequestSQL('UPDATE Вопросы SET КоличествоОтветов='+IntToStr(countQuestion)+', СодержаниеВопроса='+#39+memoText+#39+', ВариантыОтветов='+
+    #39+varianti+#39+', ВерныйОтвет='+#39+otveti+#39+' WHERE КодВопроса='+IntToStr(kodVoprosa));
+
+
+    Add_Questions.ListBox1.Clear;
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+       with Add_Questions do
+                begin
+                    ListBox1.Clear;
+                    BD.Request.DataSet.First;
+                    While (BD.Request.DataSet.Eof=false) do
+                        begin
+                            ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
+                            BD.Request.DataSet.Next;
+                        end;
+                end;
+end;
+
+procedure TAdd_Questions.Button2Click(Sender: TObject);
+begin
+  if ListBox1.Items.Count=0 then
+    Button2.Enabled:=false;
+  config.execRequestSQL('DELETE FROM Вопросы WHERE КодВопроса='+IntToStr(kodVoprosa));
+  Add_Questions.ListBox1.Clear;
+  config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+       with Add_Questions do
+                begin
+                    ListBox1.Clear;
+                    BD.Request.DataSet.First;
+                    While (BD.Request.DataSet.Eof=false) do
+                        begin
+                            ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
+                            BD.Request.DataSet.Next;
+                        end;
+                end;
+       Button2.Enabled:=false;
+        VariantsQuestionSingle1.Visible:=false;
+    VariantsQuestionMore1.Visible:=false;
+    Panel1.Visible:=false;
+    Panel2.Visible:=false;
+    Memo1.Clear;
+    Memo1.ReadOnly:=true;
 end;
 
 end.

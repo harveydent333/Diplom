@@ -85,21 +85,23 @@ begin
             updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
             updateKodControl:=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger;
 
+            Add_Questions.ListBox1.Clear;
             config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
-            with Add_Questions do
+              with Add_Questions do
                 begin
                     ListBox1.Clear;
-                    DBGrid1.DataSource.DataSet.First;
-                    While (DBGrid1.DataSource.DataSet.Eof=false) do
+                    BD.Request.DataSet.First;
+                    While (BD.Request.DataSet.Eof=false) do
                         begin
-                            ListBox1.Items.Add(Add_Questions.DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-                            DBGrid1.DataSource.DataSet.Next;
+                            ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
+                            BD.Request.DataSet.Next;
                         end;
-
                     VariantsQuestionSingle1.Visible:=false;
+                    VariantsQuestionMore1.Visible:=false;
                     Button2.Enabled:=false;
                     Show;
                     Memo1.Clear;
+                    Memo1.ReadOnly:=true;
                     Position:=poDesktopCenter;
                 end;
             ControlCRUD.Visible:=false;

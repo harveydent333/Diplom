@@ -2017,7 +2017,7 @@ object AddQuestionModalForm: TAddQuestionModalForm
   object Label3: TLabel
     Left = 120
     Top = 124
-    Width = 209
+    Width = 205
     Height = 23
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1090#1080#1087' '#1074#1086#1087#1088#1086#1089#1072':'
     Font.Charset = RUSSIAN_CHARSET

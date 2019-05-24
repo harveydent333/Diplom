@@ -317,7 +317,6 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
     ParentFont = False
     ScrollBars = ssVertical
     TabOrder = 7
-    Visible = False
   end
   object Memo8: TMemo
     Left = 54

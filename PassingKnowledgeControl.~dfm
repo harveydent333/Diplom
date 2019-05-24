@@ -1327,7 +1327,7 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     Top = 16
     Width = 337
     Height = 65
-    DataSource = DataModule1.ModuleLecture
+    DataSource = BD.Request
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

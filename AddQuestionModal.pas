@@ -51,7 +51,7 @@ begin
 
       if ((Edit1.Text<>'')and(unique_user<>false)) then
       begin
-        config.execRequestSQL('INSERT INTO Вопросы (КодКонтроля, СодержаниеВопроса, КоличествоОтветов) VALUES('+IntToStr(updateKodControl)+','+#39+Edit1.Text+#39+','+ComboBox1.Items[ComboBox1.ItemIndex]+')');
+        config.execRequestSQL('INSERT INTO Вопросы (КодКонтроля, СодержаниеВопроса, КоличествоОтветов, КодТипа) VALUES('+IntToStr(updateKodControl)+','+#39+Edit1.Text+#39+','+ComboBox1.Items[ComboBox1.ItemIndex]+', '+IntToStr(ComboBox2.ItemIndex+1)+')');
         MessageBox(0,'Вопрос был успешно создан!','Создание вопроса', MB_OK+MB_ICONINFORMATION);
 
         config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));

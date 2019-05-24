@@ -1,6 +1,6 @@
 object Add_Questions: TAdd_Questions
-  Left = 83
-  Top = 202
+  Left = 58
+  Top = 159
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 672
@@ -6205,8 +6205,8 @@ object Add_Questions: TAdd_Questions
     OnClick = ListBox1Click
   end
   object DBGrid1: TDBGrid
-    Left = 424
-    Top = 680
+    Left = 832
+    Top = 84
     Width = 329
     Height = 57
     DataSource = BD.Request
@@ -6223,25 +6223,22 @@ object Add_Questions: TAdd_Questions
     Width = 905
     Height = 473
     Color = clBtnFace
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Georgia'
+    Font.Style = []
     ParentColor = False
+    ParentFont = False
     TabOrder = 3
     Visible = False
     inherited Label4: TLabel
       Visible = True
     end
     inherited Panel2: TPanel
-      Visible = True
-      inherited BitBtn1: TBitBtn
-        OnClick = VariantsQuestionSingle1BitBtn1Click
-      end
-      inherited BitBtn2: TBitBtn
-        OnClick = VariantsQuestionSingle1BitBtn2Click
-      end
       inherited BitBtn3: TBitBtn
         Visible = True
-      end
-      inherited BitBtn4: TBitBtn
-        OnClick = VariantsQuestionSingle1BitBtn4Click
+        OnClick = VariantsQuestionSingle1BitBtn3Click
       end
     end
     inherited Memo4: TMemo
@@ -6277,5 +6274,107 @@ object Add_Questions: TAdd_Questions
     ParentFont = False
     TabOrder = 5
     OnClick = Button2Click
+  end
+  inline VariantsQuestionMore1: TVariantsQuestionMore
+    Left = 280
+    Top = 184
+    Width = 905
+    Height = 473
+    TabOrder = 6
+    Visible = False
+  end
+  object Panel2: TPanel
+    Left = 279
+    Top = 184
+    Width = 875
+    Height = 40
+    Color = clWhite
+    TabOrder = 7
+    Visible = False
+    object BitBtn1: TBitBtn
+      Left = 10
+      Top = 8
+      Width = 210
+      Height = 25
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
+      TabOrder = 0
+      OnClick = BitBtn1Click
+      Kind = bkOK
+    end
+    object BitBtn2: TBitBtn
+      Left = 655
+      Top = 8
+      Width = 210
+      Height = 25
+      Caption = #1057#1073#1088#1086#1089
+      TabOrder = 1
+      OnClick = BitBtn2Click
+      Kind = bkAbort
+    end
+    object BitBtn3: TBitBtn
+      Left = 224
+      Top = 8
+      Width = 210
+      Height = 25
+      Caption = '+ '#1044#1086#1073#1072#1074#1080#1090#1100
+      TabOrder = 2
+      OnClick = BitBtn3Click
+    end
+    object BitBtn4: TBitBtn
+      Left = 440
+      Top = 8
+      Width = 210
+      Height = 25
+      Caption = '- '#1059#1076#1072#1083#1080#1090#1100
+      TabOrder = 3
+      OnClick = BitBtn4Click
+    end
+  end
+  object Panel1: TPanel
+    Left = 279
+    Top = 184
+    Width = 875
+    Height = 40
+    Color = clWhite
+    TabOrder = 8
+    Visible = False
+    object BitBtn5: TBitBtn
+      Left = 10
+      Top = 8
+      Width = 210
+      Height = 25
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
+      TabOrder = 0
+      OnClick = BitBtn5Click
+      Kind = bkOK
+    end
+    object BitBtn6: TBitBtn
+      Left = 655
+      Top = 8
+      Width = 210
+      Height = 25
+      Caption = #1057#1073#1088#1086#1089
+      TabOrder = 1
+      OnClick = BitBtn6Click
+      Kind = bkAbort
+    end
+    object BitBtn7: TBitBtn
+      Left = 224
+      Top = 8
+      Width = 210
+      Height = 25
+      Caption = '+ '#1044#1086#1073#1072#1074#1080#1090#1100
+      TabOrder = 2
+      OnClick = BitBtn7Click
+    end
+    object BitBtn8: TBitBtn
+      Left = 440
+      Top = 8
+      Width = 210
+      Height = 25
+      Caption = '- '#1059#1076#1072#1083#1080#1090#1100
+      TabOrder = 3
+      OnClick = BitBtn8Click
+    end
   end
 end

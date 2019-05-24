@@ -18,10 +18,18 @@ type
     Image4: TImage;
     SpeedButton1: TSpeedButton;
     Button1: TButton;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -119,6 +127,31 @@ begin
     MenuMultimedia.show;
     MenuMultimedia.Position:=poDesktopCenter;
     //MainMenu.Visible:=false;
+end;
+
+procedure TTitleForm.Button2Click(Sender: TObject);
+begin
+    Add_Questions.Show;
+
+    Add_Questions.ListBox1.Clear;
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля=32');
+       with Add_Questions do
+                begin
+                    ListBox1.Clear;
+                    BD.Request.DataSet.First;
+                    While (BD.Request.DataSet.Eof=false) do
+                        begin
+                            ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
+                            BD.Request.DataSet.Next;
+                        end;
+
+                    VariantsQuestionSingle1.Visible:=false;
+                    Button2.Enabled:=false;
+                    Show;
+                    Memo1.Clear;
+                    Memo1.ReadOnly:=true;
+                    Position:=poDesktopCenter;
+                end;
 end;
 
 end.
