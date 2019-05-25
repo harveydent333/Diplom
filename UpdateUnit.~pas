@@ -11,6 +11,7 @@ updateKodPractic,
 countQuestion,
 kodLastControl,
 kodVoprosa,
+pathMutimedia,
 updateKodYchenika:integer;
 
 implementation

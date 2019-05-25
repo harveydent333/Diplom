@@ -51,7 +51,7 @@ uses
   QuestionsMoreMemo in 'QuestionsMoreMemo.pas',
   PassControlSingle in 'PassControlSingle.pas',
   PassControlMore in 'PassControlMore.pas',
-  Media_Player in 'Media_Player.pas' {Form1};
+  Change_Pass in 'Change_Pass.pas' {Form1};
 
 {$R *.res}
 

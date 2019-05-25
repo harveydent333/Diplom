@@ -80,7 +80,9 @@ begin
 
    // Получение названия Практики к которомой относитсья наша изменяемая Практическая             +
    Edit1.Visible:=true;
+   Edit2.Visible:=true;
    label2.Visible:=true;
+   label4.Visible:=true;
    config.selectRequestSQL('SELECT * FROM Практические WHERE КодПрактической='+IntToStr(updateKodPractic));
    Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеПрактической').AsString;
    Edit2.Text:=BD.Request.DataSet.FieldByName('НомерПрактической').AsString;
@@ -133,14 +135,16 @@ begin
     unique_practic:=false;
     unique_number_practic:=false;
 
+    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        checkUniqueData;
 
-
-
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_practic<>false) and(unique_number_practic<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        saveDataInBD;
 end;
 
 procedure TUpdatePracticModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('UPDATE Практические SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеПрактической='+#39+Edit1.Text+#39+', НомерПрактической='+#39+Edit2.Text+#39+' WHERE КодПрактической ='+IntToStr(updateKodLecture));
+    config.execRequestSQL('UPDATE Практические SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеПрактической='+#39+Edit1.Text+#39+', НомерПрактической='+#39+Edit2.Text+#39+' WHERE КодПрактической ='+IntToStr(updateKodPractic));
     MessageBox(0,'Практическая была успешно Изменена!','Редактирование Практической', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 end;
@@ -148,13 +152,13 @@ end;
 procedure TUpdatePracticModalForm.checkUniqueData; // Проверка на уникальные данные
 begin
     config.selectRequestSQL('SELECT * FROM Практические WHERE НазваниеПрактической='+#39+Edit1.Text+#39);
-    if ((BD.RequestSQL.IsEmpty) or (updateKodLecture=BD.Request.DataSet.FieldByName('КодПрактической').AsInteger)) then
+    if ((BD.RequestSQL.IsEmpty) or (updateKodPractic=BD.Request.DataSet.FieldByName('КодПрактической').AsInteger)) then
       unique_practic:=true
     else
       MessageBox(0,'Данная практическая уже сущетсвует!','Создание практической', MB_OK+MB_ICONwarning);
 
     config.selectRequestSQL('SELECT * FROM Практические WHERE НомерПрактической='+#39+Edit2.Text+#39);
-    if ((BD.RequestSQL.IsEmpty) or (updateKodLecture=BD.Request.DataSet.FieldByName('КодПрактической').AsInteger)) then
+    if ((BD.RequestSQL.IsEmpty) or (updateKodPractic=BD.Request.DataSet.FieldByName('КодПрактической').AsInteger)) then
       unique_number_practic:=true
     else
       MessageBox(0,'Данный номер лекции уже сущетсвует!','Создание лекции', MB_OK+MB_ICONwarning);

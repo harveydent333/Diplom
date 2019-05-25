@@ -21,6 +21,7 @@ procedure checkOnThePresenceOfTheCompositionsOfPractics;
 procedure checkOnThePresenceOfTheCompositionsOfControls;
 procedure checkOnThePresenceOfTheCompositionsOfYcheniks;
 procedure checkOnThePresenceOfTheCompositionsOfMultimedia;
+procedure checkOnThePresenceOfTheCompositionsOfTeachers;
 
 implementation
 
@@ -71,6 +72,8 @@ bool:=false;
             MultimediaADO.Active:=bool;
             checkOnThePresenceOfTheCompositionsOfMultimedia;
             bool:=true;
+            TeacherADO.Active:=bool;
+
           end;
       end;
 end;
@@ -83,9 +86,20 @@ begin
       Label1.Caption:=IntToStr(countBall);
       Label11.Caption:=IntToStr(countBall);
       Label5.Caption:=IntToStr(updateUnit.countQuestion-countBall);
-      Label3.Caption:=FloatToStrF(countBall*100/updateUnit.countQuestion,ffFixed,0,1);
-      Label9.Caption:=FloatToStrF(countBall*100/updateUnit.countQuestion,ffFixed,0,1);        // результат в %
-      Label7.Caption:=FloatToStrF(100-(countBall*100/updateUnit.countQuestion),ffFixed,0,1);
+    if updateUnit.countQuestion <> countBall then
+      begin
+          Label3.Caption:=FloatToStrF(countBall*100/updateUnit.countQuestion,ffFixed,0,2);
+          Label9.Caption:=FloatToStrF(countBall*100/updateUnit.countQuestion,ffFixed,0,2);        // результат в %
+      end
+    else
+      begin
+          Label3.Caption:='100,00';
+          Label9.Caption:='100,00';
+      end;
+    if countBall <> 0 then
+      Label7.Caption:=FloatToStrF(100-(countBall*100/updateUnit.countQuestion),ffFixed,0,1)
+    else
+      Label7.Caption:='100,00';
       evaluationCalculation(countBall*100/updateUnit.countQuestion);
     end;
 end;
@@ -117,6 +131,20 @@ begin
         config.execRequestSQL('UPDATE ∆урналќценок SET ќценка='+#39+'5'+#39+' WHERE  од∆урнала='+IntToStr(kodLastControl));
       end;
 
+end;
+
+procedure checkOnThePresenceOfTheCompositionsOfTeachers;
+begin
+   if TeacherCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
+      begin
+          TeacherCRUD.SpeedButton1.Enabled:=false;
+          TeacherCRUD.SpeedButton7.Enabled:=false;
+      end
+    else
+      begin
+          RazdelCRUD.SpeedButton6.Enabled:=true;
+          RazdelCRUD.SpeedButton7.Enabled:=true;
+      end;
 end;
 
 procedure checkOnThePresenceOfTheCompositionsOfRazdels;

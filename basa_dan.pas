@@ -26,8 +26,8 @@ type
     Multimedia: TDataSource;
     TeacherADO: TADOQuery;
     Teacher: TDataSource;
-    PassControlADO: TADOQuery;
-    PassControl: TDataSource;
+    QueryHelp: TDataSource;
+    ADOQuery: TADOQuery;
   private
     { Private declarations }
   public

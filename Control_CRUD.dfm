@@ -1,6 +1,6 @@
 object ControlCRUD: TControlCRUD
-  Left = 93
-  Top = 144
+  Left = 108
+  Top = 164
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1077#1084' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 643
@@ -4738,6 +4738,15 @@ object ControlCRUD: TControlCRUD
       item
         Alignment = taCenter
         Expanded = False
+        FieldName = #1053#1086#1084#1077#1088#1050#1086#1085#1090#1088#1086#1083#1103
+        Title.Alignment = taCenter
+        Title.Caption = #8470' '#1082#1086#1085#1090#1088#1086#1083#1103
+        Width = 200
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
         Title.Alignment = taCenter
         Title.Caption = #1056#1072#1079#1076#1077#1083
@@ -4751,15 +4760,6 @@ object ControlCRUD: TControlCRUD
         Title.Alignment = taCenter
         Title.Caption = #1058#1077#1084#1099
         Width = 260
-        Visible = True
-      end
-      item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = #1053#1086#1084#1077#1088#1050#1086#1085#1090#1088#1086#1083#1103
-        Title.Alignment = taCenter
-        Title.Caption = #8470' '#1082#1086#1085#1090#1088#1086#1083#1103
-        Width = 200
         Visible = True
       end
       item

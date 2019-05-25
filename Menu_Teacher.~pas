@@ -51,6 +51,7 @@ type
     procedure first_nameChange(Sender: TObject);
     procedure second_nameChange(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -64,7 +65,7 @@ var
 implementation
 
 uses Unit3, basa_dan, Unit2, Title_Form, config, Main_Menu,
-  Ycheniki_CRUD;
+  Ycheniki_CRUD, UpdateUnit;
 
 {$R *.dfm}
 
@@ -176,7 +177,7 @@ begin
           #39+last_name.Text+#39+','+
           #39+first_name.Text+#39+','+
           #39+second_name.Text+#39+','+
-          #39+IntToStr(ComboBox1.ItemIndex)+#39+')'
+          #39+IntToStr(ComboBox1.ItemIndex+1)+#39+')'
         );
         config.rebootRequestsCRUD;
         label1.Visible:=false;
@@ -201,6 +202,47 @@ begin
         last_name.Text:='';
         first_name.Text:='';
         second_name.text:='';
+      end;
+end;
+
+procedure TRegistrationForm.SpeedButton6Click(Sender: TObject); // ÊÍÎÏÊÀ ÈÇÌÅÍÈÒÜ
+begin
+    if last_name.Text='' then   // ÏÓÑÒÎÅ ÏÎËÅ ÔÀÌÈËÈß ÏĞÈ ÍÀÆÀÒÈÈ ÊÍÎÏÊÈ ÈÇÌÅÍÈÒÜ
+      begin
+        label1.Visible:=true;
+        label2.Visible:=true;
+        defolt_edit1.Visible:=false;
+        good_edit1.Visible:=false;
+        bed_edit1.Visible:=true;
+      end;
+
+    if first_name.Text='' then        //ÏÓÑÒÎÅ ÏÎËÅ ÈÌß ÏĞÈ ÍÀÆÀÒÈÈ ÊÍÎÏÊÈ ÈÇÌÅÍÈÒÜ
+      begin
+        label1.Visible:=true;
+        label3.Visible:=true;
+        defolt_edit2.Visible:=false;
+        good_edit2.Visible:=false;
+        bed_edit2.Visible:=true;
+      end;
+
+    if second_name.Text='' then       //ÏÓÑÒÎÅ ÏÎËÅ ÎÒ×ÅÑÒÂÎ ÏĞÈ ÍÀÆÀÒÈÈ ÊÍÎÏÊÈ ÈÇÌÅÍÈÒÜ
+      begin
+        label1.Visible:=true;
+        label4.Visible:=true;
+        defolt_edit3.Visible:=false;
+        good_edit3.Visible:=false;
+        bed_edit3.Visible:=true;
+      end;
+
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')) then
+      begin
+        config.execRequestSQL('UPDATE Ó÷åíèê SET Ôàìèëèÿ='+
+          #39+last_name.Text+#39+', Èìÿ='+
+          #39+first_name.Text+#39+', Îò÷åñòâî='+
+          #39+second_name.Text+#39+', ÊîäÃğóïïû='+
+          IntToStr(ComboBox1.ItemIndex+1)+' WHERE ÊîäÓ÷åíèêà='+IntToStr(updateKodYchenika)
+        );
+        config.rebootRequestsCRUD;
       end;
 end;
 

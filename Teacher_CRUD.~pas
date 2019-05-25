@@ -25,6 +25,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -82,7 +83,36 @@ end;
 procedure TTeacherCRUD.SpeedButton6Click(Sender: TObject);
 begin
     RegistrationTeacher.Show;
+    RegistrationTeacher.first_name.Text:='';
+    RegistrationTeacher.second_name.Text:='';
+    RegistrationTeacher.last_name.Text:='';
+    RegistrationTeacher.login.Text:='';
+    RegistrationTeacher.password.Text:='';
+    RegistrationTeacher.email.Text:='';
     AuthorizationData.defoltConfigRegistrationTeacherForm;
+    TeacherCRUD.Visible:=false;
+end;
+
+procedure TTeacherCRUD.SpeedButton7Click(Sender: TObject);
+begin
+    config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+#39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39);
+    updateKodTeacher:=BD.Request.DataSet.FieldByName('КодУчителя').AsInteger;
+    with RegistrationTeacher do
+      begin
+          Show;
+          Position:=poDesktopCenter;
+          last_name.Text:=BD.Request.DataSet.FieldByName('Фамилия').AsString;
+          first_name.Text:=BD.Request.DataSet.FieldByName('Имя').AsString;
+          second_name.Text:=BD.Request.DataSet.FieldByName('Отчество').AsString;
+          email.Text:=BD.Request.DataSet.FieldByName('email').AsString;
+          login.Text:=BD.Request.DataSet.FieldByName('login').AsString;
+          Label9.Visible:=false;
+          bed_edit6.Visible:=false;
+          defolt_edit6.Visible:=false;
+          good_edit6.Visible:=false;
+          password.Visible:=false;
+          SpeedButton1.Visible:=false;
+      end;
     TeacherCRUD.Visible:=false;
 end;
 

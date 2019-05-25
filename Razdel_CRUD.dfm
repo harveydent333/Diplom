@@ -1,6 +1,6 @@
 object RazdelCRUD: TRazdelCRUD
-  Left = 164
-  Top = 180
+  Left = 41
+  Top = 226
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1088#1072#1079#1076#1077#1083#1072#1084#1080
   ClientHeight = 643
@@ -4700,7 +4700,7 @@ object RazdelCRUD: TRazdelCRUD
   object DBGrid1: TDBGrid
     Left = 8
     Top = 56
-    Width = 800
+    Width = 1145
     Height = 337
     DataSource = BD.Razdel
     FixedColor = clMoneyGreen
@@ -4725,8 +4725,8 @@ object RazdelCRUD: TRazdelCRUD
         Expanded = False
         FieldName = #1053#1086#1084#1077#1088#1056#1072#1079#1076#1077#1083#1072
         Title.Alignment = taCenter
-        Title.Caption = #1053#1086#1084#1077#1088
-        Width = 150
+        Title.Caption = #1053#1086#1084#1077#1088' '#1088#1072#1079#1076#1077#1083#1072
+        Width = 400
         Visible = True
       end
       item
@@ -4735,7 +4735,7 @@ object RazdelCRUD: TRazdelCRUD
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
         Title.Alignment = taCenter
         Title.Caption = #1056#1072#1079#1076#1077#1083
-        Width = 629
+        Width = 720
         Visible = True
       end>
   end

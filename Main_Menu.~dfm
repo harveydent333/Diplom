@@ -1,6 +1,6 @@
 object MainMenu: TMainMenu
-  Left = 122
-  Top = 255
+  Left = 303
+  Top = 206
   AutoScroll = False
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102
   ClientHeight = 643
@@ -4781,10 +4781,10 @@ object MainMenu: TMainMenu
   end
   object SpeedButton3: TSpeedButton
     Left = 224
-    Top = 128
+    Top = 448
     Width = 673
     Height = 49
-    Caption = 'Mutimedia'
+    Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
     Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -4792,5 +4792,6 @@ object MainMenu: TMainMenu
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton3Click
   end
 end

@@ -8300,7 +8300,7 @@ object RegistrationForm: TRegistrationForm
     Top = 424
     Width = 450
     Height = 50
-    Caption = #1048#1079#1084#1077#1085#1080#1090#1100
+    Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
     Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText

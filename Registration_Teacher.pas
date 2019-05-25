@@ -53,6 +53,8 @@ type
     login: TEdit;
     password: TEdit;
     first_name: TEdit;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -64,6 +66,7 @@ type
     procedure loginChange(Sender: TObject);
     procedure passwordChange(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -72,10 +75,12 @@ type
 
 var
   RegistrationTeacher: TRegistrationTeacher;
+  unique_login_teacher,unique_email_teacher:boolean;
 
 implementation
 
-uses Unit2, Title_Form, Teacher_CRUD, AuthorizationData, config, basa_dan;
+uses Unit2, Title_Form, Teacher_CRUD, AuthorizationData, config, basa_dan,
+  UpdateUnit, Change_Pass;
 
 {$R *.dfm}
 
@@ -177,6 +182,14 @@ end;
 procedure TRegistrationTeacher.emailChange(Sender: TObject);
 begin
   defolt_edit4.Visible:=false;
+   unique_email_teacher:=false;
+
+    BD.ADOQuery.SQL.Clear;
+    BD.ADOQuery.SQL.Add('SELECT * FROM Учитель WHERE email='+#39+email.Text+#39);
+    BD.ADOQuery.Open;
+
+    if BD.QueryHelp.DataSet.IsEmpty = true then unique_email_teacher:=true;
+
     if email.Text='' then
       begin
         good_edit4.Visible:=false;
@@ -197,7 +210,16 @@ end;
 
 procedure TRegistrationTeacher.loginChange(Sender: TObject);
 begin
+    unique_login_teacher:=false;
+
+    BD.ADOQuery.SQL.Clear;
+    BD.ADOQuery.SQL.Add('SELECT * FROM Учитель WHERE login='+#39+login.Text+#39);
+    BD.ADOQuery.Open;
+
+    if BD.QueryHelp.DataSet.IsEmpty = true then unique_login_teacher:=true;
+
     defolt_edit5.Visible:=false;
+
     if login.Text='' then
       begin
         good_edit5.Visible:=false;
@@ -292,9 +314,28 @@ begin
         good_edit6.Visible:=false;
         bed_edit6.Visible:=true;
       end;
+    if unique_login_teacher=false then
+      begin
+        MessageBox(0,'Пользователь с таким логином уже существует!','Регистриация учителя', MB_OK+MB_ICONwarning);
+        label1.Visible:=true;
+        label6.Visible:=true;
+        defolt_edit5.Visible:=false;
+        good_edit5.Visible:=false;
+        bed_edit5.Visible:=true;
+      end;
+
+    if unique_email_teacher= false then
+      begin
+        MessageBox(0,'Пользователь с такой почтой уже существует!','Регистриация учителя', MB_OK+MB_ICONwarning);
+        label1.Visible:=true;
+        label5.Visible:=true;
+        defolt_edit4.Visible:=false;
+        good_edit4.Visible:=false;
+        bed_edit4.Visible:=true;
+      end;
 
     if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (login.text<>'')
-    and (email.text<>'') and(password.text<>'')) then
+    and (email.text<>'') and(password.text<>'') and (unique_login_teacher=true) and (unique_email_teacher=true)) then
       begin
         config.execRequestSQL('INSERT INTO Учитель(Фамилия, Имя, Отчество, login, email, pass) VALUES('+
           #39+last_name.Text+#39+', '+
@@ -343,8 +384,15 @@ begin
         email.text:='';
         login.text:='';
         password.text:='';
-
+        MessageBox(0,'Учитель был успешно создан!','Регистриация учителя', MB_OK+MB_ICONINFORMATION);
       end;
+end;
+
+procedure TRegistrationTeacher.SpeedButton7Click(Sender: TObject);
+begin
+    ChangePass.show;
+    ChangePass.Position:=poDesktopCenter;
+    RegistrationTeacher.Enabled:=false;
 end;
 
 end.

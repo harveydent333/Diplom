@@ -15,10 +15,14 @@ type
     Label1: TLabel;
     Label2: TLabel;
     SpeedButton4: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    SpeedButton6: TSpeedButton;
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,7 +34,8 @@ var
 
 implementation
 
-uses basa_dan, config, UpdateUnit, Unit2, Main_Menu, Title_Form;
+uses basa_dan, config, UpdateUnit, Unit2, Main_Menu, Title_Form,
+  Ycheniki_CRUD, Teacher_CRUD, AuthorizationData;
 
 {$R *.dfm}
 
@@ -63,6 +68,20 @@ procedure TManagerUsers.FormClose(Sender: TObject;
 begin
     MainMenu.show;
     MainMenu.position:=poDesktopCenter;
+    ManagerUsers.Visible:=false;
+end;
+
+procedure TManagerUsers.SpeedButton1Click(Sender: TObject);
+begin
+    YchenikiCRUD.show;
+    YchenikiCRUD.Position:=poDesktopCenter;
+    ManagerUsers.Visible:=false;
+end;
+
+procedure TManagerUsers.SpeedButton6Click(Sender: TObject);
+begin
+    TeacherCRUD.show;
+    TeacherCRUD.Position:=poDesktopCenter;
     ManagerUsers.Visible:=false;
 end;
 

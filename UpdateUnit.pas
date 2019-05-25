@@ -12,7 +12,8 @@ countQuestion,
 kodLastControl,
 kodVoprosa,
 pathMutimedia,
-updateKodYchenika:integer;
+updateKodYchenika,
+updateKodTeacher:integer;
 
 implementation
 

@@ -1,6 +1,6 @@
 object RegistrationForm: TRegistrationForm
-  Left = 182
-  Top = 274
+  Left = 79
+  Top = 96
   AutoScroll = False
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
   ClientHeight = 643
@@ -8297,7 +8297,7 @@ object RegistrationForm: TRegistrationForm
   end
   object SpeedButton6: TSpeedButton
     Left = 368
-    Top = 488
+    Top = 424
     Width = 450
     Height = 50
     Caption = #1048#1079#1084#1077#1085#1080#1090#1100
@@ -8308,6 +8308,7 @@ object RegistrationForm: TRegistrationForm
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton6Click
   end
   object last_name: TEdit
     Left = 368
@@ -8365,10 +8366,10 @@ object RegistrationForm: TRegistrationForm
     Font.Name = 'Georgia'
     Font.Style = []
     ItemHeight = 23
-    ItemIndex = 0
+    ItemIndex = 2
     ParentFont = False
     TabOrder = 3
-    Text = '431'
+    Text = '433'
     OnKeyPress = ComboBox1KeyPress
     Items.Strings = (
       '431'

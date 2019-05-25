@@ -1,6 +1,6 @@
 object LectureCRUD: TLectureCRUD
-  Left = 88
-  Top = 261
+  Left = 72
+  Top = 254
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1083#1077#1082#1094#1080#1103#1084#1080
   ClientHeight = 643
@@ -4738,6 +4738,15 @@ object LectureCRUD: TLectureCRUD
       item
         Alignment = taCenter
         Expanded = False
+        FieldName = #1053#1086#1084#1077#1088#1051#1077#1082#1094#1080#1080
+        Title.Alignment = taCenter
+        Title.Caption = #8470' '#1083#1077#1082#1094#1080#1080
+        Width = 200
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
         Title.Alignment = taCenter
         Title.Caption = #1056#1072#1079#1076#1077#1083
@@ -4751,15 +4760,6 @@ object LectureCRUD: TLectureCRUD
         Title.Alignment = taCenter
         Title.Caption = #1058#1077#1084#1072
         Width = 260
-        Visible = True
-      end
-      item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = #1053#1086#1084#1077#1088#1051#1077#1082#1094#1080#1080
-        Title.Alignment = taCenter
-        Title.Caption = #8470' '#1083#1077#1082#1094#1080#1080
-        Width = 200
         Visible = True
       end
       item

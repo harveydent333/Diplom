@@ -1,6 +1,6 @@
 object PracticCRUD: TPracticCRUD
-  Left = -7
-  Top = 311
+  Left = 99
+  Top = 192
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1084#1080' '#1088#1072#1073#1086#1090#1072#1084#1080
   ClientHeight = 643
@@ -4723,10 +4723,33 @@ object PracticCRUD: TPracticCRUD
       item
         Alignment = taCenter
         Expanded = False
+        FieldName = #1053#1086#1084#1077#1088#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
+        Title.Caption = #8470' '#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
+        Title.Font.Charset = RUSSIAN_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -24
+        Title.Font.Name = 'Georgia'
+        Title.Font.Style = [fsBold]
+        Width = 230
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
+        Font.Charset = RUSSIAN_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Georgia'
+        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = #1056#1072#1079#1076#1077#1083
-        Width = 310
+        Title.Font.Charset = RUSSIAN_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -24
+        Title.Font.Name = 'Georgia'
+        Title.Font.Style = [fsBold]
+        Width = 290
         Visible = True
       end
       item
@@ -4735,15 +4758,12 @@ object PracticCRUD: TPracticCRUD
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
         Title.Alignment = taCenter
         Title.Caption = #1058#1077#1084#1072
-        Width = 260
-        Visible = True
-      end
-      item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = #1053#1086#1084#1077#1088#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
-        Title.Caption = #8470' '#1055#1088#1072#1082#1090#1080#1082#1080
-        Width = 200
+        Title.Font.Charset = RUSSIAN_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -24
+        Title.Font.Name = 'Georgia'
+        Title.Font.Style = [fsBold]
+        Width = 270
         Visible = True
       end
       item
@@ -4752,6 +4772,11 @@ object PracticCRUD: TPracticCRUD
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
         Title.Alignment = taCenter
         Title.Caption = #1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1072#1103
+        Title.Font.Charset = RUSSIAN_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -24
+        Title.Font.Name = 'Georgia'
+        Title.Font.Style = [fsBold]
         Width = 350
         Visible = True
       end>

@@ -1,6 +1,6 @@
 object TeacherCRUD: TTeacherCRUD
-  Left = 325
-  Top = 261
+  Left = 64
+  Top = 240
   AutoScroll = False
   Caption = 'TeacherCRUD'
   ClientHeight = 643
@@ -4679,6 +4679,7 @@ object TeacherCRUD: TTeacherCRUD
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton7Click
   end
   object SpeedButton1: TSpeedButton
     Left = 96

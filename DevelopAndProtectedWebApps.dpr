@@ -50,7 +50,8 @@ uses
   Menu_Multimedai in 'Menu_Multimedai.pas' {MenuMultimedia},
   QuestionsMoreMemo in 'QuestionsMoreMemo.pas',
   PassControlSingle in 'PassControlSingle.pas',
-  PassControlMore in 'PassControlMore.pas';
+  PassControlMore in 'PassControlMore.pas',
+  Change_Pass in 'Change_Pass.pas' {ChangePass};
 
 {$R *.res}
 
@@ -84,5 +85,6 @@ begin
   Application.CreateForm(TMenuMultimedia, MenuMultimedia);
   Application.CreateForm(TAddMultimediaModalForm, AddMultimediaModalForm);
   Application.CreateForm(TUpdateMultimediaModalForm, UpdateMultimediaModalForm);
+  Application.CreateForm(TChangePass, ChangePass);
   Application.Run;
 end.

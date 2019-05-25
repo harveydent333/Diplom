@@ -1,6 +1,6 @@
 object MultiMediaCRUD: TMultiMediaCRUD
-  Left = 377
-  Top = 201
+  Left = 102
+  Top = 211
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 643
@@ -4723,6 +4723,15 @@ object MultiMediaCRUD: TMultiMediaCRUD
       item
         Alignment = taCenter
         Expanded = False
+        FieldName = #1053#1086#1084#1077#1088#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
+        Title.Alignment = taCenter
+        Title.Caption = #8470' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
+        Width = 250
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
         Title.Alignment = taCenter
         Title.Caption = #1056#1072#1079#1076#1077#1083
@@ -4735,15 +4744,6 @@ object MultiMediaCRUD: TMultiMediaCRUD
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
         Title.Alignment = taCenter
         Title.Caption = #1058#1077#1084#1099
-        Width = 250
-        Visible = True
-      end
-      item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = #1053#1086#1084#1077#1088#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
-        Title.Alignment = taCenter
-        Title.Caption = #8470' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
         Width = 250
         Visible = True
       end

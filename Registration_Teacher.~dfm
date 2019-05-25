@@ -1,6 +1,6 @@
 object RegistrationTeacher: TRegistrationTeacher
-  Left = 359
-  Top = 178
+  Left = 151
+  Top = 200
   AutoScroll = False
   Caption = 'RegistrationTeacher'
   ClientHeight = 631
@@ -11878,6 +11878,35 @@ object RegistrationTeacher: TRegistrationTeacher
     Transparent = True
     Visible = False
   end
+  object SpeedButton6: TSpeedButton
+    Left = 360
+    Top = 552
+    Width = 450
+    Height = 50
+    Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+  end
+  object SpeedButton7: TSpeedButton
+    Left = 360
+    Top = 480
+    Width = 450
+    Height = 50
+    Caption = #1057#1084#1077#1085#1080#1090#1100' '#1087#1072#1088#1086#1083#1100
+    Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    OnClick = SpeedButton7Click
+  end
   object last_name: TEdit
     Left = 368
     Top = 176
@@ -11950,6 +11979,7 @@ object RegistrationTeacher: TRegistrationTeacher
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    PasswordChar = '*'
     TabOrder = 4
     OnChange = passwordChange
   end

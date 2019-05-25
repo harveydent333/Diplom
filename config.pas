@@ -21,6 +21,7 @@ procedure checkOnThePresenceOfTheCompositionsOfPractics;
 procedure checkOnThePresenceOfTheCompositionsOfControls;
 procedure checkOnThePresenceOfTheCompositionsOfYcheniks;
 procedure checkOnThePresenceOfTheCompositionsOfMultimedia;
+procedure checkOnThePresenceOfTheCompositionsOfTeachers;
 
 implementation
 
@@ -70,6 +71,9 @@ bool:=false;
             checkOnThePresenceOfTheCompositionsOfYcheniks;
             MultimediaADO.Active:=bool;
             checkOnThePresenceOfTheCompositionsOfMultimedia;
+            TeacherADO.Active:=false;
+            TeacherADO.Active:=true;
+            checkOnThePresenceOfTheCompositionsOfTeachers;
             bool:=true;
           end;
       end;
@@ -128,6 +132,18 @@ begin
         config.execRequestSQL('UPDATE ∆урналќценок SET ќценка='+#39+'5'+#39+' WHERE  од∆урнала='+IntToStr(kodLastControl));
       end;
 
+end;
+
+procedure checkOnThePresenceOfTheCompositionsOfTeachers;
+begin
+   if TeacherCRUD.DBGrid1.DataSource.DataSet.RecordCount = 1 then
+      begin
+          TeacherCRUD.SpeedButton1.Enabled:=false;
+      end
+    else
+      begin
+          TeacherCRUD.SpeedButton1.Enabled:=true;
+      end;
 end;
 
 procedure checkOnThePresenceOfTheCompositionsOfRazdels;

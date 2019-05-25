@@ -1,9 +1,9 @@
 object BD: TBD
   OldCreateOrder = False
-  Left = 311
-  Top = 400
-  Height = 285
-  Width = 716
+  Left = 375
+  Top = 353
+  Height = 241
+  Width = 692
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
@@ -48,14 +48,14 @@ object BD: TBD
   end
   object Request: TDataSource
     DataSet = RequestSQL
-    Left = 40
-    Top = 192
+    Left = 32
+    Top = 120
   end
   object RequestSQL: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
-    Left = 40
-    Top = 136
+    Left = 32
+    Top = 64
   end
   object Tema: TDataSource
     DataSet = TemaADO
@@ -188,22 +188,23 @@ object BD: TBD
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM '#1059#1095#1080#1090#1077#1083#1100';')
-    Left = 592
-    Top = 16
+    Left = 608
+    Top = 24
   end
   object Teacher: TDataSource
     DataSet = TeacherADO
-    Left = 592
-    Top = 72
+    Left = 608
+    Top = 80
   end
-  object PassControlADO: TADOQuery
-    Parameters = <>
-    Left = 216
+  object QueryHelp: TDataSource
+    DataSet = ADOQuery
+    Left = 160
     Top = 136
   end
-  object PassControl: TDataSource
-    DataSet = PassControlADO
-    Left = 216
-    Top = 184
+  object ADOQuery: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 232
+    Top = 136
   end
 end

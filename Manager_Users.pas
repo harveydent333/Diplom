@@ -73,6 +73,7 @@ end;
 
 procedure TManagerUsers.SpeedButton1Click(Sender: TObject);
 begin
+     config.rebootRequestsCRUD;
     YchenikiCRUD.show;
     YchenikiCRUD.Position:=poDesktopCenter;
     ManagerUsers.Visible:=false;
@@ -80,6 +81,7 @@ end;
 
 procedure TManagerUsers.SpeedButton6Click(Sender: TObject);
 begin
+    config.rebootRequestsCRUD;
     TeacherCRUD.show;
     TeacherCRUD.Position:=poDesktopCenter;
     ManagerUsers.Visible:=false;
