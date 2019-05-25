@@ -196,4 +196,14 @@ object BD: TBD
     Left = 592
     Top = 72
   end
+  object PassControlADO: TADOQuery
+    Parameters = <>
+    Left = 216
+    Top = 136
+  end
+  object PassControl: TDataSource
+    DataSet = PassControlADO
+    Left = 216
+    Top = 184
+  end
 end

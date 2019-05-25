@@ -48,7 +48,9 @@ uses
   Teacher_CRUD in 'Teacher_CRUD.pas' {TeacherCRUD},
   Manager_Users in 'Manager_Users.pas' {ManagerUsers},
   Menu_Multimedai in 'Menu_Multimedai.pas' {MenuMultimedia},
-  QuestionsMoreMemo in 'QuestionsMoreMemo.pas';
+  QuestionsMoreMemo in 'QuestionsMoreMemo.pas',
+  PassControlSingle in 'PassControlSingle.pas',
+  PassControlMore in 'PassControlMore.pas';
 
 {$R *.res}
 
@@ -80,5 +82,7 @@ begin
   Application.CreateForm(TTeacherCRUD, TeacherCRUD);
   Application.CreateForm(TManagerUsers, ManagerUsers);
   Application.CreateForm(TMenuMultimedia, MenuMultimedia);
+  Application.CreateForm(TAddMultimediaModalForm, AddMultimediaModalForm);
+  Application.CreateForm(TUpdateMultimediaModalForm, UpdateMultimediaModalForm);
   Application.Run;
 end.

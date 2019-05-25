@@ -1,8 +1,8 @@
 object MenuMultimedia: TMenuMultimedia
-  Left = 221
-  Top = 241
+  Left = 143
+  Top = 204
   AutoScroll = False
-  Caption = 'MenuMultimedia'
+  Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -16,6 +16,8 @@ object MenuMultimedia: TMenuMultimedia
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -3285,6 +3287,7 @@ object MenuMultimedia: TMenuMultimedia
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton2Click
   end
   object SpeedButton3: TSpeedButton
     Left = 11
@@ -3305,6 +3308,7 @@ object MenuMultimedia: TMenuMultimedia
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton5Click
   end
   object Label4: TLabel
     Left = 1010
@@ -3404,6 +3408,7 @@ object MenuMultimedia: TMenuMultimedia
     Font.Style = []
     ParentFont = False
     Visible = False
+    OnClick = SpeedButton1Click
   end
   object Label5: TLabel
     Left = 56

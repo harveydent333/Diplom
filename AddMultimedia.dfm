@@ -1320,6 +1320,7 @@ object AddMultimediaModalForm: TAddMultimediaModalForm
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -2097,7 +2098,7 @@ object AddMultimediaModalForm: TAddMultimediaModalForm
   object Edit1: TEdit
     Left = 120
     Top = 216
-    Width = 400
+    Width = 281
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -2110,8 +2111,8 @@ object AddMultimediaModalForm: TAddMultimediaModalForm
   end
   object Panel2: TPanel
     Left = 112
-    Top = 255
-    Width = 420
+    Top = 263
+    Width = 417
     Height = 35
     Caption = 'Panel1'
     TabOrder = 3
@@ -2675,5 +2676,27 @@ object AddMultimediaModalForm: TAddMultimediaModalForm
     TabOrder = 4
     Visible = False
     OnKeyPress = Edit2KeyPress
+  end
+  object BitBtn1: TBitBtn
+    Left = 395
+    Top = 216
+    Width = 121
+    Height = 31
+    Caption = #1042#1099#1073#1088#1072#1090#1100' '#1092#1072#1081#1083
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    Visible = False
+    OnClick = BitBtn1Click
+    Kind = bkRetry
+  end
+  object OpenDialog1: TOpenDialog
+    InitialDir = '.\Multimedia'
+    Left = 56
+    Top = 40
   end
 end

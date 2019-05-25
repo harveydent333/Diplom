@@ -30,6 +30,7 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton8Click(Sender: TObject);
     procedure SpeedButton9Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     procedure getDataControlForShyrnal;
     procedure getDataTemaForShyrnal;
@@ -47,7 +48,7 @@ uses ControlCenter, DocumentForm, Menu_Lectures, AuthorizationData, config,
   Unit2, Title_Form, Menu_Practic, Menu_Control,
   Ycheniki_CRUD,
   basa_dan,
-  Manager_Users;
+  Manager_Users, Menu_Multimedai;
 
 {$R *.dfm}
 
@@ -183,7 +184,7 @@ begin
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
             config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+loginUser+#39);
-            config.selectRequestSQL('SELECT * FROM Журнал WHERE КодУченика='+BD.Request.DataSet.FieldbyName('КодУченика').AsString);
+            config.selectRequestSQL('SELECT * FROM ЖурналОценок WHERE КодУченика='+BD.Request.DataSet.FieldbyName('КодУченика').AsString);
         end;
 
     if roleUser='teacher' then
@@ -191,7 +192,7 @@ begin
             settingForShyrnal(true);
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
-            config.selectRequestSQL('SELECT * FROM Журнал');
+            config.selectRequestSQL('SELECT * FROM ЖурналОценок');
         end;
 end;
 
@@ -241,6 +242,39 @@ begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
         TitleForm.close;
+end;
+
+procedure TMainMenu.SpeedButton3Click(Sender: TObject);
+begin
+  config.selectRequestSQL('SELECT * FROM Раздел');
+    with MenuMultimedia do
+        begin
+            ComboBox1.Items.Clear;
+            ComboBox2.Items.Clear;
+            label2.Visible:=false;
+            label3.Visible:=false;
+            ComboBox2.Visible:=false;
+            ComboBox2.Items.Clear;
+            ComboBox3.Visible:=false;
+            ComboBox3.Items.Clear;
+            label5.visible:=false;
+            label7.Visible:=false;
+            SpeedButton1.Visible:=false;
+            SpeedButton1.Enabled:=false;
+        end;
+
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
+        begin
+            MenuMultimedia.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+            BD.Request.DataSet.Next;
+        end;
+
+    BD.Request.DataSet.First;
+    MenuMultimedia.ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
+    MenuMultimedia.show;
+    MenuMultimedia.Position:=poDesktopCenter;
+    MainMenu.Visible:=false;
 end;
 
 end.

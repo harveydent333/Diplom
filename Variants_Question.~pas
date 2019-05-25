@@ -54,7 +54,11 @@ type
 
 implementation
 
-uses Add_Question, QuestionsMemo;
+uses Add_Question, Variants_Question_Write, basa_dan,
+  Manager_Users, Menu_Control, Menu_Lectures, Menu_Multimedai,
+  Menu_Practic, Menu_Teacher,  PassingKnowledgeControl,
+   QuestionsMemo,Unit2, AuthorizationData, config, ControlCenter, defoltTest,
+  DocumentForm;
 
 
 {$R *.dfm}
@@ -118,7 +122,6 @@ begin
           label10.Visible:=false;
           Memo10.Visible:=false;
           Memo10.Clear;
-          BitBtn3.Enabled:=true;
           RadioButton10.Visible:=false;
           RadioButton10.Checked:=false;
         end;
@@ -132,7 +135,6 @@ begin
     3: begin
           label3.Visible:=true;
           Memo3.Visible:=true;
-         BitBtn4.Enabled:=true;
           RadioButton3.Visible:=true;
         end;
     4: begin
@@ -163,12 +165,11 @@ begin
     9: begin
           label9.Visible:=true;
           Memo9.Visible:=true;
-           RadioButton9.Visible:=true;
+          RadioButton9.Visible:=true;
         end;
     10:  begin
           label10.Visible:=true;
           Memo10.Visible:=true;
-          BitBtn3.Enabled:=false;
           RadioButton10.Visible:=true;
         end;
   end;

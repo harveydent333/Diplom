@@ -10,7 +10,8 @@ procedure setQuestionInMemo(Answers:string);
 procedure putRightAnswer(rightAnswer:string);
 Function getClearString(answer :string ): String;
 
-var i,j,beg:integer; ar:array[1..10] of string;
+var i,j,beg:integer;
+ArrayAnswers:array[1..10] of string;
 
 implementation
 
@@ -19,30 +20,30 @@ uses Add_Question, Variants_Question, Variants_Question_Write,
 
 procedure setQuestionInMemo(Answers:string);
 begin
-    for i:=1 to 10 do ar[i]:='';
+    for i:=1 to 10 do ArrayAnswers[i]:='';
     beg:=1;
     j:=1;
     for i:=1 to length(Answers) do
         begin
             if(Answers[i]='©') then
               begin
-                  ar[j]:=Copy(Answers, beg, i-beg);
+                  ArrayAnswers[j]:=Copy(Answers, beg, i-beg);
                   beg:=i+1;
                   inc(j);
               end;
         end;
     with Add_Questions.VariantsQuestionSingle1 do
       begin
-        Memo1.Lines.Add(ar[1]);
-        Memo2.Lines.Add(ar[2]);
-        Memo3.Lines.Add(ar[3]);
-        Memo4.Lines.Add(ar[4]);
-        Memo5.Lines.Add(ar[5]);
-        Memo6.Lines.Add(ar[6]);
-        Memo7.Lines.Add(ar[7]);
-        Memo8.Lines.Add(ar[8]);
-        Memo9.Lines.Add(ar[9]);
-        Memo10.Lines.Add(ar[10]);
+        Memo1.Lines.Add(ArrayAnswers[1]);
+        Memo2.Lines.Add(ArrayAnswers[2]);
+        Memo3.Lines.Add(ArrayAnswers[3]);
+        Memo4.Lines.Add(ArrayAnswers[4]);
+        Memo5.Lines.Add(ArrayAnswers[5]);
+        Memo6.Lines.Add(ArrayAnswers[6]);
+        Memo7.Lines.Add(ArrayAnswers[7]);
+        Memo8.Lines.Add(ArrayAnswers[8]);
+        Memo9.Lines.Add(ArrayAnswers[9]);
+        Memo10.Lines.Add(ArrayAnswers[10]);
       end;
 end;
 

@@ -47,6 +47,8 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
   private
+    procedure processingSingleQuestion;
+    procedure processingMoreQuestion;
     { Private declarations }
   public
     { Public declarations }
@@ -56,6 +58,8 @@ var
   MenuControl: TMenuControl;
     nameRazdela,str,nameTema,nameControl:string;
     kodRazdela,kodTema:integer;
+    CONST TYPE_SINGLE_QUESTIONS = 1;
+    CONST TYPE_MORE_QUESTIONS = 2;
 
 implementation
 
@@ -64,7 +68,7 @@ uses config, Title_Form, UpdateUnit, PassingKnowledgeControl, basa_dan,
   Main_Menu,
   Unit2,
   AuthorizationData,
-  Result;
+  Result, Add_Question, PassControlMore, PassControlSingle;
 
 {$R *.dfm}
 
@@ -148,6 +152,7 @@ begin
 
     config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+nameControl+#39);
     updateKodControl:=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger;
+    ResultForm.Label20.Caption:=BD.Request.DataSet.FieldByName('НазваниеКонтроля').AsString+'"';
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
     label14.Caption:=IntToStr(BD.Request.DataSet.RecordCount);
     updateUnit.countQuestion:=BD.Request.DataSet.RecordCount;
@@ -161,38 +166,63 @@ end;
 procedure TMenuControl.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
       TitleForm.close;
 end;
 
 procedure TMenuControl.SpeedButton1Click(Sender: TObject);
-begin     {
+begin
     DateTimePicker1.DateTime:=Now;
-    config.execRequestSQL('INSERT INTO Журнал (КодУченика, КодТемы, НазваниеТемы, НазваниеКонтроля, ДатаПроведения, Фамилия, Имя, Отчество) VALUES('+
-      IntToStr(KodUser)+', '+IntToStr(KodTema)+', '+#39+nameTema+#39+', '+#39+ComboBox3.Text+#39+', '+
-      #39+DateTimeToStr(DateTimePicker1.DateTime)+#39+', '+#39+familyUser+#39+', '+#39+nameUser+#39+', '+#39+secondNameUser+#39+')');
-    config.selectRequestSQL('SELECT * FROM Журнал');
+    config.execRequestSQL('INSERT INTO ЖурналОценок (КодУченика, КодТемы, КодКонтроля,  ДатаПроведения) VALUES('+
+      IntToStr(KodUser)+', '+IntToStr(KodTema)+', '+#39+IntToStr(updateKodControl)+#39+', '+
+      #39+DateToStr(DateTimePicker1.Date)+#39+')');
+    config.selectRequestSQL('SELECT * FROM ЖурналОценок');
     BD.Request.DataSet.Last;
-    kodLastControl:=BD.Request.DataSet.FieldByName('КодЖурнала').AsInteger;
-    defoltTest.countBall:=0;
-    defoltTest.exitPoint:=1;
+    kodLastControl:=BD.Request.DataSet.FieldByName('КодЖурнала').AsInteger;  // код Начавшегося теста
+    config.countBall:=0;
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+
     with PassingKnowledgeControlForm do
       begin
+        VariantsQuestionSingle1.Visible:=false;
+        VariantsQuestionMore1.Visible:=false;
+        Show;
         Button1.Caption:='Следующий вопрос';
-        show;
-        VariantsQuestionMore1.Visible:=true;
-        DBGrid1.DataSource.DataSet.First;
-        Memo1.Clear;
-        Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-        defoltTest.countQuest(DBGrid1.DataSource.DataSet.FieldByName('КоличествоОтветов').AsInteger);
-        defoltTest.setMemoLines;
-        defoltTest.clearStrokiMemo;
-        PassingKnowledgeControlForm.Enabled:=true;
-      end;      }
+        Enabled:=true;
+
+        kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
+        Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
+
+        if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then processingSingleQuestion;
+        if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then processingMoreQuestion;
+
+        ResultForm.Label14.Caption:=IntToStr(updateUnit.countQuestion);
+        ResultForm.Label22.Caption:=IntToStr(updateUnit.countQuestion);
+      end;
 end;
+
+procedure TMenuControl.processingSingleQuestion;
+begin
+    PassingKnowledgeControlForm.VariantsQuestionSingle1.Visible:=true;
+    PassControlSingle.singleMemoClear;
+    PassControlSingle.RadioButtonClear;
+    PassControlSingle.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+    PassControlSingle.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+    PassControlSingle.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+end;
+
+procedure TMenuControl.processingMoreQuestion;
+begin
+    PassingKnowledgeControlForm.VariantsQuestionMore1.Visible:=true;
+    PassControlMore.moreMemoClear;
+    PassControlMore.CheckBoxClear;
+    PassControlMore.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+    PassControlMore.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+    PassControlMore.setRightQuestionInArrayAnswers(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Получаем массив верных ответов
+    PassControlMore.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+end;
+
 
 procedure TMenuControl.ComboBox1KeyPress(Sender: TObject; var Key: Char);
 begin

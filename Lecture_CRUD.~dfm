@@ -1,6 +1,6 @@
 object LectureCRUD: TLectureCRUD
-  Left = 51
-  Top = 156
+  Left = 88
+  Top = 261
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1083#1077#1082#1094#1080#1103#1084#1080
   ClientHeight = 643

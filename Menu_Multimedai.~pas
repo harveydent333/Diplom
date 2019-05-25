@@ -27,6 +27,10 @@ type
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure ComboBox3Change(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -40,7 +44,8 @@ var
 
 implementation
 
-uses basa_dan, Result;
+uses basa_dan, Result, config, ShellAPI, Unit2, Main_Menu,
+  AuthorizationData;
 
 {$R *.dfm}
 
@@ -95,10 +100,10 @@ begin
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);
     kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
 
-    config.selectRequestSQL('SELECT * FROM Контроль WHERE КодТемы='+inttostr(kodTema));
+    config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE КодТемы='+inttostr(kodTema));
     While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox3.Items.Add(BD.Request.DataSet.FieldByName('НазваниеКонтроля').AsString);
+        ComboBox3.Items.Add(BD.Request.DataSet.FieldByName('НазваниеМультимедии').AsString);
         BD.Request.DataSet.Next;
         ComboBox3.Text:=ComboBox3.Items.Strings[0];
     end;
@@ -114,14 +119,44 @@ end;
 
 procedure TMenuMultimedia.ComboBox3Change(Sender: TObject);
 begin
-    nameControl:=ComboBox3.Items.Strings[Combobox3.ItemIndex];
-    Panel1.Visible:=true;
+    config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+ComboBox3.Items.Strings[Combobox3.ItemIndex]+#39);
     SpeedButton1.Visible:=true;
-    label20.Caption:=nameControl+'"';
-    ResultForm.Label20.Caption:=nameControl+'"';
+    if FileExists('./'+BD.Request.DataSet.FieldByName('Путь').AsString+'.mp4') then
+      SpeedButton1.Enabled:=true
+    else
+      begin
+        MessageBox(0,'Файл данной мультимедии отсутствует','Программирование и защита Web - приложений', MB_OK+MB_ICONWARNING);
+        SpeedButton1.Enabled:=false;
+      end;
+end;
 
-    config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+nameControl+#39);
+procedure TMenuMultimedia.SpeedButton1Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('.\'+BD.Request.DataSet.FieldByName('Путь').AsString+'.mp4'), nil, nil, SW_SHOWNORMAL);
+end;
 
+procedure TMenuMultimedia.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    MenuMultimedia.Visible:=false;
+end;
+
+procedure TMenuMultimedia.SpeedButton2Click(Sender: TObject);
+begin
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
+    MenuMultimedia.Visible:=false;
+end;
+
+procedure TMenuMultimedia.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
+    MenuMultimedia.Visible:=false;
 end;
 
 end.

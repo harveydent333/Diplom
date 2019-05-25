@@ -1,13 +1,14 @@
 object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
-  Left = 237
-  Top = 106
+  Left = 232
+  Top = 39
   Width = 896
-  Height = 850
+  Height = 870
+  BorderIcons = [biMinimize, biMaximize]
   Caption = #1055#1088#1086#1093#1086#1078#1076#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
   Color = clBtnFace
-  Constraints.MaxHeight = 850
+  Constraints.MaxHeight = 870
   Constraints.MaxWidth = 896
-  Constraints.MinHeight = 850
+  Constraints.MinHeight = 870
   Constraints.MinWidth = 896
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1319,7 +1320,6 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
@@ -1335,19 +1335,94 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
   end
-  object Button1: TButton
-    Left = 208
-    Top = 776
-    Width = 441
-    Height = 25
-    Caption = #1057#1083#1077#1076#1091#1102#1097#1080#1081' '#1074#1086#1087#1088#1086#1089
-    Font.Charset = ANSI_CHARSET
+  inline VariantsQuestionSingle1: TVariantsQuestionSingle
+    Left = -12
+    Top = 32
+    Width = 886
+    Height = 769
+    Color = clBtnFace
+    Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
+    ParentColor = False
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 3
+    inherited Memo1: TMemo
+      ReadOnly = True
+    end
+    inherited Panel2: TPanel
+      Top = -100
+    end
+    inherited Memo2: TMemo
+      ReadOnly = True
+    end
+    inherited Memo3: TMemo
+      ReadOnly = True
+    end
+    inherited Memo4: TMemo
+      ReadOnly = True
+    end
+    inherited Memo5: TMemo
+      ReadOnly = True
+    end
+    inherited Memo6: TMemo
+      ReadOnly = True
+    end
+    inherited Memo7: TMemo
+      ReadOnly = True
+    end
+    inherited Memo8: TMemo
+      ReadOnly = True
+    end
+    inherited Memo9: TMemo
+      ReadOnly = True
+    end
+    inherited Memo10: TMemo
+      ReadOnly = True
+    end
+  end
+  inline VariantsQuestionMore1: TVariantsQuestionMore
+    Left = -12
+    Top = 32
+    Width = 886
+    Height = 769
+    TabOrder = 4
+    Visible = False
+    inherited Memo11: TMemo
+      ReadOnly = True
+    end
+    inherited Memo2: TMemo
+      ReadOnly = True
+    end
+    inherited Memo3: TMemo
+      ReadOnly = True
+    end
+    inherited Memo4: TMemo
+      ReadOnly = True
+    end
+    inherited Memo5: TMemo
+      ReadOnly = True
+    end
+    inherited Memo6: TMemo
+      ReadOnly = True
+    end
+    inherited Memo7: TMemo
+      ReadOnly = True
+    end
+    inherited Memo8: TMemo
+      ReadOnly = True
+    end
+    inherited Memo9: TMemo
+      ReadOnly = True
+    end
+    inherited Memo10: TMemo
+      ReadOnly = True
+    end
+    inherited Panel2: TPanel
+      Top = -100
+    end
   end
   object Memo1: TMemo
     Left = 0
@@ -1362,6 +1437,37 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     Lines.Strings = (
       'Memo1')
     ParentFont = False
+    ReadOnly = True
     TabOrder = 2
+  end
+  object Button1: TButton
+    Left = 208
+    Top = 800
+    Width = 441
+    Height = 25
+    Caption = #1057#1083#1077#1076#1091#1102#1097#1080#1081' '#1074#1086#1087#1088#1086#1089
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 656
+    Top = 800
+    Width = 217
+    Height = 25
+    Caption = #1047#1072#1074#1077#1088#1096#1080#1090#1100
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    OnClick = Button2Click
   end
 end

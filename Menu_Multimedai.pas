@@ -26,6 +26,11 @@ type
     Label7: TLabel;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
+    procedure ComboBox3Change(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -39,7 +44,8 @@ var
 
 implementation
 
-uses basa_dan, Result, config;
+uses basa_dan, Result, config, ShellAPI, Unit2, Main_Menu,
+  AuthorizationData;
 
 {$R *.dfm}
 
@@ -109,6 +115,48 @@ begin
         end
     else
       label7.Visible:=true;
+end;
+
+procedure TMenuMultimedia.ComboBox3Change(Sender: TObject);
+begin
+    config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+ComboBox3.Items.Strings[Combobox3.ItemIndex]+#39);
+    SpeedButton1.Visible:=true;
+    if FileExists('./'+BD.Request.DataSet.FieldByName('Путь').AsString+'.mp4') then
+      SpeedButton1.Enabled:=true
+    else
+      begin
+        MessageBox(0,'Файл данной мультимедии отсутствует','Программирование и защита Web - приложений', MB_OK+MB_ICONWARNING);
+        SpeedButton1.Enabled:=false;
+      end;
+end;
+
+procedure TMenuMultimedia.SpeedButton1Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('.\'+BD.Request.DataSet.FieldByName('Путь').AsString+'.mp4'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TMenuMultimedia.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    MenuMultimedia.Visible:=false;
+end;
+
+procedure TMenuMultimedia.SpeedButton2Click(Sender: TObject);
+begin
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
+    MenuMultimedia.Visible:=false;
+end;
+
+procedure TMenuMultimedia.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
+    MenuMultimedia.Visible:=false;
 end;
 
 end.

@@ -162,6 +162,7 @@ begin
           SpeedButton9.Visible:=true;
           SpeedButton1.Visible:=false;
           SpeedButton2.Visible:=false;
+          SpeedButton3.Visible:=false;
           SpeedButton10.top:=384;
         end;
     end;

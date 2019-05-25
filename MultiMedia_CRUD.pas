@@ -44,12 +44,21 @@ uses config, basa_dan, ControlCenter, Title_Form, Unit2, AuthorizationData,
 
 procedure TMultiMediaCRUD.SpeedButton1Click(Sender: TObject);
 begin
- with TAddMultimediaModalForm.Create(nil) do
-      try
-        ShowModal;
-      finally
-        Free;
-    end;
+    AddMultimediaModalForm.ComboBox1.Clear;
+    config.selectRequestSQL('SELECT * FROM Раздел');
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
+        begin
+
+            AddMultimediaModalForm.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+            BD.Request.DataSet.Next;
+        end;
+    BD.Request.DataSet.First;
+    AddMultimediaModalForm.ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
+    AddMultimediaModalForm.Show;
+    Path:='';
+    MultiMediaCRUD.Enabled:=false;
+
 end;
 
 procedure TMultiMediaCRUD.SpeedButton6Click(Sender: TObject);

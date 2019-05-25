@@ -1,6 +1,6 @@
 object ResultForm: TResultForm
-  Left = 299
-  Top = 220
+  Left = 322
+  Top = 218
   AutoScroll = False
   Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090
   ClientHeight = 307
@@ -1327,7 +1327,7 @@ object ResultForm: TResultForm
     Top = 0
     Width = 753
     Height = 257
-    Color = clBtnHighlight
+    Color = clWindow
     TabOrder = 0
     object Label12: TLabel
       Left = 32
@@ -1362,7 +1362,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '123'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clRed
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
@@ -1453,14 +1453,14 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '123'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clLime
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 240
+      Left = 248
       Top = 89
       Width = 7
       Height = 23
@@ -1473,20 +1473,20 @@ object ResultForm: TResultForm
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 248
+      Left = 256
       Top = 89
       Width = 19
       Height = 23
       Caption = '12'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clLime
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 282
+      Left = 306
       Top = 91
       Width = 234
       Height = 23
@@ -1499,20 +1499,20 @@ object ResultForm: TResultForm
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 176
-      Top = 113
+      Left = 184
+      Top = 112
       Width = 29
       Height = 23
       Caption = '123'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clRed
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 208
+      Left = 216
       Top = 113
       Width = 7
       Height = 23
@@ -1525,20 +1525,20 @@ object ResultForm: TResultForm
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 216
+      Left = 224
       Top = 112
       Width = 19
       Height = 23
       Caption = '12'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clRed
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 250
+      Left = 274
       Top = 114
       Width = 234
       Height = 23
@@ -1564,7 +1564,7 @@ object ResultForm: TResultForm
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 160
+      Left = 184
       Top = 137
       Width = 16
       Height = 23
@@ -1583,7 +1583,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '12'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clLime
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
@@ -1609,7 +1609,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '23'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clLime
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []

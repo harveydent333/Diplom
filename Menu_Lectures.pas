@@ -45,7 +45,7 @@ type
 var
   MenuLectures: TMenuLectures;
    nameRazdela,str,nameTema:string;
-   kodRazdela,kodTema:integer;
+   kodRazdela,kodTema, List, AllList:integer;
 
 implementation
 
@@ -167,16 +167,31 @@ begin
 end;
 
 procedure TMenuLectures.SpeedButton1Click(Sender: TObject);
+var i,j:integer;
 begin
-    Edit_Lecture.show;
-    Edit_Lecture.Position:=poDesktopCenter;
-    MenuLectures.Visible:=false;
-    Edit_Lecture.Memo1.Clear;
-    Edit_Lecture.Memo1.Lines.Add(BD.Request.DataSet.FieldByName('Содержание').AsString);
-
     //сделаю в конфиге
     with Edit_Lecture do
       begin
+        for i:=1 to 30 do ArrayListText[i]:='';
+        show;
+        Position:=poDesktopCenter;
+      //  MenuLectures.Visible:=false;
+        Memo1.Clear;
+        Memo1.Lines.Add(BD.Request.DataSet.FieldByName('Содержание').AsString);
+
+        AllList:=Round(Memo1.Lines.Count/34)-1;
+        for i:=0 to 34 do
+          ArrayListText[1]:=ArrayListText[1]+Memo1.Lines[i];
+
+        for i:=1 to Round(Memo1.Lines.Count/34)-1 do
+            for j:=i*34 to i*34+33 do
+              ArrayListText[i+1]:=ArrayListText[i+1]+Memo1.Lines[j];
+
+       Memo1.Lines.Clear;
+       List:=1;
+       Memo1.Lines.Add(ArrayListText[1]);
+
+
         Height:=920;
         Width:=1201;
         Memo1.Height:=833;
@@ -186,6 +201,8 @@ begin
         Button1.Visible:=false;
         Button4.Visible:=false;
         Button5.Visible:=false;
+        Button7.Visible:=true;
+        Button8.Visible:=true;
         Button3.Left:=3;
       end;
     //

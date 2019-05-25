@@ -17,7 +17,6 @@ type
     SpeedButton4: TSpeedButton;
     Image4: TImage;
     SpeedButton1: TSpeedButton;
-    Button1: TButton;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -28,7 +27,6 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
@@ -45,7 +43,7 @@ uses Unit2, Menu_Lectures, Menu_Practic, Menu_Control, Tema_CRUD,
   Practic_CRUD, Razdel_CRUD, Lecture_CRUD, Control_CRUD, Ycheniki_CRUD,
   Main_Menu, Add_Question, EditLecture, config,
   MultiMedia_CRUD,
-  Menu_Multimedai;
+  Menu_Multimedai, Media_Player;
 
 
 {$R *.dfm}
@@ -96,62 +94,9 @@ begin
         TitleForm.close;
 end;
 
-procedure TTitleForm.Button1Click(Sender: TObject);
-begin
- config.selectRequestSQL('SELECT * FROM Раздел');
-    with MenuMultimedia do
-        begin
-            ComboBox1.Items.Clear;
-            ComboBox2.Items.Clear;
-            label2.Visible:=false;
-            label3.Visible:=false;
-            ComboBox2.Visible:=false;
-            ComboBox2.Items.Clear;
-            ComboBox3.Visible:=false;
-            ComboBox3.Items.Clear;
-            label5.visible:=false;
-            label7.Visible:=false;
-            SpeedButton1.Visible:=false;
-            SpeedButton1.Enabled:=false;
-        end;
-
-    BD.Request.DataSet.First;
-    While (BD.Request.DataSet.Eof=false) do
-        begin
-            MenuMultimedia.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
-            BD.Request.DataSet.Next;
-        end;
-
-    BD.Request.DataSet.First;
-    MenuMultimedia.ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
-    MenuMultimedia.show;
-    MenuMultimedia.Position:=poDesktopCenter;
-    //MainMenu.Visible:=false;
-end;
-
 procedure TTitleForm.Button2Click(Sender: TObject);
 begin
-    Add_Questions.Show;
-
-    Add_Questions.ListBox1.Clear;
-    config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля=32');
-       with Add_Questions do
-                begin
-                    ListBox1.Clear;
-                    BD.Request.DataSet.First;
-                    While (BD.Request.DataSet.Eof=false) do
-                        begin
-                            ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
-                            BD.Request.DataSet.Next;
-                        end;
-
-                    VariantsQuestionSingle1.Visible:=false;
-                    Button2.Enabled:=false;
-                    Show;
-                    Memo1.Clear;
-                    Memo1.ReadOnly:=true;
-                    Position:=poDesktopCenter;
-                end;
+  Form1.Show;
 end;
 
 end.

@@ -6,10 +6,14 @@ Menu_Lectures, Menu_Practic, Menu_Teacher, PassingKnowledgeControl, Practic_CRUD
 Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUnit, Ycheniki_CRUD, AddTema, DateUtils;
 
 var  x:integer;
+countBall,exitPoint:integer;
+posetivAnswer, userAnswer:string;
 
 procedure selectRequestSQL(request:string);
+procedure evaluationCalculation(result:real);
 procedure execRequestSQL(request:string);
 procedure rebootRequestsCRUD;
+procedure countingResults;
 procedure checkOnThePresenceOfTheCompositionsOfRazdels;
 procedure checkOnThePresenceOfTheCompositionsOfTems;
 procedure checkOnThePresenceOfTheCompositionsOfLectures;
@@ -20,7 +24,9 @@ procedure checkOnThePresenceOfTheCompositionsOfMultimedia;
 
 implementation
 
-uses Add_Question, AddLecture, Razdel_CRUD, Teacher_CRUD, MultiMedia_CRUD;
+uses Add_Question, AddLecture, Razdel_CRUD, Teacher_CRUD, MultiMedia_CRUD,
+  AddControl, PassControlMore, PassControlSingle, QuestionsMemo,
+  QuestionsMoreMemo, SysUtils, Graphics;
 
 procedure selectRequestSQL(request:string);   // «апрос данных из Ѕƒ
 begin
@@ -67,6 +73,61 @@ bool:=false;
             bool:=true;
           end;
       end;
+end;
+
+procedure countingResults;  // ѕроставление данных в форму ResultForm
+begin
+  with ResultForm do
+    begin
+      Show;
+      Label1.Caption:=IntToStr(countBall);
+      Label11.Caption:=IntToStr(countBall);
+      Label5.Caption:=IntToStr(updateUnit.countQuestion-countBall);
+    if updateUnit.countQuestion <> countBall then
+      begin
+          Label3.Caption:=FloatToStrF(countBall*100/updateUnit.countQuestion,ffFixed,0,2);
+          Label9.Caption:=FloatToStrF(countBall*100/updateUnit.countQuestion,ffFixed,0,2);        // результат в %
+      end
+    else
+      begin
+          Label3.Caption:='100,00';
+          Label9.Caption:='100,00';
+      end;
+    if countBall <> 0 then
+      Label7.Caption:=FloatToStrF(100-(countBall*100/updateUnit.countQuestion),ffFixed,0,1)
+    else
+      Label7.Caption:='100,00';
+      evaluationCalculation(countBall*100/updateUnit.countQuestion);
+    end;
+end;
+
+procedure evaluationCalculation(result:real);
+begin
+    if result < 50 then
+      begin
+        ResultForm.Label23.Caption:='2';
+        ResultForm.Label23.Font.Color:=clRed;
+        config.execRequestSQL('UPDATE ∆урналќценок SET ќценка='+#39+'2'+#39+' WHERE  од∆урнала='+IntToStr(kodLastControl));
+      end;
+    if ((result >= 50) and (result<75)) then
+      begin
+        ResultForm.Label23.Caption:='3';
+        ResultForm.Label23.Font.Color:=clOlive;
+        config.execRequestSQL('UPDATE ∆урналќценок SET ќценка='+#39+'3'+#39+' WHERE  од∆урнала='+IntToStr(kodLastControl));
+      end;
+    if ((result >= 75) and (result<85)) then
+      begin
+        ResultForm.Label23.Caption:='4';
+        ResultForm.Label23.Font.Color:=clYellow;
+        config.execRequestSQL('UPDATE ∆урналќценок SET ќценка='+#39+'4'+#39+' WHERE  од∆урнала='+IntToStr(kodLastControl));
+      end;
+    if result>=85 then
+      begin
+        ResultForm.Label23.Caption:='5';
+        ResultForm.Label23.Font.Color:=clLime;
+        config.execRequestSQL('UPDATE ∆урналќценок SET ќценка='+#39+'5'+#39+' WHERE  од∆урнала='+IntToStr(kodLastControl));
+      end;
+
 end;
 
 procedure checkOnThePresenceOfTheCompositionsOfRazdels;

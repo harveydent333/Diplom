@@ -340,7 +340,6 @@ begin
 end;
 
 procedure clearStrokiMemo;
-var i:integer;
 begin
     with Add_Questions.VariantsQuestionMore1 do
       begin

@@ -48,7 +48,6 @@ type
     BitBtn4: TBitBtn;
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -182,11 +181,6 @@ begin
           CheckBox10.Visible:=true;
         end;
   end;
-end;
-
-procedure TVariantsQuestionMore.Button1Click(Sender: TObject);
-begin
-    defoltTest.clearStrokiMemo;
 end;
 
 end.

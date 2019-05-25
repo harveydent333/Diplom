@@ -16,7 +16,6 @@ type
     SpeedButton4: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
-    DBGrid1: TDBGrid;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
     Label3: TLabel;
@@ -26,6 +25,7 @@ type
     Label5: TLabel;
     Label7: TLabel;
     SpeedButton1: TSpeedButton;
+    Label8: TLabel;
     procedure SpeedButton4Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
@@ -46,7 +46,7 @@ type
 var
   MenuLectures: TMenuLectures;
    nameRazdela,str,nameTema:string;
-   kodRazdela,kodTema:integer;
+   kodRazdela,kodTema, List, AllList:integer;
 
 implementation
 
@@ -82,14 +82,14 @@ begin
 
     nameRazdela:=ComboBox1.Items.Strings[Combobox1.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+nameRazdela+#39); // Получение кода раздела
-    kodRazdela:=DBGrid1.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
      // Проверка на наличие потомков у Раздела
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+inttostr(kodRazdela));
 
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
 
@@ -99,7 +99,7 @@ begin
         combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-        kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+        kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
       end
     else
       label5.Visible:=true;
@@ -117,13 +117,13 @@ begin
 
     nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);
-    kodTema:=DBGrid1.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
 
     config.selectRequestSQL('SELECT * FROM Лекции WHERE КодТемы='+inttostr(kodTema));
-    While (DBGrid1.DataSource.DataSet.Eof=false) do
+    While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox3.Items.Add(DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString);
-        DBGrid1.DataSource.DataSet.Next;
+        ComboBox3.Items.Add(BD.Request.DataSet.FieldByName('НазваниеЛекции').AsString);
+        BD.Request.DataSet.Next;
         ComboBox3.Text:=ComboBox3.Items.Strings[0];
     end;
 
@@ -163,21 +163,37 @@ end;
 procedure TMenuLectures.ComboBox3Change(Sender: TObject);
 begin
     config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+ComboBox3.Text+#39);
-    updateKodLecture:=DBGrid1.DataSource.DataSet.FieldByName('КодЛекции').AsInteger;      // Код  Лекции
+    updateKodLecture:=BD.Request.DataSet.FieldByName('КодЛекции').AsInteger;      // Код  Лекции
     SpeedButton1.Visible:=true;
 end;
 
 procedure TMenuLectures.SpeedButton1Click(Sender: TObject);
+var i,j:integer;
 begin
-    Edit_Lecture.show;
-    Edit_Lecture.Position:=poDesktopCenter;
-    MenuLectures.Visible:=false;
-    Edit_Lecture.Memo1.Clear;
-    Edit_Lecture.Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('Содержание').AsString);
-
     //сделаю в конфиге
     with Edit_Lecture do
       begin
+        for i:=1 to 30 do ArrayListText[i]:='';
+        show;
+        Position:=poDesktopCenter;
+      //  MenuLectures.Visible:=false;
+        Memo1.Clear;
+        Memo1.Lines.Add(BD.Request.DataSet.FieldByName('Содержание').AsString);
+        label8.Caption:=IntToStr(Edit_Lecture.Memo1.Lines.Count);
+        label8.Caption:=IntToStr(Round(Edit_Lecture.Memo1.Lines.Count/34));
+        AllList:=Round(Memo1.Lines.Count/34)-1;
+        for i:=0 to 34 do
+          ArrayListText[1]:=ArrayListText[1]+Memo1.Lines[i];
+
+        for i:=1 to Round(Memo1.Lines.Count/34)-1 do
+            for j:=i*34 to i*34+33 do
+              ArrayListText[i+1]:=ArrayListText[i+1]+Memo1.Lines[j];
+
+       Memo1.Lines.Clear;
+       List:=1;
+       Memo1.Lines.Add(ArrayListText[1]);
+
+
         Height:=920;
         Width:=1201;
         Memo1.Height:=833;

@@ -21,6 +21,8 @@ type
     Label5: TLabel;
     Label4: TLabel;
     Edit2: TEdit;
+    OpenDialog1: TOpenDialog;
+    BitBtn1: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
@@ -28,10 +30,13 @@ type
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
     procedure defaultSetting;
+    function ReverseString(s: string): string;
     { Private declarations }
   public
     { Public declarations }
@@ -39,27 +44,19 @@ type
 
 var
   AddMultimediaModalForm: TAddMultimediaModalForm;
-    nameRazdela,str,nameTema:string;
+    nameRazdela,str,nameTema, path,PathFile:string;
     kodRazdela,kodTema:integer;
     unique_multimedia,unique_number_multimedia:boolean;
 
 implementation
 
-uses config, basa_dan, UpdateUnit;
+uses config, basa_dan, UpdateUnit, MultiMedia_CRUD;
 
 {$R *.dfm}
 
 procedure TAddMultimediaModalForm.FormCreate(Sender: TObject);
 begin                                                                              //Заполнение ComboBox при создании
-    config.selectRequestSQL('SELECT * FROM Раздел');
-    BD.Request.DataSet.First;
-    While (BD.Request.DataSet.Eof=false) do
-        begin
-            ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
-            BD.Request.DataSet.Next;
-        end;
-    BD.Request.DataSet.First;
-    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
+
 end;
 
 procedure TAddMultimediaModalForm.ComboBox1Change(Sender: TObject);
@@ -97,6 +94,7 @@ begin
     Edit2.Visible:=true;
     label2.Visible:=true;
     label4.Visible:=true;
+    BitBtn1.Visible:=true;
 
     nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
 
@@ -110,16 +108,18 @@ begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
 
-    if ((Edit1.Text<>'') and (Edit2.Text<>'')) then
+    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Path<>'')) then
       checkUniqueData;
 
-    if ((Edit1.Text<>'')and(Edit2.Text<>'')and(unique_multimedia<>false) and(unique_number_multimedia<>false)) then
+    if ((Edit1.Text<>'')and(Edit2.Text<>'')and(unique_multimedia<>false) and(unique_number_multimedia<>false) and (Path<>'')) then
       saveDataInBD;
 end;
 
 procedure TAddMultimediaModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Мультимедиа (КодТемы, НазваниеМультимедии, НомерМультимедии) VALUES('+IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+')');
+    config.execRequestSQL('INSERT INTO Мультимедиа (КодТемы, НазваниеМультимедии, НомерМультимедии, Путь) VALUES('+
+      IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+', '+#39+'Multimedia\'+PathFile+#39+
+    ')');
     MessageBox(0,'Мультимедиа была успешно создана!','Создание Мультимедии', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 
@@ -153,6 +153,7 @@ begin
     label5.visible:=false;
     ComboBox2.Visible:=false;
     ComboBox2.Items.Clear;
+    BitBtn1.Visible:=false;
 end;
 
 procedure TAddMultimediaModalForm.ComboBox1KeyPress(Sender: TObject;
@@ -171,6 +172,34 @@ procedure TAddMultimediaModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
     if not (Key in ['0'..'9', #8]) then Key:=#0;
+end;
+
+procedure TAddMultimediaModalForm.BitBtn1Click(Sender: TObject);
+var allPath:string; i:integer;
+begin
+   if OpenDialog1.Execute then allPath:=OpenDialog1.FileName;
+   for i:=Length(allPath) downto 1 do
+    if allPath[i]<>'\' then Path:=Path+allPath[i] else break;
+   Path:=ReverseString(path);
+   for i:=1 to Length(Path)-4 do
+    PathFile:=PathFile+Path[i];
+end;
+
+procedure TAddMultimediaModalForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    AddMultimediaModalForm.Hide;
+    MultiMediaCRUD.Enabled:=true;
+end;
+
+function  TAddMultimediaModalForm.ReverseString(s: string): string;
+var
+  i: integer;
+begin
+  Result := '';
+  if Trim(s) <> '' then
+    for i := Length(s) downto 1 do
+      Result := Result + s[i];
 end;
 
 end.

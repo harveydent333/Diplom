@@ -27,7 +27,7 @@ uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
   AddControl,
   Manager_Users,
   Teacher_CRUD,
-  Registration_Teacher;
+  Registration_Teacher, Menu_Multimedai;
 
 procedure getDataUser;
 begin
@@ -114,6 +114,9 @@ begin
 
     Shyrnal.Label1.Caption:=nameUser;
     Shyrnal.Label2.Caption:=familyUser;
+
+    MenuMultimedia.Label4.Caption:=nameUser;
+    MenuMultimedia.Label6.Caption:=familyUser;
 end;
 
 procedure freeDataUser;       // logOut

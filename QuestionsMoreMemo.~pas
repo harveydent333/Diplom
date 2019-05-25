@@ -83,61 +83,61 @@ procedure putRightAnswer;
 begin
     with Add_Questions.VariantsQuestionMore1 do
       begin
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo11.Text)) and (Memo11.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo11.Text)) and (getClearString(Memo11.Text)<>'')) then
           begin
               CheckBox1.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo2.Text)) and (Memo2.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo2.Text)) and (getClearString(Memo2.Text)<>'')) then
           begin
               CheckBox2.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo3.Text)) and (Memo3.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo3.Text)) and (getClearString(Memo3.Text)<>'')) then
           begin
               CheckBox3.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo4.Text)) and (Memo4.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo4.Text)) and (getClearString(Memo4.Text)<>'')) then
           begin
               CheckBox4.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo5.Text)) and (Memo5.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo5.Text)) and (getClearString(Memo5.Text)<>'')) then
           begin
               CheckBox5.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo6.Text)) and (Memo6.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo6.Text)) and (getClearString(Memo6.Text)<>'')) then
           begin
               CheckBox6.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo7.Text)) and (Memo7.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo7.Text)) and (getClearString(Memo7.Text)<>'')) then
           begin
               CheckBox7.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo8.Text)) and (Memo8.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo8.Text)) and (getClearString(Memo8.Text)<>'')) then
           begin
               CheckBox8.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo9.Text)) and (Memo9.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo9.Text)) and (getClearString(Memo9.Text)<>'')) then
           begin
               CheckBox9.Checked:=true;
               deleteRightElem;
           end;
 
-        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo10.Text)) and (Memo10.Text<>'')) then
+        if ((getClearString(ArrayRightAnswers[1]) = getClearString(Memo10.Text)) and (getClearString(Memo10.Text)<>'')) then
           begin
               CheckBox10.Checked:=true;
               deleteRightElem;

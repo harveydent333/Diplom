@@ -42,37 +42,6 @@ uses config, basa_dan, ControlCenter, Title_Form, Unit2, AuthorizationData,
 
 {$R *.dfm}
 
-procedure TMultiMediaCRUD.SpeedButton2Click(Sender: TObject);
-begin
-    MultiMediaCRUD.Visible:=false;
-    DataManagementCenter.show;
-    DataManagementCenter.position:=poDesktopCenter;
-end;
-
-procedure TMultiMediaCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-        TitleForm.close;
-end;
-
-procedure TMultiMediaCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-    MultiMediaCRUD.Visible:=false;
-    DataManagementCenter.show;
-    DataManagementCenter.position:=poDesktopCenter;
-end;
-
-procedure TMultiMediaCRUD.SpeedButton5Click(Sender: TObject);
-begin
-    AuthorizationForm.Edit1.Text:='';
-    AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
-    MultimediaCRUD.Visible:=false;
-end;
-
 procedure TMultiMediaCRUD.SpeedButton1Click(Sender: TObject);
 begin
  with TAddMultimediaModalForm.Create(nil) do
@@ -103,6 +72,37 @@ procedure TMultiMediaCRUD.SpeedButton7Click(Sender: TObject);
 begin
     config.execRequestSQL('DELETE FROM Мультимедиа WHERE НазваниеМультимедии='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеМультимедии').AsString+#39);
     config.rebootRequestsCRUD;
+end;
+
+procedure TMultiMediaCRUD.SpeedButton2Click(Sender: TObject);
+begin
+    MultiMediaCRUD.Visible:=false;
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+end;
+
+procedure TMultiMediaCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    MultiMediaCRUD.Visible:=false;
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+end;
+
+procedure TMultiMediaCRUD.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationData.freeDataUser;
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
+    MultimediaCRUD.Visible:=false;
+end;
+
+procedure TMultiMediaCRUD.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+        TitleForm.close;
 end;
 
 end.

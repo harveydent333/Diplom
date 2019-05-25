@@ -5,18 +5,22 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DBCtrls, basa_dan, Grids, DBGrids , defoltTest,
-  Variants_Question_More;
+  Variants_Question_More, Variants_Question;
 
 type
   TPassingKnowledgeControlForm = class(TForm)
     DBGrid1: TDBGrid;
-    VariantsQuestionMore1: TVariantsQuestionMore;
     Button1: TButton;
     Memo1: TMemo;
+    VariantsQuestionSingle1: TVariantsQuestionSingle;
+    VariantsQuestionMore1: TVariantsQuestionMore;
+    Button2: TButton;
     procedure Button1Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button2Click(Sender: TObject);
 
   private
+    procedure processingSingleQuestion;
+    procedure processingMoreQuestion;
     procedure setDataInResultForm;
     procedure setMarkForTest;
     { Private declarations }
@@ -26,106 +30,92 @@ type
 
 var
   PassingKnowledgeControlForm: TPassingKnowledgeControlForm;
+  CONST TYPE_SINGLE_QUESTIONS = 1;
+  CONST TYPE_MORE_QUESTIONS = 2;
 
 implementation
 
 uses AuthorizationData, Result, Control,DateUtils,
-  config,
-  UpdateUnit,
-  Menu_Control;
+  config, UpdateUnit, Menu_Control, Add_Question, AddControl,
+  AddQuestionModal, PassControlMore, PassControlSingle, QuestionsMemo,
+  QuestionsMoreMemo;
 {$R *.dfm}
-
-procedure TPassingKnowledgeControlForm.Button1Click(Sender: TObject);
-begin
-    inc(exitPoint);
-    if DBGrid1.DataSource.DataSet.RecNo+1=DBGrid1.DataSource.DataSet.RecordCount then
-        Button1.Caption:='Завершить проверку';
-    defoltTest.checkOtvet;
-    DBGrid1.DataSource.DataSet.Next;
-
-    Memo1.Clear;
-    Memo1.Lines.Add(DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-    defoltTest.countQuest(DBGrid1.DataSource.DataSet.FieldByName('КоличествоОтветов').AsInteger);
-    defoltTest.setMemoLines;
-    defoltTest.clearStrokiMemo;
-
-    if exitPoint>DBGrid1.DataSource.DataSet.RecordCount then
-      begin
-            setDataInResultForm;
-            ResultForm.Show;
-            ResultForm.Position:=poDesktopCenter;
-            PassingKnowledgeControlForm.Enabled:=false;
-      end;
-end;
 
 procedure TPassingKnowledgeControlForm.setDataInResultForm;
 begin
-    with ResultForm do
-            begin
-              label14.Caption:=IntToStr(countQuestion);  // Метка: Всего вопросов
-              label22.Caption:=IntToStr(countQuestion);    // Метка: из <стольки то>
-              label1.Caption:=IntToStr(countBall);      // Метка: из них правильно
-              label11.Caption:=IntToStr(countBall);   // Метка: ваши баллы
-              label5.Caption:=IntToStr(countQuestion-countBall); // Метка: из них ошибок
 
-              label3.Caption:=FloatToStr((countBall*100)/countQuestion);  // Метка: из правильно в %
-              label7.Caption:=FloatToStr(100-(countBall*100)/countQuestion);
-              label9.Caption:=FloatToStr((countBall*100)/countQuestion);   // Метка: результат
-
-              setMarkForTest;    // Высчитывание Оценки
-
-          end;
 end;
 
 procedure TPassingKnowledgeControlForm.setMarkForTest;
-var resultProcent:real;
 begin
-    resultProcent:=(countBall*100)/countQuestion;
-    if resultProcent < 50 then
-      begin
-        ResultForm.Label23.Caption:='2';  // Метка: Выша оценка
-        ResultForm.Label23.Font.Color:=clRed;
-        ResultForm.Label9.Font.Color:=clRed;
-        config.execRequestSQL('UPDATE Журнал SET Оценка='+#39+'2'+#39+' WHERE КодЖурнала='+IntToStr(kodLastControl));
-      end;
 
-    if ((resultProcent >= 50) and (resultProcent < 75))  then
-      begin
-        ResultForm.Label23.Caption:='3';  // Метка: Выша оценка
-        ResultForm.Label23.Font.Color:=clOlive;
-        ResultForm.Label9.Font.Color:=clOlive;
-        config.execRequestSQL('UPDATE Журнал SET Оценка='+#39+'3'+#39+' WHERE КодЖурнала='+IntToStr(kodLastControl));
-      end;
-
-    if ((resultProcent >= 75) and (resultProcent < 85))  then
-      begin
-        ResultForm.Label23.Caption:='4';  // Метка: Выша оценка
-        ResultForm.Label23.Font.Color:=clGreen;
-        ResultForm.Label9.Font.Color:=clGreen;
-        config.execRequestSQL('UPDATE Журнал SET Оценка='+#39+'4'+#39+' WHERE КодЖурнала='+IntToStr(kodLastControl));
-      end;
-    if resultProcent >= 85  then
-      begin
-        ResultForm.Label23.Caption:='5';  // Метка: Выша оценка
-        ResultForm.Label23.Font.Color:=clLime;
-        ResultForm.Label9.Font.Color:=clLime;
-        config.execRequestSQL('UPDATE Журнал SET Оценка='+#39+'5'+#39+' WHERE КодЖурнала='+IntToStr(kodLastControl));
-      end;
 end;
 
 
-procedure TPassingKnowledgeControlForm.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TPassingKnowledgeControlForm.Button1Click(Sender: TObject);
+begin
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then PassControlSingle.checkUserAnswer;
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then PassControlMore.checkUserAnswer;
+
+    if BD.Request.DataSet.RecNo+1 = BD.Request.DataSet.RecordCount then Button1.Caption:='Завершить тестирование';
+    if BD.Request.DataSet.RecNo = BD.Request.DataSet.RecordCount then
+      begin
+        config.countingResults;
+        PassingKnowledgeControlForm.Enabled:=false;
+      end
+    else
+      begin
+        BD.Request.DataSet.Next;
+
+        VariantsQuestionSingle1.Visible:=false;
+        VariantsQuestionMore1.Visible:=false;
+
+        kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
+        Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
+
+        if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then processingSingleQuestion;
+        if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then processingMoreQuestion;
+      end;
+end;
+
+procedure getResultTest;
+begin
+
+end;
+
+procedure TPassingKnowledgeControlForm.processingSingleQuestion;
+begin
+    VariantsQuestionSingle1.Visible:=true;
+    PassControlSingle.singleMemoClear;
+    PassControlSingle.RadioButtonClear;
+    PassControlSingle.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+    PassControlSingle.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+    PassControlSingle.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+end;
+
+procedure TPassingKnowledgeControlForm.processingMoreQuestion;
+begin
+    VariantsQuestionMore1.Visible:=true;
+
+    PassControlMore.moreMemoClear;
+    PassControlMore.CheckBoxClear;
+    PassControlMore.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+    PassControlMore.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+    PassControlMore.setRightQuestionInArrayAnswers(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Получаем массив верных ответов
+    PassControlMore.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+end;
+
+procedure TPassingKnowledgeControlForm.Button2Click(Sender: TObject);
 var temp:word;
 begin
-   temp:=MessageBox(0,'Вы точно хотите завершить тестирование?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
+   temp:=MessageBox(0,'Вы точно хотите завершить тестирование?','Программирование и защита Web - приложений', MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
       begin
         setDataInResultForm;
         ResultForm.Show;
         ResultForm.Position:=poDesktopCenter;
         PassingKnowledgeControlForm.Enabled:=false;
+        config.countingResults;
       end;
 end;
 

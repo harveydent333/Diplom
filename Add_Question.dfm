@@ -1,6 +1,6 @@
 object Add_Questions: TAdd_Questions
-  Left = 58
-  Top = 159
+  Left = 288
+  Top = 203
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 672

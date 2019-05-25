@@ -20,6 +20,8 @@ type
     Button4: TButton;
     Button5: TButton;
     Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -27,6 +29,8 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,11 +39,12 @@ type
 
 var
   Edit_Lecture: TEdit_Lecture;
+  ArrayListText:array[1..30] of string;
 
 implementation
 
 uses config, UpdateUnit, Lecture_CRUD,
-  Menu_Lectures;
+  Menu_Lectures, AuthorizationData;
 
 {$R *.dfm}
 
@@ -98,9 +103,36 @@ end;
 procedure TEdit_Lecture.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-    LectureCRUD.show;
-    LectureCRUD.Position:=poDesktopCenter;
-    Edit_Lecture.Visible:=false;
+  if roleUser<>'stydent' then
+    begin
+      LectureCRUD.show;
+      LectureCRUD.Position:=poDesktopCenter;
+      Edit_Lecture.Visible:=false;
+    end
+  else
+    begin
+      MenuLectures.show;
+      MenuLectures.Position:=poDesktopCenter;
+      Edit_Lecture.Visible:=false;
+    end;
+end;
+
+procedure TEdit_Lecture.Button7Click(Sender: TObject);
+begin
+    if List=AllList then Button7.Enabled:=false;
+    Button8.Enabled:=true;
+    List:=List+1;
+    Memo1.Clear;
+    Memo1.Lines.Add(ArrayListText[List]);
+end;
+
+procedure TEdit_Lecture.Button8Click(Sender: TObject);
+begin
+    if List=2 then Button8.Enabled:=false;
+    Button7.Enabled:=true;
+    List:=List-1;
+    Memo1.Clear;
+    Memo1.Lines.Add(ArrayListText[List]);
 end;
 
 end.

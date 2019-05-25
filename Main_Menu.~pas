@@ -21,6 +21,7 @@ type
     SpeedButton6: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
+    SpeedButton3: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
@@ -182,7 +183,7 @@ begin
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
             config.selectRequestSQL('SELECT * FROM ”ченик WHERE login='+#39+loginUser+#39);
-            config.selectRequestSQL('SELECT * FROM ∆урнал WHERE  од”ченика='+BD.Request.DataSet.FieldbyName(' од”ченика').AsString);
+            config.selectRequestSQL('SELECT * FROM ∆урналќценок WHERE  од”ченика='+BD.Request.DataSet.FieldbyName(' од”ченика').AsString);
         end;
 
     if roleUser='teacher' then
@@ -190,7 +191,7 @@ begin
             settingForShyrnal(true);
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
-            config.selectRequestSQL('SELECT * FROM ∆урнал');
+            config.selectRequestSQL('SELECT * FROM ∆урналќценок');
         end;
 end;
 

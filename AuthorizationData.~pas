@@ -158,23 +158,19 @@ begin
             defolt_edit1.Visible:=true;
             defolt_edit2.Visible:=true;
             defolt_edit3.Visible:=true;
-            defolt_edit4.Visible:=true;
 
             good_edit1.Visible:=false;
             good_edit2.Visible:=false;
             good_edit3.Visible:=false;
-            good_edit4.Visible:=false;
 
             bed_edit1.Visible:=false;
             bed_edit2.Visible:=false;
             bed_edit3.Visible:=false;
-            bed_edit4.Visible:=false;
 
             label1.Visible:=false;
             label2.Visible:=false;
             label3.Visible:=false;
             label4.Visible:=false;
-            label5.Visible:=false;
         end;
 end;
 

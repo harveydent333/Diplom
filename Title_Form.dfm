@@ -1,6 +1,6 @@
 object TitleForm: TTitleForm
-  Left = -14
-  Top = 292
+  Left = 108
+  Top = 177
   AutoScroll = False
   Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1080' '#1079#1072#1097#1080#1090#1072' WEB '#1087#1088#1080#1083#1086#1078#1077#1085#1080#1081
   ClientHeight = 642
@@ -5281,7 +5281,7 @@ object TitleForm: TTitleForm
   end
   object SpeedButton4: TSpeedButton
     Left = 376
-    Top = 344
+    Top = 360
     Width = 465
     Height = 73
     Caption = #1053#1072#1095#1072#1090#1100' '#1088#1072#1073#1086#1090#1091
@@ -5706,14 +5706,5 @@ object TitleForm: TTitleForm
     Font.Style = []
     ParentFont = False
     Transparent = True
-  end
-  object Button1: TButton
-    Left = 432
-    Top = 480
-    Width = 129
-    Height = 25
-    Caption = 'Multimedia'
-    TabOrder = 0
-    OnClick = Button1Click
   end
 end

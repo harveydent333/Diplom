@@ -143,7 +143,7 @@ var default:string;
 begin
     if roleUser='teacher' then
       begin
-        default:='SELECT * FROM ∆урнал WHERE 1=1';
+        default:='SELECT * FROM ∆урналќценок WHERE 1=1';
         if CheckBox5.Checked = true then
           default:=default+' AND ‘амили€='+#39+edit2.Text+#39;
 
@@ -165,12 +165,12 @@ begin
         config.selectRequestSQL(default);
         if((CheckBox5.Checked = true) and (CheckBox6.Checked = true) and (CheckBox7.Checked = true) and (CheckBox1.Checked = true) and
           (CheckBox2.Checked = true) and (CheckBox4.Checked = true)) then
-            config.selectRequestSQL('SELECT * FROM ∆урнал');
+            config.selectRequestSQL('SELECT * FROM ∆урналќценок');
       end;
 
     if roleUser='stydent' then
       begin
-        default:='SELECT * FROM ∆урнал WHERE ‘амили€='+#39+familyUser+#39+' AND »м€='+#39+nameUser+#39+' AND ќтчество='+#39+secondNameUser+#39;
+        default:='SELECT * FROM ∆урналќценок WHERE ‘амили€='+#39+familyUser+#39+' AND »м€='+#39+nameUser+#39+' AND ќтчество='+#39+secondNameUser+#39;
         if CheckBox1.Checked = true then
           default:=default+' AND Ќазвание“емы='+#39+ComboBox1.Text+#39;
 

@@ -99,6 +99,8 @@ begin
         Button4.Visible:=true;
         Button5.Visible:=true;
         Button6.Left:=632;
+        Button7.Visible:=false;
+        Button8.Visible:=false;
         Memo1.ReadOnly:=false;
       end;
 end;
