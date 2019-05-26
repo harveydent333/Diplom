@@ -82,13 +82,27 @@ end;
 
 procedure TTeacherCRUD.SpeedButton6Click(Sender: TObject);
 begin
-    RegistrationTeacher.Show;
-    RegistrationTeacher.first_name.Text:='';
-    RegistrationTeacher.second_name.Text:='';
-    RegistrationTeacher.last_name.Text:='';
-    RegistrationTeacher.login.Text:='';
-    RegistrationTeacher.password.Text:='';
-    RegistrationTeacher.email.Text:='';
+    with RegistrationTeacher do
+      begin
+        Show;
+        first_name.Text:='';
+        second_name.Text:='';
+        last_name.Text:='';
+        login.Text:='';
+        password.Text:='';
+        email.Text:='';
+        Label9.Visible:=true;
+        bed_edit6.Visible:=true;
+        defolt_edit6.Visible:=true;
+        good_edit6.Visible:=true;
+        password.Visible:=true;
+        SpeedButton1.Visible:=true;
+        SpeedButton6.Visible:=false;
+        SpeedButton7.Visible:=false;
+        Position:=poDesktopCenter;
+        Caption:='Регистрация учителя';
+      end;
+
     AuthorizationData.defoltConfigRegistrationTeacherForm;
     TeacherCRUD.Visible:=false;
 end;
@@ -112,6 +126,9 @@ begin
           good_edit6.Visible:=false;
           password.Visible:=false;
           SpeedButton1.Visible:=false;
+          SpeedButton6.Visible:=true;
+          SpeedButton7.Visible:=true;
+          Caption:='Редактирование учителя';
       end;
     TeacherCRUD.Visible:=false;
 end;

@@ -18,9 +18,11 @@ type
     ComboBox1: TComboBox;
     Label3: TLabel;
     ComboBox2: TComboBox;
+    Label7: TLabel;
     procedure SpeedButton1Click(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,6 +41,8 @@ uses UpdateUnit, Control_CRUD, Add_Question, config, basa_dan;
 procedure TAddQuestionModalForm.SpeedButton1Click(Sender: TObject);
 var  unique_user:boolean;
 begin
+    if Edit1.Text='' then label7.Visible:=true;
+
     unique_user:=false;
     if Edit1.Text<>'' then
       begin
@@ -76,6 +80,11 @@ end;
 procedure TAddQuestionModalForm.ComboBox2KeyPress(Sender: TObject; var Key: Char);
 begin
     if not (Key in []) then Key := #0;
+end;
+
+procedure TAddQuestionModalForm.Edit1Change(Sender: TObject);
+begin
+    label7.Visible:=false;
 end;
 
 end.

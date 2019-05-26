@@ -1,6 +1,6 @@
 object YchenikiCRUD: TYchenikiCRUD
-  Left = 45
-  Top = 239
+  Left = 245
+  Top = 289
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1086#1073#1091#1095#1072#1102#1097#1080#1084#1080#1089#1103
   ClientHeight = 643
@@ -4752,18 +4752,5 @@ object YchenikiCRUD: TYchenikiCRUD
         Width = 290
         Visible = True
       end>
-  end
-  object DBGrid2: TDBGrid
-    Left = 800
-    Top = 416
-    Width = 320
-    Height = 120
-    DataSource = BD.Request
-    TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
 end

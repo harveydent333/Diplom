@@ -1320,6 +1320,7 @@ object MainMenu: TMainMenu
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

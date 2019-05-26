@@ -31,6 +31,7 @@ type
     procedure SpeedButton8Click(Sender: TObject);
     procedure SpeedButton9Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure getDataControlForShyrnal;
     procedure getDataTemaForShyrnal;
@@ -275,6 +276,13 @@ begin
     MenuMultimedia.show;
     MenuMultimedia.Position:=poDesktopCenter;
     MainMenu.Visible:=false;
+end;
+
+procedure TMainMenu.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    MainMenu.Visible:=false;
+    AuthorizationForm.Show;
+    AuthorizationForm.Position:=poDesktopCenter;
 end;
 
 end.

@@ -21,13 +21,18 @@ type
     Label5: TLabel;
     Edit2: TEdit;
     Label4: TLabel;
-    procedure FormCreate(Sender: TObject);
+    Timer1: TTimer;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -48,49 +53,6 @@ implementation
 uses config, basa_dan, UpdateUnit;
 {$R *.dfm}
 
-procedure TUpdateLectureModalForm.FormCreate(Sender: TObject);
-begin
-    // Получение всех разделов
-    config.selectRequestSQL('SELECT * FROM Раздел');
-    BD.Request.DataSet.First;
-    While (BD.Request.DataSet.Eof=false) do
-      begin
-      ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
-      BD.Request.DataSet.Next;
-    end;
-
-    // Получение Раздела к которому относиться наша изменяемая лекция
-    config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
-    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
-
-    // Получение всех Тем раздела к которомой относиться наша изменяемая лекция
-    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
-
-    ComboBox2.Visible:=true;
-    label3.Visible:=true;
-    While (BD.Request.DataSet.Eof=false) do
-      begin
-        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
-        BD.Request.DataSet.Next;
-      end;
-
-   // Получение название Темы нашей зменяемой лекции
-   config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-   ComboBox2.Text:=BD.Request.DataSet.FieldByName('НазваниеТемы').AsString;
-
-   // Получение названия Лекции к которомой относитсья наша изменяемая лекция
-   Edit1.Visible:=true;
-   Edit2.Visible:=true;
-   label2.Visible:=true;
-   label4.Visible:=true;
-   config.selectRequestSQL('SELECT * FROM Лекции WHERE КодЛекции='+IntToStr(updateKodLecture));
-   Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеЛекции').AsString;
-   Edit2.Text:=BD.Request.DataSet.FieldByName('НомерЛекции').AsString;
-
-    kodRazdela:=updateKodRazdela;
-    kodTema:=updateKodTema;
-end;
-
 procedure TUpdateLectureModalForm.ComboBox1Change(Sender: TObject);
 begin
     defaultSetting;
@@ -109,10 +71,10 @@ begin
     // Если раздел не пустой
     if ComboBox2.Items.Count>0 then
       begin
-        label3.Visible:=true;
         Edit1.visible:=true;
         Edit2.Visible:=true;
         label2.Visible:=true;
+        label3.Visible:=true;
         label4.Visible:=true;
         Combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
@@ -191,7 +153,22 @@ end;
 
 procedure TUpdateLectureModalForm.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
-    if not (Key in ['0'..'9', #8]) then Key:=#0;
+    if not (Key in ['0'..'9', #8]) then
+      begin
+       Key:=#0;
+       label6.Visible:=true;
+       label7.Visible:=false;
+      end;
+end;
+
+procedure TUpdateLectureModalForm.Timer1Timer(Sender: TObject);
+begin
+    label6.Visible:=false;
+end;
+
+procedure TUpdateLectureModalForm.Edit1Change(Sender: TObject);
+begin
+    label8.Visible:=false;
 end;
 
 end.

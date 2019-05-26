@@ -21,13 +21,27 @@ type
     SpeedButton1: TSpeedButton;
     Label4: TLabel;
     Edit2: TEdit;
+    Timer1: TTimer;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    OpenDialog1: TOpenDialog;
+    BitBtn1: TBitBtn;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
-    procedure FormCreate(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1Change(Sender: TObject);
   private
+    procedure saveDataInBD;
+    procedure checkUniqueData;
+    procedure defaultSetting;
+    function ReverseString(s: string): string;
     { Private declarations }
   public
     { Public declarations }
@@ -35,13 +49,13 @@ type
 
 var
   UpdateMultimediaModalForm: TUpdateMultimediaModalForm;
-   nameTema, nameRazdela:string;
-        kodTema, kodRazdela:integer;
-        unique_user:boolean;
+  unique_multimedia,unique_number_multimedia:boolean;
+    nameRazdela,str,nameTema, path,PathFile:string;
+    kodRazdela,kodTema:integer;
 
 implementation
 
-uses basa_dan, config, UpdateUnit;
+uses basa_dan, config, UpdateUnit, MultiMedia_CRUD, Menu_Multimedai;
 
 {$R *.dfm}
 
@@ -55,46 +69,6 @@ procedure TUpdateMultimediaModalForm.ComboBox2KeyPress(Sender: TObject;
   var Key: Char);
 begin
     if not (Key in []) then Key := #0;
-end;
-
-procedure TUpdateMultimediaModalForm.FormCreate(Sender: TObject);
-begin
- // Получение всех разделов
-    config.selectRequestSQL('SELECT * FROM Раздел');
-    BD.Request.DataSet.First;
-    While (BD.Request.DataSet.Eof=false) do
-        begin
-            ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
-            BD.Request.DataSet.Next;
-    end;
-
-    // Получение Раздела к которому относиться наша изменяемая лекция
-    config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
-    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
-
-    // Получение всех Тем раздела к которомой относиться наша изменяемая лекция
-    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
-
-    ComboBox2.Visible:=true;
-    label3.Visible:=true;
-    While (BD.Request.DataSet.Eof=false) do
-      begin
-        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
-        BD.Request.DataSet.Next;
-      end;
-
-   // Получение название Темы нашей зменяемой лекции
-   config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-   ComboBox2.Text:=BD.Request.DataSet.FieldByName('НазваниеТемы').AsString;
-
-   // Получение названия Практики к которомой относитсья наша изменяемая Практическая             +
-   Edit1.Visible:=true;
-   label2.Visible:=true;
-   config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE КодМультимедии='+IntToStr(updateKodPractic));
-   Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеМультимедии').AsString;
-
-    kodRazdela:=updateKodRazdela;
-    kodTema:=updateKodTema;
 end;
 
 procedure TUpdateMultimediaModalForm.ComboBox1Change(Sender: TObject);
@@ -134,29 +108,115 @@ end;
 
 procedure TUpdateMultimediaModalForm.ComboBox2Change(Sender: TObject);
 begin
+    Edit1.Visible:=true;
+    Edit2.Visible:=true;
+    label2.Visible:=true;
+    label4.Visible:=true;
+    BitBtn1.Visible:=true;
+
     nameTema:=Combobox2.Text;
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
-    kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
+    updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
 end;
 
 procedure TUpdateMultimediaModalForm.SpeedButton1Click(Sender: TObject);
 begin
-    unique_user:=false;
-    if Edit1.Text<>'' then
-      begin
-        config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+Edit1.Text+#39);
-        if ((BD.RequestSQL.IsEmpty) or (updateKodPractic=BD.Request.DataSet.FieldByName('КодМультимедии').AsInteger)) then
-          unique_user:=true
-        else
-          MessageBox(0,'Даннная мультимедиа уже сущетсвует!','Редактирование Мультимедии', MB_OK+MB_ICONwarning);
-      end;
+    unique_multimedia:=false;
+    unique_number_multimedia:=false;
 
-      if ((Edit1.Text<>'')and(unique_user<>false) and (Edit1.Visible=true)) then
-        begin
-          config.execRequestSQL('UPDATE Мультимедиа SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеМультимедии='+#39+Edit1.Text+#39+' WHERE КодМультимедии ='+IntToStr(updateKodPractic));
-          config.rebootRequestsCRUD;
-          MessageBox(0,'Мультимедиа была успешно Изменена!','Редактирование Мультимедии', MB_OK+MB_ICONINFORMATION);
-        end;
+    if Edit2.Text='' then label7.Visible:=true;
+    if Edit1.Text='' then label8.Visible:=true;
+
+    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        checkUniqueData;
+
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_multimedia<>false) and(unique_number_multimedia<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        saveDataInBD;
+end;
+
+procedure TUpdateMultimediaModalForm.saveDataInBD; // Внесение данных в БД
+begin
+    config.execRequestSQL('UPDATE Мультимедиа SET КодТемы='+#39+IntToStr(updateKodTema)+#39+', НазваниеМультимедии='+#39+Edit1.Text+#39+', НомерМультимедии='+#39+Edit2.Text+#39+', Путь='+#39+'Multimedia\'+PathFile+#39+' WHERE КодМультимедии='+IntToStr(updateKodMultimedia));
+    MessageBox(0,'Мультимелиа была успешно изменена!','Редактирование мультимедии', MB_OK+MB_ICONINFORMATION);
+    config.rebootRequestsCRUD;
+
+end;
+
+procedure TUpdateMultimediaModalForm.checkUniqueData; // Проверка на уникальные данные
+begin
+    config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+Edit1.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodMultimedia=BD.Request.DataSet.FieldByName('КодМультимедии').AsInteger)) then
+      unique_multimedia:=true
+    else
+     MessageBox(0,'Даннная мультимедиа уже сущетсвует!','Редактирование мультимедии', MB_OK+MB_ICONwarning);
+
+    config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НомерМультимедии='+#39+Edit2.Text+#39);
+    if ((BD.RequestSQL.IsEmpty) or (updateKodMultimedia=BD.Request.DataSet.FieldByName('КодМультимедии').AsInteger)) then
+      unique_number_multimedia:=true
+    else
+      MessageBox(0,'Данный номер мультимедии уже сущетсвует!','Редактирование мультимедии', MB_OK+MB_ICONwarning);
+end;
+
+procedure TUpdateMultimediaModalForm.defaultSetting; // дефолтные
+begin
+     Edit1.Visible:=false;
+    Edit2.Visible:=false;
+    Edit1.Text:='';
+    Edit2.Text:='';
+    label2.Visible:=false;
+    label3.Visible:=false;
+    label4.Visible:=false;
+    label5.visible:=false;
+    ComboBox2.Visible:=false;
+    ComboBox2.Items.Clear;
+    BitBtn1.Visible:=false;
+end;
+
+procedure TUpdateMultimediaModalForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+   UpdateMultimediaModalForm.Visible:=false;
+   MultiMediaCRUD.Enabled:=true;
+end;
+
+procedure TUpdateMultimediaModalForm.BitBtn1Click(Sender: TObject);
+var allPath:string; i:integer;
+begin
+   if OpenDialog1.Execute then allPath:=OpenDialog1.FileName;
+   for i:=Length(allPath) downto 1 do
+    if allPath[i]<>'\' then Path:=Path+allPath[i] else break;
+   Path:=ReverseString(path);
+   for i:=1 to Length(Path)-4 do
+    PathFile:=PathFile+Path[i];
+end;
+
+function TUpdateMultimediaModalForm.ReverseString(s: string): string;
+var
+  i: integer;
+begin
+  Result := '';
+  if Trim(s) <> '' then
+    for i := Length(s) downto 1 do
+      Result := Result + s[i];
+end;
+
+procedure TUpdateMultimediaModalForm.Timer1Timer(Sender: TObject);
+begin
+    label6.Visible:=false;
+end;
+
+procedure TUpdateMultimediaModalForm.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+   if not (Key in ['0'..'9', #8]) then
+      begin
+       Key:=#0;
+       label6.Visible:=true;
+       label7.Visible:=false;
+      end;
+end;
+
+procedure TUpdateMultimediaModalForm.Edit1Change(Sender: TObject);
+begin
+    label8.Visible:=false;
 end;
 
 end.

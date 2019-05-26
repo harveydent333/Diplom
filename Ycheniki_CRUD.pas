@@ -59,6 +59,7 @@ begin
           SpeedButton6.Visible:=false;
           SpeedButton1.Visible:=true;
           defoltConfigRegistrationForm;
+          Caption:='Регистрация ученика';
       end;
 end;
 
@@ -77,6 +78,7 @@ begin
 
     config.execRequestSQL('DELETE FROM Ученик WHERE КодУченика='+IntToStr(updateKodYchenika));
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные ученика были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TYchenikiCRUD.SpeedButton7Click(Sender: TObject);
@@ -100,7 +102,8 @@ begin
          ComboBox1.ItemIndex:=BD.Request.DataSet.FieldByName('КодГруппы').AsInteger-1;
          SpeedButton6.Visible:=true;
          SpeedButton1.Visible:=false;
-         defoltConfigRegistrationForm
+         defoltConfigRegistrationForm;
+         Caption:='Редактирование ученика';
       end;
 
    RegistrationForm.Show;

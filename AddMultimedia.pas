@@ -23,7 +23,10 @@ type
     Edit2: TEdit;
     OpenDialog1: TOpenDialog;
     BitBtn1: TBitBtn;
-    procedure FormCreate(Sender: TObject);
+    Label6: TLabel;
+    Timer1: TTimer;
+    Label8: TLabel;
+    Label7: TLabel;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -32,6 +35,8 @@ type
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -53,11 +58,6 @@ implementation
 uses config, basa_dan, UpdateUnit, MultiMedia_CRUD;
 
 {$R *.dfm}
-
-procedure TAddMultimediaModalForm.FormCreate(Sender: TObject);
-begin                                                                              //Заполнение ComboBox при создании
-
-end;
 
 procedure TAddMultimediaModalForm.ComboBox1Change(Sender: TObject);
 begin
@@ -108,6 +108,11 @@ begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
 
+    if Edit2.Text='' then label7.Visible:=true;
+    if Edit1.Text='' then label8.Visible:=true;
+    if Path='' then
+      MessageBox(0,'Файл мультимедии не выбран!','', MB_OK+MB_ICONwarning);
+
     if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Path<>'')) then
       checkUniqueData;
 
@@ -120,7 +125,7 @@ begin
     config.execRequestSQL('INSERT INTO Мультимедиа (КодТемы, НазваниеМультимедии, НомерМультимедии, Путь) VALUES('+
       IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+', '+#39+'Multimedia\'+PathFile+#39+
     ')');
-    MessageBox(0,'Мультимедиа была успешно создана!','Создание Мультимедии', MB_OK+MB_ICONINFORMATION);
+    MessageBox(0,'Мультимедиа была успешно создана!','Создание мультимедии', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 
     defaultSetting;
@@ -132,7 +137,7 @@ begin
     if BD.RequestSQL.IsEmpty then
       unique_multimedia:=true
     else
-      MessageBox(0,'Данная Мультимедия уже сущетсвует!','Создание Мультимедии', MB_OK+MB_ICONwarning);
+      MessageBox(0,'Данная мультимедия уже сущетсвует!','Создание мультимедии', MB_OK+MB_ICONwarning);
 
     config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НомерМультимедии='+#39+Edit2.Text+#39);
     if BD.RequestSQL.IsEmpty then
@@ -171,7 +176,12 @@ end;
 procedure TAddMultimediaModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
-    if not (Key in ['0'..'9', #8]) then Key:=#0;
+    if not (Key in ['0'..'9', #8]) then
+      begin
+        Key:=#0;
+        label6.Visible:=true;
+        label7.Visible:=false;
+      end;
 end;
 
 procedure TAddMultimediaModalForm.BitBtn1Click(Sender: TObject);
@@ -200,6 +210,16 @@ begin
   if Trim(s) <> '' then
     for i := Length(s) downto 1 do
       Result := Result + s[i];
+end;
+
+procedure TAddMultimediaModalForm.Timer1Timer(Sender: TObject);
+begin
+    label6.Visible:=false;
+end;
+
+procedure TAddMultimediaModalForm.Edit1Change(Sender: TObject);
+begin
+    label8.Visible:=false;
 end;
 
 end.

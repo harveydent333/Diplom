@@ -1,6 +1,6 @@
 object AddQuestionModalForm: TAddQuestionModalForm
-  Left = 444
-  Top = 314
+  Left = 349
+  Top = 338
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1042#1086#1087#1088#1086#1089#1072
   ClientHeight = 310
@@ -2028,6 +2028,21 @@ object AddQuestionModalForm: TAddQuestionModalForm
     ParentFont = False
     Transparent = True
   end
+  object Label7: TLabel
+    Left = 520
+    Top = 64
+    Width = 12
+    Height = 37
+    Caption = '*'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
   object Panel2: TPanel
     Left = 112
     Top = 240
@@ -2593,6 +2608,7 @@ object AddQuestionModalForm: TAddQuestionModalForm
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnChange = Edit1Change
   end
   object ComboBox1: TComboBox
     Left = 408
@@ -2624,7 +2640,7 @@ object AddQuestionModalForm: TAddQuestionModalForm
   object ComboBox2: TComboBox
     Left = 120
     Top = 156
-    Width = 393
+    Width = 401
     Height = 31
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText

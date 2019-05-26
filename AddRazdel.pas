@@ -16,8 +16,14 @@ type
     Edit1: TEdit;
     Edit2: TEdit;
     Label2: TLabel;
+    Label7: TLabel;
+    Label3: TLabel;
+    Label6: TLabel;
+    Timer1: TTimer;
     procedure SpeedButton1Click(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1Change(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -40,6 +46,9 @@ procedure TAddRazdelModalForm.SpeedButton1Click(Sender: TObject);   //  Нажатие 
 begin
     unique_razdel:=false;
     unique_number_razdel:=false;
+
+    if Edit2.Text='' then label3.Visible:=true;
+    if Edit1.Text='' then label7.Visible:=true;
 
     if ((Edit1.Text<>'') and (Edit2.Text<>'')) then
       checkUniqueData;
@@ -75,7 +84,22 @@ end;
 procedure TAddRazdelModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
-    if not (Key in ['0'..'9', #8]) then Key:=#0;
+    if not (Key in ['0'..'9', #8]) then
+      begin
+        Key:=#0;
+        label6.Visible:=true;
+        label3.Visible:=false;
+      end;
+end;
+
+procedure TAddRazdelModalForm.Edit1Change(Sender: TObject);
+begin
+  label7.Visible:=false;
+end;
+
+procedure TAddRazdelModalForm.Timer1Timer(Sender: TObject);
+begin
+    label6.Visible:=false;
 end;
 
 end.

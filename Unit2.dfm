@@ -1,6 +1,6 @@
 object AuthorizationForm: TAuthorizationForm
-  Left = 115
-  Top = 399
+  Left = 99
+  Top = 213
   AutoScroll = False
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103
   ClientHeight = 643

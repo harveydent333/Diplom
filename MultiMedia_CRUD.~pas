@@ -34,7 +34,10 @@ type
 
 var
   MultiMediaCRUD: TMultiMediaCRUD;
-
+   nameTema, nameRazdela:string;
+        kodTema, kodRazdela:integer;
+        unique_user:boolean;
+        
 implementation
 
 uses config, basa_dan, ControlCenter, Title_Form, Unit2, AuthorizationData,
@@ -56,25 +59,68 @@ begin
     BD.Request.DataSet.First;
     AddMultimediaModalForm.ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
     AddMultimediaModalForm.Show;
+    AddMultimediaModalForm.Label7.Visible:=false;
+    AddMultimediaModalForm.Label8.Visible:=false;
     Path:='';
     MultiMediaCRUD.Enabled:=false;
 
 end;
 
 procedure TMultiMediaCRUD.SpeedButton6Click(Sender: TObject);
+var str:string; i:integer;
 begin
     config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеМультимедии').AsString+#39);
     updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемой Мультимедии
-    updateKodPractic:=BD.Request.DataSet.FieldByName('КодМультимедии').AsInteger;      // Код изменяемой Мультимедии
+    updateKodMultimedia:=BD.Request.DataSet.FieldByName('КодМультимедии').AsInteger;      // Код изменяемой Мультимедии
+    str:=BD.Request.DataSet.FieldByName('Путь').AsString;
+    for i:=12 to Length(str) do
+      PathFile:=PathFile+str[i];
     config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
     updateKodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой Мультимедии
+    UpdateMultimediaModalForm.Show;
+    UpdateMultimediaModalForm.Position:=poDesktopCenter;
+    MultiMediaCRUD.Enabled:=false;
 
-    with TUpdateMultimediaModalForm.Create(nil) do
-      try
-        ShowModal;
-      finally
-        Free;
+     // Получение всех разделов
+    config.selectRequestSQL('SELECT * FROM Раздел');
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
+        begin
+            UpdateMultimediaModalForm.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+            BD.Request.DataSet.Next;
     end;
+
+    // Получение Раздела к которому относиться наша изменяемая лекция
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
+    UpdateMultimediaModalForm.ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
+
+    // Получение всех Тем раздела к которомой относиться наша изменяемая лекция
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
+
+    UpdateMultimediaModalForm.ComboBox2.Visible:=true;
+    UpdateMultimediaModalForm.label3.Visible:=true;
+    While (BD.Request.DataSet.Eof=false) do
+      begin
+        UpdateMultimediaModalForm.ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
+      end;
+
+   // Получение название Темы нашей зменяемой лекции
+   config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
+   UpdateMultimediaModalForm.ComboBox2.Text:=BD.Request.DataSet.FieldByName('НазваниеТемы').AsString;
+
+   // Получение названия Практики к которомой относитсья наша изменяемая Практическая             +
+   UpdateMultimediaModalForm.Edit1.Visible:=true;
+   UpdateMultimediaModalForm.label2.Visible:=true;
+   UpdateMultimediaModalForm.Edit2.Visible:=true;
+   UpdateMultimediaModalForm.label4.Visible:=true;
+   config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE КодМультимедии='+IntToStr(updateKodMultimedia));
+   UpdateMultimediaModalForm.Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеМультимедии').AsString;
+   UpdateMultimediaModalForm.Edit2.Text:=BD.Request.DataSet.FieldByName('НомерМультимедии').AsString;
+
+   kodRazdela:=updateKodRazdela;
+   kodTema:=updateKodTema;
+
 end;
 
 procedure TMultiMediaCRUD.SpeedButton7Click(Sender: TObject);

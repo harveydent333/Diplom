@@ -1,8 +1,8 @@
 object ChangePass: TChangePass
-  Left = 240
-  Top = 254
+  Left = 382
+  Top = 562
   AutoScroll = False
-  Caption = 'ChangePass'
+  Caption = #1048#1079#1084#1077#1085#1077#1085#1080#1077' '#1087#1072#1088#1086#1083#1103
   ClientHeight = 310
   ClientWidth = 644
   Color = clBtnFace
@@ -1324,8 +1324,8 @@ object ChangePass: TChangePass
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = -333
-    Top = -251
+    Left = -328
+    Top = -280
     Width = 1209
     Height = 689
     Picture.Data = {
@@ -7247,6 +7247,36 @@ object ChangePass: TChangePass
     Visible = False
     OnClick = closeNewClick
   end
+  object Label7: TLabel
+    Left = 528
+    Top = 80
+    Width = 12
+    Height = 37
+    Caption = '*'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
+  object Label1: TLabel
+    Left = 528
+    Top = 152
+    Width = 12
+    Height = 37
+    Caption = '*'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
   object Edit1: TEdit
     Left = 88
     Top = 160
@@ -7257,9 +7287,11 @@ object ChangePass: TChangePass
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 100
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 1
+    OnChange = Edit1Change
   end
   object Edit2: TEdit
     Left = 88
@@ -7271,9 +7303,11 @@ object ChangePass: TChangePass
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 100
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 0
+    OnChange = Edit2Change
   end
   object Panel2: TPanel
     Left = 90

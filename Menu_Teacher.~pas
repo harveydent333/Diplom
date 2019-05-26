@@ -243,6 +243,7 @@ begin
           IntToStr(ComboBox1.ItemIndex+1)+' WHERE КодУченика='+IntToStr(updateKodYchenika)
         );
         config.rebootRequestsCRUD;
+        MessageBox(0,'Данные ученика были успешно изменены!','Редактирование ученика', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 

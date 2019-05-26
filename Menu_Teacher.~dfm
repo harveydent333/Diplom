@@ -1,6 +1,6 @@
 object RegistrationForm: TRegistrationForm
-  Left = 79
-  Top = 96
+  Left = 448
+  Top = 283
   AutoScroll = False
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
   ClientHeight = 643
@@ -8296,11 +8296,11 @@ object RegistrationForm: TRegistrationForm
     Transparent = True
   end
   object SpeedButton6: TSpeedButton
-    Left = 368
-    Top = 424
+    Left = 360
+    Top = 472
     Width = 450
     Height = 50
-    Caption = #1048#1079#1084#1077#1085#1080#1090#1100
+    Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
     Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText

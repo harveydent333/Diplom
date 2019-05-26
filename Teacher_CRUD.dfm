@@ -1,6 +1,6 @@
 object TeacherCRUD: TTeacherCRUD
-  Left = 173
-  Top = 225
+  Left = 164
+  Top = 135
   AutoScroll = False
   Caption = 'TeacherCRUD'
   ClientHeight = 643

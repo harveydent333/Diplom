@@ -78,6 +78,7 @@ procedure TTeacherCRUD.SpeedButton1Click(Sender: TObject);
 begin
     config.execRequestSQL('DELETE FROM Учитель WHERE login='+#39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39);
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные учителя были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TTeacherCRUD.SpeedButton6Click(Sender: TObject);
@@ -99,6 +100,8 @@ begin
         SpeedButton1.Visible:=true;
         SpeedButton6.Visible:=false;
         SpeedButton7.Visible:=false;
+        Position:=poDesktopCenter;
+        Caption:='Регистрация учителя';
       end;
 
     AuthorizationData.defoltConfigRegistrationTeacherForm;
@@ -126,6 +129,7 @@ begin
           SpeedButton1.Visible:=false;
           SpeedButton6.Visible:=true;
           SpeedButton7.Visible:=true;
+          Caption:='Редактирование учителя';
       end;
     TeacherCRUD.Visible:=false;
 end;

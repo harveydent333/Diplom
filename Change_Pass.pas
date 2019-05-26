@@ -20,12 +20,16 @@ type
     openNew: TImage;
     closeCurrent: TImage;
     closeNew: TImage;
+    Label7: TLabel;
+    Label1: TLabel;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure closeCurrentClick(Sender: TObject);
     procedure openCurrentClick(Sender: TObject);
     procedure closeNewClick(Sender: TObject);
     procedure openNewClick(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure Edit2Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,6 +47,9 @@ uses config, UpdateUnit, basa_dan, Registration_Teacher;
 
 procedure TChangePass.SpeedButton1Click(Sender: TObject);
 begin
+    if Edit2.Text='' then label7.Visible:=true;
+    if Edit1.Text='' then label1.Visible:=true;
+
    if BD.Request.DataSet.FieldByName('pass').AsString = Edit2.Text then
     begin
       config.execRequestSQL('UPDATE Учитель SET pass='#39+Edit1.Text+#39+' WHERE КодУчителя='+IntToStr(updateKodTeacher));
@@ -62,16 +69,16 @@ end;
 
 procedure TChangePass.closeCurrentClick(Sender: TObject);
 begin
-  Edit2.PasswordChar:='*';
-  closeCurrent.Visible:=false;
-  openCurrent.Visible:=true;
+    Edit2.PasswordChar:='*';
+    closeCurrent.Visible:=false;
+    openCurrent.Visible:=true;
 end;
 
 procedure TChangePass.openCurrentClick(Sender: TObject);
 begin
-  Edit2.PasswordChar:=#0;
-  closeCurrent.Visible:=true;
-  openCurrent.Visible:=false;
+    Edit2.PasswordChar:=#0;
+    closeCurrent.Visible:=true;
+    openCurrent.Visible:=false;
 end;
 
 procedure TChangePass.closeNewClick(Sender: TObject);
@@ -83,9 +90,19 @@ end;
 
 procedure TChangePass.openNewClick(Sender: TObject);
 begin
-  Edit1.PasswordChar:=#0;
-  closeNew.Visible:=true;
-  openNew.Visible:=false;
+    Edit1.PasswordChar:=#0;
+    closeNew.Visible:=true;
+    openNew.Visible:=false;
+end;
+
+procedure TChangePass.Edit1Change(Sender: TObject);
+begin
+    label1.Visible:=false;
+end;
+
+procedure TChangePass.Edit2Change(Sender: TObject);
+begin
+    label7.Visible:=false;
 end;
 
 end.

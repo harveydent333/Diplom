@@ -1,6 +1,6 @@
 object RegistrationTeacher: TRegistrationTeacher
-  Left = 151
-  Top = 200
+  Left = 106
+  Top = 112
   AutoScroll = False
   Caption = 'RegistrationTeacher'
   ClientHeight = 631
@@ -11891,6 +11891,7 @@ object RegistrationTeacher: TRegistrationTeacher
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
+    OnClick = SpeedButton6Click
   end
   object SpeedButton7: TSpeedButton
     Left = 360
@@ -11918,9 +11919,10 @@ object RegistrationTeacher: TRegistrationTeacher
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 30
     ParentFont = False
     TabOrder = 0
-    OnChange = last_nameChange
+    OnKeyPress = last_nameKeyPress
   end
   object second_name: TEdit
     Left = 368
@@ -11933,13 +11935,14 @@ object RegistrationTeacher: TRegistrationTeacher
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 30
     ParentFont = False
     TabOrder = 1
-    OnChange = second_nameChange
+    OnKeyPress = second_nameKeyPress
   end
   object email: TEdit
     Left = 368
-    Top = 354
+    Top = 355
     Width = 457
     Height = 26
     BorderStyle = bsNone
@@ -11948,9 +11951,10 @@ object RegistrationTeacher: TRegistrationTeacher
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 40
     ParentFont = False
     TabOrder = 2
-    OnChange = emailChange
+    OnKeyPress = emailKeyPress
   end
   object login: TEdit
     Left = 368
@@ -11963,9 +11967,10 @@ object RegistrationTeacher: TRegistrationTeacher
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 40
     ParentFont = False
     TabOrder = 3
-    OnChange = loginChange
+    OnKeyPress = loginKeyPress
   end
   object password: TEdit
     Left = 368
@@ -11978,14 +11983,15 @@ object RegistrationTeacher: TRegistrationTeacher
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 100
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 4
-    OnChange = passwordChange
+    OnKeyPress = passwordKeyPress
   end
   object first_name: TEdit
     Left = 368
-    Top = 240
+    Top = 238
     Width = 457
     Height = 26
     BorderStyle = bsNone
@@ -11994,8 +12000,9 @@ object RegistrationTeacher: TRegistrationTeacher
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 30
     ParentFont = False
     TabOrder = 5
-    OnChange = first_nameChange
+    OnKeyPress = first_nameKeyPress
   end
 end

@@ -86,7 +86,7 @@ begin
 
    config.selectRequestSQL('SELECT * FROM Контроль WHERE КодКонтроля='+IntToStr(updateKodControl));
    Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеКонтроля').AsString;
-
+   Edit2.Text:=BD.Request.DataSet.FieldByName('НомерКонтроля').AsString;
     kodRazdela:=updateKodRazdela;
     kodTema:=updateKodTema;
 end;
@@ -132,27 +132,19 @@ end;
 
 procedure TUpdateControlModalForm.SpeedButton1Click(Sender: TObject);
 begin
-    unique_user:=false;
-    if Edit1.Text<>'' then
-      begin
-        config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Edit1.Text+#39);
-        if ((BD.RequestSQL.IsEmpty) or (updateKodControl=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
-          unique_user:=true
-        else
-          MessageBox(0,'Даннный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
-      end;
+    unique_control:=false;
+    unique_number_control:=false;
+    
+    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        checkUniqueData;
 
-      if ((Edit1.Text<>'')and(unique_user<>false) and (Edit1.Visible=true)) then
-        begin
-          config.execRequestSQL('UPDATE Контроль SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+edit1.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
-          config.rebootRequestsCRUD;
-          MessageBox(0,'Контроль знаний был успешно изменен!','Редактирование контроля знаний', MB_OK+MB_ICONINFORMATION);
-        end;
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_control<>false) and(unique_number_control<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+        saveDataInBD;
 end;
 
 procedure TUpdateControlModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('UPDATE Лекции SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+Edit1.Text+#39+', НомерКонтроля='+#39+Edit2.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
+    config.execRequestSQL('UPDATE Контроль SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеКонтроля='+#39+Edit1.Text+#39+', НомерКонтроля='+#39+Edit2.Text+#39+' WHERE КодКонтроля ='+IntToStr(updateKodControl));
     MessageBox(0,'Контроль знаний был успешно изменен!','Редактирование контроля знаний', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 
@@ -161,14 +153,14 @@ end;
 procedure TUpdateControlModalForm.checkUniqueData; // Проверка на уникальные данные
 begin
     config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+Edit1.Text+#39);
-    if ((BD.RequestSQL.IsEmpty) or (updateKodLecture=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
-      unique_lecture:=true
+    if ((BD.RequestSQL.IsEmpty) or (updateKodControl=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
+      unique_control:=true
     else
       MessageBox(0,'Данный контроль знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
 
     config.selectRequestSQL('SELECT * FROM Контроль WHERE НомерКонтроля='+#39+Edit2.Text+#39);
-    if ((BD.RequestSQL.IsEmpty) or (updateKodLecture=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
-      unique_number_lecture:=true
+    if ((BD.RequestSQL.IsEmpty) or (updateKodControl=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger)) then
+      unique_number_control:=true
     else
       MessageBox(0,'Данный номер контроля знаний уже сущетсвует!','Редактирование контроля знаний', MB_OK+MB_ICONwarning);
 end;

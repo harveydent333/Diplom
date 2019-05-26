@@ -1,6 +1,6 @@
 object AddTemaModalForm: TAddTemaModalForm
-  Left = 138
-  Top = 189
+  Left = 322
+  Top = 621
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1058#1077#1084#1099
   ClientHeight = 310
@@ -2030,6 +2030,53 @@ object AddTemaModalForm: TAddTemaModalForm
     ParentFont = False
     Transparent = True
   end
+  object Label7: TLabel
+    Left = 520
+    Top = 160
+    Width = 12
+    Height = 37
+    Caption = '*'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
+  object Label4: TLabel
+    Left = 522
+    Top = 104
+    Width = 12
+    Height = 37
+    Caption = '*'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
+  object Label6: TLabel
+    Left = 120
+    Top = 80
+    Width = 385
+    Height = 54
+    Alignment = taCenter
+    Caption = #1055#1086#1083#1077' '#1085#1086#1084#1077#1088' '#1090#1077#1084#1099' '#1084#1086#1078#1077#1090' '#1080#1084#1077#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1094#1080#1092#1088#1099
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clRed
+    Font.Height = -15
+    Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+    WordWrap = True
+  end
   object Panel2: TPanel
     Left = 112
     Top = 240
@@ -2594,8 +2641,10 @@ object AddTemaModalForm: TAddTemaModalForm
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 120
     ParentFont = False
     TabOrder = 1
+    OnChange = Edit1Change
   end
   object ComboBox1: TComboBox
     Left = 120
@@ -2623,8 +2672,15 @@ object AddTemaModalForm: TAddTemaModalForm
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 3
     ParentFont = False
     TabOrder = 3
     OnKeyPress = Edit2KeyPress
+  end
+  object Timer1: TTimer
+    Interval = 5000
+    OnTimer = Timer1Timer
+    Left = 16
+    Top = 24
   end
 end

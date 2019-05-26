@@ -19,11 +19,17 @@ type
     Label3: TLabel;
     Label1: TLabel;
     Edit2: TEdit;
+    Timer1: TTimer;
+    Label4: TLabel;
+    Label7: TLabel;
+    Label6: TLabel;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -75,6 +81,10 @@ procedure TUpdateTemaModalForm.SpeedButton1Click(Sender: TObject);      // Сохра
 begin
     unique_tema:=false;
     unique_number_tema:=false;
+
+    if Edit2.Text='' then label4.Visible:=true;
+    if Edit1.Text='' then label7.Visible:=true;
+
     if ((Edit1.Text<>'') and (Edit2.Text<>''))  then
         checkUniqueData;
 
@@ -113,7 +123,22 @@ end;
 procedure TUpdateTemaModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
-    if not (Key in ['0'..'9', #8]) then Key:=#0;
+    if not (Key in ['0'..'9', #8]) then
+      begin
+       Key:=#0;
+       label6.Visible:=true;
+       label4.Visible:=false;
+      end;
+end;
+
+procedure TUpdateTemaModalForm.Timer1Timer(Sender: TObject);
+begin
+    label6.Visible:=false;
+end;
+
+procedure TUpdateTemaModalForm.Edit1Change(Sender: TObject);
+begin
+    label7.Visible:=false;
 end;
 
 end.

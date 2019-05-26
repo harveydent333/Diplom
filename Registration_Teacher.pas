@@ -59,14 +59,15 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure last_nameChange(Sender: TObject);
-    procedure first_nameChange(Sender: TObject);
-    procedure second_nameChange(Sender: TObject);
-    procedure emailChange(Sender: TObject);
-    procedure loginChange(Sender: TObject);
-    procedure passwordChange(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure last_nameKeyPress(Sender: TObject; var Key: Char);
+    procedure first_nameKeyPress(Sender: TObject; var Key: Char);
+    procedure second_nameKeyPress(Sender: TObject; var Key: Char);
+    procedure emailKeyPress(Sender: TObject; var Key: Char);
+    procedure loginKeyPress(Sender: TObject; var Key: Char);
+    procedure passwordKeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -116,10 +117,10 @@ begin
     RegistrationTeacher.Visible:=false;
 end;
 
-procedure TRegistrationTeacher.last_nameChange(Sender: TObject);
+procedure TRegistrationTeacher.last_nameKeyPress(Sender: TObject; var Key: Char);
 begin
-    defolt_edit1.Visible:=false;
-    if last_name.Text='' then
+  defolt_edit1.Visible:=false;
+    if ((key=#8) and ((length(last_name.Text)=1) or (length(last_name.Text)=0))) then
         begin
             good_edit1.Visible:=false;
             bed_edit1.Visible:=true;
@@ -137,10 +138,10 @@ begin
       label1.Visible:=false;
 end;
 
-procedure TRegistrationTeacher.first_nameChange(Sender: TObject);
+procedure TRegistrationTeacher.first_nameKeyPress(Sender: TObject; var Key: Char);
 begin
-    defolt_edit2.Visible:=false;
-    if first_name.Text='' then
+   defolt_edit2.Visible:=false;
+    if ((key=#8) and ((length(first_name.Text)=1) or (length(first_name.Text)=0))) then
       begin
         good_edit2.Visible:=false;
         bed_edit2.Visible:=true;
@@ -158,10 +159,10 @@ begin
       label1.Visible:=false;
 end;
 
-procedure TRegistrationTeacher.second_nameChange(Sender: TObject);
+procedure TRegistrationTeacher.second_nameKeyPress(Sender: TObject; var Key: Char);
 begin
-  defolt_edit3.Visible:=false;
-    if second_name.Text='' then
+     defolt_edit3.Visible:=false;
+    if ((key=#8) and ((length(second_name.Text)=1) or (length(second_name.Text)=0))) then
       begin
         good_edit3.Visible:=false;
         bed_edit3.Visible:=true;
@@ -179,18 +180,11 @@ begin
       label1.Visible:=false;
 end;
 
-procedure TRegistrationTeacher.emailChange(Sender: TObject);
+procedure TRegistrationTeacher.emailKeyPress(Sender: TObject; var Key: Char);
 begin
-  defolt_edit4.Visible:=false;
-   unique_email_teacher:=false;
+    defolt_edit4.Visible:=false;
 
-    BD.ADOQuery.SQL.Clear;
-    BD.ADOQuery.SQL.Add('SELECT * FROM Учитель WHERE email='+#39+email.Text+#39);
-    BD.ADOQuery.Open;
-
-    if BD.QueryHelp.DataSet.IsEmpty = true then unique_email_teacher:=true;
-
-    if email.Text='' then
+    if ((key=#8) and ((length(email.Text)=1) or (length(email.Text)=0))) then
       begin
         good_edit4.Visible:=false;
         bed_edit4.Visible:=true;
@@ -208,19 +202,11 @@ begin
       label1.Visible:=false;
 end;
 
-procedure TRegistrationTeacher.loginChange(Sender: TObject);
+procedure TRegistrationTeacher.loginKeyPress(Sender: TObject; var Key: Char);
 begin
-    unique_login_teacher:=false;
+      defolt_edit5.Visible:=false;
 
-    BD.ADOQuery.SQL.Clear;
-    BD.ADOQuery.SQL.Add('SELECT * FROM Учитель WHERE login='+#39+login.Text+#39);
-    BD.ADOQuery.Open;
-
-    if BD.QueryHelp.DataSet.IsEmpty = true then unique_login_teacher:=true;
-
-    defolt_edit5.Visible:=false;
-
-    if login.Text='' then
+    if ((key=#8) and ((length(login.Text)=1) or (length(login.Text)=0))) then
       begin
         good_edit5.Visible:=false;
         bed_edit5.Visible:=true;
@@ -238,10 +224,10 @@ begin
       label1.Visible:=false;
 end;
 
-procedure TRegistrationTeacher.passwordChange(Sender: TObject);
+procedure TRegistrationTeacher.passwordKeyPress(Sender: TObject; var Key: Char);
 begin
     defolt_edit6.Visible:=false;
-    if password.Text='' then
+    if ((key=#8) and ((length(password.Text)=1) or (length(password.Text)=0))) then
       begin
         good_edit6.Visible:=false;
         bed_edit6.Visible:=true;
@@ -314,7 +300,24 @@ begin
         good_edit6.Visible:=false;
         bed_edit6.Visible:=true;
       end;
-    if unique_login_teacher=false then
+
+    unique_email_teacher:=false;
+
+    BD.ADOQuery.SQL.Clear;
+    BD.ADOQuery.SQL.Add('SELECT * FROM Учитель WHERE email='+#39+email.Text+#39);
+    BD.ADOQuery.Open;
+
+    if BD.QueryHelp.DataSet.IsEmpty = true then unique_email_teacher:=true;
+
+    unique_login_teacher:=false;
+
+    BD.ADOQuery.SQL.Clear;
+    BD.ADOQuery.SQL.Add('SELECT * FROM Учитель WHERE login='+#39+login.Text+#39);
+    BD.ADOQuery.Open;
+
+    if BD.QueryHelp.DataSet.IsEmpty = true then unique_login_teacher:=true;
+
+    if ((unique_login_teacher=false) and (login.Text<>'')) then
       begin
         MessageBox(0,'Пользователь с таким логином уже существует!','Регистриация учителя', MB_OK+MB_ICONwarning);
         label1.Visible:=true;
@@ -324,7 +327,7 @@ begin
         bed_edit5.Visible:=true;
       end;
 
-    if unique_email_teacher= false then
+    if ((unique_email_teacher=false) and (email.Text<>'')) then
       begin
         MessageBox(0,'Пользователь с такой почтой уже существует!','Регистриация учителя', MB_OK+MB_ICONwarning);
         label1.Visible:=true;
@@ -393,6 +396,130 @@ begin
     ChangePass.show;
     ChangePass.Position:=poDesktopCenter;
     RegistrationTeacher.Enabled:=false;
+end;
+
+procedure TRegistrationTeacher.SpeedButton6Click(Sender: TObject);
+begin
+  if last_name.Text='' then   // ПУСТОЕ ПОЛЕ ФАМИЛИЯ ПРИ НАЖАТИИ КНОПКИ ЗАРЕГЕСТРИРОВАТЬ
+      begin
+        label1.Visible:=true;
+        label2.Visible:=true;
+        defolt_edit1.Visible:=false;
+        good_edit1.Visible:=false;
+        bed_edit1.Visible:=true;
+      end;
+
+    if first_name.Text='' then        //ПУСТОЕ ПОЛЕ ИМЯ ПРИ НАЖАТИИ КНОПКИ ЗАРЕГЕСТРИРОВАТЬ
+      begin
+        label1.Visible:=true;
+        label3.Visible:=true;
+        defolt_edit2.Visible:=false;
+        good_edit2.Visible:=false;
+        bed_edit2.Visible:=true;
+      end;
+
+    if second_name.Text='' then       //ПУСТОЕ ПОЛЕ ОТЧЕСТВО ПРИ НАЖАТИИ КНОПКИ ЗАРЕГИСТРИРОВАТЬ
+      begin
+        label1.Visible:=true;
+        label4.Visible:=true;
+        defolt_edit3.Visible:=false;
+        good_edit3.Visible:=false;
+        bed_edit3.Visible:=true;
+      end;
+
+    if email.Text='' then     //ПУСТОЕ ПОЛЕ Email ПРИ НАЖАТИИ КНОПКИ ЗАРЕГИСТРИРОВАТЬ
+      begin
+        label1.Visible:=true;
+        label5.Visible:=true;
+        defolt_edit4.Visible:=false;
+        good_edit4.Visible:=false;
+        bed_edit4.Visible:=true;
+      end;
+
+    if login.Text='' then     //ПУСТОЕ ПОЛЕ Логин ПРИ НАЖАТИИ КНОПКИ ЗАРЕГИСТРИРОВАТЬ
+      begin
+        label1.Visible:=true;
+        label6.Visible:=true;
+        defolt_edit5.Visible:=false;
+        good_edit5.Visible:=false;
+        bed_edit5.Visible:=true;
+      end;
+
+    unique_email_teacher:=false;
+
+    BD.ADOQuery.SQL.Clear;
+    BD.ADOQuery.SQL.Add('SELECT * FROM Учитель WHERE email='+#39+email.Text+#39);
+    BD.ADOQuery.Open;
+
+    if ((BD.QueryHelp.DataSet.IsEmpty) or (updateKodTeacher=BD.QueryHelp.DataSet.FieldByName('КодУчителя').AsInteger)) = true then unique_email_teacher:=true;
+
+    unique_login_teacher:=false;
+
+    BD.ADOQuery.SQL.Clear;
+    BD.ADOQuery.SQL.Add('SELECT * FROM Учитель WHERE login='+#39+login.Text+#39);
+    BD.ADOQuery.Open;
+
+    if ((BD.QueryHelp.DataSet.IsEmpty) or (updateKodTeacher=BD.QueryHelp.DataSet.FieldByName('КодУчителя').AsInteger))  = true then unique_login_teacher:=true;
+
+    if ((unique_login_teacher=false) and (login.Text<>'')) then
+      begin
+        MessageBox(0,'Пользователь с таким логином уже существует!','Регистриация учителя', MB_OK+MB_ICONwarning);
+        label1.Visible:=true;
+        label6.Visible:=true;
+        defolt_edit5.Visible:=false;
+        good_edit5.Visible:=false;
+        bed_edit5.Visible:=true;
+      end;
+
+    if ((unique_email_teacher=false) and (email.Text<>'')) then
+      begin
+        MessageBox(0,'Пользователь с такой почтой уже существует!','Регистриация учителя', MB_OK+MB_ICONwarning);
+        label1.Visible:=true;
+        label5.Visible:=true;
+        defolt_edit4.Visible:=false;
+        good_edit4.Visible:=false;
+        bed_edit4.Visible:=true;
+      end;
+
+    if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (login.text<>'')
+    and (email.text<>'') and (unique_login_teacher=true) and (unique_email_teacher=true)) then
+      begin
+        config.execRequestSQL('UPDATE Учитель SET Фамилия='+#39+last_name.Text+#39+', '+
+          'Имя='+#39+first_name.Text+#39+', '+
+          'Отчество='+#39+second_name.Text+#39+', '+
+          'login='+#39+login.Text+#39+', '+
+          'email='+#39+email.Text+#39+' WHERE КодУчителя='+IntToStr(updateKodTeacher));
+
+        config.rebootRequestsCRUD;
+        label1.Visible:=false;
+
+        defolt_edit1.Visible:=true;
+        defolt_edit2.Visible:=true;
+        defolt_edit3.Visible:=true;
+        defolt_edit4.Visible:=true;
+        defolt_edit5.Visible:=true;
+
+        good_edit1.Visible:=false;
+        good_edit2.Visible:=false;
+        good_edit3.Visible:=false;
+        good_edit4.Visible:=false;
+        good_edit5.Visible:=false;
+
+        bed_edit1.Visible:=false;
+        bed_edit2.Visible:=false;
+        bed_edit3.Visible:=false;
+        bed_edit4.Visible:=false;
+        bed_edit5.Visible:=false;
+
+        label1.Visible:=false;
+        label2.Visible:=false;
+        label3.Visible:=false;
+        label4.Visible:=false;
+        label5.Visible:=false;
+        label6.Visible:=false;
+        label10.Visible:=false;
+        MessageBox(0,'Данные учителя были успешно изменены!','Редактирование учителя', MB_OK+MB_ICONINFORMATION);
+      end;
 end;
 
 end.
