@@ -71,9 +71,9 @@ type
     DateTimePicker1: TDateTimePicker;
     Label12: TLabel;
     Label13: TLabel;
-    DateTimePicker2: TDateTimePicker;
-    Label14: TLabel;
     CheckBox3: TCheckBox;
+    Image4: TImage;
+    Label14: TLabel;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
@@ -90,6 +90,7 @@ type
     procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
     procedure Image2Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -140,16 +141,9 @@ end;
 procedure TShyrnal.CheckBox1Click(Sender: TObject);
 begin
     if CheckBox3.Checked=true then
-      begin
-       DateTimePicker1.Enabled:=true;
-       DateTimePicker2.Enabled:=true;
-      end
+       DateTimePicker1.Enabled:=true
     else
-      begin
        DateTimePicker1.Enabled:=false;
-       DateTimePicker2.Enabled:=false;
-
-      end;
 end;
 
 procedure TShyrnal.CheckBox2Click(Sender: TObject);
@@ -278,14 +272,9 @@ begin
           default:=default+' AND Оценка='+#39+ComboBox3.Text+#39;
 
         if CheckBox3.Checked = true then
-          default:=default+
-          ' AND ДатаПроведения =>'+#39+DateToStr(DateTimePicker1.Date)+#39+
-          ' AND ДатаПроведения <='+#39+DateToStr(DateTimePicker2.Date)+#39;
+          default:=default+' AND ДатаПроведения ='+#39+DateToStr(DateTimePicker1.Date)+#39;
 
         config.selectRequestSQL(default);
-        if((CheckBox5.Checked = true) and (CheckBox6.Checked = true) and (CheckBox7.Checked = true) and (CheckBox1.Checked = true) and
-          (CheckBox2.Checked = true) and (CheckBox4.Checked = true)) then
-            config.selectRequestSQL(getShyrnalData);
       end;
 
     if roleUser='stydent' then
@@ -299,12 +288,37 @@ begin
 
         if CheckBox4.Checked = true then
           default:=default+' AND Оценка='+#39+ComboBox3.Text+#39;
-
-        config.selectRequestSQL(default);
-        if((CheckBox5.Checked = true) and (CheckBox6.Checked = true) and (CheckBox7.Checked = true) and (CheckBox1.Checked = true) and
-          (CheckBox2.Checked = true) and (CheckBox4.Checked = true)) then
-            config.selectRequestSQL(default);
+          config.selectRequestSQL(default);
       end;
+end;
+
+procedure TShyrnal.Image4Click(Sender: TObject);
+var default:string;
+begin
+default:=getShyrnalData+' WHERE 1=1';
+CheckBox1.Checked:=false;
+CheckBox2.Checked:=false;
+CheckBox3.Checked:=false;
+CheckBox4.Checked:=false;
+CheckBox5.Checked:=false;
+CheckBox6.Checked:=false;
+CheckBox7.Checked:=false;
+  if roleUser='teacher' then
+    begin
+       config.selectRequestSQL(default);
+       if((CheckBox5.Checked = true)
+        and (CheckBox6.Checked = true)
+        and (CheckBox7.Checked = true)
+        and (CheckBox1.Checked = true)
+        and (CheckBox2.Checked = true)
+        and (CheckBox4.Checked = true))
+       then
+        config.selectRequestSQL(getShyrnalData);
+    end;
+  if roleUser='stydent' then
+    begin
+       config.selectRequestSQL(getShyrnalData+' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39);
+    end;
 end;
 
 end.

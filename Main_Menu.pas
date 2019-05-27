@@ -184,6 +184,8 @@ begin
             settingForShyrnal(false);
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
+             Shyrnal.Image2.Visible:=false;
+            Shyrnal.Label10.Visible:=false;
 
             config.selectRequestSQL(getShyrnalData+' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39);
         end;
@@ -194,6 +196,8 @@ begin
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
             config.selectRequestSQL(getShyrnalData);
+            Shyrnal.Image2.Visible:=true;
+            Shyrnal.Label10.Visible:=true;
         end;
 end;
 

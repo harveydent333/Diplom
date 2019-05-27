@@ -184,8 +184,8 @@ begin
             settingForShyrnal(false);
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
-            config.selectRequestSQL('SELECT * FROM ”ченик WHERE login='+#39+loginUser+#39);
-            config.selectRequestSQL('SELECT * FROM ∆урналќценок WHERE  од”ченика='+BD.Request.DataSet.FieldbyName(' од”ченика').AsString);
+
+            config.selectRequestSQL(getShyrnalData+' WHERE ‘амили€='+#39+familyUser+#39+' AND »м€='+#39+nameUser+#39+' AND ќтчество='+#39+secondNameUser+#39);
         end;
 
     if roleUser='teacher' then
@@ -193,7 +193,7 @@ begin
             settingForShyrnal(true);
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
-            config.selectRequestSQL('SELECT * FROM ∆урналќценок');
+            config.selectRequestSQL(getShyrnalData);
         end;
 end;
 
