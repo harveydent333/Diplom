@@ -1,6 +1,6 @@
 object AddControlModalForm: TAddControlModalForm
-  Left = 344
-  Top = 604
+  Left = 323
+  Top = 369
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1050#1086#1085#1090#1088#1086#1083#1103
   ClientHeight = 310
@@ -2064,8 +2064,8 @@ object AddControlModalForm: TAddControlModalForm
   object Label6: TLabel
     Left = 128
     Top = 120
-    Width = 361
-    Height = 54
+    Width = 349
+    Height = 18
     Alignment = taCenter
     Caption = #1055#1086#1083#1077' '#1085#1086#1084#1077#1088' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1084#1086#1078#1077#1090' '#1080#1084#1077#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1094#1080#1092#1088#1099
     Font.Charset = RUSSIAN_CHARSET

@@ -57,6 +57,7 @@ procedure TControlCRUD.SpeedButton7Click(Sender: TObject);  // Удаление Контроля
 begin
     config.execRequestSQL('DELETE FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные контроля знаний были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TControlCRUD.SpeedButton6Click(Sender: TObject);   // Изменение Контроля

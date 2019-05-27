@@ -70,8 +70,11 @@ end;
 
 procedure TRazdelCRUD.SpeedButton7Click(Sender: TObject);     // Удаление Раздела
 begin
-    config.execRequestSQL('DELETE FROM Раздел WHERE НазваниеРаздела='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString+#39);
+    config.execRequestSQL('DELETE FROM Раздел '+
+      ' WHERE НазваниеРаздела='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString+#39
+    );
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные раздела были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TRazdelCRUD.SpeedButton4Click(Sender: TObject);    // Завершение программы

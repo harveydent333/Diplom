@@ -143,7 +143,7 @@ var default:string;
 begin
     if roleUser='teacher' then
       begin
-        default:='SELECT * FROM Журнал WHERE 1=1';
+        default:=getShyrnalData+' WHERE 1=1';
         if CheckBox5.Checked = true then
           default:=default+' AND Фамилия='+#39+edit2.Text+#39;
 
@@ -165,12 +165,12 @@ begin
         config.selectRequestSQL(default);
         if((CheckBox5.Checked = true) and (CheckBox6.Checked = true) and (CheckBox7.Checked = true) and (CheckBox1.Checked = true) and
           (CheckBox2.Checked = true) and (CheckBox4.Checked = true)) then
-            config.selectRequestSQL('SELECT * FROM Журнал');
+            config.selectRequestSQL(getShyrnalData);
       end;
 
     if roleUser='stydent' then
       begin
-        default:='SELECT * FROM Журнал WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39;
+        default:=getShyrnalData +' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39;
         if CheckBox1.Checked = true then
           default:=default+' AND НазваниеТемы='+#39+ComboBox1.Text+#39;
 
@@ -203,3 +203,5 @@ begin
 end;
 
 end.
+
+

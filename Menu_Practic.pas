@@ -135,6 +135,7 @@ begin
     MainMenu.show;
     MainMenu.position:=poDesktopCenter;
     MenuPractic.Visible:=false;
+    SpeedButton1.Visible:=false;
 end;
 
 procedure TMenuPractic.SpeedButton5Click(Sender: TObject);

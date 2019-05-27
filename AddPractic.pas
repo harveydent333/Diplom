@@ -114,8 +114,8 @@ begin
     unique_practic:=false;
     unique_number_practic:=false;
 
-    if Edit2.Text='' then label7.Visible:=true;
-    if Edit1.Text='' then label8.Visible:=true;
+    if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
+    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
 
     if ((Edit1.Text<>'') and (Edit2.Text<>'')) then
         checkUniqueData;

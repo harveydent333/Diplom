@@ -10,7 +10,6 @@ uses
 
 type
   TAdd_Questions = class(TForm)
-    DBGrid1: TDBGrid;
     Label1: TLabel;
     Image1: TImage;
     SpeedButton1: TSpeedButton;
@@ -280,9 +279,15 @@ begin
        memoText:='Вопрос '+IntToStr(random(999999))
     else memoText:=Add_Questions.Memo1.Text;
 
-    config.execRequestSQL('UPDATE Вопросы SET КоличествоОтветов='+IntToStr(countQuestion)+', СодержаниеВопроса='+#39+memoText+#39+', ВариантыОтветов='+
-    #39+varianti+#39+', ВерныйОтвет='+#39+otvet+#39+' WHERE КодВопроса='+IntToStr(kodVoprosa));
+    config.execRequestSQL('UPDATE Вопросы SET '+
+      ' КоличествоОтветов='+IntToStr(countQuestion)+','+
+      ' СодержаниеВопроса='+#39+memoText+#39+','+
+      ' ВариантыОтветов='+#39+varianti+#39+','+
+      ' ВерныйОтвет='+#39+otvet+#39+
+      ' WHERE КодВопроса='+IntToStr(kodVoprosa)
+    );
 
+    MessageBox(0,'Данные вопроса были успешно обновлены!','', MB_OK+MB_ICONINFORMATION);
 
     Add_Questions.ListBox1.Clear;
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));

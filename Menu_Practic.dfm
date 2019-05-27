@@ -1,6 +1,6 @@
 object MenuPractic: TMenuPractic
-  Left = 358
-  Top = 213
+  Left = 191
+  Top = 201
   AutoScroll = False
   Caption = #1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1077' '#1088#1072#1073#1086#1090#1099
   ClientHeight = 643
@@ -4733,7 +4733,7 @@ object MenuPractic: TMenuPractic
     Top = 480
     Width = 505
     Height = 49
-    Caption = #1053#1072#1095#1072#1090#1100' '#1088#1077#1096#1077#1085#1080#1077
+    Caption = #1042#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
     Enabled = False
     Flat = True
     Font.Charset = RUSSIAN_CHARSET

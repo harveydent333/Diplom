@@ -60,6 +60,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton2Click(Sender: TObject);
 begin
+    rebootRequestsCRUD;
     RazdelCRUD.Show;
     RazdelCRUD.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
@@ -107,7 +108,6 @@ end;
 
 procedure TDataManagementCenter.SpeedButton7Click(Sender: TObject);
 begin
-    rebootRequestsCRUD;
     MainMenu.show;
     MainMenu.position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;

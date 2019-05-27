@@ -1,6 +1,6 @@
 object UpdateTemaModalForm: TUpdateTemaModalForm
-  Left = 227
-  Top = 194
+  Left = 315
+  Top = 294
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1058#1077#1084#1099
   ClientHeight = 310
@@ -4652,8 +4652,8 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
   object Label6: TLabel
     Left = 104
     Top = 80
-    Width = 409
-    Height = 54
+    Width = 319
+    Height = 18
     Alignment = taCenter
     Caption = #1055#1086#1083#1077' '#1085#1086#1084#1077#1088' '#1090#1077#1084#1099' '#1084#1086#1078#1077#1090' '#1080#1084#1077#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1094#1080#1092#1088#1099
     Font.Charset = RUSSIAN_CHARSET

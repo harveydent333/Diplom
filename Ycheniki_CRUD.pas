@@ -52,6 +52,7 @@ begin
     with RegistrationForm do
       begin
           Show;
+          Position:=poDesktopCenter;
           last_name.text:='';
           first_name.text:='';
           second_name.text:='';
@@ -78,7 +79,7 @@ begin
 
     config.execRequestSQL('DELETE FROM Ученик WHERE КодУченика='+IntToStr(updateKodYchenika));
     config.rebootRequestsCRUD;
-    MessageBox(0,'Данные ученика были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
+    MessageBox(0,'Данные обучающегося были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TYchenikiCRUD.SpeedButton7Click(Sender: TObject);
@@ -104,6 +105,7 @@ begin
          SpeedButton1.Visible:=false;
          defoltConfigRegistrationForm;
          Caption:='Редактирование ученика';
+         Position:=poDesktopCenter;
       end;
 
    RegistrationForm.Show;
@@ -139,8 +141,7 @@ procedure TYchenikiCRUD.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-        TitleForm.close;
+    if idyes=temp then TitleForm.close;
 end;
 
 end.

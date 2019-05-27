@@ -47,11 +47,11 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure last_nameChange(Sender: TObject);
-    procedure first_nameChange(Sender: TObject);
-    procedure second_nameChange(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure SpeedButton6Click(Sender: TObject);
+    procedure last_nameKeyPress(Sender: TObject; var Key: Char);
+    procedure first_nameKeyPress(Sender: TObject; var Key: Char);
+    procedure second_nameKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -202,6 +202,7 @@ begin
         last_name.Text:='';
         first_name.Text:='';
         second_name.text:='';
+        MessageBox(0,'Обучающийся был успешно зарегистрирован!','Регистриация обучающегося', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 
@@ -261,7 +262,7 @@ begin
         label2.Visible:=false;
         label3.Visible:=false;
         label4.Visible:=false;
-        MessageBox(0,'Данные ученика были успешно изменены!','Редактирование ученика', MB_OK+MB_ICONINFORMATION);
+        MessageBox(0,'Данные обучающегося был успешно изменены!','Редактирование обучающегося', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 
@@ -282,10 +283,10 @@ begin
     MainMenu.position:=poDesktopCenter;
 end;
 
-procedure TRegistrationForm.last_nameChange(Sender: TObject);
+procedure TRegistrationForm.last_nameKeyPress(Sender: TObject; var Key: Char);
 begin
     defolt_edit1.Visible:=false;
-    if last_name.Text='' then
+    if ((key=#8) and ((length(last_name.Text)=1) or (length(last_name.Text)=0))) then
       begin
         good_edit1.Visible:=false;
         bed_edit1.Visible:=true;
@@ -302,10 +303,10 @@ begin
       label1.Visible:=false;
 end;
 
-procedure TRegistrationForm.first_nameChange(Sender: TObject);
+procedure TRegistrationForm.first_nameKeyPress(Sender: TObject; var Key: Char);
 begin
     defolt_edit2.Visible:=false;
-    if first_name.Text='' then
+    if ((key=#8) and ((length(first_name.Text)=1) or (length(first_name.Text)=0))) then
       begin
         good_edit2.Visible:=false;
         bed_edit2.Visible:=true;
@@ -322,10 +323,22 @@ begin
     Label1.Visible:=false;
 end;
 
-procedure TRegistrationForm.second_nameChange(Sender: TObject);
+procedure TRegistrationForm.SpeedButton4Click(Sender: TObject);
+var temp:word;
 begin
-    defolt_edit3.Visible:=false;
-    if second_name.Text='' then
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then TitleForm.close;
+end;
+
+procedure TRegistrationForm.ComboBox1KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TRegistrationForm.second_nameKeyPress(Sender: TObject; var Key: Char);
+begin
+   defolt_edit3.Visible:=false;
+    if ((key=#8) and ((length(second_name.Text)=1) or (length(second_name.Text)=0))) then
       begin
         good_edit3.Visible:=false;
         bed_edit3.Visible:=true;
@@ -340,18 +353,6 @@ begin
 
     if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
       label1.Visible:=false;
-end;
-
-procedure TRegistrationForm.SpeedButton4Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then TitleForm.close;
-end;
-
-procedure TRegistrationForm.ComboBox1KeyPress(Sender: TObject; var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
 end;
 
 end.

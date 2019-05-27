@@ -184,8 +184,8 @@ begin
             settingForShyrnal(false);
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
-            config.selectRequestSQL('SELECT * FROM Ученик WHERE login='+#39+loginUser+#39);
-            config.selectRequestSQL('SELECT * FROM ЖурналОценок WHERE КодУченика='+BD.Request.DataSet.FieldbyName('КодУченика').AsString);
+
+            config.selectRequestSQL(getShyrnalData+' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39);
         end;
 
     if roleUser='teacher' then
@@ -193,7 +193,7 @@ begin
             settingForShyrnal(true);
             getDataTemaForShyrnal;
             getDataControlForShyrnal;
-            config.selectRequestSQL('SELECT * FROM ЖурналОценок');
+            config.selectRequestSQL(getShyrnalData);
         end;
 end;
 
@@ -241,8 +241,7 @@ procedure TMainMenu.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-        TitleForm.close;
+    if idyes=temp then TitleForm.close;
 end;
 
 procedure TMainMenu.SpeedButton3Click(Sender: TObject);
@@ -263,7 +262,6 @@ begin
             SpeedButton1.Visible:=false;
             SpeedButton1.Enabled:=false;
         end;
-
     BD.Request.DataSet.First;
     While (BD.Request.DataSet.Eof=false) do
         begin

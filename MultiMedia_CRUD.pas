@@ -127,6 +127,7 @@ procedure TMultiMediaCRUD.SpeedButton7Click(Sender: TObject);
 begin
     config.execRequestSQL('DELETE FROM Мультимедиа WHERE НазваниеМультимедии='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеМультимедии').AsString+#39);
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные мультимедии были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TMultiMediaCRUD.SpeedButton2Click(Sender: TObject);
@@ -134,6 +135,7 @@ begin
     MultiMediaCRUD.Visible:=false;
     DataManagementCenter.show;
     DataManagementCenter.position:=poDesktopCenter;
+    SetCurrentDir(currentDir);
 end;
 
 procedure TMultiMediaCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -150,6 +152,7 @@ begin
     AuthorizationForm.Visible:=true;;
     AuthorizationForm.Position:=poDesktopCenter;
     MultimediaCRUD.Visible:=false;
+    SetCurrentDir(currentDir);
 end;
 
 procedure TMultiMediaCRUD.SpeedButton4Click(Sender: TObject);

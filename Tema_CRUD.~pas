@@ -73,15 +73,14 @@ procedure TTemaCRUD.SpeedButton7Click(Sender: TObject);  // Удаление Темы
 begin
     config.execRequestSQL('DELETE FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39);
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные темы были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TTemaCRUD.SpeedButton4Click(Sender: TObject);  // Завершение работы программы
 var temp:word;
 begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
-    MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then TitleForm.close;
 end;
 
 procedure TTemaCRUD.SpeedButton2Click(Sender: TObject);

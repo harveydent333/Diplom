@@ -33,6 +33,7 @@ type
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure Timer1Timer(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -96,6 +97,9 @@ procedure TUpdateLectureModalForm.SpeedButton1Click(Sender: TObject);       // К
 begin
     unique_lecture:=false;
     unique_number_lecture:=false;
+
+    if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
+    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
     
     if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
         checkUniqueData;
@@ -106,7 +110,12 @@ end;
 
 procedure TUpdateLectureModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('UPDATE Лекции SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеЛекции='+#39+Edit1.Text+#39+', НомерЛекции='+#39+Edit2.Text+#39+' WHERE КодЛекции ='+IntToStr(updateKodLecture));
+    config.execRequestSQL('UPDATE Лекции SET '+
+      ' КодТемы='+#39+IntToStr(kodTema)+#39+','+
+      ' НазваниеЛекции='+#39+Edit1.Text+#39+','+
+      ' НомерЛекции='+#39+Edit2.Text+#39+
+      ' WHERE КодЛекции ='+IntToStr(updateKodLecture)
+    );
     MessageBox(0,'Лекция была успешно Изменена!','Редактирование Лекции', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 
@@ -169,6 +178,49 @@ end;
 procedure TUpdateLectureModalForm.Edit1Change(Sender: TObject);
 begin
     label8.Visible:=false;
+end;
+
+procedure TUpdateLectureModalForm.FormCreate(Sender: TObject);
+begin
+ // Получение всех разделов
+    config.selectRequestSQL('SELECT * FROM Раздел');
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
+        begin
+            ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
+            BD.Request.DataSet.Next;
+    end;
+
+    // Получение Раздела к которому относиться наша изменяемая лекция
+    config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
+    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
+
+    // Получение всех Тем раздела к которомой относиться наша изменяемая лекция
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
+
+    ComboBox2.Visible:=true;
+    label3.Visible:=true;
+    While (BD.Request.DataSet.Eof=false) do
+      begin
+        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        BD.Request.DataSet.Next;
+      end;
+
+   // Получение название Темы нашей зменяемой лекции
+   config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
+   ComboBox2.Text:=BD.Request.DataSet.FieldByName('НазваниеТемы').AsString;
+
+   // Получение названия Практики к которомой относитсья наша изменяемая Практическая             +
+   Edit1.Visible:=true;
+   Edit2.Visible:=true;
+   label2.Visible:=true;
+   label4.Visible:=true;
+   config.selectRequestSQL('SELECT * FROM Лекции WHERE КодЛекции='+IntToStr(updateKodLecture));
+   Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеЛекции').AsString;
+   Edit2.Text:=BD.Request.DataSet.FieldByName('НомерЛекции').AsString;
+
+    kodRazdela:=updateKodRazdela;
+    kodTema:=updateKodTema;
 end;
 
 end.

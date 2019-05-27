@@ -1,8 +1,8 @@
 object DataManagementCenter: TDataManagementCenter
-  Left = 92
-  Top = 260
+  Left = 45
+  Top = 332
   AutoScroll = False
-  Caption = #1062#1077#1085#1090#1088' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103
+  Caption = #1062#1077#1085#1090#1088' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103' '#1076#1072#1085#1085#1099#1084#1080
   ClientHeight = 631
   ClientWidth = 1164
   Color = clBtnFace

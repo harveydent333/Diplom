@@ -15,6 +15,7 @@ kodVoprosa,
 pathMutimedia,
 updateKodYchenika,
 updateKodTeacher:integer;
+currentDir:string;
 
 implementation
 

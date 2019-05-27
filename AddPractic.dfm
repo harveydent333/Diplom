@@ -1,6 +1,6 @@
 object AddPracticModalForm: TAddPracticModalForm
-  Left = 108
-  Top = 124
+  Left = 252
+  Top = 312
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
   ClientHeight = 310

@@ -8,8 +8,8 @@ object ResultForm: TResultForm
   Color = clBtnFace
   Constraints.MaxHeight = 345
   Constraints.MaxWidth = 753
-  Constraints.MinHeight = 341
-  Constraints.MinWidth = 745
+  Constraints.MinHeight = 345
+  Constraints.MinWidth = 753
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -1320,6 +1320,7 @@ object ResultForm: TResultForm
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClick = FormClick
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel

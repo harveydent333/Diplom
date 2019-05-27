@@ -1,8 +1,8 @@
 object TeacherCRUD: TTeacherCRUD
-  Left = 164
-  Top = 135
+  Left = 116
+  Top = 294
   AutoScroll = False
-  Caption = 'TeacherCRUD'
+  Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1103#1084#1080
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -1319,6 +1319,7 @@ object TeacherCRUD: TTeacherCRUD
     FF80000000000FFFFFFFF0000000FFFFFFE0000000003FFFFFFFF0000000FFFF
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13

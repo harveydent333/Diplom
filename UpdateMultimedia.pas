@@ -73,12 +73,7 @@ end;
 
 procedure TUpdateMultimediaModalForm.ComboBox1Change(Sender: TObject);
 begin
-    Edit1.Visible:=false;
-    label2.Visible:=false;
-    label3.Visible:=false;
-    ComboBox2.Visible:=false;
-    ComboBox2.Items.Clear;
-    label5.visible:=false;
+   defaultSetting;
 
     config.selectRequestSQL('SELECT * FROM Раздел WHERE НазваниеРаздела='+#39+ComboBox1.Text+#39);
     kodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;
@@ -91,12 +86,9 @@ begin
         BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;
-
     if ComboBox2.Items.Count>0 then
       begin                                                                      // Проверка на наличие тем в разделе
         label3.Visible:=true;
-        edit1.visible:=true;
-        label2.Visible:=true;
         Combobox2.Visible:=true;
         nameTema:=ComboBox2.Items.Strings[0];
         config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
@@ -124,13 +116,15 @@ begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
 
-    if Edit2.Text='' then label7.Visible:=true;
-    if Edit1.Text='' then label8.Visible:=true;
+    if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
+    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
+    if Path='' then
+       MessageBox(0,'Файл мультимедии не выбран!','', MB_OK+MB_ICONwarning);
 
     if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
         checkUniqueData;
 
-    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_multimedia<>false) and(unique_number_multimedia<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_multimedia<>false) and(unique_number_multimedia<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)and (Path<>'')) then
         saveDataInBD;
 end;
 
@@ -161,8 +155,6 @@ procedure TUpdateMultimediaModalForm.defaultSetting; // дефолтные
 begin
      Edit1.Visible:=false;
     Edit2.Visible:=false;
-    Edit1.Text:='';
-    Edit2.Text:='';
     label2.Visible:=false;
     label3.Visible:=false;
     label4.Visible:=false;
@@ -181,7 +173,11 @@ end;
 procedure TUpdateMultimediaModalForm.BitBtn1Click(Sender: TObject);
 var allPath:string; i:integer;
 begin
-   if OpenDialog1.Execute then allPath:=OpenDialog1.FileName;
+      PathFile:='';
+      allPath:='';
+      Path:='';
+   if OpenDialog1.Execute then
+      allPath:=OpenDialog1.FileName;
    for i:=Length(allPath) downto 1 do
     if allPath[i]<>'\' then Path:=Path+allPath[i] else break;
    Path:=ReverseString(path);

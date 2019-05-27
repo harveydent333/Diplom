@@ -1,6 +1,6 @@
 object MenuMultimedia: TMenuMultimedia
-  Left = 339
-  Top = 336
+  Left = 161
+  Top = 244
   AutoScroll = False
   Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 643
@@ -4650,6 +4650,7 @@ object MenuMultimedia: TMenuMultimedia
     Flat = True
     ParentShowHint = False
     ShowHint = True
+    OnClick = SpeedButton4Click
   end
   object Label1: TLabel
     Left = 48
@@ -4702,7 +4703,7 @@ object MenuMultimedia: TMenuMultimedia
     Top = 480
     Width = 505
     Height = 49
-    Caption = #1053#1072#1095#1072#1090#1100' '#1088#1077#1096#1077#1085#1080#1077
+    Caption = #1053#1072#1095#1072#1090#1100' '#1087#1088#1086#1089#1084#1086#1090#1088
     Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -4758,6 +4759,7 @@ object MenuMultimedia: TMenuMultimedia
     TabOrder = 0
     Text = 'ComboBox1'
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
     Left = 48
@@ -4775,6 +4777,7 @@ object MenuMultimedia: TMenuMultimedia
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox2Change
+    OnKeyPress = ComboBox2KeyPress
   end
   object ComboBox3: TComboBox
     Left = 48
@@ -4792,5 +4795,6 @@ object MenuMultimedia: TMenuMultimedia
     Text = 'ComboBox3'
     Visible = False
     OnChange = ComboBox3Change
+    OnKeyPress = ComboBox3KeyPress
   end
 end

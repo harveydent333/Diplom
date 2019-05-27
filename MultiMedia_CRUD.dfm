@@ -1,6 +1,6 @@
 object MultiMediaCRUD: TMultiMediaCRUD
-  Left = 456
-  Top = 327
+  Left = 332
+  Top = 196
   AutoScroll = False
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 643
@@ -4726,6 +4726,11 @@ object MultiMediaCRUD: TMultiMediaCRUD
         FieldName = #1053#1086#1084#1077#1088#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
         Title.Alignment = taCenter
         Title.Caption = #8470' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
+        Title.Font.Charset = RUSSIAN_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -24
+        Title.Font.Name = 'Georgia'
+        Title.Font.Style = [fsBold]
         Width = 250
         Visible = True
       end
@@ -4735,6 +4740,11 @@ object MultiMediaCRUD: TMultiMediaCRUD
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
         Title.Alignment = taCenter
         Title.Caption = #1056#1072#1079#1076#1077#1083
+        Title.Font.Charset = RUSSIAN_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -24
+        Title.Font.Name = 'Georgia'
+        Title.Font.Style = [fsBold]
         Width = 300
         Visible = True
       end
@@ -4744,6 +4754,11 @@ object MultiMediaCRUD: TMultiMediaCRUD
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
         Title.Alignment = taCenter
         Title.Caption = #1058#1077#1084#1099
+        Title.Font.Charset = RUSSIAN_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -24
+        Title.Font.Name = 'Georgia'
+        Title.Font.Style = [fsBold]
         Width = 250
         Visible = True
       end
@@ -4753,6 +4768,11 @@ object MultiMediaCRUD: TMultiMediaCRUD
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
         Title.Alignment = taCenter
         Title.Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
+        Title.Font.Charset = RUSSIAN_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -24
+        Title.Font.Name = 'Georgia'
+        Title.Font.Style = [fsBold]
         Width = 320
         Visible = True
       end>

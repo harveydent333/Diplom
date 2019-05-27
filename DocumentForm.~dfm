@@ -1,6 +1,6 @@
 object Shyrnal: TShyrnal
-  Left = 82
-  Top = 281
+  Left = 139
+  Top = 273
   AutoScroll = False
   Caption = #1046#1091#1088#1085#1072#1083
   ClientHeight = 642

@@ -7,7 +7,7 @@ Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUn
 
 var  x:integer;
 countBall,exitPoint:integer;
-posetivAnswer, userAnswer:string;
+posetivAnswer, userAnswer, getShyrnalData:string;
 
 procedure selectRequestSQL(request:string);
 procedure evaluationCalculation(result:real);

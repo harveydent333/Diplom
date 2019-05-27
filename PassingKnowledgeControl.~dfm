@@ -1,6 +1,6 @@
 object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
-  Left = 217
-  Top = 92
+  Left = 232
+  Top = 39
   Width = 896
   Height = 870
   BorderIcons = [biMinimize, biMaximize]

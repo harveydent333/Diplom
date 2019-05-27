@@ -10,7 +10,6 @@ uses
 
 type
   TAdd_Questions = class(TForm)
-    DBGrid1: TDBGrid;
     Label1: TLabel;
     Image1: TImage;
     SpeedButton1: TSpeedButton;
@@ -197,7 +196,11 @@ begin
 end;
 
 procedure TAdd_Questions.BitBtn6Click(Sender: TObject);
+var temp:word;
 begin
+ temp:=MessageBox(0,'Вы точно хотите сбросить данные вопроса?','',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+ begin
   with Add_Questions.VariantsQuestionSingle1 do
             begin
                countQuestion:=3;
@@ -212,6 +215,7 @@ begin
                Memo9.Visible:=false; label9.Visible:=false; RadioButton9.Visible:=false;
                Memo10.Visible:=false; label10.Visible:=false; RadioButton10.Visible:=false;
             end;
+ end;
 end;
 
 procedure TAdd_Questions.BitBtn3Click(Sender: TObject);
@@ -280,9 +284,15 @@ begin
        memoText:='Вопрос '+IntToStr(random(999999))
     else memoText:=Add_Questions.Memo1.Text;
 
-    config.execRequestSQL('UPDATE Вопросы SET КоличествоОтветов='+IntToStr(countQuestion)+', СодержаниеВопроса='+#39+memoText+#39+', ВариантыОтветов='+
-    #39+varianti+#39+', ВерныйОтвет='+#39+otvet+#39+' WHERE КодВопроса='+IntToStr(kodVoprosa));
+    config.execRequestSQL('UPDATE Вопросы SET '+
+      ' КоличествоОтветов='+IntToStr(countQuestion)+','+
+      ' СодержаниеВопроса='+#39+memoText+#39+','+
+      ' ВариантыОтветов='+#39+varianti+#39+','+
+      ' ВерныйОтвет='+#39+otvet+#39+
+      ' WHERE КодВопроса='+IntToStr(kodVoprosa)
+    );
 
+    MessageBox(0,'Данные вопроса были успешно обновлены!','', MB_OK+MB_ICONINFORMATION);
 
     Add_Questions.ListBox1.Clear;
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));

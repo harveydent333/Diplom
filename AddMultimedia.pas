@@ -108,8 +108,8 @@ begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
 
-    if Edit2.Text='' then label7.Visible:=true;
-    if Edit1.Text='' then label8.Visible:=true;
+    if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
+    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
     if Path='' then
       MessageBox(0,'Файл мультимедии не выбран!','', MB_OK+MB_ICONwarning);
 
@@ -187,7 +187,11 @@ end;
 procedure TAddMultimediaModalForm.BitBtn1Click(Sender: TObject);
 var allPath:string; i:integer;
 begin
-   if OpenDialog1.Execute then allPath:=OpenDialog1.FileName;
+      PathFile:='';
+      allPath:='';
+      Path:='';
+   if OpenDialog1.Execute then
+      allPath:=OpenDialog1.FileName;
    for i:=Length(allPath) downto 1 do
     if allPath[i]<>'\' then Path:=Path+allPath[i] else break;
    Path:=ReverseString(path);

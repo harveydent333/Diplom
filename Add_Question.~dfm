@@ -1,6 +1,6 @@
 object Add_Questions: TAdd_Questions
-  Left = 58
-  Top = 159
+  Left = 52
+  Top = 167
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 672
@@ -6187,7 +6187,7 @@ object Add_Questions: TAdd_Questions
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
   end
   object ListBox1: TListBox
     Left = 0
@@ -6201,21 +6201,8 @@ object Add_Questions: TAdd_Questions
     Font.Style = []
     ItemHeight = 23
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     OnClick = ListBox1Click
-  end
-  object DBGrid1: TDBGrid
-    Left = 832
-    Top = 84
-    Width = 329
-    Height = 57
-    DataSource = BD.Request
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
   end
   inline VariantsQuestionSingle1: TVariantsQuestionSingle
     Left = 280
@@ -6230,7 +6217,7 @@ object Add_Questions: TAdd_Questions
     Font.Style = []
     ParentColor = False
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
     Visible = False
     inherited Label4: TLabel
       Visible = True
@@ -6257,7 +6244,7 @@ object Add_Questions: TAdd_Questions
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 3
     OnClick = Button1Click
   end
   object Button2: TButton
@@ -6272,7 +6259,7 @@ object Add_Questions: TAdd_Questions
     Font.Name = 'Georgia'
     Font.Style = []
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 4
     OnClick = Button2Click
   end
   inline VariantsQuestionMore1: TVariantsQuestionMore
@@ -6280,7 +6267,7 @@ object Add_Questions: TAdd_Questions
     Top = 184
     Width = 905
     Height = 473
-    TabOrder = 6
+    TabOrder = 5
     Visible = False
   end
   object Panel2: TPanel
@@ -6289,7 +6276,7 @@ object Add_Questions: TAdd_Questions
     Width = 875
     Height = 40
     Color = clWhite
-    TabOrder = 7
+    TabOrder = 6
     Visible = False
     object BitBtn1: TBitBtn
       Left = 10
@@ -6336,7 +6323,7 @@ object Add_Questions: TAdd_Questions
     Width = 875
     Height = 40
     Color = clWhite
-    TabOrder = 8
+    TabOrder = 7
     Visible = False
     object BitBtn5: TBitBtn
       Left = 10

@@ -74,6 +74,7 @@ procedure TLectureCRUD.SpeedButton7Click(Sender: TObject); // Удаление лекции
 begin
     config.execRequestSQL('DELETE FROM Лекции WHERE НазваниеЛекции='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString+#39);
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные лекции были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TLectureCRUD.SpeedButton8Click(Sender: TObject);

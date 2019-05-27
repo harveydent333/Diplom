@@ -1,6 +1,6 @@
 object ResultForm: TResultForm
-  Left = 470
-  Top = 84
+  Left = 322
+  Top = 218
   AutoScroll = False
   Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090
   ClientHeight = 307
@@ -8,8 +8,8 @@ object ResultForm: TResultForm
   Color = clBtnFace
   Constraints.MaxHeight = 345
   Constraints.MaxWidth = 753
-  Constraints.MinHeight = 341
-  Constraints.MinWidth = 745
+  Constraints.MinHeight = 345
+  Constraints.MinWidth = 753
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -1362,7 +1362,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '123'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clRed
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
@@ -1453,7 +1453,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '123'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clLime
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
@@ -1479,7 +1479,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '12'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clLime
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
@@ -1505,7 +1505,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '123'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clRed
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
@@ -1531,7 +1531,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '12'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clRed
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
@@ -1583,7 +1583,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '12'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clLime
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []
@@ -1609,7 +1609,7 @@ object ResultForm: TResultForm
       Height = 23
       Caption = '23'
       Font.Charset = RUSSIAN_CHARSET
-      Font.Color = clLime
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'Georgia'
       Font.Style = []

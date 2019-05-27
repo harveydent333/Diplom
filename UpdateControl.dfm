@@ -1,8 +1,8 @@
 object UpdateControlModalForm: TUpdateControlModalForm
-  Left = 517
-  Top = 277
+  Left = 390
+  Top = 336
   AutoScroll = False
-  Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1047#1085#1072#1085#1080#1081
+  Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 310
   ClientWidth = 644
   Color = clBtnFace
@@ -1319,6 +1319,7 @@ object UpdateControlModalForm: TUpdateControlModalForm
     FF80000000000FFFFFFFF0000000FFFFFFE0000000003FFFFFFFF0000000FFFF
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -4107,8 +4108,8 @@ object UpdateControlModalForm: TUpdateControlModalForm
   object Label6: TLabel
     Left = 128
     Top = 120
-    Width = 393
-    Height = 108
+    Width = 355
+    Height = 18
     Alignment = taCenter
     Caption = #1055#1086#1083#1077' '#1085#1086#1084#1077#1088' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081' '#1080#1084#1077#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1094#1080#1092#1088#1099
     Font.Charset = RUSSIAN_CHARSET

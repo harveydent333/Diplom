@@ -46,6 +46,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure processingSingleQuestion;
     procedure processingMoreQuestion;
@@ -252,6 +253,14 @@ begin
     AuthorizationData.freeDataUser;
     AuthorizationForm.Visible:=true;;
     AuthorizationForm.Position:=poDesktopCenter;
+    MenuControl.Visible:=false;
+end;
+
+procedure TMenuControl.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    MainMenu.show;
+    MainMenu.position:=poDesktopCenter;
     MenuControl.Visible:=false;
 end;
 

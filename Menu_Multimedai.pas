@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, jpeg, ExtCtrls;
+  Dialogs, StdCtrls, Buttons, jpeg, ExtCtrls, Grids, DBGrids;
 
 type
   TMenuMultimedia = class(TForm)
@@ -31,6 +31,10 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -45,7 +49,7 @@ var
 implementation
 
 uses basa_dan, Result, config, ShellAPI, Unit2, Main_Menu,
-  AuthorizationData;
+  AuthorizationData, Title_Form;
 
 {$R *.dfm}
 
@@ -119,6 +123,7 @@ end;
 
 procedure TMenuMultimedia.ComboBox3Change(Sender: TObject);
 begin
+    config.rebootRequestsCRUD;
     config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+ComboBox3.Items.Strings[Combobox3.ItemIndex]+#39);
     SpeedButton1.Visible:=true;
     if FileExists('./'+BD.Request.DataSet.FieldByName('Путь').AsString+'.mp4') then
@@ -127,7 +132,7 @@ begin
       begin
         MessageBox(0,'Файл данной мультимедии отсутствует','Программирование и защита Web - приложений', MB_OK+MB_ICONWARNING);
         SpeedButton1.Enabled:=false;
-      end;
+      end;  
 end;
 
 procedure TMenuMultimedia.SpeedButton1Click(Sender: TObject);
@@ -157,6 +162,31 @@ begin
     MainMenu.show;
     MainMenu.position:=poDesktopCenter;
     MenuMultimedia.Visible:=false;
+end;
+
+procedure TMenuMultimedia.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+   temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений', MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then TitleForm.close;
+end;
+
+procedure TMenuMultimedia.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TMenuMultimedia.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TMenuMultimedia.ComboBox3KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

@@ -78,6 +78,7 @@ procedure TTeacherCRUD.SpeedButton1Click(Sender: TObject);
 begin
     config.execRequestSQL('DELETE FROM Учитель WHERE login='+#39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39);
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные учителя были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TTeacherCRUD.SpeedButton6Click(Sender: TObject);

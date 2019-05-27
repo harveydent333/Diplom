@@ -1,8 +1,8 @@
 object RegistrationTeacher: TRegistrationTeacher
-  Left = 141
-  Top = 247
+  Left = 127
+  Top = 420
   AutoScroll = False
-  Caption = 'RegistrationTeacher'
+  Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1091#1095#1080#1090#1077#1083#1103
   ClientHeight = 631
   ClientWidth = 1172
   Color = clBtnFace

@@ -71,9 +71,10 @@ bool:=false;
             checkOnThePresenceOfTheCompositionsOfYcheniks;
             MultimediaADO.Active:=bool;
             checkOnThePresenceOfTheCompositionsOfMultimedia;
+            TeacherADO.Active:=false;
+            TeacherADO.Active:=true;
+            checkOnThePresenceOfTheCompositionsOfTeachers;
             bool:=true;
-            TeacherADO.Active:=bool;
-
           end;
       end;
 end;
@@ -135,15 +136,13 @@ end;
 
 procedure checkOnThePresenceOfTheCompositionsOfTeachers;
 begin
-   if TeacherCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
+   if TeacherCRUD.DBGrid1.DataSource.DataSet.RecordCount = 1 then
       begin
           TeacherCRUD.SpeedButton1.Enabled:=false;
-          TeacherCRUD.SpeedButton7.Enabled:=false;
       end
     else
       begin
-          RazdelCRUD.SpeedButton6.Enabled:=true;
-          RazdelCRUD.SpeedButton7.Enabled:=true;
+          TeacherCRUD.SpeedButton1.Enabled:=true;
       end;
 end;
 

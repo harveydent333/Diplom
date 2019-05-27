@@ -31,6 +31,7 @@ type
     procedure SpeedButton8Click(Sender: TObject);
     procedure SpeedButton9Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure getDataControlForShyrnal;
     procedure getDataTemaForShyrnal;
@@ -240,8 +241,7 @@ procedure TMainMenu.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-        TitleForm.close;
+    if idyes=temp then TitleForm.close;
 end;
 
 procedure TMainMenu.SpeedButton3Click(Sender: TObject);
@@ -262,7 +262,6 @@ begin
             SpeedButton1.Visible:=false;
             SpeedButton1.Enabled:=false;
         end;
-
     BD.Request.DataSet.First;
     While (BD.Request.DataSet.Eof=false) do
         begin
@@ -275,6 +274,13 @@ begin
     MenuMultimedia.show;
     MenuMultimedia.Position:=poDesktopCenter;
     MainMenu.Visible:=false;
+end;
+
+procedure TMainMenu.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    MainMenu.Visible:=false;
+    AuthorizationForm.Show;
+    AuthorizationForm.Position:=poDesktopCenter;
 end;
 
 end.

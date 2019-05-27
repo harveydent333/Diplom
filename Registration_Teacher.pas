@@ -387,7 +387,7 @@ begin
         email.text:='';
         login.text:='';
         password.text:='';
-        MessageBox(0,'Учитель был успешно создан!','Регистриация учителя', MB_OK+MB_ICONINFORMATION);
+        MessageBox(0,'Преподаватель был успешно зарегистрирован!','Регистриация преподавателя', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 
@@ -518,7 +518,7 @@ begin
         label5.Visible:=false;
         label6.Visible:=false;
         label10.Visible:=false;
-        MessageBox(0,'Данные учителя были успешно изменены!','Редактирование учителя', MB_OK+MB_ICONINFORMATION);
+        MessageBox(0,'Данные преподаватель был успешно изменены!','Редактирование преподавателя', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 

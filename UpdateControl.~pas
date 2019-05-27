@@ -21,6 +21,10 @@ type
     Label2: TLabel;
     Edit2: TEdit;
     Label4: TLabel;
+    Timer1: TTimer;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
@@ -28,6 +32,8 @@ type
     procedure ComboBox2Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -134,7 +140,10 @@ procedure TUpdateControlModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_control:=false;
     unique_number_control:=false;
-    
+
+    if Edit2.Text='' then label7.Visible:=true;
+    if Edit1.Text='' then label8.Visible:=true;
+
     if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
         checkUniqueData;
 
@@ -192,7 +201,23 @@ end;
 procedure TUpdateControlModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
-    if not (Key in ['0'..'9', #8]) then Key:=#0;
+    if not (Key in ['0'..'9', #8]) then
+      begin
+        Key:=#0;
+        label6.Visible:=true;
+        label7.Visible:=false;
+      end;
+end;
+
+procedure TUpdateControlModalForm.Timer1Timer(Sender: TObject);
+begin
+    label6.Visible:=false;
+end;
+
+procedure TUpdateControlModalForm.Edit1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    label8.Visible:=false;
 end;
 
 end.

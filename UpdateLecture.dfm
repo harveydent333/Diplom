@@ -1,6 +1,6 @@
 object UpdateLectureModalForm: TUpdateLectureModalForm
-  Left = 478
-  Top = 517
+  Left = 362
+  Top = 383
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1083#1077#1082#1094#1080#1080
   ClientHeight = 310
@@ -1319,6 +1319,8 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     FF80000000000FFFFFFFF0000000FFFFFFE0000000003FFFFFFFF0000000FFFF
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
+  Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

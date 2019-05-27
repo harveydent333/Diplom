@@ -1,6 +1,6 @@
 object RegistrationForm: TRegistrationForm
-  Left = 448
-  Top = 283
+  Left = 141
+  Top = 113
   AutoScroll = False
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
   ClientHeight = 643
@@ -8323,7 +8323,7 @@ object RegistrationForm: TRegistrationForm
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    OnChange = last_nameChange
+    OnKeyPress = last_nameKeyPress
   end
   object first_name: TEdit
     Left = 368
@@ -8338,7 +8338,7 @@ object RegistrationForm: TRegistrationForm
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnChange = first_nameChange
+    OnKeyPress = first_nameKeyPress
   end
   object second_name: TEdit
     Left = 368
@@ -8353,7 +8353,7 @@ object RegistrationForm: TRegistrationForm
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    OnChange = second_nameChange
+    OnKeyPress = second_nameKeyPress
   end
   object ComboBox1: TComboBox
     Left = 360

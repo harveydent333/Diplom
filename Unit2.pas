@@ -115,6 +115,7 @@ begin
         begin
            AuthorizationData.getDataUser;
            MainMenu.show;
+           MainMenu.Position:=poDesktopCenter;
            AuthorizationForm.Visible:=false;
         end;
     with MainMenu do
@@ -126,6 +127,7 @@ begin
          SpeedButton2.Visible:=true;
          SpeedButton3.Visible:=false;
          SpeedButton10.top:=328;
+       //  MessageBox(0,'Авторизация прошла успешно. Добро пожаловать!','', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 
@@ -146,7 +148,11 @@ begin
                   inc(j);
               end;
         end;
-    config.selectRequestSQL('SELECT * FROM Ученик WHERE Имя='+#39+ar[2]+#39+' AND Фамилия='+#39+ar[1]+#39+' AND Отчество='+#39+ar[3]+#39+' AND КодГруппы='+IntToStr(ComboBox1.ItemIndex+1));
+    config.selectRequestSQL('SELECT * FROM Ученик WHERE Имя='+
+      #39+ar[2]+#39+' AND Фамилия='+
+      #39+ar[1]+#39+' AND Отчество='+
+      #39+ar[3]+#39+' AND КодГруппы='+IntToStr(ComboBox1.ItemIndex+1));
+      
     if BD.RequestSQL.IsEmpty then
         MessageBox(0,'Данный пользователь не найден!','Авторизация', MB_OK+MB_ICONwarning)
     else
@@ -154,6 +160,7 @@ begin
           KodUser:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;
           AuthorizationData.getDataUser;
           MainMenu.show;
+          MainMenu.Position:=poDesktopCenter;
           AuthorizationForm.Visible:=false;
       end;
     with MainMenu do

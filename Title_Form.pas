@@ -27,7 +27,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,7 +43,7 @@ uses Unit2, Menu_Lectures, Menu_Practic, Menu_Control, Tema_CRUD,
   Practic_CRUD, Razdel_CRUD, Lecture_CRUD, Control_CRUD, Ycheniki_CRUD,
   Main_Menu, Add_Question, EditLecture, config,
   MultiMedia_CRUD,
-  Menu_Multimedai, Media_Player;
+  Menu_Multimedai, Media_Player, UpdateUnit;
 
 
 {$R *.dfm}
@@ -90,13 +90,37 @@ procedure TTitleForm.SpeedButton2Click(Sender: TObject);
 var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-        TitleForm.close;
+    if idyes=temp then TitleForm.close;
 end;
 
-procedure TTitleForm.Button2Click(Sender: TObject);
+procedure TTitleForm.FormCreate(Sender: TObject);
 begin
-  Form1.Show;
+   currentDir:=GetCurrentDir;
+         getShyrnalData:='SELECT Ученик.Фамилия,'+
+                                  ' Ученик.Имя,'+
+                                  ' Ученик.Отчество,'+
+                                  ' Группа.НазваниеГруппы,'+
+                                  ' Тема.НазваниеТемы,'+
+                                  ' Контроль.НазваниеКонтроля,'+
+                                  ' ЖурналОценок.ДатаПроведения,'+
+                                  ' ЖурналОценок.Оценка'+
+                             ' FROM Группа'+
+                       ' INNER JOIN (Тема INNER JOIN ((Ученик INNER JOIN ЖурналОценок ON Ученик.КодУченика = ЖурналОценок.КодУченика)'+
+                       ' INNER JOIN Контроль'+
+                               ' ON ЖурналОценок.КодКонтроля = Контроль.КодКонтроля)'+
+                               ' ON (Тема.КодТемы = Контроль.КодТемы) AND (Тема.КодТемы = ЖурналОценок.КодТемы))'+
+                               ' ON Группа.КодГруппы = Ученик.КодГруппы';
 end;
+
+
+       {
+    getControlData:='SELECT Раздел.НазваниеРаздела,
+                          ' Тема.НазваниеТемы,'+
+                          ' Контроль.НомерКонтроля,'+
+                          ' Контроль.НазваниеКонтроля'+
+                     ' FROM (Раздел INNER JOIN Тема ON Раздел.КодРаздела = Тема.КодРаздела)'+
+               ' INNER JOIN Контроль ON Тема.КодТемы = Контроль.КодТемы'+
+                 ' ORDER BY Контроль.НомерКонтроля';     }
+
 
 end.

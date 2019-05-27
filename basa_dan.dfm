@@ -198,13 +198,13 @@ object BD: TBD
   end
   object QueryHelp: TDataSource
     DataSet = ADOQuery
-    Left = 160
-    Top = 136
+    Left = 120
+    Top = 112
   end
   object ADOQuery: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
-    Left = 232
-    Top = 136
+    Left = 192
+    Top = 112
   end
 end

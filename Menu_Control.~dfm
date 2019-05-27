@@ -1,6 +1,6 @@
 object MenuControl: TMenuControl
-  Left = 154
-  Top = 493
+  Left = -97
+  Top = 297
   AutoScroll = False
   Caption = #1050#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 643
@@ -1320,6 +1320,7 @@ object MenuControl: TMenuControl
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

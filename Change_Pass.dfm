@@ -1,6 +1,6 @@
 object ChangePass: TChangePass
-  Left = 382
-  Top = 562
+  Left = 379
+  Top = 363
   AutoScroll = False
   Caption = #1048#1079#1084#1077#1085#1077#1085#1080#1077' '#1087#1072#1088#1086#1083#1103
   ClientHeight = 310

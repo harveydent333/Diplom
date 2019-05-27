@@ -1,6 +1,6 @@
 object MenuLectures: TMenuLectures
-  Left = 61
-  Top = 225
+  Left = 6
+  Top = 296
   AutoScroll = False
   Caption = #1051#1077#1082#1094#1080#1080
   ClientHeight = 643
@@ -1319,6 +1319,7 @@ object MenuLectures: TMenuLectures
     FF80000000000FFFFFFFF0000000FFFFFFE0000000003FFFFFFFF0000000FFFF
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13

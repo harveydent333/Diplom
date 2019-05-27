@@ -108,8 +108,10 @@ begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
 
-    if Edit2.Text='' then label7.Visible:=true;
-    if Edit1.Text='' then label8.Visible:=true;
+    if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
+    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
+    if Path='' then
+      MessageBox(0,'Файл мультимедии не выбран!','', MB_OK+MB_ICONwarning);
 
     if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Path<>'')) then
       checkUniqueData;
@@ -123,7 +125,7 @@ begin
     config.execRequestSQL('INSERT INTO Мультимедиа (КодТемы, НазваниеМультимедии, НомерМультимедии, Путь) VALUES('+
       IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+', '+#39+'Multimedia\'+PathFile+#39+
     ')');
-    MessageBox(0,'Мультимедиа была успешно создана!','Создание Мультимедии', MB_OK+MB_ICONINFORMATION);
+    MessageBox(0,'Мультимедиа была успешно создана!','Создание мультимедии', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 
     defaultSetting;
@@ -135,7 +137,7 @@ begin
     if BD.RequestSQL.IsEmpty then
       unique_multimedia:=true
     else
-      MessageBox(0,'Данная Мультимедия уже сущетсвует!','Создание Мультимедии', MB_OK+MB_ICONwarning);
+      MessageBox(0,'Данная мультимедия уже сущетсвует!','Создание мультимедии', MB_OK+MB_ICONwarning);
 
     config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НомерМультимедии='+#39+Edit2.Text+#39);
     if BD.RequestSQL.IsEmpty then
@@ -185,7 +187,11 @@ end;
 procedure TAddMultimediaModalForm.BitBtn1Click(Sender: TObject);
 var allPath:string; i:integer;
 begin
-   if OpenDialog1.Execute then allPath:=OpenDialog1.FileName;
+      PathFile:='';
+      allPath:='';
+      Path:='';
+   if OpenDialog1.Execute then
+      allPath:=OpenDialog1.FileName;
    for i:=Length(allPath) downto 1 do
     if allPath[i]<>'\' then Path:=Path+allPath[i] else break;
    Path:=ReverseString(path);

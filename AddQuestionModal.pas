@@ -60,11 +60,11 @@ begin
 
         config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
         Add_Questions.ListBox1.Clear;
-        Add_Questions.DBGrid1.DataSource.DataSet.First;
-        While (Add_Questions.DBGrid1.DataSource.DataSet.Eof=false) do
+        BD.Request.DataSet.First;
+        While (BD.Request.DataSet.Eof=false) do
           begin
-            Add_Questions.ListBox1.Items.Add(Add_Questions.DBGrid1.DataSource.DataSet.FieldByName('СодержаниеВопроса').AsString);
-            Add_Questions.DBGrid1.DataSource.DataSet.Next;
+            Add_Questions.ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
+            BD.Request.DataSet.Next;
           end;
         Edit1.Text:='';
       end;

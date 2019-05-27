@@ -387,7 +387,7 @@ begin
         email.text:='';
         login.text:='';
         password.text:='';
-        MessageBox(0,'Учитель был успешно создан!','Регистриация учителя', MB_OK+MB_ICONINFORMATION);
+        MessageBox(0,'Преподаватель был успешно зарегистрирован!','Регистриация преподавателя', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 
@@ -480,18 +480,15 @@ begin
         good_edit4.Visible:=false;
         bed_edit4.Visible:=true;
       end;
-  {
+
     if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>'')and (login.text<>'')
     and (email.text<>'') and (unique_login_teacher=true) and (unique_email_teacher=true)) then
       begin
-        config.execRequestSQL('INSERT INTO Учитель(Фамилия, Имя, Отчество, login, email, pass) VALUES('+
-          #39+last_name.Text+#39+', '+
-          #39+first_name.Text+#39+', '+
-          #39+second_name.Text+#39+', '+
-          #39+login.Text+#39+', '+
-          #39+email.Text+#39+','+
-          #39+password.Text+#39+')'
-        );
+        config.execRequestSQL('UPDATE Учитель SET Фамилия='+#39+last_name.Text+#39+', '+
+          'Имя='+#39+first_name.Text+#39+', '+
+          'Отчество='+#39+second_name.Text+#39+', '+
+          'login='+#39+login.Text+#39+', '+
+          'email='+#39+email.Text+#39+' WHERE КодУчителя='+IntToStr(updateKodTeacher));
 
         config.rebootRequestsCRUD;
         label1.Visible:=false;
@@ -501,21 +498,18 @@ begin
         defolt_edit3.Visible:=true;
         defolt_edit4.Visible:=true;
         defolt_edit5.Visible:=true;
-        defolt_edit6.Visible:=true;
 
         good_edit1.Visible:=false;
         good_edit2.Visible:=false;
         good_edit3.Visible:=false;
         good_edit4.Visible:=false;
         good_edit5.Visible:=false;
-        good_edit6.Visible:=false;
 
         bed_edit1.Visible:=false;
         bed_edit2.Visible:=false;
         bed_edit3.Visible:=false;
         bed_edit4.Visible:=false;
         bed_edit5.Visible:=false;
-        bed_edit6.Visible:=false;
 
         label1.Visible:=false;
         label2.Visible:=false;
@@ -524,15 +518,8 @@ begin
         label5.Visible:=false;
         label6.Visible:=false;
         label10.Visible:=false;
-
-        last_name.Text:='';
-        first_name.Text:='';
-        second_name.text:='';
-        email.text:='';
-        login.text:='';
-        password.text:='';
-        MessageBox(0,'Учитель был успешно создан!','Регистриация учителя', MB_OK+MB_ICONINFORMATION);
-      end;  }
+        MessageBox(0,'Данные преподаватель был успешно изменены!','Редактирование преподавателя', MB_OK+MB_ICONINFORMATION);
+      end;
 end;
 
 end.

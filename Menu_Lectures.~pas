@@ -25,7 +25,6 @@ type
     Label5: TLabel;
     Label7: TLabel;
     SpeedButton1: TSpeedButton;
-    Label8: TLabel;
     procedure SpeedButton4Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
@@ -179,8 +178,7 @@ begin
       //  MenuLectures.Visible:=false;
         Memo1.Clear;
         Memo1.Lines.Add(BD.Request.DataSet.FieldByName('Содержание').AsString);
-        label8.Caption:=IntToStr(Edit_Lecture.Memo1.Lines.Count);
-        label8.Caption:=IntToStr(Round(Edit_Lecture.Memo1.Lines.Count/34));
+
         AllList:=Round(Memo1.Lines.Count/34)-1;
         for i:=0 to 34 do
           ArrayListText[1]:=ArrayListText[1]+Memo1.Lines[i];
@@ -203,6 +201,8 @@ begin
         Button1.Visible:=false;
         Button4.Visible:=false;
         Button5.Visible:=false;
+        Button7.Visible:=true;
+        Button8.Visible:=true;
         Button3.Left:=3;
       end;
     //

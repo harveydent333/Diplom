@@ -72,6 +72,7 @@ procedure TPracticCRUD.SpeedButton7Click(Sender: TObject); // Удаление лекции
 begin
     config.execRequestSQL('DELETE FROM Практические WHERE НазваниеПрактической='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеПрактической').AsString+#39);
     config.rebootRequestsCRUD;
+    MessageBox(0,'Данные практической работы были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TPracticCRUD.SpeedButton5Click(Sender: TObject);

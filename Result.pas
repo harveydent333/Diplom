@@ -34,6 +34,7 @@ type
     Label23: TLabel;
     BitBtn1: TBitBtn;
     procedure BitBtn1Click(Sender: TObject);
+    procedure FormClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,6 +51,12 @@ uses basa_dan, PassingKnowledgeControl;
 {$R *.dfm}
 
 procedure TResultForm.BitBtn1Click(Sender: TObject);
+begin
+    ResultForm.Close;
+    PassingKnowledgeControlForm.Visible:=False;
+end;
+
+procedure TResultForm.FormClick(Sender: TObject);
 begin
     ResultForm.Close;
     PassingKnowledgeControlForm.Visible:=False;

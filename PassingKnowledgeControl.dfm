@@ -1,5 +1,5 @@
 object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
-  Left = 232
+  Left = 251
   Top = 39
   Width = 896
   Height = 870
