@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, Buttons, jpeg, ExtCtrls, RpCon,
-  RpConDS, RpDefine, RpRave, QuickRpt, QRCtrls,
+  RpConDS, RpDefine, RpRave, QuickRpt, QRCtrls,ShellAPI,
   ComCtrls;
 
 type
@@ -74,6 +74,8 @@ type
     CheckBox3: TCheckBox;
     Image4: TImage;
     Label14: TLabel;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
@@ -91,6 +93,8 @@ type
     procedure Image2Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
     procedure Image4Click(Sender: TObject);
+    procedure CheckBox3Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -140,15 +144,20 @@ end;
 
 procedure TShyrnal.CheckBox1Click(Sender: TObject);
 begin
-    if CheckBox3.Checked=true then
-       DateTimePicker1.Enabled:=true
-    else
-       DateTimePicker1.Enabled:=false;
+  if CheckBox1.Checked=true then ComboBox1.Enabled:=true else ComboBox1.Enabled:=false;
 end;
 
 procedure TShyrnal.CheckBox2Click(Sender: TObject);
 begin
     if CheckBox2.Checked=true then ComboBox2.Enabled:=true else ComboBox2.Enabled:=false;
+end;
+
+procedure TShyrnal.CheckBox3Click(Sender: TObject);
+begin
+    if CheckBox3.Checked=true then
+       DateTimePicker1.Enabled:=true
+    else
+       DateTimePicker1.Enabled:=false;
 end;
 
 procedure TShyrnal.CheckBox4Click(Sender: TObject);
@@ -295,30 +304,35 @@ end;
 procedure TShyrnal.Image4Click(Sender: TObject);
 var default:string;
 begin
-default:=getShyrnalData+' WHERE 1=1';
-CheckBox1.Checked:=false;
-CheckBox2.Checked:=false;
-CheckBox3.Checked:=false;
-CheckBox4.Checked:=false;
-CheckBox5.Checked:=false;
-CheckBox6.Checked:=false;
-CheckBox7.Checked:=false;
-  if roleUser='teacher' then
-    begin
-       config.selectRequestSQL(default);
-       if((CheckBox5.Checked = true)
-        and (CheckBox6.Checked = true)
-        and (CheckBox7.Checked = true)
-        and (CheckBox1.Checked = true)
-        and (CheckBox2.Checked = true)
-        and (CheckBox4.Checked = true))
-       then
-        config.selectRequestSQL(getShyrnalData);
-    end;
-  if roleUser='stydent' then
-    begin
-       config.selectRequestSQL(getShyrnalData+' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39);
-    end;
+    default:=getShyrnalData+' WHERE 1=1';
+    CheckBox1.Checked:=false;
+    CheckBox2.Checked:=false;
+    CheckBox3.Checked:=false;
+    CheckBox4.Checked:=false;
+    CheckBox5.Checked:=false;
+    CheckBox6.Checked:=false;
+    CheckBox7.Checked:=false;
+    if roleUser='teacher' then
+      begin
+        config.selectRequestSQL(default);
+        if((CheckBox5.Checked = true)
+          and (CheckBox6.Checked = true)
+          and (CheckBox7.Checked = true)
+          and (CheckBox1.Checked = true)
+          and (CheckBox2.Checked = true)
+          and (CheckBox4.Checked = true))
+        then
+          config.selectRequestSQL(getShyrnalData);
+      end;
+    if roleUser='stydent' then
+      begin
+        config.selectRequestSQL(getShyrnalData+' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39);
+      end;
+end;
+
+procedure TShyrnal.SpeedButton2Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

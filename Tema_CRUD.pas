@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Label2: TLabel;
     DBGrid2: TDBGrid;
+    stydent_ON: TImage;
+    teacher_ON: TImage;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
@@ -27,6 +29,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,9 +42,7 @@ var
 implementation
 
 uses Title_Form, UpdateTema, UpdateUnit, config,
-  ControlCenter,
-  Unit2,
-  AuthorizationData;
+  ControlCenter, Unit2, AuthorizationData, ShellAPI;
 
 {$R *.dfm}
 
@@ -107,6 +108,11 @@ begin
     DataManagementCenter.show;
     DataManagementCenter.position:=poDesktopCenter;
     TemaCRUD.Visible:=false;
+end;
+
+procedure TTemaCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

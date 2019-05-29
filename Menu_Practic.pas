@@ -25,6 +25,8 @@ type
     Label5: TLabel;
     Label7: TLabel;
     SpeedButton1: TSpeedButton;
+    stydent_ON: TImage;
+    teacher_ON: TImage;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -33,6 +35,10 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox3Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -169,6 +175,26 @@ end;
 procedure TMenuPractic.SpeedButton1Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('.\Practic\'+namePractic+'.pdf'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TMenuPractic.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TMenuPractic.ComboBox1KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TMenuPractic.ComboBox2KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TMenuPractic.ComboBox3KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

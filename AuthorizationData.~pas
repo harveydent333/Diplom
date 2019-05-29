@@ -12,10 +12,11 @@ Good_Ball,Bed_Ball:real;
 
 procedure getDataUser;
 procedure freeDataUser;
-procedure getDataAuthUser;
+procedure setDataAuthUser;
 procedure SetNameAndFamilyAuthUsers;
 procedure defoltConfigRegistrationForm;
 procedure defoltConfigRegistrationTeacherForm;
+procedure setIconRole(stydent:boolean; teacher:boolean);
 
 implementation
 
@@ -27,29 +28,30 @@ uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
   AddControl,
   Manager_Users,
   Teacher_CRUD,
-  Registration_Teacher;
+  Registration_Teacher, Menu_Multimedai;
 
 procedure getDataUser;
 begin
     if AuthorizationForm.teacher_ON.Visible = true then
         begin
             config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
-            getDataAuthUser;            // Заполнение авторизованного пользователя данными
+            setDataAuthUser;            // Заполнение авторизованного пользователя данными
             SetNameAndFamilyAuthUsers;  // Заполнение Имя и Фамилии Авторизованным пользователям
             roleUser:='teacher';
         end;
 
     if AuthorizationForm.stydent_ON.Visible = true then
         begin
-            getDataAuthUser;            // Заполнение авторизованного пользователя данными
+            setDataAuthUser;            // Заполнение авторизованного пользователя данными
             SetNameAndFamilyAuthUsers; // Заполнение Имя и Фамилии Авторизованным пользователям
             KodUser:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;
             roleUser:='stydent';
+            setIconRole(true,false);
             groupUser:=IntToStr(AuthorizationForm.ComboBox1.ItemIndex+1);
         end;
 end;
 
-procedure getDataAuthUser;
+procedure setDataAuthUser;
 begin
     with BD.RequestSQL do
         begin
@@ -57,6 +59,67 @@ begin
             familyUser:=FieldByName('Фамилия').AsString;
             secondNameUser:=FieldByName('Отчество').AsString;
         end;
+end;
+
+procedure setIconRole(stydent:boolean; teacher:boolean);
+begin
+    MainMenu.teacher_ON.Visible:=teacher;
+    MainMenu.stydent_ON.Visible:=stydent;
+
+    ControlCRUD.teacher_ON.Visible:=teacher;
+    ControlCRUD.stydent_ON.Visible:=stydent;
+
+    DataManagementCenter.teacher_ON.Visible:=teacher;
+    DataManagementCenter.stydent_ON.Visible:=stydent;
+
+    LectureCRUD.teacher_ON.Visible:=teacher;
+    LectureCRUD.stydent_ON.Visible:=stydent;
+
+    MenuControl.teacher_ON.Visible:=teacher;
+    MenuControl.stydent_ON.Visible:=stydent;
+
+    MenuLectures.teacher_ON.Visible:=teacher;
+    MenuLectures.stydent_ON.Visible:=stydent;
+
+    MenuPractic.teacher_ON.Visible:=teacher;
+    MenuPractic.stydent_ON.Visible:=stydent;
+
+    MultimediaCRUD.teacher_ON.Visible:=teacher;
+    MultimediaCRUD.stydent_ON.Visible:=stydent;;
+
+    PracticCRUD.teacher_ON.Visible:=teacher;
+    PracticCRUD.stydent_ON.Visible:=stydent;
+
+    RazdelCRUD.teacher_ON.Visible:=teacher;
+    RazdelCRUD.stydent_ON.Visible:=stydent;
+
+    RegistrationForm.teacher_ON.Visible:=teacher;
+    RegistrationForm.stydent_ON.Visible:=stydent;
+
+    RegistrationTeacher.teacher_ON.Visible:=teacher;
+    RegistrationTeacher.stydent_ON.Visible:=stydent;
+
+    ManagerUsers.teacher_ON.Visible:=teacher;
+    ManagerUsers.stydent_ON.Visible:=stydent;
+
+    YchenikiCRUD.teacher_ON.Visible:=teacher;
+    YchenikiCRUD.stydent_ON.Visible:=stydent;
+
+    TeacherCRUD.teacher_ON.Visible:=teacher;
+    TeacherCRUD.stydent_ON.Visible:=stydent;
+
+    TemaCRUD.teacher_ON.Visible:=teacher;
+    TemaCRUD.stydent_ON.Visible:=stydent;
+
+    Add_Questions.teacher_ON.Visible:=teacher;
+    Add_Questions.stydent_ON.Visible:=stydent;
+
+    Shyrnal.teacher_ON.Visible:=teacher;
+    Shyrnal.stydent_ON.Visible:=stydent;
+
+    MenuMultimedia.teacher_ON.Visible:=teacher;
+    MenuMultimedia.stydent_ON.Visible:=stydent;
+
 end;
 
 procedure SetNameAndFamilyAuthUsers;
@@ -114,6 +177,9 @@ begin
 
     Shyrnal.Label1.Caption:=nameUser;
     Shyrnal.Label2.Caption:=familyUser;
+
+    MenuMultimedia.Label4.Caption:=nameUser;
+    MenuMultimedia.Label6.Caption:=familyUser;
 end;
 
 procedure freeDataUser;       // logOut

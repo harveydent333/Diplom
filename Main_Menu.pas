@@ -22,6 +22,8 @@ type
     Label1: TLabel;
     Label2: TLabel;
     SpeedButton3: TSpeedButton;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
@@ -32,6 +34,7 @@ type
     procedure SpeedButton9Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton7Click(Sender: TObject);
   private
     procedure getDataControlForShyrnal;
     procedure getDataTemaForShyrnal;
@@ -47,9 +50,7 @@ implementation
 
 uses ControlCenter, DocumentForm, Menu_Lectures, AuthorizationData, config,
   Unit2, Title_Form, Menu_Practic, Menu_Control,
-  Ycheniki_CRUD,
-  basa_dan,
-  Manager_Users, Menu_Multimedai;
+  Ycheniki_CRUD, basa_dan, Manager_Users, Menu_Multimedai, ShellAPI;
 
 {$R *.dfm}
 
@@ -285,6 +286,11 @@ begin
     MainMenu.Visible:=false;
     AuthorizationForm.Show;
     AuthorizationForm.Position:=poDesktopCenter;
+end;
+
+procedure TMainMenu.SpeedButton7Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

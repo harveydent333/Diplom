@@ -55,6 +55,8 @@ type
     first_name: TEdit;
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -68,6 +70,7 @@ type
     procedure loginKeyPress(Sender: TObject; var Key: Char);
     procedure passwordKeyPress(Sender: TObject; var Key: Char);
     procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -81,7 +84,7 @@ var
 implementation
 
 uses Unit2, Title_Form, Teacher_CRUD, AuthorizationData, config, basa_dan,
-  UpdateUnit, Change_Pass;
+  UpdateUnit, Change_Pass, ShellAPI;
 
 {$R *.dfm}
 
@@ -520,6 +523,11 @@ begin
         label10.Visible:=false;
         MessageBox(0,'ƒанные преподаватель был успешно изменены!','–едактирование преподавател€', MB_OK+MB_ICONINFORMATION);
       end;
+end;
+
+procedure TRegistrationTeacher.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

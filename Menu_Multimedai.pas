@@ -24,6 +24,8 @@ type
     SpeedButton1: TSpeedButton;
     Label5: TLabel;
     Label7: TLabel;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure ComboBox3Change(Sender: TObject);
@@ -35,6 +37,7 @@ type
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -187,6 +190,11 @@ procedure TMenuMultimedia.ComboBox3KeyPress(Sender: TObject;
   var Key: Char);
 begin
     if not (Key in []) then Key := #0;
+end;
+
+procedure TMenuMultimedia.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

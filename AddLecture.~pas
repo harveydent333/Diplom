@@ -33,6 +33,7 @@ type
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure Timer1Timer(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -113,8 +114,8 @@ begin
     unique_lecture:=false;
     unique_number_lecture:=false;
 
-    if Edit2.Text='' then label7.Visible:=true;
-    if Edit1.Text='' then label8.Visible:=true;
+    if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
+    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
 
     if ((Edit1.Text<>'') and (Edit2.Text<>'')) then
         checkUniqueData;
@@ -188,6 +189,11 @@ end;
 procedure TAddLectureModalForm.Timer1Timer(Sender: TObject);
 begin
     label6.Visible:=false;
+end;
+
+procedure TAddLectureModalForm.Edit1Change(Sender: TObject);
+begin
+    label8.Visible:=false;
 end;
 
 end.

@@ -21,6 +21,8 @@ type
     SpeedButton4: TSpeedButton;
     DBGrid2: TDBGrid;
     SpeedButton8: TSpeedButton;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
@@ -29,6 +31,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,7 +44,7 @@ var
 implementation
 
 uses Title_Form, AddLecture, UpdateLecture, config, UpdateUnit,
-  EditLecture, ControlCenter, Unit2, AuthorizationData;
+  EditLecture, ControlCenter, Unit2, AuthorizationData, ShellAPI;
 {$R *.dfm}
 
 procedure TLectureCRUD.SpeedButton1Click(Sender: TObject); // Добавление новой лекции
@@ -136,6 +139,11 @@ begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
         TitleForm.close;
+end;
+
+procedure TLectureCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

@@ -24,7 +24,6 @@ object BD: TBD
     Top = 8
   end
   object YchenikADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -63,7 +62,6 @@ object BD: TBD
     Top = 64
   end
   object TemaADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -82,7 +80,6 @@ object BD: TBD
     Top = 64
   end
   object RazdelADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -98,7 +95,6 @@ object BD: TBD
     Top = 64
   end
   object LectureADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -119,7 +115,6 @@ object BD: TBD
     Top = 64
   end
   object PracticADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -140,7 +135,6 @@ object BD: TBD
     Top = 64
   end
   object ControlADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -157,7 +151,6 @@ object BD: TBD
     Top = 16
   end
   object MultimediaADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -182,7 +175,6 @@ object BD: TBD
     Top = 64
   end
   object TeacherADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -198,13 +190,13 @@ object BD: TBD
   end
   object QueryHelp: TDataSource
     DataSet = ADOQuery
-    Left = 160
-    Top = 136
+    Left = 120
+    Top = 112
   end
   object ADOQuery: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
-    Left = 232
-    Top = 136
+    Left = 192
+    Top = 112
   end
 end

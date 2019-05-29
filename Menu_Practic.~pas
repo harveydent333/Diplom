@@ -25,6 +25,8 @@ type
     Label5: TLabel;
     Label7: TLabel;
     SpeedButton1: TSpeedButton;
+    stydent_ON: TImage;
+    teacher_ON: TImage;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -33,6 +35,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox3Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -135,6 +138,7 @@ begin
     MainMenu.show;
     MainMenu.position:=poDesktopCenter;
     MenuPractic.Visible:=false;
+    SpeedButton1.Visible:=false;
 end;
 
 procedure TMenuPractic.SpeedButton5Click(Sender: TObject);
@@ -168,6 +172,11 @@ end;
 procedure TMenuPractic.SpeedButton1Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('.\Practic\'+namePractic+'.pdf'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TMenuPractic.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

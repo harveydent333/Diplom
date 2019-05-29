@@ -24,7 +24,7 @@ type
     Label6: TLabel;
     Timer1: TTimer;
     Label7: TLabel;
-    Label8: TLabel;
+    Label9: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
@@ -34,6 +34,7 @@ type
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure Timer1Timer(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
+    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -115,7 +116,7 @@ begin
     unique_number_practic:=false;
 
     if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
-    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
+    if ((Edit1.Text='') and (Edit1.Visible=true)) then label9.Visible:=true;
 
     if ((Edit1.Text<>'') and (Edit2.Text<>'')) then
         checkUniqueData;
@@ -177,11 +178,11 @@ end;
 procedure TAddPracticModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
+label7.Visible:=false;
     if not (Key in ['0'..'9', #8]) then
       begin
         Key:=#0;
         label6.Visible:=true;
-        label7.Visible:=false;
       end;
 end;
 
@@ -192,7 +193,13 @@ end;
 
 procedure TAddPracticModalForm.Edit1Change(Sender: TObject);
 begin
-    label8.Visible:=false;
+    label9.Visible:=false;
+end;
+
+procedure TAddPracticModalForm.Edit1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    label9.Visible:=false;
 end;
 
 end.

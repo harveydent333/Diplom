@@ -19,6 +19,8 @@ type
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
     SpeedButton1: TSpeedButton;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -26,6 +28,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,9 +42,7 @@ var
 implementation
 
 uses basa_dan, Title_Form, Menu_Teacher, AuthorizationData, config, UpdateUnit,
-  ControlCenter,
-  Unit2,
-  Manager_Users;
+  ControlCenter, Unit2, Manager_Users, ShellAPI;
 
 {$R *.dfm}
 
@@ -142,6 +143,11 @@ var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then TitleForm.close;
+end;
+
+procedure TYchenikiCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

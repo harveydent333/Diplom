@@ -17,12 +17,15 @@ type
     SpeedButton4: TSpeedButton;
     SpeedButton1: TSpeedButton;
     SpeedButton6: TSpeedButton;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +38,7 @@ var
 implementation
 
 uses basa_dan, config, UpdateUnit, Unit2, Main_Menu, Title_Form,
-  Ycheniki_CRUD, Teacher_CRUD, AuthorizationData;
+  Ycheniki_CRUD, Teacher_CRUD, AuthorizationData, ShellAPI;
 
 {$R *.dfm}
 
@@ -85,6 +88,11 @@ begin
     TeacherCRUD.show;
     TeacherCRUD.Position:=poDesktopCenter;
     ManagerUsers.Visible:=false;
+end;
+
+procedure TManagerUsers.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

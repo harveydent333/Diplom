@@ -19,6 +19,8 @@ type
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
     SpeedButton1: TSpeedButton;
+    stydent_ON: TImage;
+    teacher_ON: TImage;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -26,6 +28,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +41,7 @@ var
 implementation
 
 uses Title_Form, Unit2, Manager_Users, Add_Question, basa_dan, config,
-  UpdateUnit, AuthorizationData, Menu_Teacher, Registration_Teacher;
+  UpdateUnit, AuthorizationData, Menu_Teacher, Registration_Teacher, ShellAPI;
 
 {$R *.dfm}
 
@@ -132,6 +135,11 @@ begin
           Caption:='Редактирование учителя';
       end;
     TeacherCRUD.Visible:=false;
+end;
+
+procedure TTeacherCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

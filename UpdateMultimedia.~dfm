@@ -5054,7 +5054,7 @@ object UpdateMultimediaModalForm: TUpdateMultimediaModalForm
     Top = 24
   end
   object OpenDialog1: TOpenDialog
-    InitialDir = '.\Multimedia'
+    InitialDir = '.\Mutimedia'
     Left = 56
     Top = 40
   end

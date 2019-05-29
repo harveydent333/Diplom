@@ -36,6 +36,8 @@ type
     SpeedButton1: TSpeedButton;
     DateTimePicker1: TDateTimePicker;
     Image1: TImage;
+    stydent_ON: TImage;
+    teacher_ON: TImage;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
@@ -47,6 +49,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     procedure processingSingleQuestion;
     procedure processingMoreQuestion;
@@ -69,7 +72,7 @@ uses config, Title_Form, UpdateUnit, PassingKnowledgeControl, basa_dan,
   Main_Menu,
   Unit2,
   AuthorizationData,
-  Result, Add_Question, PassControlMore, PassControlSingle;
+  Result, Add_Question, PassControlMore, PassControlSingle, ShellAPI;
 
 {$R *.dfm}
 
@@ -262,6 +265,11 @@ begin
     MainMenu.show;
     MainMenu.position:=poDesktopCenter;
     MenuControl.Visible:=false;
+end;
+
+procedure TMenuControl.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

@@ -1,6 +1,6 @@
 object UpdateRazdelModalForm: TUpdateRazdelModalForm
-  Left = 250
-  Top = 352
+  Left = 311
+  Top = 346
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
   ClientHeight = 310
@@ -5194,6 +5194,7 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
     FFFFFF000000FFFFFFFFFFFFFFFE00001FFFC007FFFFFFFFFFFFFFFFFFFFFF00
     0000FFFFFFFFFFFFFFFF80003FFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000}
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13

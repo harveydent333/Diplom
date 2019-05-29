@@ -5026,6 +5026,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 3
     ParentFont = False
     TabOrder = 4
     Visible = False

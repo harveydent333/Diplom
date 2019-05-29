@@ -19,6 +19,8 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton6: TSpeedButton;
     SpeedButton7: TSpeedButton;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -26,6 +28,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,7 +44,7 @@ var
 implementation
 
 uses config, basa_dan, ControlCenter, Title_Form, Unit2, AuthorizationData,
-  AddMultimedia, UpdateUnit, UpdateMultimedia;
+  AddMultimedia, UpdateUnit, UpdateMultimedia, ShellAPI;
 
 {$R *.dfm}
 
@@ -135,6 +138,7 @@ begin
     MultiMediaCRUD.Visible:=false;
     DataManagementCenter.show;
     DataManagementCenter.position:=poDesktopCenter;
+    SetCurrentDir(currentDir);
 end;
 
 procedure TMultiMediaCRUD.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -151,6 +155,7 @@ begin
     AuthorizationForm.Visible:=true;;
     AuthorizationForm.Position:=poDesktopCenter;
     MultimediaCRUD.Visible:=false;
+    SetCurrentDir(currentDir);
 end;
 
 procedure TMultiMediaCRUD.SpeedButton4Click(Sender: TObject);
@@ -159,6 +164,11 @@ begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
         TitleForm.close;
+end;
+
+procedure TMultiMediaCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

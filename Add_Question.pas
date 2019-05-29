@@ -36,6 +36,8 @@ type
     BitBtn6: TBitBtn;
     BitBtn7: TBitBtn;
     BitBtn8: TBitBtn;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -53,6 +55,7 @@ type
     procedure BitBtn5Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,8 +69,7 @@ var
 implementation
 
 uses Unit3, Unit2, Title_Form, Control, Main_Menu, UpdateUnit, config,
-  QuestionsMemo, AddQuestionModal,
-  Control_CRUD, QuestionsMoreMemo;
+  QuestionsMemo, AddQuestionModal, Control_CRUD, QuestionsMoreMemo, ShellAPI;
 
 {$R *.dfm}
 
@@ -362,28 +364,35 @@ end;
 
 procedure TAdd_Questions.Button2Click(Sender: TObject);
 begin
-  if ListBox1.Items.Count=0 then
+    if ListBox1.Items.Count=0 then
+      Button2.Enabled:=false;
+
+    config.execRequestSQL('DELETE FROM Вопросы WHERE КодВопроса='+IntToStr(kodVoprosa));
+    ListBox1.Clear;
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+    ListBox1.Clear;
+
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
+        begin
+          ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
+          BD.Request.DataSet.Next;
+        end;
+
     Button2.Enabled:=false;
-  config.execRequestSQL('DELETE FROM Вопросы WHERE КодВопроса='+IntToStr(kodVoprosa));
-  Add_Questions.ListBox1.Clear;
-  config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
-       with Add_Questions do
-                begin
-                    ListBox1.Clear;
-                    BD.Request.DataSet.First;
-                    While (BD.Request.DataSet.Eof=false) do
-                        begin
-                            ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
-                            BD.Request.DataSet.Next;
-                        end;
-                end;
-       Button2.Enabled:=false;
-        VariantsQuestionSingle1.Visible:=false;
+    VariantsQuestionSingle1.Visible:=false;
     VariantsQuestionMore1.Visible:=false;
+
     Panel1.Visible:=false;
     Panel2.Visible:=false;
     Memo1.Clear;
     Memo1.ReadOnly:=true;
+    MessageBox(0,'Вопрос был успешно удален! ','', MB_OK+MB_ICONINFORMATION);
+end;
+
+procedure TAdd_Questions.SpeedButton2Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

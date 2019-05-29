@@ -24,6 +24,9 @@ type
     Label3: TLabel;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
+    Label1: TLabel;
+    Image2: TImage;
+    SpeedButton4: TSpeedButton;
     procedure SpeedButton2Click(Sender: TObject);
     procedure stydent_OFFClick(Sender: TObject);
     procedure teacher_OFFClick(Sender: TObject);
@@ -36,6 +39,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton4Click(Sender: TObject);
   private
     procedure teacherAuthorization;
     procedure stydentAuthorization;
@@ -49,7 +53,7 @@ var
 implementation
 
 uses AuthorizationData, Title_Form, config, Main_Menu,
-  Restore_Account;
+  Restore_Account, ShellAPI;
 
 {$R *.dfm}
 
@@ -127,7 +131,7 @@ begin
          SpeedButton2.Visible:=true;
          SpeedButton3.Visible:=false;
          SpeedButton10.top:=328;
-       //  MessageBox(0,'јвторизаци€ прошла успешно. ƒобро пожаловать!','', MB_OK+MB_ICONINFORMATION);
+         MessageBox(0,'јвторизаци€ под учетной записью преподавател€ пройдена успешно!','', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 
@@ -228,6 +232,11 @@ end;
 procedure TAuthorizationForm.ComboBox2KeyPress(Sender: TObject;var Key: Char);
 begin
     if not (Key in []) then Key := #0;
+end;
+
+procedure TAuthorizationForm.SpeedButton4Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

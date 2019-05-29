@@ -110,7 +110,12 @@ end;
 
 procedure TUpdateLectureModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('UPDATE Лекции SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеЛекции='+#39+Edit1.Text+#39+', НомерЛекции='+#39+Edit2.Text+#39+' WHERE КодЛекции ='+IntToStr(updateKodLecture));
+    config.execRequestSQL('UPDATE Лекции SET '+
+      ' КодТемы='+#39+IntToStr(kodTema)+#39+','+
+      ' НазваниеЛекции='+#39+Edit1.Text+#39+','+
+      ' НомерЛекции='+#39+Edit2.Text+#39+
+      ' WHERE КодЛекции ='+IntToStr(updateKodLecture)
+    );
     MessageBox(0,'Лекция была успешно Изменена!','Редактирование Лекции', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 

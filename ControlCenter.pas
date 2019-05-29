@@ -20,6 +20,9 @@ type
     SpeedButton7: TSpeedButton;
     SpeedButton8: TSpeedButton;
     SpeedButton9: TSpeedButton;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
+    SpeedButton10: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
@@ -30,6 +33,7 @@ type
     procedure SpeedButton7Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton9Click(Sender: TObject);
+    procedure SpeedButton10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,7 +45,7 @@ var
 
 implementation
 
-uses Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD, Control_CRUD,
+uses Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD, Control_CRUD, ShellAPI,
   Title_Form,
   Unit2,
   Main_Menu,
@@ -127,6 +131,11 @@ begin
     MultiMediaCRUD.show;
     MultiMediaCRUD.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
+end;
+
+procedure TDataManagementCenter.SpeedButton10Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

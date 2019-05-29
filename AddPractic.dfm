@@ -2093,7 +2093,7 @@ object AddPracticModalForm: TAddPracticModalForm
     Transparent = True
     Visible = False
   end
-  object Label8: TLabel
+  object Label9: TLabel
     Left = 520
     Top = 200
     Width = 12
@@ -2123,6 +2123,7 @@ object AddPracticModalForm: TAddPracticModalForm
     TabOrder = 0
     Visible = False
     OnChange = Edit1Change
+    OnKeyPress = Edit1KeyPress
   end
   object Panel2: TPanel
     Left = 112

@@ -20,6 +20,8 @@ type
     Label1: TLabel;
     Label2: TLabel;
     DBGrid21: TDBGrid;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
@@ -27,6 +29,7 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,7 +42,7 @@ var
 implementation
 
 uses AddPractic, Title_Form, updateUnit, config, UpdatePractic,
-  Unit2, ControlCenter, AuthorizationData;
+  Unit2, ControlCenter, AuthorizationData, ShellAPI;
 {$R *.dfm}
 
 procedure TPracticCRUD.SpeedButton1Click(Sender: TObject);  // Добавление новой практики
@@ -105,6 +108,11 @@ begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений', MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
       TitleForm.close;
+end;
+
+procedure TPracticCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

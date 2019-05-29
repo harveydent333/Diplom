@@ -177,11 +177,11 @@ end;
 procedure TAddControlModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
+label7.Visible:=false;
     if not (Key in ['0'..'9', #8]) then
       begin
         Key:=#0;
         label6.Visible:=true;
-        label7.Visible:=false;
       end;
 end;
 
@@ -193,7 +193,7 @@ end;
 procedure TAddControlModalForm.Edit1KeyPress(Sender: TObject;
   var Key: Char);
 begin
-    label8.Visible:=true;
+    label8.Visible:=false;
 end;
 
 end.

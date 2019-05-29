@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, jpeg, ExtCtrls, basa_dan, Buttons, StdCtrls, config;
+  Dialogs, Grids, DBGrids, jpeg, ExtCtrls, basa_dan, Buttons, StdCtrls,ShellAPI, config;
 
 type
   TRazdelCRUD = class(TForm)
@@ -20,6 +20,8 @@ type
     Label2: TLabel;
     Label1: TLabel;
     DBGrid2: TDBGrid;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton7Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -27,6 +29,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,6 +109,11 @@ begin
     AuthorizationForm.Visible:=true;;
     AuthorizationForm.Position:=poDesktopCenter;
     RazdelCRUD.Visible:=false;
+end;
+
+procedure TRazdelCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

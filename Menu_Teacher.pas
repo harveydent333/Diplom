@@ -38,6 +38,8 @@ type
     Label9: TLabel;
     Label10: TLabel;
     SpeedButton6: TSpeedButton;
+    stydent_ON: TImage;
+    teacher_ON: TImage;
     procedure last_name3Change(Sender: TObject);
     procedure first_name3Change(Sender: TObject);
     procedure second_name3Change(Sender: TObject);
@@ -52,6 +54,7 @@ type
     procedure last_nameKeyPress(Sender: TObject; var Key: Char);
     procedure first_nameKeyPress(Sender: TObject; var Key: Char);
     procedure second_nameKeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,7 +68,7 @@ var
 implementation
 
 uses Unit3, basa_dan, Unit2, Title_Form, config, Main_Menu,
-  Ycheniki_CRUD, UpdateUnit;
+  Ycheniki_CRUD, UpdateUnit, ShellAPI;
 
 {$R *.dfm}
 
@@ -353,6 +356,11 @@ begin
 
     if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
       label1.Visible:=false;
+end;
+
+procedure TRegistrationForm.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

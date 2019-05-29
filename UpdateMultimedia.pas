@@ -202,11 +202,11 @@ end;
 
 procedure TUpdateMultimediaModalForm.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
+   label7.Visible:=false;
    if not (Key in ['0'..'9', #8]) then
       begin
        Key:=#0;
        label6.Visible:=true;
-       label7.Visible:=false;
       end;
 end;
 

@@ -2154,6 +2154,7 @@ object AddLectureModalForm: TAddLectureModalForm
     ParentFont = False
     TabOrder = 2
     Visible = False
+    OnChange = Edit1Change
   end
   object Panel2: TPanel
     Left = 112
@@ -2719,6 +2720,7 @@ object AddLectureModalForm: TAddLectureModalForm
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 3
     ParentFont = False
     ParentShowHint = False
     ShowHint = True

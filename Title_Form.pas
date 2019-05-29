@@ -9,7 +9,7 @@ uses
 
 type
   TTitleForm = class(TForm)
-    Image1: TImage;
+    stydent_ON: TImage;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     Label1: TLabel;
@@ -24,11 +24,18 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    Image3: TImage;
+    SpeedButton5: TSpeedButton;
+    OpenDialog1: TOpenDialog;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
+    procedure openAuthorizationForm;
     { Private declarations }
   public
     { Public declarations }
@@ -45,40 +52,118 @@ uses Unit2, Menu_Lectures, Menu_Practic, Menu_Control, Tema_CRUD,
   MultiMedia_CRUD,
   Menu_Multimedai, Media_Player, UpdateUnit;
 
-
 {$R *.dfm}
 
 procedure TTitleForm.SpeedButton4Click(Sender: TObject);
+begin
+    Try
+      with BD.ADOConnection1 do
+        begin
+          Connected := false;
+          Connected := True;
+          config.rebootRequestsCRUD;
+          openAuthorizationForm;
+        end;
+    Except
+      MessageBox(0,'Не  удается подключиться к базе данных! ','', MB_OK+MB_ICONERROR);
+      SpeedButton4.Enabled:=false;
+    end;
+end;
+
+procedure TTitleForm.openAuthorizationForm;
 var i:integer; fio:string;
 begin
-   AuthorizationForm.Show;
-   AuthorizationForm.Position:=poDesktopCenter;
    TitleForm.Visible:=false;
-
-   AuthorizationForm.Position:=poDesktopCenter;
-
-   AuthorizationForm.ComboBox1.Clear;
-   AuthorizationForm.ComboBox2.Clear;
-   config.selectRequestSQL('SELECT * FROM Ученик WHERE КодГруппы=1');
-   BD.Request.DataSet.First;
-   for i:=1 to BD.Request.DataSet.RecordCount do
+   with AuthorizationForm do
       begin
-        with BD.Request.DataSet do
-          begin
-              fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
+          Show;
+          Position:=poDesktopCenter;
+          ComboBox1.Clear;
+          ComboBox2.Clear;
+
+          config.selectRequestSQL('SELECT * FROM Ученик WHERE КодГруппы=1');
+          BD.Request.DataSet.First;
+          for i:=1 to BD.Request.DataSet.RecordCount do
+              begin
+                with BD.Request.DataSet do
+                  begin
+                      fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
+                  end;
+                ComboBox2.Items.Add(fio);
+                BD.Request.DataSet.Next;
+              end;
+          ComboBox2.ItemIndex:=0;
+
+          config.selectRequestSQL('SELECT * FROM Группа');
+          BD.Request.DataSet.First;
+          for i:=1 to BD.Request.DataSet.RecordCount do
+            begin
+              ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеГруппы').AsString);
+              BD.Request.DataSet.Next;
+            end;
+          ComboBox1.ItemIndex:=0;
+      end;
+end;
+
+procedure TTitleForm.FormCreate(Sender: TObject);
+begin
+    currentDir:=GetCurrentDir;
+    getShyrnalData:='SELECT Ученик.Фамилия,'+
+                          ' Ученик.Имя,'+
+                          ' Ученик.Отчество,'+
+                          ' Группа.НазваниеГруппы,'+
+                          ' Тема.НазваниеТемы,'+
+                          ' Контроль.НазваниеКонтроля,'+
+                          ' ЖурналОценок.ДатаПроведения,'+
+                          ' ЖурналОценок.Оценка'+
+                     ' FROM Группа'+
+               ' INNER JOIN (Тема INNER JOIN ((Ученик INNER JOIN ЖурналОценок ON Ученик.КодУченика = ЖурналОценок.КодУченика)'+
+               ' INNER JOIN Контроль'+
+                       ' ON ЖурналОценок.КодКонтроля = Контроль.КодКонтроля)'+
+                       ' ON (Тема.КодТемы = Контроль.КодТемы) AND (Тема.КодТемы = ЖурналОценок.КодТемы))'+
+                       ' ON Группа.КодГруппы = Ученик.КодГруппы';
+end;
+
+procedure TTitleForm.Button1Click(Sender: TObject);
+begin
+    if OpenDialog1.Execute then
+      begin
+          Try
+            with BD.ADOConnection1 do
+              begin
+                  Connected := false;
+                  ConnectionString:= 'Provider=Microsoft.Jet.OLEDB.4.0;'+'Data Source='+OpenDialog1.FileName+';'+'Persist Security Info=false';
+                  Connected := True;
+                  config.rebootRequestsCRUD;
+                  SpeedButton4.Enabled:=false;
+                  MessageBox(0,'База данных успешно подключена! ','', MB_OK+MB_ICONINFORMATION);
+              end;
+          Except
+            MessageBox(0,'Не  удается подключиться к этой базе данных! ','', MB_OK+MB_ICONERROR);
+            SpeedButton4.Enabled:=false;
           end;
-        AuthorizationForm.ComboBox2.Items.Add(fio);
-        BD.Request.DataSet.Next;
       end;
-   AuthorizationForm.ComboBox2.ItemIndex:=0;
-   config.selectRequestSQL('SELECT * FROM Группа');
-   BD.Request.DataSet.First;
-   for i:=1 to BD.Request.DataSet.RecordCount do
+end;
+
+procedure TTitleForm.SpeedButton5Click(Sender: TObject);
+begin
+   if OpenDialog1.Execute then
       begin
-        AuthorizationForm.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеГруппы').AsString);
-        BD.Request.DataSet.Next;
+          Try
+            with BD.ADOConnection1 do
+              begin
+                  Connected := false;
+                  ConnectionString:= 'Provider=Microsoft.Jet.OLEDB.4.0;'+'Data Source='+OpenDialog1.FileName+';'+'Persist Security Info=false';
+                  Connected := True;
+                  config.rebootRequestsCRUD;
+                  SpeedButton4.Enabled:=true;
+                  MessageBox(0,'База данных успешно подключена! ','', MB_OK+MB_ICONINFORMATION);
+              end;
+          Except
+            MessageBox(0,'Не  удается подключиться к этой базе данных! ','', MB_OK+MB_ICONERROR);
+            SpeedButton4.Enabled:=false;
+          end;
       end;
-   AuthorizationForm.ComboBox1.ItemIndex:=0;
 end;
 
 procedure TTitleForm.SpeedButton1Click(Sender: TObject);
@@ -93,34 +178,19 @@ begin
     if idyes=temp then TitleForm.close;
 end;
 
-procedure TTitleForm.FormCreate(Sender: TObject);
+procedure TTitleForm.SpeedButton3Click(Sender: TObject);
 begin
-   currentDir:=GetCurrentDir;
-         getShyrnalData:='SELECT Ученик.Фамилия,'+
-                                  ' Ученик.Имя,'+
-                                  ' Ученик.Отчество,'+
-                                  ' Группа.НазваниеГруппы,'+
-                                  ' Тема.НазваниеТемы,'+
-                                  ' Контроль.НазваниеКонтроля,'+
-                                  ' ЖурналОценок.ДатаПроведения,'+
-                                  ' ЖурналОценок.Оценка'+
-                             ' FROM Группа'+
-                       ' INNER JOIN (Тема INNER JOIN ((Ученик INNER JOIN ЖурналОценок ON Ученик.КодУченика = ЖурналОценок.КодУченика)'+
-                       ' INNER JOIN Контроль'+
-                               ' ON ЖурналОценок.КодКонтроля = Контроль.КодКонтроля)'+
-                               ' ON (Тема.КодТемы = Контроль.КодТемы) AND (Тема.КодТемы = ЖурналОценок.КодТемы))'+
-                               ' ON Группа.КодГруппы = Ученик.КодГруппы';
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
+end.
 
-       {
-    getControlData:='SELECT Раздел.НазваниеРаздела,
+
+
+ {  getControlData:='SELECT Раздел.НазваниеРаздела,
                           ' Тема.НазваниеТемы,'+
                           ' Контроль.НомерКонтроля,'+
                           ' Контроль.НазваниеКонтроля'+
                      ' FROM (Раздел INNER JOIN Тема ON Раздел.КодРаздела = Тема.КодРаздела)'+
                ' INNER JOIN Контроль ON Тема.КодТемы = Контроль.КодТемы'+
                  ' ORDER BY Контроль.НомерКонтроля';     }
-
-
-end.

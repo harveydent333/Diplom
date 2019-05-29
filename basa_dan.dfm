@@ -5,26 +5,22 @@ object BD: TBD
   Height = 241
   Width = 692
   object ADOConnection1: TADOConnection
-    Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=F:\'#1044#1080 +
-      #1087#1083#1086#1084#1085#1072#1103' '#1088#1072#1073#1086#1090#1072'\'#1055#1088#1086#1075#1088#1072#1084#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1080' '#1079#1072#1097#1080#1090#1072' WEB '#1087#1088#1080#1083#1086#1078#1077#1085#1080#1081'\basaDan.' +
-      'mdb;Mode=Share Deny None;Persist Security Info=False;Jet OLEDB:S' +
-      'ystem database="";Jet OLEDB:Registry Path="";Jet OLEDB:Database ' +
-      'Password="";Jet OLEDB:Engine Type=5;Jet OLEDB:Database Locking M' +
-      'ode=1;Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk ' +
-      'Transactions=1;Jet OLEDB:New Database Password="";Jet OLEDB:Crea' +
-      'te System Database=False;Jet OLEDB:Encrypt Database=False;Jet OL' +
-      'EDB:Don'#39't Copy Locale on Compact=False;Jet OLEDB:Compact Without' +
-      ' Replica Repair=False;Jet OLEDB:SFP=False'
+      'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=basaD' +
+      'an.mdb;Mode=Share Deny None;Jet OLEDB:System database="";Jet OLE' +
+      'DB:Registry Path="";Jet OLEDB:Database Password="";Jet OLEDB:Eng' +
+      'ine Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:Global Pa' +
+      'rtial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=1;Jet OLEDB:' +
+      'New Database Password="";Jet OLEDB:Create System Database=False;' +
+      'Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don'#39't Copy Locale on ' +
+      'Compact=False;Jet OLEDB:Compact Without Replica Repair=False;Jet' +
+      ' OLEDB:SFP=False;'
     LoginPrompt = False
-    Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
     Left = 32
     Top = 8
   end
   object YchenikADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -63,7 +59,6 @@ object BD: TBD
     Top = 64
   end
   object TemaADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -82,7 +77,6 @@ object BD: TBD
     Top = 64
   end
   object RazdelADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -98,7 +92,6 @@ object BD: TBD
     Top = 64
   end
   object LectureADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -119,7 +112,6 @@ object BD: TBD
     Top = 64
   end
   object PracticADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -140,7 +132,6 @@ object BD: TBD
     Top = 64
   end
   object ControlADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -157,7 +148,6 @@ object BD: TBD
     Top = 16
   end
   object MultimediaADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -182,7 +172,6 @@ object BD: TBD
     Top = 64
   end
   object TeacherADO: TADOQuery
-    Active = True
     Connection = ADOConnection1
     CursorType = ctStatic
     Parameters = <>

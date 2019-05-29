@@ -5535,6 +5535,7 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
     Font.Height = -19
     Font.Name = 'Georgia'
     Font.Style = []
+    MaxLength = 3
     ParentFont = False
     TabOrder = 4
     OnKeyPress = Edit2KeyPress

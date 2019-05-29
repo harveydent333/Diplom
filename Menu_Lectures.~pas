@@ -25,6 +25,8 @@ type
     Label5: TLabel;
     Label7: TLabel;
     SpeedButton1: TSpeedButton;
+    teacher_ON: TImage;
+    stydent_ON: TImage;
     procedure SpeedButton4Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
@@ -36,6 +38,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox3Change(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,11 +53,7 @@ var
 implementation
 
 uses Title_Form, config,
-  Main_Menu,
-  Unit2,
-  AuthorizationData,
-  UpdateUnit,
-  EditLecture;
+  Main_Menu, Unit2, AuthorizationData, UpdateUnit, EditLecture, ShellAPI;
 
 {$R *.dfm}
 
@@ -221,6 +220,11 @@ end;
 procedure TMenuLectures.ComboBox3KeyPress(Sender: TObject; var Key: Char);  // Выпадающий список "Лекция"
 begin
     if not (Key in []) then Key := #0;
+end;
+
+procedure TMenuLectures.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.
