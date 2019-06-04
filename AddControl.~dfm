@@ -1,8 +1,8 @@
 object AddControlModalForm: TAddControlModalForm
-  Left = 323
-  Top = 369
+  Left = 219
+  Top = 374
   AutoScroll = False
-  Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1050#1086#1085#1090#1088#1086#1083#1103
+  Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 310
   ClientWidth = 644
   Color = clBtnFace
@@ -1990,13 +1990,13 @@ object AddControlModalForm: TAddControlModalForm
   object Label2: TLabel
     Left = 120
     Top = 184
-    Width = 321
-    Height = 23
+    Width = 281
+    Height = 21
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2005,13 +2005,13 @@ object AddControlModalForm: TAddControlModalForm
   object Label5: TLabel
     Left = 128
     Top = 100
-    Width = 164
-    Height = 23
+    Width = 147
+    Height = 21
     Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1090#1077#1084'.'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2020,13 +2020,13 @@ object AddControlModalForm: TAddControlModalForm
   object Label1: TLabel
     Left = 120
     Top = 2
-    Width = 153
-    Height = 23
+    Width = 138
+    Height = 21
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2034,13 +2034,13 @@ object AddControlModalForm: TAddControlModalForm
   object Label3: TLabel
     Left = 120
     Top = 60
-    Width = 135
-    Height = 23
+    Width = 124
+    Height = 21
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1058#1077#1084#1091
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2049,13 +2049,13 @@ object AddControlModalForm: TAddControlModalForm
   object Label4: TLabel
     Left = 120
     Top = 130
-    Width = 293
-    Height = 23
+    Width = 260
+    Height = 21
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2064,14 +2064,14 @@ object AddControlModalForm: TAddControlModalForm
   object Label6: TLabel
     Left = 128
     Top = 120
-    Width = 349
-    Height = 18
+    Width = 309
+    Height = 17
     Alignment = taCenter
     Caption = #1055#1086#1083#1077' '#1085#1086#1084#1077#1088' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1084#1086#1078#1077#1090' '#1080#1084#1077#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1094#1080#1092#1088#1099
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
     Font.Height = -15
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2112,13 +2112,13 @@ object AddControlModalForm: TAddControlModalForm
     Left = 120
     Top = 29
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 23
+    ItemHeight = 21
     ParentFont = False
     TabOrder = 0
     OnChange = ComboBox1Change
@@ -2128,13 +2128,13 @@ object AddControlModalForm: TAddControlModalForm
     Left = 120
     Top = 82
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 23
+    ItemHeight = 21
     ParentFont = False
     TabOrder = 1
     Visible = False
@@ -2145,11 +2145,11 @@ object AddControlModalForm: TAddControlModalForm
     Left = 120
     Top = 216
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 2
@@ -2713,11 +2713,11 @@ object AddControlModalForm: TAddControlModalForm
     Left = 120
     Top = 154
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     MaxLength = 3
     ParentFont = False

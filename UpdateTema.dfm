@@ -1,6 +1,6 @@
 object UpdateTemaModalForm: TUpdateTemaModalForm
-  Left = 315
-  Top = 294
+  Left = 484
+  Top = 248
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1058#1077#1084#1099
   ClientHeight = 310
@@ -1324,7 +1324,7 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = -328
+    Left = -192
     Top = -280
     Width = 1337
     Height = 737
@@ -4580,13 +4580,13 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
   object Label2: TLabel
     Left = 120
     Top = 148
-    Width = 212
-    Height = 23
+    Width = 187
+    Height = 21
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1090#1077#1084#1099
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4594,13 +4594,13 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
   object Label3: TLabel
     Left = 120
     Top = 20
-    Width = 153
-    Height = 23
+    Width = 138
+    Height = 21
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4608,13 +4608,13 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
   object Label1: TLabel
     Left = 120
     Top = 92
-    Width = 187
-    Height = 23
+    Width = 169
+    Height = 21
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1058#1077#1084#1099
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4623,12 +4623,12 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
     Left = 520
     Top = 104
     Width = 12
-    Height = 37
+    Height = 27
     Caption = '*'
-    Font.Charset = DEFAULT_CHARSET
+    Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
-    Font.Height = -32
-    Font.Name = 'MS Sans Serif'
+    Font.Height = -24
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4638,28 +4638,28 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
     Left = 520
     Top = 168
     Width = 12
-    Height = 37
+    Height = 27
     Caption = '*'
-    Font.Charset = DEFAULT_CHARSET
+    Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
-    Font.Height = -32
-    Font.Name = 'MS Sans Serif'
+    Font.Height = -24
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
     Visible = False
   end
   object Label6: TLabel
-    Left = 104
+    Left = 128
     Top = 80
-    Width = 319
-    Height = 18
+    Width = 288
+    Height = 17
     Alignment = taCenter
     Caption = #1055#1086#1083#1077' '#1085#1086#1084#1077#1088' '#1090#1077#1084#1099' '#1084#1086#1078#1077#1090' '#1080#1084#1077#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1094#1080#1092#1088#1099
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
     Font.Height = -15
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4683,11 +4683,11 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
     Left = 120
     Top = 180
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
@@ -5511,15 +5511,15 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
   end
   object ComboBox1: TComboBox
     Left = 120
-    Top = 52
+    Top = 44
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 23
+    ItemHeight = 21
     ParentFont = False
     TabOrder = 3
     OnChange = ComboBox1Change
@@ -5529,11 +5529,11 @@ object UpdateTemaModalForm: TUpdateTemaModalForm
     Left = 120
     Top = 116
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     MaxLength = 3
     ParentFont = False

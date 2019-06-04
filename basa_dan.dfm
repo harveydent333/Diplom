@@ -196,4 +196,15 @@ object BD: TBD
     Left = 192
     Top = 112
   end
+  object HelpTemsADO: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 264
+    Top = 120
+  end
+  object HelpTems: TDataSource
+    DataSet = HelpTemsADO
+    Left = 344
+    Top = 120
+  end
 end

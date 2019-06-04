@@ -38,6 +38,7 @@ begin
             setDataAuthUser;            // Заполнение авторизованного пользователя данными
             SetNameAndFamilyAuthUsers;  // Заполнение Имя и Фамилии Авторизованным пользователям
             roleUser:='teacher';
+            setIconRole(false,true);
         end;
 
     if AuthorizationForm.stydent_ON.Visible = true then

@@ -2648,6 +2648,7 @@ object AddQuestionModalForm: TAddQuestionModalForm
     Font.Name = 'Georgia'
     Font.Style = []
     ItemHeight = 23
+    ItemIndex = 0
     ParentFont = False
     TabOrder = 3
     Text = #1054#1076#1080#1085' '#1074#1077#1088#1085#1099#1081' '#1086#1090#1074#1077#1090

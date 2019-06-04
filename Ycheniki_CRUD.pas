@@ -16,11 +16,14 @@ type
     Label1: TLabel;
     Label2: TLabel;
     DBGrid1: TDBGrid;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
-    SpeedButton1: TSpeedButton;
     teacher_ON: TImage;
     stydent_ON: TImage;
+    Image4: TImage;
+    Image3: TImage;
+    Image2: TImage;
+    SpeedButton9: TSpeedButton;
+    SpeedButton10: TSpeedButton;
+    SpeedButton11: TSpeedButton;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -29,6 +32,9 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
+    procedure SpeedButton10Click(Sender: TObject);
+    procedure SpeedButton11Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -148,6 +154,74 @@ end;
 procedure TYchenikiCRUD.SpeedButton3Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TYchenikiCRUD.SpeedButton9Click(Sender: TObject);
+begin
+    AuthorizationData.defoltConfigRegistrationForm;
+    YchenikiCRUD.Visible:=false;
+    with RegistrationForm do
+      begin
+          Show;
+          Position:=poDesktopCenter;
+          last_name.text:='';
+          first_name.text:='';
+          second_name.text:='';
+          ComboBox1.ItemIndex:=0;
+          SpeedButton6.Visible:=false;
+          SpeedButton1.Visible:=true;
+          defoltConfigRegistrationForm;
+          Caption:='Регистрация обучающегося';
+      end;
+end;
+
+procedure TYchenikiCRUD.SpeedButton10Click(Sender: TObject);
+begin
+ config.selectRequestSQL('SELECT * FROM Группа WHERE НазваниеГруппы='+
+    #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеГруппы').AsString+#39);
+
+    idGroup:=BD.Request.DataSet.FieldByName('КодГруппы').AsInteger;
+
+    config.selectRequestSQL('SELECT * FROM Ученик WHERE Фамилия='+
+    #39+DBGrid1.DataSource.DataSet.FieldByName('Фамилия').AsString+#39+' AND Имя='+
+    #39+DBGrid1.DataSource.DataSet.FieldByName('Имя').AsString+#39+' AND Отчество='+
+    #39+DBGrid1.DataSource.DataSet.FieldByName('Отчество').AsString+#39+' AND КодГруппы='+IntToStr(idGroup));
+    updateKodYchenika:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;
+
+    with RegistrationForm do
+      begin
+         last_name.text:=BD.Request.DataSet.FieldByName('Фамилия').AsString;
+         first_name.text:=BD.Request.DataSet.FieldByName('Имя').AsString;
+         second_name.text:=BD.Request.DataSet.FieldByName('Отчество').AsString;
+         ComboBox1.ItemIndex:=BD.Request.DataSet.FieldByName('КодГруппы').AsInteger-1;
+         SpeedButton6.Visible:=true;
+         SpeedButton1.Visible:=false;
+         defoltConfigRegistrationForm;
+         Caption:='Редактирование обучающегося';
+         Position:=poDesktopCenter;
+      end;
+
+   RegistrationForm.Show;
+   RegistrationForm.Position:=poDesktopCenter;
+   YchenikiCRUD.Visible:=false;
+end;
+
+procedure TYchenikiCRUD.SpeedButton11Click(Sender: TObject);
+begin
+    config.selectRequestSQL('SELECT * FROM Группа WHERE НазваниеГруппы='+
+    #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеГруппы').AsString+#39);
+
+    idGroup:=BD.Request.DataSet.FieldByName('КодГруппы').AsInteger;
+
+    config.selectRequestSQL('SELECT * FROM Ученик WHERE Фамилия='+
+    #39+DBGrid1.DataSource.DataSet.FieldByName('Фамилия').AsString+#39+' AND Имя='+
+    #39+DBGrid1.DataSource.DataSet.FieldByName('Имя').AsString+#39+' AND Отчество='+
+    #39+DBGrid1.DataSource.DataSet.FieldByName('Отчество').AsString+#39+' AND КодГруппы='+IntToStr(idGroup));
+    updateKodYchenika:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;
+
+    config.execRequestSQL('DELETE FROM Ученик WHERE КодУченика='+IntToStr(updateKodYchenika));
+    config.rebootRequestsCRUD;
+    MessageBox(0,'Данные обучающегося были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 end.

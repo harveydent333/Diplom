@@ -7,7 +7,7 @@ Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUn
 
 var  x:integer;
 countBall,exitPoint:integer;
-posetivAnswer, userAnswer:string;
+posetivAnswer, userAnswer, getShyrnalData:string;
 
 procedure selectRequestSQL(request:string);
 procedure evaluationCalculation(result:real);
@@ -138,11 +138,11 @@ procedure checkOnThePresenceOfTheCompositionsOfTeachers;
 begin
    if TeacherCRUD.DBGrid1.DataSource.DataSet.RecordCount = 1 then
       begin
-          TeacherCRUD.SpeedButton1.Enabled:=false;
+          TeacherCRUD.SpeedButton11.Enabled:=false;
       end
     else
       begin
-          TeacherCRUD.SpeedButton1.Enabled:=true;
+          TeacherCRUD.SpeedButton11.Enabled:=true;
       end;
 end;
 
@@ -150,13 +150,13 @@ procedure checkOnThePresenceOfTheCompositionsOfRazdels;
 begin
    if RazdelCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          RazdelCRUD.SpeedButton6.Enabled:=false;
-          RazdelCRUD.SpeedButton7.Enabled:=false;
+          RazdelCRUD.SpeedButton9.Enabled:=false;
+          RazdelCRUD.SpeedButton10.Enabled:=false;
       end
     else
       begin
-          RazdelCRUD.SpeedButton6.Enabled:=true;
-          RazdelCRUD.SpeedButton7.Enabled:=true;
+          RazdelCRUD.SpeedButton9.Enabled:=true;
+          RazdelCRUD.SpeedButton10.Enabled:=true;
       end;
 end;
 
@@ -164,13 +164,13 @@ procedure checkOnThePresenceOfTheCompositionsOfTems;
 begin
     if TemaCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          TemaCRUD.SpeedButton6.Enabled:=false;
-          TemaCRUD.SpeedButton7.Enabled:=false;
+          TemaCRUD.SpeedButton9.Enabled:=false;
+          TemaCRUD.SpeedButton10.Enabled:=false;
       end
     else
       begin
-          TemaCRUD.SpeedButton6.Enabled:=true;
-          TemaCRUD.SpeedButton7.Enabled:=true;
+          TemaCRUD.SpeedButton9.Enabled:=true;
+          TemaCRUD.SpeedButton10.Enabled:=true;
       end;
 end;
 
@@ -178,14 +178,14 @@ procedure checkOnThePresenceOfTheCompositionsOfLectures;
 begin
  if LectureCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          LectureCRUD.SpeedButton6.Enabled:=false;
-          LectureCRUD.SpeedButton7.Enabled:=false;
+          LectureCRUD.SpeedButton10.Enabled:=false;
+          LectureCRUD.SpeedButton11.Enabled:=false;
           LectureCRUD.SpeedButton8.Enabled:=false;
       end
     else
       begin
-          LectureCRUD.SpeedButton6.Enabled:=true;
-          LectureCRUD.SpeedButton7.Enabled:=true;
+          LectureCRUD.SpeedButton10.Enabled:=true;
+          LectureCRUD.SpeedButton11.Enabled:=true;
           LectureCRUD.SpeedButton8.Enabled:=true;
       end;
 end;
@@ -194,13 +194,13 @@ procedure checkOnThePresenceOfTheCompositionsOfPractics;
 begin
    if PracticCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          PracticCRUD.SpeedButton6.Enabled:=false;
-          PracticCRUD.SpeedButton7.Enabled:=false;
+          PracticCRUD.SpeedButton9.Enabled:=false;
+          PracticCRUD.SpeedButton10.Enabled:=false;
       end
     else
       begin
-          PracticCRUD.SpeedButton6.Enabled:=true;
-          PracticCRUD.SpeedButton7.Enabled:=true;
+          PracticCRUD.SpeedButton9.Enabled:=true;
+          PracticCRUD.SpeedButton10.Enabled:=true;
       end;
 end;
 
@@ -208,14 +208,14 @@ procedure checkOnThePresenceOfTheCompositionsOfControls;
 begin
   if ControlCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          ControlCRUD.SpeedButton6.Enabled:=false;
-          ControlCRUD.SpeedButton7.Enabled:=false;
+          ControlCRUD.SpeedButton10.Enabled:=false;
+          ControlCRUD.SpeedButton11.Enabled:=false;
           ControlCRUD.SpeedButton8.Enabled:=false;
       end
     else
       begin
-          ControlCRUD.SpeedButton6.Enabled:=true;
-          ControlCRUD.SpeedButton7.Enabled:=true;
+          ControlCRUD.SpeedButton10.Enabled:=true;
+          ControlCRUD.SpeedButton11.Enabled:=true;
           ControlCRUD.SpeedButton8.Enabled:=true;
       end;
 end;
@@ -224,13 +224,13 @@ procedure checkOnThePresenceOfTheCompositionsOfYcheniks;
 begin
     if YchenikiCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          YchenikiCRUD.SpeedButton1.Enabled:=false;
-          YchenikiCRUD.SpeedButton7.Enabled:=false;
+          YchenikiCRUD.SpeedButton10.Enabled:=false;
+          YchenikiCRUD.SpeedButton11.Enabled:=false;
       end
     else
       begin
-          YchenikiCRUD.SpeedButton1.Enabled:=true;
-          YchenikiCRUD.SpeedButton7.Enabled:=true;
+          YchenikiCRUD.SpeedButton10.Enabled:=true;
+          YchenikiCRUD.SpeedButton11.Enabled:=true;
       end;
 end;
 
@@ -238,13 +238,13 @@ procedure checkOnThePresenceOfTheCompositionsOfMultimedia;
 begin
   if MultiMediaCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          MultiMediaCRUD.SpeedButton6.Enabled:=false;
-          MultiMediaCRUD.SpeedButton7.Enabled:=false;
+          MultiMediaCRUD.SpeedButton9.Enabled:=false;
+          MultiMediaCRUD.SpeedButton1.Enabled:=false;
       end
     else
       begin
-          MultiMediaCRUD.SpeedButton6.Enabled:=true;
-          MultiMediaCRUD.SpeedButton7.Enabled:=true;
+          MultiMediaCRUD.SpeedButton9.Enabled:=true;
+          MultiMediaCRUD.SpeedButton1.Enabled:=true;
       end;
 end;
 

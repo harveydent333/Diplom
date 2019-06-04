@@ -201,11 +201,11 @@ end;
 procedure TUpdateControlModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
+    label7.Visible:=false;
     if not (Key in ['0'..'9', #8]) then
       begin
         Key:=#0;
         label6.Visible:=true;
-        label7.Visible:=false;
       end;
 end;
 
@@ -214,8 +214,7 @@ begin
     label6.Visible:=false;
 end;
 
-procedure TUpdateControlModalForm.Edit1KeyPress(Sender: TObject;
-  var Key: Char);
+procedure TUpdateControlModalForm.Edit1KeyPress(Sender: TObject; var Key: Char);
 begin
     label8.Visible:=false;
 end;

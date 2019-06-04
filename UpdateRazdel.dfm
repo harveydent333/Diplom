@@ -1,6 +1,6 @@
 object UpdateRazdelModalForm: TUpdateRazdelModalForm
-  Left = 311
-  Top = 346
+  Left = 327
+  Top = 337
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
   ClientHeight = 310
@@ -5199,8 +5199,8 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = -328
-    Top = -280
+    Left = -208
+    Top = -288
     Width = 1337
     Height = 737
     Picture.Data = {
@@ -8455,13 +8455,13 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
   object Label3: TLabel
     Left = 120
     Top = 100
-    Width = 238
-    Height = 23
+    Width = 208
+    Height = 21
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -8469,13 +8469,13 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
   object Label2: TLabel
     Left = 120
     Top = 32
-    Width = 210
-    Height = 23
+    Width = 187
+    Height = 21
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1056#1072#1079#1076#1077#1083#1072
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -8483,14 +8483,14 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
   object Label6: TLabel
     Left = 128
     Top = 16
-    Width = 339
-    Height = 18
+    Width = 303
+    Height = 17
     Alignment = taCenter
     Caption = #1055#1086#1083#1077' '#1085#1086#1084#1077#1088' '#1088#1072#1079#1076#1077#1083#1072' '#1084#1086#1078#1077#1090' '#1080#1084#1077#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1094#1080#1092#1088#1099
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
     Font.Height = -15
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -9347,11 +9347,11 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
     Left = 120
     Top = 142
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 1
@@ -9361,11 +9361,11 @@ object UpdateRazdelModalForm: TUpdateRazdelModalForm
     Left = 120
     Top = 68
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     MaxLength = 3
     ParentFont = False

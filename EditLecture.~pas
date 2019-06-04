@@ -44,7 +44,7 @@ var
 implementation
 
 uses config, UpdateUnit, Lecture_CRUD,
-  Menu_Lectures, AuthorizationData;
+  Menu_Lectures, AuthorizationData, All_Lecture_Practic_Control;
 
 {$R *.dfm}
 
@@ -90,7 +90,7 @@ procedure TEdit_Lecture.Button6Click(Sender: TObject);
 begin
     if Memo1.ReadOnly=true then
       begin
-        MenuLectures.show;
+        AllComponents.show;
         Edit_Lecture.Visible:=false;
       end
     else
@@ -111,8 +111,8 @@ begin
     end
   else
     begin
-      MenuLectures.show;
-      MenuLectures.Position:=poDesktopCenter;
+      AllComponents.show;
+      AllComponents.Position:=poDesktopCenter;
       Edit_Lecture.Visible:=false;
     end;
 end;

@@ -14,14 +14,17 @@ type
     SpeedButton5: TSpeedButton;
     SpeedButton4: TSpeedButton;
     DBGrid1: TDBGrid;
-    SpeedButton1: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     DBGrid21: TDBGrid;
     teacher_ON: TImage;
     stydent_ON: TImage;
+    Image4: TImage;
+    Image3: TImage;
+    Image2: TImage;
+    SpeedButton8: TSpeedButton;
+    SpeedButton9: TSpeedButton;
+    SpeedButton10: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
@@ -30,6 +33,9 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
+    procedure SpeedButton10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -113,6 +119,39 @@ end;
 procedure TPracticCRUD.SpeedButton3Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TPracticCRUD.SpeedButton8Click(Sender: TObject);
+begin
+    with TAddPracticModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TPracticCRUD.SpeedButton9Click(Sender: TObject);
+begin
+   config.selectRequestSQL('SELECT * FROM Практические WHERE НазваниеПрактической='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеПрактической').AsString+#39);
+    updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемой Практики
+    updateKodPractic:=BD.Request.DataSet.FieldByName('КодПрактической').AsInteger;      // Код изменяемой Практики
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
+    updateKodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой Практики
+
+    with TUpdatePracticModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TPracticCRUD.SpeedButton10Click(Sender: TObject);
+begin
+    config.execRequestSQL('DELETE FROM Практические WHERE НазваниеПрактической='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеПрактической').AsString+#39);
+    config.rebootRequestsCRUD;
+    MessageBox(0,'Данные практической работы были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 end.

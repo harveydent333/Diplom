@@ -1,6 +1,6 @@
 object AddMultimediaModalForm: TAddMultimediaModalForm
-  Left = 323
-  Top = 414
+  Left = 582
+  Top = 303
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 310
@@ -2744,7 +2744,7 @@ object AddMultimediaModalForm: TAddMultimediaModalForm
     Kind = bkRetry
   end
   object OpenDialog1: TOpenDialog
-    InitialDir = '.\Multimedia'
+    InitialDir = '\.Multimedia'
     Left = 56
     Top = 40
   end

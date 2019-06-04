@@ -1,6 +1,6 @@
 object MenuMultimedia: TMenuMultimedia
-  Left = 65
-  Top = 290
+  Left = 858
+  Top = 95
   AutoScroll = False
   Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 643
@@ -4747,7 +4747,7 @@ object MenuMultimedia: TMenuMultimedia
   end
   object teacher_ON: TImage
     Left = 944
-    Top = 0
+    Top = 1
     Width = 65
     Height = 52
     Picture.Data = {
@@ -7676,7 +7676,7 @@ object MenuMultimedia: TMenuMultimedia
   end
   object stydent_ON: TImage
     Left = 944
-    Top = 0
+    Top = 1
     Width = 65
     Height = 52
     Picture.Data = {

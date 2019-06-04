@@ -1,6 +1,6 @@
 object UpdateLectureModalForm: TUpdateLectureModalForm
-  Left = 362
-  Top = 383
+  Left = 434
+  Top = 427
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1083#1077#1082#1094#1080#1080
   ClientHeight = 310
@@ -1324,7 +1324,7 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = -328
+    Left = -176
     Top = -280
     Width = 1337
     Height = 737
@@ -4034,13 +4034,13 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   object Label1: TLabel
     Left = 120
     Top = 2
-    Width = 153
-    Height = 23
+    Width = 138
+    Height = 21
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1056#1072#1079#1076#1077#1083
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4048,13 +4048,13 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   object Label3: TLabel
     Left = 120
     Top = 62
-    Width = 135
-    Height = 23
+    Width = 124
+    Height = 21
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1058#1077#1084#1091
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4063,13 +4063,13 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   object Label2: TLabel
     Left = 120
     Top = 184
-    Width = 231
-    Height = 23
+    Width = 202
+    Height = 21
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1083#1077#1082#1094#1080#1080
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4078,13 +4078,13 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   object Label5: TLabel
     Left = 120
     Top = 104
-    Width = 164
-    Height = 23
+    Width = 124
+    Height = 19
     Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1090#1077#1084'.'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
-    Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4093,13 +4093,13 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
   object Label4: TLabel
     Left = 120
     Top = 130
-    Width = 206
-    Height = 23
+    Width = 185
+    Height = 21
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1085#1086#1084#1077#1088' '#1051#1077#1082#1094#1080#1080
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -4972,13 +4972,13 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Left = 120
     Top = 30
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 23
+    ItemHeight = 21
     ParentFont = False
     TabOrder = 1
     OnChange = ComboBox1Change
@@ -4988,13 +4988,13 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Left = 120
     Top = 90
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 23
+    ItemHeight = 21
     ParentFont = False
     TabOrder = 2
     Visible = False
@@ -5005,11 +5005,11 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Left = 120
     Top = 216
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 3
@@ -5020,11 +5020,11 @@ object UpdateLectureModalForm: TUpdateLectureModalForm
     Left = 120
     Top = 154
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     MaxLength = 3
     ParentFont = False

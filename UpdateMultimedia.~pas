@@ -27,6 +27,7 @@ type
     Label8: TLabel;
     OpenDialog1: TOpenDialog;
     BitBtn1: TBitBtn;
+    Label9: TLabel;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
@@ -118,13 +119,13 @@ begin
 
     if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
     if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
-    if Path='' then
+    if PathFile='' then
        MessageBox(0,'Файл мультимедии не выбран!','', MB_OK+MB_ICONwarning);
 
     if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
         checkUniqueData;
 
-    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_multimedia<>false) and(unique_number_multimedia<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)and (Path<>'')) then
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_multimedia<>false) and(unique_number_multimedia<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)and (PathFile<>'')) then
         saveDataInBD;
 end;
 
@@ -183,6 +184,7 @@ begin
    Path:=ReverseString(path);
    for i:=1 to Length(Path)-4 do
     PathFile:=PathFile+Path[i];
+    label9.Caption:=PathFile;
 end;
 
 function TUpdateMultimediaModalForm.ReverseString(s: string): string;
@@ -202,11 +204,11 @@ end;
 
 procedure TUpdateMultimediaModalForm.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
+   label7.Visible:=false;
    if not (Key in ['0'..'9', #8]) then
       begin
        Key:=#0;
        label6.Visible:=true;
-       label7.Visible:=false;
       end;
 end;
 

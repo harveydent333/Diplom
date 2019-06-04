@@ -25,6 +25,8 @@ type
     Timer1: TTimer;
     Label7: TLabel;
     Label9: TLabel;
+    OpenDialog1: TOpenDialog;
+    BitBtn1: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);

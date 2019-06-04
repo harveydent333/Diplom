@@ -25,6 +25,8 @@ type
     Timer1: TTimer;
     Label7: TLabel;
     Label8: TLabel;
+    OpenDialog1: TOpenDialog;
+    BitBtn1: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
@@ -124,6 +126,7 @@ begin
       begin
         Edit1.visible:=true;
         Edit2.Visible:=true;
+        BitBtn1.Visible:=true;
         label2.Visible:=true;
         label3.Visible:=true;
         label4.Visible:=true;
@@ -177,6 +180,7 @@ procedure TUpdatePracticModalForm.defaultSetting;
 begin
     Edit1.Visible:=false;
     Edit2.Visible:=false;
+    BitBtn1.Visible:=false;
     label2.Visible:=false;
     label3.Visible:=false;
     label4.Visible:=false;

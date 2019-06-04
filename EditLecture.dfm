@@ -1,14 +1,14 @@
 object Edit_Lecture: TEdit_Lecture
-  Left = 15
-  Top = 249
+  Left = 69
+  Top = 177
   AutoScroll = False
   Caption = #1051#1077#1082#1094#1080#1103
-  ClientHeight = 862
+  ClientHeight = 772
   ClientWidth = 1189
   Color = clBtnFace
   Constraints.MaxHeight = 900
   Constraints.MaxWidth = 1205
-  Constraints.MinHeight = 900
+  Constraints.MinHeight = 810
   Constraints.MinWidth = 1205
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1327,11 +1327,11 @@ object Edit_Lecture: TEdit_Lecture
     Left = 0
     Top = 48
     Width = 1190
-    Height = 833
+    Height = 721
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     Lines.Strings = (
       'Memo1'

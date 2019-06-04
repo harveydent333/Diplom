@@ -16,12 +16,16 @@ type
     DBGrid1: TDBGrid;
     Label1: TLabel;
     Label2: TLabel;
-    SpeedButton1: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
-    SpeedButton8: TSpeedButton;
     teacher_ON: TImage;
     stydent_ON: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    SpeedButton9: TSpeedButton;
+    SpeedButton10: TSpeedButton;
+    SpeedButton11: TSpeedButton;
+    Image5: TImage;
+    SpeedButton1: TSpeedButton;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
@@ -31,6 +35,9 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
+    procedure SpeedButton10Click(Sender: TObject);
+    procedure SpeedButton11Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,12 +55,35 @@ uses Title_Form, config, UpdateUnit, AddControl, UpdateControl,
 
 procedure TControlCRUD.SpeedButton1Click(Sender: TObject);    // Добавление нового контроля
 begin
- with TAddControlModalForm.Create(nil) do
-      try
-        ShowModal;
-      finally
-        Free;
-    end;
+   if DBGrid1.DataSource.DataSet.RecordCount = 0 then
+        MessageBox(0,'Ни одного контроля знаний не выбрано!','',MB_OK+MB_ICONWARNING)
+    else
+        begin
+            config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
+            updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
+            updateKodControl:=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger;
+
+            Add_Questions.ListBox1.Clear;
+            config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
+              with Add_Questions do
+                begin
+                    ListBox1.Clear;
+                    BD.Request.DataSet.First;
+                    While (BD.Request.DataSet.Eof=false) do
+                        begin
+                            ListBox1.Items.Add(BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString);
+                            BD.Request.DataSet.Next;
+                        end;
+                    VariantsQuestionSingle1.Visible:=false;
+                    VariantsQuestionMore1.Visible:=false;
+                    Button2.Enabled:=false;
+                    Show;
+                    Memo1.Clear;
+                    Memo1.ReadOnly:=true;
+                    Position:=poDesktopCenter;
+                end;
+            ControlCRUD.Visible:=false;
+        end;
 end;
 
 procedure TControlCRUD.SpeedButton7Click(Sender: TObject);  // Удаление Контроля
@@ -147,6 +177,39 @@ end;
 procedure TControlCRUD.SpeedButton3Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TControlCRUD.SpeedButton9Click(Sender: TObject);
+begin
+ with TAddControlModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TControlCRUD.SpeedButton10Click(Sender: TObject);
+begin
+    config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
+    updateKodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемого Контроля
+    updateKodControl:=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger;      // Код изменяемого Контроля
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
+    updateKodRazdela:=BD.Request.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой лекции
+
+    with TUpdateControlModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TControlCRUD.SpeedButton11Click(Sender: TObject);
+begin
+    config.execRequestSQL('DELETE FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
+    config.rebootRequestsCRUD;
+    MessageBox(0,'Данные контроля знаний были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 end.

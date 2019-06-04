@@ -11,9 +11,6 @@ type
     Image1: TImage;
     Image2: TImage;
     SpeedButton7: TSpeedButton;
-    SpeedButton5: TSpeedButton;
-    SpeedButton8: TSpeedButton;
-    SpeedButton9: TSpeedButton;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton10: TSpeedButton;
@@ -21,9 +18,9 @@ type
     SpeedButton6: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
-    SpeedButton3: TSpeedButton;
     teacher_ON: TImage;
     stydent_ON: TImage;
+    SpeedButton11: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
@@ -35,6 +32,7 @@ type
     procedure SpeedButton3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton11Click(Sender: TObject);
   private
     procedure getDataControlForShyrnal;
     procedure getDataTemaForShyrnal;
@@ -50,7 +48,8 @@ implementation
 
 uses ControlCenter, DocumentForm, Menu_Lectures, AuthorizationData, config,
   Unit2, Title_Form, Menu_Practic, Menu_Control,
-  Ycheniki_CRUD, basa_dan, Manager_Users, Menu_Multimedai, ShellAPI;
+  Ycheniki_CRUD, basa_dan, Manager_Users, Menu_Multimedai, ShellAPI,
+  All_Lecture_Practic_Control;
 
 {$R *.dfm}
 
@@ -96,7 +95,7 @@ begin
             MenuLectures.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
             BD.Request.DataSet.Next;
         end;
-        
+
     BD.Request.DataSet.First;
     MainMenu.Visible:=false;
 end;
@@ -293,4 +292,44 @@ begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
+procedure TMainMenu.SpeedButton11Click(Sender: TObject);
+begin
+    config.selectRequestSQL('SELECT * FROM Раздел');
+    with AllComponents do
+        begin
+            ComboBox1.Clear;
+            Show;
+            Position:=poDesktopCenter;
+            Label2.Visible:=false;
+            Label3.Visible:=false;
+            Panel1.Visible:=false;
+            SpeedButton1.Visible:=false;
+            ComboBox2.Visible:=false;
+            ComboBox3.Visible:=false;
+            ComboBox2.Items.Clear;
+            ComboBox3.Items.Clear;
+        end;
+
+    AllComponents.ComboBox1.Items.Clear;
+    BD.Request.DataSet.First;
+    While (BD.Request.DataSet.Eof=false) do
+        begin
+            AllComponents.ComboBox1.Items.Add(
+            '№ '+BD.Request.DataSet.FieldByName('НомерРаздела').AsString+'|'+
+              BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString
+            );
+            BD.Request.DataSet.Next;
+        end;
+    BD.Request.DataSet.First;
+    AllComponents.ComboBox1.Sorted:=true;
+    AllComponents.ComboBox1.Text:=AllComponents.ComboBox1.Items[0];
+    MainMenu.Visible:=false;
+end;
+
 end.
+procedure TMainMenu.SpeedButton11Click(Sender: TObject);
+begin
+
+end;
+
+

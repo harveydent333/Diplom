@@ -180,7 +180,10 @@ begin
 end;
 
 procedure TAdd_Questions.BitBtn2Click(Sender: TObject);
+var temp:word;
 begin
+ temp:=MessageBox(0,'Вы точно хотите сбросить данные вопроса?','',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
      with Add_Questions.VariantsQuestionMore1 do
             begin
                countQuestion:=3;
@@ -347,7 +350,8 @@ begin
     config.execRequestSQL('UPDATE Вопросы SET КоличествоОтветов='+IntToStr(countQuestion)+', СодержаниеВопроса='+#39+memoText+#39+', ВариантыОтветов='+
     #39+varianti+#39+', ВерныйОтвет='+#39+otveti+#39+' WHERE КодВопроса='+IntToStr(kodVoprosa));
 
-
+    MessageBox(0,'Данные вопроса были успешно обновлены!','', MB_OK+MB_ICONINFORMATION);
+    
     Add_Questions.ListBox1.Clear;
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
        with Add_Questions do

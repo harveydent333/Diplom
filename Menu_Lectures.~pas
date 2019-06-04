@@ -62,8 +62,7 @@ var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',
     MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-      TitleForm.close;
+    if idyes=temp then TitleForm.close;
 end;
 
 procedure TMenuLectures.ComboBox1Change(Sender: TObject);
@@ -86,7 +85,10 @@ begin
 
     While (BD.Request.DataSet.Eof=false) do
       begin
-        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
+        ComboBox2.Items.Add(
+          '№ '+ BD.Request.DataSet.FieldByName('НомерТемы').AsString+'|'+
+          BD.Request.DataSet.FieldByName('НазваниеТемы').AsString
+        );
         BD.Request.DataSet.Next;
         ComboBox2.Text:=ComboBox2.Items.Strings[0];
       end;

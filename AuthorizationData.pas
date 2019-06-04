@@ -28,7 +28,7 @@ uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
   AddControl,
   Manager_Users,
   Teacher_CRUD,
-  Registration_Teacher, Menu_Multimedai;
+  Registration_Teacher, Menu_Multimedai, All_Lecture_Practic_Control;
 
 procedure getDataUser;
 begin
@@ -136,6 +136,9 @@ begin
 
     LectureCRUD.label1.Caption:=nameUser;
     LectureCRUD.label2.Caption:=familyUser;
+
+    AllComponents.label6.Caption:=nameUser;
+    AllComponents.label7.Caption:=familyUser;
 
     MenuControl.label4.Caption:=nameUser;
     MenuControl.label6.Caption:=familyUser;

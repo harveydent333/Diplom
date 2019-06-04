@@ -14,14 +14,17 @@ type
     SpeedButton5: TSpeedButton;
     SpeedButton4: TSpeedButton;
     DBGrid1: TDBGrid;
-    SpeedButton1: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
     Label1: TLabel;
     Label2: TLabel;
     DBGrid2: TDBGrid;
     stydent_ON: TImage;
     teacher_ON: TImage;
+    Image2: TImage;
+    SpeedButton8: TSpeedButton;
+    SpeedButton9: TSpeedButton;
+    Image3: TImage;
+    Image4: TImage;
+    SpeedButton10: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
@@ -30,6 +33,10 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton10Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,7 +82,6 @@ begin
     config.execRequestSQL('DELETE FROM Тема '+
       ' WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39
     );
-
     config.rebootRequestsCRUD;
     MessageBox(0,'Данные темы были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
@@ -113,6 +119,52 @@ end;
 procedure TTemaCRUD.SpeedButton3Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TTemaCRUD.SpeedButton10Click(Sender: TObject);
+begin
+    config.execRequestSQL('DELETE FROM Тема '+
+      ' WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39
+    );
+    config.rebootRequestsCRUD;
+    MessageBox(0,'Данные темы были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
+end;
+
+procedure TTemaCRUD.Image3Click(Sender: TObject);
+begin
+    // Запрашиваем код раздела и код темы
+    config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39);
+    updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    updateKodRazdela:=DBGrid2.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    with TUpdateTemaModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TTemaCRUD.SpeedButton8Click(Sender: TObject);
+begin
+  with TAddTemaModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TTemaCRUD.SpeedButton9Click(Sender: TObject);
+begin
+   config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39);
+    updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;
+    updateKodRazdela:=DBGrid2.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;
+    with TUpdateTemaModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
 end;
 
 end.

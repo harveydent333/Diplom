@@ -51,7 +51,8 @@ uses
   QuestionsMoreMemo in 'QuestionsMoreMemo.pas',
   PassControlSingle in 'PassControlSingle.pas',
   PassControlMore in 'PassControlMore.pas',
-  Change_Pass in 'Change_Pass.pas' {ChangePass};
+  Change_Pass in 'Change_Pass.pas' {ChangePass},
+  All_Lecture_Practic_Control in 'All_Lecture_Practic_Control.pas' {AllComponents};
 
 {$R *.res}
 
@@ -86,5 +87,6 @@ begin
   Application.CreateForm(TAddMultimediaModalForm, AddMultimediaModalForm);
   Application.CreateForm(TUpdateMultimediaModalForm, UpdateMultimediaModalForm);
   Application.CreateForm(TChangePass, ChangePass);
+  Application.CreateForm(TAllComponents, AllComponents);
   Application.Run;
 end.

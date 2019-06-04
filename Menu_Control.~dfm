@@ -1,6 +1,6 @@
 object MenuControl: TMenuControl
-  Left = 71
-  Top = 214
+  Left = 328
+  Top = 181
   AutoScroll = False
   Caption = #1050#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 643
@@ -4747,7 +4747,7 @@ object MenuControl: TMenuControl
   end
   object stydent_ON: TImage
     Left = 944
-    Top = 0
+    Top = 1
     Width = 65
     Height = 52
     Picture.Data = {
@@ -7492,7 +7492,7 @@ object MenuControl: TMenuControl
   end
   object teacher_ON: TImage
     Left = 944
-    Top = 0
+    Top = 1
     Width = 65
     Height = 52
     Picture.Data = {

@@ -29,9 +29,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label1: TLabel
     Left = 15
     Top = 70
-    Width = 99
+    Width = 87
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'1'
+    Caption = #1054#1090#1074#1077#1090' '#8470'1'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -42,9 +42,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label2: TLabel
     Left = 15
     Top = 170
-    Width = 102
+    Width = 90
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'2'
+    Caption = #1054#1090#1074#1077#1090' '#8470'2'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -55,9 +55,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label3: TLabel
     Left = 15
     Top = 270
-    Width = 101
+    Width = 89
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'3'
+    Caption = #1054#1090#1074#1077#1090' '#8470'3'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -68,9 +68,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label4: TLabel
     Left = 15
     Top = 370
-    Width = 102
+    Width = 90
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'4'
+    Caption = #1054#1090#1074#1077#1090' '#8470'4'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -82,9 +82,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label5: TLabel
     Left = 15
     Top = 470
-    Width = 101
+    Width = 89
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'5'
+    Caption = #1054#1090#1074#1077#1090' '#8470'5'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -96,9 +96,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label6: TLabel
     Left = 15
     Top = 570
-    Width = 102
+    Width = 90
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'6'
+    Caption = #1054#1090#1074#1077#1090' '#8470'6'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -110,9 +110,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label7: TLabel
     Left = 15
     Top = 670
-    Width = 101
+    Width = 89
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'7'
+    Caption = #1054#1090#1074#1077#1090' '#8470'7'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -124,9 +124,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label8: TLabel
     Left = 15
     Top = 770
-    Width = 102
+    Width = 90
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'8'
+    Caption = #1054#1090#1074#1077#1090' '#8470'8'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -138,9 +138,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label9: TLabel
     Left = 15
     Top = 870
-    Width = 102
+    Width = 90
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'9'
+    Caption = #1054#1090#1074#1077#1090' '#8470'9'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -152,9 +152,9 @@ object VariantsQuestionSingle: TVariantsQuestionSingle
   object Label10: TLabel
     Left = 15
     Top = 970
-    Width = 111
+    Width = 99
     Height = 23
-    Caption = #1042#1086#1087#1088#1086#1089' '#8470'10'
+    Caption = #1054#1090#1074#1077#1090' '#8470'10'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19

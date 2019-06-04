@@ -1,6 +1,6 @@
 object MenuPractic: TMenuPractic
-  Left = 19
-  Top = 281
+  Left = 433
+  Top = 263
   AutoScroll = False
   Caption = #1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1077' '#1088#1072#1073#1086#1090#1099
   ClientHeight = 643
@@ -4748,7 +4748,7 @@ object MenuPractic: TMenuPractic
   end
   object stydent_ON: TImage
     Left = 944
-    Top = 0
+    Top = 1
     Width = 65
     Height = 52
     Picture.Data = {
@@ -7493,7 +7493,7 @@ object MenuPractic: TMenuPractic
   end
   object teacher_ON: TImage
     Left = 944
-    Top = 0
+    Top = 1
     Width = 65
     Height = 52
     Picture.Data = {
@@ -10448,6 +10448,7 @@ object MenuPractic: TMenuPractic
     TabOrder = 1
     Text = 'ComboBox1'
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
     Left = 48
@@ -10465,6 +10466,7 @@ object MenuPractic: TMenuPractic
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox2Change
+    OnKeyPress = ComboBox2KeyPress
   end
   object ComboBox3: TComboBox
     Left = 48
@@ -10482,5 +10484,6 @@ object MenuPractic: TMenuPractic
     Text = 'ComboBox3'
     Visible = False
     OnChange = ComboBox3Change
+    OnKeyPress = ComboBox3KeyPress
   end
 end

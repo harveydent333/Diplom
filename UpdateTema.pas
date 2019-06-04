@@ -95,7 +95,7 @@ end;
 procedure TUpdateTemaModalForm.saveDataInBD; // Внесение данных в БД
 begin
     config.execRequestSQL('UPDATE Тема SET КодРаздела='+#39+IntToStr(updateKodRazdela)+#39+',НомерТемы='+#39+Edit2.Text+#39+', НазваниеТемы='+#39+edit1.Text+#39+' WHERE КодТемы ='+IntToStr(updateKodTema));
-    MessageBox(0,'Тема была успешно Создана!','Создание Темы', MB_OK+MB_ICONINFORMATION);
+    MessageBox(0,'Данные темы были успешно изменены!','Редактирование темы', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 end;
 
@@ -105,13 +105,13 @@ begin
     if ((BD.RequestSQL.IsEmpty) or (updateKodTema=BD.Request.DataSet.FieldByName('КодТемы').AsInteger)) then
       unique_tema:=true
     else
-      MessageBox(0,'Данная тема уже сущетсвует!','Создание темы', MB_OK+MB_ICONwarning);
+      MessageBox(0,'Данная тема уже сущетсвует!','Редактирование темы', MB_OK+MB_ICONwarning);
 
     config.selectRequestSQL('SELECT * FROM Тема WHERE НомерТемы='+#39+Edit2.Text+#39);
     if ((BD.RequestSQL.IsEmpty) or (updateKodTema=BD.Request.DataSet.FieldByName('КодТемы').AsInteger)) then
       unique_number_tema:=true
     else
-          MessageBox(0,'Данный номер темы уже сущетсвует!','Создание темы', MB_OK+MB_ICONwarning);
+          MessageBox(0,'Данный номер темы уже сущетсвует!','Редактирование темы', MB_OK+MB_ICONwarning);
 end;
 
 procedure TUpdateTemaModalForm.ComboBox1KeyPress(Sender: TObject;

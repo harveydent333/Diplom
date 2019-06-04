@@ -10,9 +10,6 @@ type
   TLectureCRUD = class(TForm)
     Image1: TImage;
     DBGrid1: TDBGrid;
-    SpeedButton1: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
     Label2: TLabel;
     Label1: TLabel;
     SpeedButton2: TSpeedButton;
@@ -20,9 +17,16 @@ type
     SpeedButton5: TSpeedButton;
     SpeedButton4: TSpeedButton;
     DBGrid2: TDBGrid;
-    SpeedButton8: TSpeedButton;
     teacher_ON: TImage;
     stydent_ON: TImage;
+    Image2: TImage;
+    Image4: TImage;
+    Image3: TImage;
+    SpeedButton9: TSpeedButton;
+    SpeedButton10: TSpeedButton;
+    SpeedButton11: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    Image5: TImage;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
@@ -32,6 +36,9 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
+    procedure SpeedButton10Click(Sender: TObject);
+    procedure SpeedButton11Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,12 +56,31 @@ uses Title_Form, AddLecture, UpdateLecture, config, UpdateUnit,
 
 procedure TLectureCRUD.SpeedButton1Click(Sender: TObject); // Добавление новой лекции
 begin
-    with TAddLectureModalForm.Create(nil) do
-      try
-        ShowModal;
-      finally
-        Free;
-    end;
+  config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString+#39);
+    updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы,
+    updateKodLecture:=DBGrid2.DataSource.DataSet.FieldByName('КодЛекции').AsInteger;      // Код  Лекции
+    config.selectRequestSQL('SELECT * FROM Лекции WHERE КодЛекции='+IntToStr(updateKodLecture));
+    LectureCRUD.Visible:=false;
+    with Edit_Lecture do
+      begin
+        Show;
+        Position:=poDesktopCenter;
+        Memo1.Clear;
+        Memo1.Lines.Add(DBGrid2.DataSource.DataSet.FieldByName('Содержание').AsString);
+        Height:=920;
+        Width:=1201;
+        Memo1.Height:=833;
+        Memo1.Width:=1190;
+        Button1.Left:=8;
+        Button1.Visible:=true;
+        Button3.Left:=128;
+        Button4.Visible:=true;
+        Button5.Visible:=true;
+        Button6.Left:=632;
+        Button7.Visible:=false;
+        Button8.Visible:=false;
+        Memo1.ReadOnly:=false;
+      end;
 end;
 
 procedure TLectureCRUD.SpeedButton6Click(Sender: TObject);    // Изменение Лекции
@@ -144,6 +170,39 @@ end;
 procedure TLectureCRUD.SpeedButton3Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TLectureCRUD.SpeedButton9Click(Sender: TObject);
+begin
+    with TAddLectureModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TLectureCRUD.SpeedButton10Click(Sender: TObject);
+begin
+   config.selectRequestSQL('SELECT * FROM Лекции WHERE НазваниеЛекции='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString+#39);
+    updateKodTema:=DBGrid2.DataSource.DataSet.FieldByName('КодТемы').AsInteger;           // Код Темы, изменяемой лекции
+    updateKodLecture:=DBGrid2.DataSource.DataSet.FieldByName('КодЛекции').AsInteger;      // Код изменяемой Лекции
+    config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
+    updateKodRazdela:=DBGrid2.DataSource.DataSet.FieldByName('КодРаздела').AsInteger;    // Код Раздела изменяемой лекции
+
+    with TUpdateLectureModalForm.Create(nil) do
+      try
+        ShowModal;
+      finally
+        Free;
+    end;
+end;
+
+procedure TLectureCRUD.SpeedButton11Click(Sender: TObject);
+begin
+    config.execRequestSQL('DELETE FROM Лекции WHERE НазваниеЛекции='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString+#39);
+    config.rebootRequestsCRUD;
+    MessageBox(0,'Данные лекции были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
 
 end.

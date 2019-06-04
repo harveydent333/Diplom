@@ -28,6 +28,8 @@ type
     Teacher: TDataSource;
     QueryHelp: TDataSource;
     ADOQuery: TADOQuery;
+    HelpTemsADO: TADOQuery;
+    HelpTems: TDataSource;
   private
     { Private declarations }
   public

@@ -1,6 +1,6 @@
 object Add_Questions: TAdd_Questions
-  Left = 53
-  Top = 502
+  Left = 37
+  Top = 158
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 672
@@ -6095,6 +6095,12 @@ object Add_Questions: TAdd_Questions
     Height = 52
     Hint = #1057#1087#1088#1072#1074#1082#1072
     Flat = True
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
     ParentShowHint = False
     ShowHint = True
     OnClick = SpeedButton2Click
@@ -6122,29 +6128,29 @@ object Add_Questions: TAdd_Questions
     OnClick = SpeedButton4Click
   end
   object Label9: TLabel
-    Left = 1000
+    Left = 1012
     Top = 2
-    Width = 57
-    Height = 23
+    Width = 50
+    Height = 21
     Caption = 'Label9'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
   end
   object Label10: TLabel
-    Left = 1000
+    Left = 1012
     Top = 26
-    Width = 66
-    Height = 23
+    Width = 59
+    Height = 21
     Caption = 'Label10'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -6152,13 +6158,13 @@ object Add_Questions: TAdd_Questions
   object Label2: TLabel
     Left = 8
     Top = 54
-    Width = 261
-    Height = 23
+    Width = 236
+    Height = 21
     Caption = #1050#1088#1072#1090#1082#1086#1077' '#1089#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1074#1086#1087#1088#1086#1089#1072
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -6166,20 +6172,20 @@ object Add_Questions: TAdd_Questions
   object Label3: TLabel
     Left = 568
     Top = 56
-    Width = 187
-    Height = 23
+    Width = 170
+    Height = 21
     Caption = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1074#1086#1087#1088#1086#1089#1072
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
   end
   object teacher_ON: TImage
     Left = 944
-    Top = 0
+    Top = 1
     Width = 65
     Height = 52
     Picture.Data = {
@@ -9108,7 +9114,7 @@ object Add_Questions: TAdd_Questions
   end
   object stydent_ON: TImage
     Left = 944
-    Top = 0
+    Top = 1
     Width = 65
     Height = 52
     Picture.Data = {
@@ -11859,7 +11865,7 @@ object Add_Questions: TAdd_Questions
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 0
@@ -11872,9 +11878,9 @@ object Add_Questions: TAdd_Questions
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 23
+    ItemHeight = 21
     ParentFont = False
     TabOrder = 1
     OnClick = ListBox1Click
@@ -11894,8 +11900,61 @@ object Add_Questions: TAdd_Questions
     ParentFont = False
     TabOrder = 2
     Visible = False
+    inherited hint: TLabel
+      Width = 200
+      Height = 15
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label1: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label2: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label3: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
     inherited Label4: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
       Visible = True
+    end
+    inherited Label5: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label6: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label7: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label8: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label9: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label10: TLabel
+      Width = 88
+      Height = 21
+      Font.Name = 'Times New Roman'
     end
     inherited Panel2: TPanel
       inherited BitBtn3: TBitBtn
@@ -11903,20 +11962,45 @@ object Add_Questions: TAdd_Questions
         OnClick = VariantsQuestionSingle1BitBtn3Click
       end
     end
+    inherited Memo2: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo3: TMemo
+      Font.Name = 'Times New Roman'
+    end
     inherited Memo4: TMemo
+      Font.Name = 'Times New Roman'
       Visible = True
+    end
+    inherited Memo5: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo6: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo7: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo8: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo9: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo10: TMemo
+      Font.Name = 'Times New Roman'
     end
   end
   object Button1: TButton
     Left = 8
     Top = 640
-    Width = 120
+    Width = 129
     Height = 25
-    Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+    Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Height = -17
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 3
@@ -11925,13 +12009,13 @@ object Add_Questions: TAdd_Questions
   object Button2: TButton
     Left = 144
     Top = 640
-    Width = 120
+    Width = 129
     Height = 25
-    Caption = #1059#1076#1072#1083#1080#1090#1100
+    Caption = #1059#1076#1072#1083#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Height = -17
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 4
@@ -11944,6 +12028,92 @@ object Add_Questions: TAdd_Questions
     Height = 473
     TabOrder = 5
     Visible = False
+    inherited Label1: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label2: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label3: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label4: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label5: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label6: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label7: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label8: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label9: TLabel
+      Width = 79
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Label10: TLabel
+      Width = 88
+      Height = 21
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo11: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo2: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo3: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo4: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo5: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo6: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo7: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo8: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo9: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited Memo10: TMemo
+      Font.Name = 'Times New Roman'
+    end
+    inherited CheckBox9: TCheckBox
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Height = -16
+      Font.Name = 'Times New Roman'
+      ParentFont = False
+    end
   end
   object Panel2: TPanel
     Left = 279

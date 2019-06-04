@@ -19,7 +19,7 @@ type
     Image1: TImage;
     SpeedButton1: TSpeedButton;
     Image5: TImage;
-    SpeedButton3: TSpeedButton;
+    SpeedButton13: TSpeedButton;
     Label2: TLabel;
     Label3: TLabel;
     ComboBox1: TComboBox;
@@ -31,7 +31,7 @@ type
     procedure stydent_OFFClick(Sender: TObject);
     procedure teacher_OFFClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton13Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox1Change(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
@@ -121,17 +121,13 @@ begin
            MainMenu.show;
            MainMenu.Position:=poDesktopCenter;
            AuthorizationForm.Visible:=false;
+           MessageBox(0,'Авторизация под учетной записью преподавателя пройдена успешно!','', MB_OK+MB_ICONINFORMATION);
         end;
     with MainMenu do
       begin
-         SpeedButton5.Visible:=false;
-         SpeedButton8.Visible:=false;
-         SpeedButton9.Visible:=false;
+         SpeedButton11.Visible:=false;
          SpeedButton1.Visible:=true;
          SpeedButton2.Visible:=true;
-         SpeedButton3.Visible:=false;
-         SpeedButton10.top:=328;
-         MessageBox(0,'Авторизация под учетной записью преподавателя пройдена успешно!','', MB_OK+MB_ICONINFORMATION);
       end;
 end;
 
@@ -169,13 +165,9 @@ begin
       end;
     with MainMenu do
         begin
-          SpeedButton5.Visible:=true;
-          SpeedButton8.Visible:=true;
-          SpeedButton9.Visible:=true;
+          SpeedButton11.Visible:=true;
           SpeedButton1.Visible:=false;
           SpeedButton2.Visible:=false;
-          SpeedButton3.Visible:=true;
-          SpeedButton10.top:=384;
         end;
     end;
 
@@ -202,7 +194,7 @@ begin
     TitleForm.Position:=poDesktopCenter;
 end;
 
-procedure TAuthorizationForm.SpeedButton3Click(Sender: TObject);
+procedure TAuthorizationForm.SpeedButton13Click(Sender: TObject);
 var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
