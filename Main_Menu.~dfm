@@ -1,6 +1,6 @@
 object MainMenu: TMainMenu
-  Left = 74
-  Top = 269
+  Left = 93
+  Top = 195
   AutoScroll = False
   BorderIcons = []
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102

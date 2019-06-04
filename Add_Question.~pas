@@ -38,6 +38,8 @@ type
     BitBtn8: TBitBtn;
     teacher_ON: TImage;
     stydent_ON: TImage;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -56,6 +58,8 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -64,8 +68,8 @@ type
 
 var
   Add_Questions: TAdd_Questions;
-  countQuestion,kodVoprosa:integer;
-
+  countQuestion,kodVoprosa, indexList:integer;
+  varianti,otvet,memoText:string;
 implementation
 
 uses Unit3, Unit2, Title_Form, Control, Main_Menu, UpdateUnit, config,
@@ -104,6 +108,8 @@ begin
     Add_Questions.visible:=false;
     ControlCRUD.Visible:=true;
     ControlCRUD.Position:=poDesktopCenter;
+    Add_Questions.Panel2.Visible:=false;
+    Add_Questions.Panel1.Visible:=false;
 end;
 
 procedure TAdd_Questions.FormClose(Sender: TObject;
@@ -123,6 +129,7 @@ end;
 
 procedure TAdd_Questions.ListBox1Click(Sender: TObject);
 begin
+    indexList:=ListBox1.ItemIndex;
     VariantsQuestionSingle1.Visible:=false;
     VariantsQuestionMore1.Visible:=false;
     Panel1.Visible:=false;
@@ -133,10 +140,11 @@ begin
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.Itemindex]+#39);
     kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
     Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
-    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=1 then
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then
       begin
         VariantsQuestionSingle1.Visible:=true;
         Panel1.Visible:=true;
+        ComboBox1.ItemIndex:=0;
         QuestionsMemo.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
         QuestionsMemo.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
         QuestionsMemo.putRightAnswer(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Проставляем верные ответы
@@ -146,10 +154,11 @@ begin
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.Itemindex]+#39);
     kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
     Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
-    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=2 then
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then
       begin
         VariantsQuestionMore1.Visible:=true;
         Panel2.Visible:=true;
+        ComboBox2.ItemIndex:=1;
         QuestionsMoreMemo.moreMemoClear;
         QuestionsMoreMemo.CheckBoxClear;
         QuestionsMoreMemo.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
@@ -158,7 +167,6 @@ begin
         QuestionsMoreMemo.putRightAnswer; // Проставляем верные CheckBox
         QuestionsMoreMemo.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
      end;
-
 end;
 
 procedure TAdd_Questions.VariantsQuestionMore1BitBtn2Click(Sender: TObject);
@@ -257,19 +265,19 @@ begin
 end;
 
 procedure TAdd_Questions.BitBtn5Click(Sender: TObject);
-var varianti,otvet,memoText:string;
 begin
+    varianti:='';
     with VariantsQuestionSingle1 do
       begin
-        varianti:=varianti+Memo1.Text+'©';
+         varianti:=varianti+Memo1.Text+'©';
          varianti:=varianti+Memo2.Text+'©';
-        varianti:=varianti+Memo3.Text+'©';
+         varianti:=varianti+Memo3.Text+'©';
          varianti:=varianti+Memo4.Text+'©';
          varianti:=varianti+Memo5.Text+'©';
          varianti:=varianti+Memo6.Text+'©';
          varianti:=varianti+Memo7.Text+'©';
          varianti:=varianti+Memo8.Text+'©';
-       varianti:=varianti+Memo9.Text+'©';
+         varianti:=varianti+Memo9.Text+'©';
          varianti:=varianti+Memo10.Text+'©';
 
         if RadioButton1.Checked=true then otvet:=Memo1.Text;
@@ -317,6 +325,7 @@ procedure TAdd_Questions.BitBtn1Click(Sender: TObject);
 var varianti,otveti,memoText:string;
 begin
     otveti:='';
+    varianti:='';
     with VariantsQuestionMore1 do
       begin
          varianti:=varianti+Memo11.Text+'©';
@@ -399,4 +408,159 @@ begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
-end.
+procedure TAdd_Questions.ComboBox1Change(Sender: TObject);
+begin
+     varianti:='';
+     with VariantsQuestionSingle1 do
+      begin
+        varianti:=varianti+Memo1.Text+'©';
+         varianti:=varianti+Memo2.Text+'©';
+        varianti:=varianti+Memo3.Text+'©';
+         varianti:=varianti+Memo4.Text+'©';
+         varianti:=varianti+Memo5.Text+'©';
+         varianti:=varianti+Memo6.Text+'©';
+         varianti:=varianti+Memo7.Text+'©';
+         varianti:=varianti+Memo8.Text+'©';
+       varianti:=varianti+Memo9.Text+'©';
+         varianti:=varianti+Memo10.Text+'©';
+      end;
+
+    randomize;
+    if Add_Questions.Memo1.Text=''then
+       memoText:='Вопрос '+IntToStr(random(999999))
+    else memoText:=Add_Questions.Memo1.Text;
+
+    if ComboBox1.ItemIndex=1 then
+       config.execRequestSQL('UPDATE Вопросы SET '+
+      ' КоличествоОтветов='+IntToStr(countQuestion)+','+
+      ' СодержаниеВопроса='+#39+memoText+#39+','+
+      ' ВариантыОтветов='+#39+varianti+#39+','+
+      ' ВерныйОтвет='+#39+''+#39+', '+
+      ' КодТипа=2'+
+      ' WHERE КодВопроса='+IntToStr(kodVoprosa)
+    );
+
+    VariantsQuestionSingle1.Visible:=false;
+    VariantsQuestionMore1.Visible:=false;
+    Panel1.Visible:=false;
+    Panel2.Visible:=false;
+    Button2.Enabled:=true;
+    Memo1.ReadOnly:=false;
+
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.Itemindex]+#39);
+    kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
+    Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then
+      begin
+        ComboBox1.ItemIndex:=0;
+        ComboBox2.ItemIndex:=0;
+        VariantsQuestionSingle1.Visible:=true;
+        Panel1.Visible:=true;
+        QuestionsMemo.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+        QuestionsMemo.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+        QuestionsMemo.putRightAnswer(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Проставляем верные ответы
+        QuestionsMemo.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+     end;
+
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.Itemindex]+#39);
+    kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
+    Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then
+      begin
+        ComboBox1.ItemIndex:=1;
+        ComboBox2.ItemIndex:=1;
+        VariantsQuestionMore1.Visible:=true;
+        Panel2.Visible:=true;
+        QuestionsMoreMemo.moreMemoClear;
+        QuestionsMoreMemo.CheckBoxClear;
+        QuestionsMoreMemo.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+        QuestionsMoreMemo.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+        QuestionsMoreMemo.setRightQuestionInArrayAnswers(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Получаем массив верных ответов
+        QuestionsMoreMemo.putRightAnswer; // Проставляем верные CheckBox
+        QuestionsMoreMemo.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+     end;
+end;
+
+procedure TAdd_Questions.ComboBox2Change(Sender: TObject);
+begin
+    varianti:='';
+    with VariantsQuestionMore1 do
+      begin
+         varianti:=varianti+Memo11.Text+'©';
+        varianti:=varianti+Memo2.Text+'©';
+         varianti:=varianti+Memo3.Text+'©';
+         varianti:=varianti+Memo4.Text+'©';
+         varianti:=varianti+Memo5.Text+'©';
+         varianti:=varianti+Memo6.Text+'©';
+        varianti:=varianti+Memo7.Text+'©';
+         varianti:=varianti+Memo8.Text+'©';
+         varianti:=varianti+Memo9.Text+'©';
+        varianti:=varianti+Memo10.Text+'©';
+      end;
+
+    randomize;
+    if Add_Questions.Memo1.Text=''then
+       memoText:='Вопрос '+IntToStr(random(999999))
+    else memoText:=Add_Questions.Memo1.Text;
+
+    if ComboBox1.ItemIndex=1 then
+       config.execRequestSQL('UPDATE Вопросы SET '+
+      ' КоличествоОтветов='+IntToStr(countQuestion)+','+
+      ' СодержаниеВопроса='+#39+memoText+#39+','+
+      ' ВариантыОтветов='+#39+varianti+#39+','+
+      ' ВерныйОтвет='+#39+''+#39+', '+
+      ' КодТипа=1'+
+      ' WHERE КодВопроса='+IntToStr(kodVoprosa)
+    );
+
+    VariantsQuestionSingle1.Visible:=false;
+    VariantsQuestionMore1.Visible:=false;
+    Panel1.Visible:=false;
+    Panel2.Visible:=false;
+    Button2.Enabled:=true;
+    Memo1.ReadOnly:=false;
+
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.Itemindex]+#39);
+    kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
+    Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then
+      begin
+        ComboBox1.ItemIndex:=0;
+        ComboBox2.ItemIndex:=0;
+        VariantsQuestionSingle1.Visible:=true;
+        Panel1.Visible:=true;
+        QuestionsMemo.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+        if BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString <>'' then
+        QuestionsMemo.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+        if BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString<>''then
+        QuestionsMemo.putRightAnswer(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Проставляем верные ответы
+        QuestionsMemo.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+     end;
+
+    config.selectRequestSQL('SELECT * FROM Вопросы WHERE СодержаниеВопроса='+#39+ListBox1.Items[ListBox1.Itemindex]+#39);
+    kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
+    Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then
+      begin
+        ComboBox1.ItemIndex:=1;
+        ComboBox2.ItemIndex:=1;
+        VariantsQuestionMore1.Visible:=true;
+        Panel2.Visible:=true;
+        QuestionsMoreMemo.moreMemoClear;
+        QuestionsMoreMemo.CheckBoxClear;
+        QuestionsMoreMemo.countQuest(BD.Request.DataSet.FieldByName('КоличествоОтветов').AsInteger); // Устанавливаем кол-во полей с вариантами
+        if BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString<>''then
+        QuestionsMoreMemo.setQuestionInMemo(BD.Request.DataSet.FieldByName('ВариантыОтветов').AsString);  // Проставляем варианты в поля memo
+        if BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString<>''then
+        QuestionsMoreMemo.setRightQuestionInArrayAnswers(BD.Request.DataSet.FieldByName('ВерныйОтвет').AsString); // Получаем массив верных ответов
+        QuestionsMoreMemo.putRightAnswer; // Проставляем верные CheckBox
+        QuestionsMoreMemo.clearStrokiMemo; // Чистим лишнии пустые строки в Memo
+     end;
+end;
+
+end.procedure TAdd_Questions.ComboBox2Change(Sender: TObject);
+begin
+
+end;
+
+

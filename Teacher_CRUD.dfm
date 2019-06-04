@@ -1,9 +1,9 @@
 object TeacherCRUD: TTeacherCRUD
-  Left = 72
-  Top = 447
+  Left = 75
+  Top = 151
   AutoScroll = False
   BorderIcons = []
-  Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1103#1084#1080
+  Caption = #1056#1072#1073#1086#1090#1072' '#1089' '#1076#1072#1085#1085#1099#1084#1080' '#1087#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1077#1081
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -8202,7 +8202,7 @@ object TeacherCRUD: TTeacherCRUD
   object DBGrid1: TDBGrid
     Left = 8
     Top = 56
-    Width = 1100
+    Width = 1129
     Height = 475
     DataSource = BD.Teacher
     FixedColor = clMoneyGreen

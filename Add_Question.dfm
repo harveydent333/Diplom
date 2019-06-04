@@ -12122,6 +12122,12 @@ object Add_Questions: TAdd_Questions
     Width = 875
     Height = 40
     Color = clWhite
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 6
     Visible = False
     object BitBtn1: TBitBtn
@@ -12166,13 +12172,13 @@ object Add_Questions: TAdd_Questions
       Left = 712
       Top = 8
       Width = 160
-      Height = 27
+      Height = 23
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -13
       Font.Name = 'Times New Roman'
       Font.Style = []
-      ItemHeight = 19
+      ItemHeight = 15
       ItemIndex = 0
       ParentFont = False
       TabOrder = 4
