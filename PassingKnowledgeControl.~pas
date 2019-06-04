@@ -30,8 +30,6 @@ type
 
 var
   PassingKnowledgeControlForm: TPassingKnowledgeControlForm;
-  CONST TYPE_SINGLE_QUESTIONS = 1;
-  CONST TYPE_MORE_QUESTIONS = 2;
 
 implementation
 

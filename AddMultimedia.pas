@@ -55,7 +55,7 @@ var
 
 implementation
 
-uses config, basa_dan, UpdateUnit, MultiMedia_CRUD;
+uses config, basa_dan, UpdateUnit, MultiMedia_CRUD, AuthorizationData;
 
 {$R *.dfm}
 
@@ -122,9 +122,13 @@ end;
 
 procedure TAddMultimediaModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Мультимедиа (КодТемы, НазваниеМультимедии, НомерМультимедии, Путь) VALUES('+
-      IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+', '+#39+'Multimedia\'+PathFile+#39+
-    ')');
+    config.execRequestSQL('INSERT INTO Мультимедиа (КодТемы, НазваниеМультимедии, НомерМультимедии, Путь, КодУчителя) VALUES('+
+      IntToStr(kodTema)+','+
+      #39+Edit1.Text+#39+','+
+      #39+Edit2.Text+#39+', '+
+      #39+'Multimedia\'+PathFile+#39+', '+
+      IntToStr(kodUser)+')'
+    );
     MessageBox(0,'Мультимедиа была успешно создана!','Создание мультимедии', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 

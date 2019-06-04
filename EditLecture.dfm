@@ -1,14 +1,14 @@
 object Edit_Lecture: TEdit_Lecture
-  Left = 69
-  Top = 177
+  Left = 67
+  Top = 238
   AutoScroll = False
   Caption = #1051#1077#1082#1094#1080#1103
-  ClientHeight = 772
+  ClientHeight = 602
   ClientWidth = 1189
   Color = clBtnFace
-  Constraints.MaxHeight = 900
+  Constraints.MaxHeight = 640
   Constraints.MaxWidth = 1205
-  Constraints.MinHeight = 810
+  Constraints.MinHeight = 640
   Constraints.MinWidth = 1205
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

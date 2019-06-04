@@ -96,7 +96,6 @@ begin
                 inc(countBall);
             end;
   end;
-  PassingKnowledgeControlForm.label1.Caption:=IntToStr(countBall);
 end;
 
 procedure setQuestionInMemo(Answers:string);
@@ -116,15 +115,25 @@ begin
     with PassingKnowledgeControlForm.VariantsQuestionSingle1 do
       begin
         Memo1.Lines.Add(getClearString(ArrayAnswers[1]));
+        Memo1.SelStart:= 1;
         Memo2.Lines.Add(getClearString(ArrayAnswers[2]));
+        Memo2.SelStart:= 1;
         Memo3.Lines.Add(getClearString(ArrayAnswers[3]));
+        Memo3.SelStart:= 1;
         Memo4.Lines.Add(getClearString(ArrayAnswers[4]));
+        Memo4.SelStart:= 1;
         Memo5.Lines.Add(getClearString(ArrayAnswers[5]));
+        Memo5.SelStart:= 1;
         Memo6.Lines.Add(getClearString(ArrayAnswers[6]));
+        Memo6.SelStart:= 1;
         Memo7.Lines.Add(getClearString(ArrayAnswers[7]));
+        Memo7.SelStart:= 1;
         Memo8.Lines.Add(getClearString(ArrayAnswers[8]));
+        Memo8.SelStart:= 1;
         Memo9.Lines.Add(getClearString(ArrayAnswers[9]));
+        Memo9.SelStart:= 1;
         Memo10.Lines.Add(getClearString(ArrayAnswers[10]));
+        Memo10.SelStart:= 1;
       end;
 end;
 

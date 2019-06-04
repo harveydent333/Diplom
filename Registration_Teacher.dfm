@@ -1,7 +1,8 @@
 object RegistrationTeacher: TRegistrationTeacher
-  Left = 243
-  Top = 205
+  Left = -198
+  Top = 511
   AutoScroll = False
+  BorderIcons = []
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1087#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1103
   ClientHeight = 631
   ClientWidth = 1172

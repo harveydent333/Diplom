@@ -1,7 +1,8 @@
 object AllComponents: TAllComponents
-  Left = 137
-  Top = 183
+  Left = 104
+  Top = 310
   AutoScroll = False
+  BorderIcons = []
   Caption = #1054#1073#1091#1095#1077#1085#1080#1077
   ClientHeight = 643
   ClientWidth = 1172
@@ -2453,14 +2454,14 @@ object AllComponents: TAllComponents
   object Label1: TLabel
     Left = 48
     Top = 64
-    Width = 193
-    Height = 29
+    Width = 174
+    Height = 27
     Alignment = taCenter
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1088#1072#1079#1076#1077#1083
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -24
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2468,14 +2469,14 @@ object AllComponents: TAllComponents
   object Label2: TLabel
     Left = 48
     Top = 144
-    Width = 169
-    Height = 29
+    Width = 155
+    Height = 27
     Alignment = taCenter
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1090#1077#1084#1091
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -24
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2484,13 +2485,13 @@ object AllComponents: TAllComponents
   object Label3: TLabel
     Left = 48
     Top = 232
-    Width = 169
-    Height = 29
+    Width = 155
+    Height = 27
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1091#1088#1086#1082
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -24
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -2499,13 +2500,13 @@ object AllComponents: TAllComponents
   object Label5: TLabel
     Left = 208
     Top = 150
-    Width = 162
-    Height = 23
+    Width = 145
+    Height = 21
     Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1058#1077#1084
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -5292,13 +5293,13 @@ object AllComponents: TAllComponents
   object Label6: TLabel
     Left = 1010
     Top = 2
-    Width = 57
-    Height = 23
+    Width = 50
+    Height = 21
     Caption = 'Label4'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -5306,13 +5307,13 @@ object AllComponents: TAllComponents
   object Label7: TLabel
     Left = 1010
     Top = 26
-    Width = 57
-    Height = 23
+    Width = 50
+    Height = 21
     Caption = 'Label6'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     Transparent = True
@@ -5335,7 +5336,6 @@ object AllComponents: TAllComponents
     Height = 49
     Caption = #1053#1072#1095#1072#1090#1100' '#1088#1077#1096#1077#1085#1080#1077
     Enabled = False
-    Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -32

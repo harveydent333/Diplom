@@ -1,8 +1,9 @@
 object ManagerUsers: TManagerUsers
-  Left = 85
-  Top = 268
+  Left = -133
+  Top = 367
   AutoScroll = False
-  Caption = #1062#1077#1085#1090#1088' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1103#1084#1080
+  BorderIcons = []
+  Caption = #1042#1099#1073#1086#1088' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1103#1084#1080
   ClientHeight = 643
   ClientWidth = 1172
   Color = clBtnFace
@@ -2530,12 +2531,11 @@ object ManagerUsers: TManagerUsers
     Top = 200
     Width = 673
     Height = 49
-    Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1086#1073#1091#1095#1072#1102#1097#1080#1084#1080#1089#1103
-    Flat = True
+    Caption = #1044#1072#1085#1085#1099#1077' '#1086#1073#1091#1095#1072#1102#1097#1080#1093#1089#1103
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     OnClick = SpeedButton1Click
@@ -2545,12 +2545,11 @@ object ManagerUsers: TManagerUsers
     Top = 288
     Width = 673
     Height = 49
-    Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1103#1084#1080
-    Flat = True
+    Caption = #1044#1072#1085#1085#1099#1077' '#1087#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1077#1081
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     OnClick = SpeedButton6Click
@@ -8228,5 +8227,19 @@ object ManagerUsers: TManagerUsers
       8E4963924FBD368A2BBCFD652495905145140C28A28A0028A28A0028A28A00FF
       D9}
     Proportional = True
+  end
+  object SpeedButton7: TSpeedButton
+    Left = 225
+    Top = 360
+    Width = 673
+    Height = 49
+    Caption = #1044#1072#1085#1085#1099#1077' '#1075#1088#1091#1087#1087
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
   end
 end

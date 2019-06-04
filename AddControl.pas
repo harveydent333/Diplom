@@ -50,7 +50,7 @@ var
   unique_control,unique_number_control:boolean;
 implementation
 
-uses Control, basa_dan, config;
+uses Control, basa_dan, config, AuthorizationData;
 
 {$R *.dfm}
 
@@ -126,7 +126,12 @@ end;
 
 procedure TAddControlModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Контроль (КодТемы, НазваниеКонтроля, НомерКонтроля) VALUES('+IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+')');
+    config.execRequestSQL('INSERT INTO Контроль (КодТемы, НазваниеКонтроля, НомерКонтроля, КодУчителя) VALUES('+
+      IntToStr(kodTema)+','+
+      #39+Edit1.Text+#39+','+
+      #39+Edit2.Text+#39+', '+
+      IntToStr(kodUser)+')'
+    );
     MessageBox(0,'Контроль знаний был успешно создан!','Создание контроля знаний', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 

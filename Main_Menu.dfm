@@ -1,7 +1,8 @@
 object MainMenu: TMainMenu
-  Left = 311
-  Top = 232
+  Left = 88
+  Top = 348
   AutoScroll = False
+  BorderIcons = []
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102
   ClientHeight = 643
   ClientWidth = 1172
@@ -2523,7 +2524,6 @@ object MainMenu: TMainMenu
     Width = 673
     Height = 49
     Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1076#1072#1085#1085#1099#1093
-    Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -29
@@ -2538,7 +2538,6 @@ object MainMenu: TMainMenu
     Width = 673
     Height = 49
     Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1077#1081
-    Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -29
@@ -2553,7 +2552,6 @@ object MainMenu: TMainMenu
     Width = 673
     Height = 49
     Caption = #1046#1091#1088#1085#1072#1083' '#1086#1094#1077#1085#1086#1082
-    Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -29
@@ -8306,7 +8304,6 @@ object MainMenu: TMainMenu
     Width = 673
     Height = 49
     Caption = #1054#1073#1091#1095#1077#1085#1080#1077
-    Flat = True
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -29

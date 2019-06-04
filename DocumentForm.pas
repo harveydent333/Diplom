@@ -69,6 +69,12 @@ type
     QRLabel5: TQRLabel;
     QRLabel6: TQRLabel;
     QRLabel7: TQRLabel;
+    CheckBox8: TCheckBox;
+    Label15: TLabel;
+    ComboBox4: TComboBox;
+    Label16: TLabel;
+    CheckBox9: TCheckBox;
+    ComboBox5: TComboBox;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);

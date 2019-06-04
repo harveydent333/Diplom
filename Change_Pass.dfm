@@ -2,6 +2,7 @@ object ChangePass: TChangePass
   Left = 379
   Top = 363
   AutoScroll = False
+  BorderIcons = [biSystemMenu]
   Caption = #1048#1079#1084#1077#1085#1077#1085#1080#1077' '#1087#1072#1088#1086#1083#1103
   ClientHeight = 310
   ClientWidth = 644
@@ -1324,8 +1325,8 @@ object ChangePass: TChangePass
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = -328
-    Top = -280
+    Left = -176
+    Top = -288
     Width = 1209
     Height = 689
     Picture.Data = {

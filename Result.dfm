@@ -2,6 +2,7 @@ object ResultForm: TResultForm
   Left = 322
   Top = 218
   AutoScroll = False
+  BorderIcons = []
   Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090
   ClientHeight = 307
   ClientWidth = 737

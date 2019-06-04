@@ -1,7 +1,8 @@
 object Add_Questions: TAdd_Questions
-  Left = 37
-  Top = 158
+  Left = 39
+  Top = 239
   AutoScroll = False
+  BorderIcons = []
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 672
   ClientWidth = 1185

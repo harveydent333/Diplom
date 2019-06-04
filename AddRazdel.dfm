@@ -1,6 +1,6 @@
 object AddRazdelModalForm: TAddRazdelModalForm
-  Left = 120
-  Top = 487
+  Left = 336
+  Top = 449
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1056#1072#1079#1076#1077#1083#1072
   ClientHeight = 310

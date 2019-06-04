@@ -27,12 +27,12 @@ type
     Label1: TLabel;
     Image2: TImage;
     SpeedButton4: TSpeedButton;
+    Label4: TLabel;
     procedure SpeedButton2Click(Sender: TObject);
     procedure stydent_OFFClick(Sender: TObject);
     procedure teacher_OFFClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton13Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox1Change(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure Edit1KeyPress(Sender: TObject; var Key: Char);
@@ -185,13 +185,6 @@ begin
         BD.Request.DataSet.Next;
       end;
    AuthorizationForm.ComboBox2.ItemIndex:=0;
-end;
-
-procedure TAuthorizationForm.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-    AuthorizationForm.Visible:=false;
-    TitleForm.Show;
-    TitleForm.Position:=poDesktopCenter;
 end;
 
 procedure TAuthorizationForm.SpeedButton13Click(Sender: TObject);

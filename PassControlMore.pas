@@ -18,7 +18,7 @@ ArrayRightAnswers:array[1..10] of string;
 implementation
 
 uses PassControlSingle, PassingKnowledgeControl, Add_Question, SysUtils, basa_dan,
-  config;
+  config, StdCtrls;
 
 procedure checkUserAnswer;
 begin
@@ -82,15 +82,65 @@ begin
     with PassingKnowledgeControlForm.VariantsQuestionMore1 do
       begin
         Memo11.Lines.Add(getClearString(ArrayAnswers[1]));
+        Memo11.ScrollBars:=ssVertical;
+        Memo11.SelStart:=0;
+        Memo11.SelLength := 0;
+        Memo11.ScrollBars:=ssnone;
+
         Memo2.Lines.Add(getClearString(ArrayAnswers[2]));
+        memo2.ScrollBars:=ssVertical;
+        Memo2.SelStart:=0;
+        Memo2.SelLength := 0;
+        memo2.ScrollBars:=ssnone;
+
         Memo3.Lines.Add(getClearString(ArrayAnswers[3]));
+        Memo3.ScrollBars:=ssVertical;
+        Memo3.SelStart:=0;
+        Memo3.SelLength := 0;
+        Memo3.ScrollBars:=ssnone;
+
         Memo4.Lines.Add(getClearString(ArrayAnswers[4]));
+        Memo4.ScrollBars:=ssVertical;
+        Memo4.SelStart:=0;
+        Memo4.SelLength := 0;
+        Memo4.ScrollBars:=ssnone;
+
         Memo5.Lines.Add(getClearString(ArrayAnswers[5]));
+        Memo5.ScrollBars:=ssVertical;
+        Memo5.SelStart:=0;
+        Memo5.SelLength := 0;
+        Memo5.ScrollBars:=ssnone;
+
         Memo6.Lines.Add(getClearString(ArrayAnswers[6]));
+        Memo6.ScrollBars:=ssVertical;
+        Memo6.SelStart:=0;
+        Memo6.SelLength := 0;
+        Memo6.ScrollBars:=ssnone;
+
         Memo7.Lines.Add(getClearString(ArrayAnswers[7]));
+        Memo7.ScrollBars:=ssVertical;
+        Memo7.SelStart:=0;
+        Memo7.SelLength := 0;
+        Memo7.ScrollBars:=ssnone;
+
         Memo8.Lines.Add(getClearString(ArrayAnswers[8]));
+        Memo8.ScrollBars:=ssVertical;
+        Memo8.SelStart:=0;
+        Memo8.SelLength := 0;
+        Memo8.ScrollBars:=ssnone;
+
         Memo9.Lines.Add(getClearString(ArrayAnswers[9]));
+        Memo9.ScrollBars:=ssVertical;
+        Memo9.SelStart:=0;
+        Memo9.SelLength := 0;
+        Memo9.ScrollBars:=ssnone;
+
         Memo10.Lines.Add(getClearString(ArrayAnswers[10]));
+        Memo10.ScrollBars:=ssVertical;
+        Memo10.SelStart:=0;
+        Memo10.SelLength := 0;
+        Memo10.ScrollBars:=ssnone;
+
       end;
   end;
 end;

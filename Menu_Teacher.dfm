@@ -1,7 +1,8 @@
 object RegistrationForm: TRegistrationForm
-  Left = 361
-  Top = 265
+  Left = 28
+  Top = 417
   AutoScroll = False
+  BorderIcons = []
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
   ClientHeight = 643
   ClientWidth = 1172

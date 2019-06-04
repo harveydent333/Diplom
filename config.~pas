@@ -8,6 +8,8 @@ Stydent_CRUD,  Tema_CRUD, Title_Form, Unit2, UpdateLecture, UpdateTema, UpdateUn
 var  x:integer;
 countBall,exitPoint:integer;
 posetivAnswer, userAnswer, getShyrnalData:string;
+CONST TYPE_SINGLE_QUESTIONS = 1;
+CONST TYPE_MORE_QUESTIONS = 2;
 
 procedure selectRequestSQL(request:string);
 procedure evaluationCalculation(result:real);
@@ -138,11 +140,11 @@ procedure checkOnThePresenceOfTheCompositionsOfTeachers;
 begin
    if TeacherCRUD.DBGrid1.DataSource.DataSet.RecordCount = 1 then
       begin
-          TeacherCRUD.SpeedButton11.Enabled:=false;
+          TeacherCRUD.BitBtn3.Enabled:=false;
       end
     else
       begin
-          TeacherCRUD.SpeedButton11.Enabled:=true;
+          TeacherCRUD.BitBtn3.Enabled:=true;
       end;
 end;
 
@@ -150,13 +152,13 @@ procedure checkOnThePresenceOfTheCompositionsOfRazdels;
 begin
    if RazdelCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          RazdelCRUD.SpeedButton9.Enabled:=false;
-          RazdelCRUD.SpeedButton10.Enabled:=false;
+          RazdelCRUD.BitBtn2.Enabled:=false;
+          RazdelCRUD.BitBtn3.Enabled:=false;
       end
     else
       begin
-          RazdelCRUD.SpeedButton9.Enabled:=true;
-          RazdelCRUD.SpeedButton10.Enabled:=true;
+          RazdelCRUD.BitBtn2.Enabled:=true;
+          RazdelCRUD.BitBtn3.Enabled:=true;
       end;
 end;
 
@@ -164,13 +166,13 @@ procedure checkOnThePresenceOfTheCompositionsOfTems;
 begin
     if TemaCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          TemaCRUD.SpeedButton9.Enabled:=false;
-          TemaCRUD.SpeedButton10.Enabled:=false;
+          TemaCRUD.BitBtn2.Enabled:=false;
+          TemaCRUD.BitBtn3.Enabled:=false;
       end
     else
       begin
-          TemaCRUD.SpeedButton9.Enabled:=true;
-          TemaCRUD.SpeedButton10.Enabled:=true;
+          TemaCRUD.BitBtn2.Enabled:=true;
+          TemaCRUD.BitBtn3.Enabled:=true;
       end;
 end;
 
@@ -178,15 +180,15 @@ procedure checkOnThePresenceOfTheCompositionsOfLectures;
 begin
  if LectureCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          LectureCRUD.SpeedButton10.Enabled:=false;
-          LectureCRUD.SpeedButton11.Enabled:=false;
-          LectureCRUD.SpeedButton8.Enabled:=false;
+          LectureCRUD.BitBtn2.Enabled:=false;
+          LectureCRUD.BitBtn3.Enabled:=false;
+          LectureCRUD.BitBtn4.Enabled:=false;
       end
     else
       begin
-          LectureCRUD.SpeedButton10.Enabled:=true;
-          LectureCRUD.SpeedButton11.Enabled:=true;
-          LectureCRUD.SpeedButton8.Enabled:=true;
+          LectureCRUD.BitBtn2.Enabled:=true;
+          LectureCRUD.BitBtn3.Enabled:=true;
+          LectureCRUD.BitBtn4.Enabled:=true;
       end;
 end;
 
@@ -194,13 +196,13 @@ procedure checkOnThePresenceOfTheCompositionsOfPractics;
 begin
    if PracticCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          PracticCRUD.SpeedButton9.Enabled:=false;
-          PracticCRUD.SpeedButton10.Enabled:=false;
+          PracticCRUD.BitBtn2.Enabled:=false;
+          PracticCRUD.BitBtn3.Enabled:=false;
       end
     else
       begin
-          PracticCRUD.SpeedButton9.Enabled:=true;
-          PracticCRUD.SpeedButton10.Enabled:=true;
+          PracticCRUD.BitBtn2.Enabled:=true;
+          PracticCRUD.BitBtn3.Enabled:=true;
       end;
 end;
 
@@ -208,15 +210,15 @@ procedure checkOnThePresenceOfTheCompositionsOfControls;
 begin
   if ControlCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          ControlCRUD.SpeedButton10.Enabled:=false;
-          ControlCRUD.SpeedButton11.Enabled:=false;
-          ControlCRUD.SpeedButton8.Enabled:=false;
+          ControlCRUD.BitBtn2.Enabled:=false;
+          ControlCRUD.BitBtn3.Enabled:=false;
+          ControlCRUD.BitBtn4.Enabled:=false;
       end
     else
       begin
-          ControlCRUD.SpeedButton10.Enabled:=true;
-          ControlCRUD.SpeedButton11.Enabled:=true;
-          ControlCRUD.SpeedButton8.Enabled:=true;
+          ControlCRUD.BitBtn2.Enabled:=true;
+          ControlCRUD.BitBtn3.Enabled:=true;
+          ControlCRUD.BitBtn4.Enabled:=true;
       end;
 end;
 
@@ -224,13 +226,13 @@ procedure checkOnThePresenceOfTheCompositionsOfYcheniks;
 begin
     if YchenikiCRUD.DBGrid1.DataSource.DataSet.IsEmpty=true then
       begin
-          YchenikiCRUD.SpeedButton10.Enabled:=false;
-          YchenikiCRUD.SpeedButton11.Enabled:=false;
+          YchenikiCRUD.BitBtn2.Enabled:=false;
+          YchenikiCRUD.BitBtn3.Enabled:=false;
       end
     else
       begin
-          YchenikiCRUD.SpeedButton10.Enabled:=true;
-          YchenikiCRUD.SpeedButton11.Enabled:=true;
+          YchenikiCRUD.BitBtn2.Enabled:=true;
+          YchenikiCRUD.BitBtn3.Enabled:=true;
       end;
 end;
 

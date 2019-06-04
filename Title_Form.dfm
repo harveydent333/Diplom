@@ -1,8 +1,9 @@
 object TitleForm: TTitleForm
-  Left = 79
-  Top = 213
+  Left = 5
+  Top = 457
   AutoScroll = False
-  Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1080' '#1079#1072#1097#1080#1090#1072' WEB '#1087#1088#1080#1083#1086#1078#1077#1085#1080#1081
+  BorderIcons = [biHelp]
+  Caption = #1058#1080#1090#1091#1083#1100#1085#1072#1103' '#1092#1086#1088#1084#1072
   ClientHeight = 642
   ClientWidth = 1172
   Color = clBtnFace
@@ -3183,21 +3184,6 @@ object TitleForm: TTitleForm
       0514514005145140051451400514514005145140051451400514514005145140
       0514514005145140051451400514514005145140051451400514514005145140
       0514514005145140051451400514514005145140051451401FFFD9}
-  end
-  object SpeedButton4: TSpeedButton
-    Left = 352
-    Top = 344
-    Width = 465
-    Height = 73
-    Caption = #1053#1072#1095#1072#1090#1100' '#1088#1072#1073#1086#1090#1091
-    Flat = True
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -37
-    Font.Name = 'Times New Roman'
-    Font.Style = []
-    ParentFont = False
-    OnClick = SpeedButton4Click
   end
   object Label2: TLabel
     Left = 120
@@ -7174,6 +7160,22 @@ object TitleForm: TTitleForm
     ParentFont = False
     Transparent = True
     WordWrap = True
+  end
+  object BitBtn1: TBitBtn
+    Left = 368
+    Top = 368
+    Width = 393
+    Height = 41
+    Caption = #1053#1072#1095#1072#1090#1100' '#1088#1072#1073#1086#1090#1091
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = BitBtn1Click
+    Kind = bkIgnore
   end
   object OpenDialog1: TOpenDialog
     Filter = '*.mdb|*.mdb'

@@ -1,14 +1,14 @@
 object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
-  Left = 251
-  Top = 39
+  Left = 286
+  Top = 116
   Width = 896
-  Height = 870
+  Height = 780
   BorderIcons = [biMinimize, biMaximize]
   Caption = #1055#1088#1086#1093#1086#1078#1076#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
   Color = clBtnFace
-  Constraints.MaxHeight = 870
+  Constraints.MaxHeight = 780
   Constraints.MaxWidth = 896
-  Constraints.MinHeight = 870
+  Constraints.MinHeight = 780
   Constraints.MinWidth = 896
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1337,9 +1337,9 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
   end
   inline VariantsQuestionSingle1: TVariantsQuestionSingle
     Left = -12
-    Top = 32
+    Top = 20
     Width = 886
-    Height = 769
+    Height = 693
     Color = clBtnFace
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -1349,76 +1349,260 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     ParentColor = False
     ParentFont = False
     TabOrder = 3
+    inherited Label1: TLabel
+      Top = 76
+    end
+    inherited Label2: TLabel
+      Top = 130
+    end
+    inherited Label3: TLabel
+      Top = 190
+    end
+    inherited Label4: TLabel
+      Top = 250
+    end
+    inherited Label5: TLabel
+      Top = 318
+    end
+    inherited Label6: TLabel
+      Top = 370
+    end
+    inherited Label7: TLabel
+      Top = 436
+    end
+    inherited Label8: TLabel
+      Top = 492
+    end
+    inherited Label9: TLabel
+      Top = 560
+    end
+    inherited Label10: TLabel
+      Top = 624
+    end
     inherited Memo1: TMemo
+      Top = 96
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Panel2: TPanel
       Top = -100
     end
     inherited Memo2: TMemo
+      Top = 155
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo3: TMemo
+      Top = 220
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo4: TMemo
+      Top = 280
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo5: TMemo
+      Top = 340
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo6: TMemo
+      Top = 400
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo7: TMemo
+      Top = 460
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo8: TMemo
+      Top = 524
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo9: TMemo
+      Top = 584
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo10: TMemo
+      Top = 646
+      Height = 35
+      Enabled = False
       ReadOnly = True
+    end
+    inherited RadioButton1: TRadioButton
+      Top = 102
+    end
+    inherited RadioButton2: TRadioButton
+      Top = 160
+    end
+    inherited RadioButton3: TRadioButton
+      Top = 224
+    end
+    inherited RadioButton4: TRadioButton
+      Top = 284
+    end
+    inherited RadioButton5: TRadioButton
+      Top = 344
+    end
+    inherited RadioButton6: TRadioButton
+      Top = 404
+    end
+    inherited RadioButton7: TRadioButton
+      Top = 468
+    end
+    inherited RadioButton8: TRadioButton
+      Top = 528
+    end
+    inherited RadioButton9: TRadioButton
+      Top = 592
+    end
+    inherited RadioButton10: TRadioButton
+      Top = 650
     end
   end
   inline VariantsQuestionMore1: TVariantsQuestionMore
     Left = -12
-    Top = 32
+    Top = 20
     Width = 886
-    Height = 769
+    Height = 693
     TabOrder = 4
     Visible = False
+    inherited hint: TLabel
+      Left = 280
+      Top = 6
+    end
+    inherited Label1: TLabel
+      Top = 76
+    end
+    inherited Label2: TLabel
+      Top = 130
+    end
+    inherited Label3: TLabel
+      Top = 190
+    end
+    inherited Label4: TLabel
+      Top = 250
+    end
+    inherited Label5: TLabel
+      Top = 318
+    end
+    inherited Label6: TLabel
+      Top = 370
+    end
+    inherited Label7: TLabel
+      Top = 436
+    end
+    inherited Label8: TLabel
+      Top = 492
+    end
+    inherited Label9: TLabel
+      Top = 560
+    end
+    inherited Label10: TLabel
+      Top = 624
+    end
     inherited Memo11: TMemo
+      Top = 96
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo2: TMemo
+      Top = 155
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo3: TMemo
+      Top = 220
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo4: TMemo
+      Top = 280
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo5: TMemo
+      Top = 340
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo6: TMemo
+      Top = 400
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo7: TMemo
+      Top = 460
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo8: TMemo
+      Top = 524
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo9: TMemo
+      Top = 584
+      Height = 35
+      Enabled = False
       ReadOnly = True
     end
     inherited Memo10: TMemo
+      Top = 646
+      Height = 35
+      Enabled = False
       ReadOnly = True
+    end
+    inherited CheckBox1: TCheckBox
+      Top = 102
+    end
+    inherited CheckBox2: TCheckBox
+      Top = 160
+    end
+    inherited CheckBox3: TCheckBox
+      Top = 224
+    end
+    inherited CheckBox4: TCheckBox
+      Top = 284
+    end
+    inherited CheckBox5: TCheckBox
+      Top = 344
+    end
+    inherited CheckBox6: TCheckBox
+      Top = 404
+    end
+    inherited CheckBox7: TCheckBox
+      Top = 468
+    end
+    inherited CheckBox8: TCheckBox
+      Top = 528
+    end
+    inherited CheckBox9: TCheckBox
+      Top = 592
+    end
+    inherited CheckBox10: TCheckBox
+      Top = 650
     end
     inherited Panel2: TPanel
       Top = -100
@@ -1441,8 +1625,8 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     TabOrder = 2
   end
   object Button1: TButton
-    Left = 208
-    Top = 800
+    Left = 176
+    Top = 712
     Width = 441
     Height = 25
     Caption = #1057#1083#1077#1076#1091#1102#1097#1080#1081' '#1074#1086#1087#1088#1086#1089
@@ -1456,8 +1640,8 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 656
-    Top = 800
+    Left = 648
+    Top = 712
     Width = 217
     Height = 25
     Caption = #1047#1072#1074#1077#1088#1096#1080#1090#1100

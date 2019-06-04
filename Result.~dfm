@@ -1320,6 +1320,7 @@ object ResultForm: TResultForm
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClick = FormClick
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel

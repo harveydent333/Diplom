@@ -1,7 +1,8 @@
 object Add_Questions: TAdd_Questions
-  Left = 244
-  Top = 384
+  Left = 95
+  Top = 138
   AutoScroll = False
+  BorderIcons = []
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
   ClientHeight = 672
   ClientWidth = 1185
@@ -12126,7 +12127,7 @@ object Add_Questions: TAdd_Questions
     object BitBtn1: TBitBtn
       Left = 10
       Top = 8
-      Width = 210
+      Width = 170
       Height = 25
       Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
       TabOrder = 0
@@ -12134,9 +12135,9 @@ object Add_Questions: TAdd_Questions
       Kind = bkOK
     end
     object BitBtn2: TBitBtn
-      Left = 655
+      Left = 184
       Top = 8
-      Width = 210
+      Width = 170
       Height = 25
       Caption = #1057#1073#1088#1086#1089
       TabOrder = 1
@@ -12144,22 +12145,42 @@ object Add_Questions: TAdd_Questions
       Kind = bkAbort
     end
     object BitBtn3: TBitBtn
-      Left = 224
+      Left = 360
       Top = 8
-      Width = 210
+      Width = 170
       Height = 25
       Caption = '+ '#1044#1086#1073#1072#1074#1080#1090#1100
       TabOrder = 2
       OnClick = BitBtn3Click
     end
     object BitBtn4: TBitBtn
-      Left = 440
+      Left = 535
       Top = 8
-      Width = 210
+      Width = 170
       Height = 25
       Caption = '- '#1059#1076#1072#1083#1080#1090#1100
       TabOrder = 3
       OnClick = BitBtn4Click
+    end
+    object ComboBox2: TComboBox
+      Left = 712
+      Top = 8
+      Width = 160
+      Height = 27
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Times New Roman'
+      Font.Style = []
+      ItemHeight = 19
+      ItemIndex = 0
+      ParentFont = False
+      TabOrder = 4
+      Text = #1054#1076#1080#1085#1086#1095#1085#1099#1081' '#1074#1099#1073#1086#1088
+      OnChange = ComboBox2Change
+      Items.Strings = (
+        #1054#1076#1080#1085#1086#1095#1085#1099#1081' '#1074#1099#1073#1086#1088
+        #1052#1085#1086#1078#1077#1089#1090#1074#1077#1085#1085#1099#1081' '#1074#1099#1073#1086#1088)
     end
   end
   object Panel1: TPanel
@@ -12173,40 +12194,84 @@ object Add_Questions: TAdd_Questions
     object BitBtn5: TBitBtn
       Left = 10
       Top = 8
-      Width = 210
+      Width = 170
       Height = 25
       Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Times New Roman'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
       OnClick = BitBtn5Click
       Kind = bkOK
     end
     object BitBtn6: TBitBtn
-      Left = 655
+      Left = 535
       Top = 8
-      Width = 210
+      Width = 170
       Height = 25
       Caption = #1057#1073#1088#1086#1089
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Times New Roman'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
       OnClick = BitBtn6Click
       Kind = bkAbort
     end
     object BitBtn7: TBitBtn
-      Left = 224
+      Left = 184
       Top = 8
-      Width = 210
+      Width = 170
       Height = 25
       Caption = '+ '#1044#1086#1073#1072#1074#1080#1090#1100
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Times New Roman'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 2
       OnClick = BitBtn7Click
     end
     object BitBtn8: TBitBtn
-      Left = 440
+      Left = 360
       Top = 8
-      Width = 210
+      Width = 170
       Height = 25
       Caption = '- '#1059#1076#1072#1083#1080#1090#1100
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Times New Roman'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 3
       OnClick = BitBtn8Click
+    end
+    object ComboBox1: TComboBox
+      Left = 712
+      Top = 8
+      Width = 161
+      Height = 27
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Times New Roman'
+      Font.Style = []
+      ItemHeight = 19
+      ItemIndex = 1
+      ParentFont = False
+      TabOrder = 4
+      Text = #1052#1085#1086#1078#1077#1089#1090#1074#1077#1085#1085#1099#1081' '#1074#1099#1073#1086#1088
+      OnChange = ComboBox1Change
+      Items.Strings = (
+        #1054#1076#1080#1085#1086#1095#1085#1099#1081' '#1074#1099#1073#1086#1088
+        #1052#1085#1086#1078#1077#1089#1090#1074#1077#1085#1085#1099#1081' '#1074#1099#1073#1086#1088)
     end
   end
 end

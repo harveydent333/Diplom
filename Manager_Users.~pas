@@ -19,6 +19,7 @@ type
     SpeedButton6: TSpeedButton;
     teacher_ON: TImage;
     stydent_ON: TImage;
+    SpeedButton7: TSpeedButton;
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);

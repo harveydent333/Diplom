@@ -45,7 +45,7 @@ var
   unique_tema,unique_number_tema:boolean;
 implementation
 
-uses config;
+uses config, AuthorizationData;
 
 {$R *.dfm}
 
@@ -118,7 +118,12 @@ end;
 
 procedure TAddTemaModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Тема (КодРаздела, НазваниеТемы, НомерТемы) VALUES('+IntToStr(kodRazdel)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+')');
+    config.execRequestSQL('INSERT INTO Тема (КодРаздела, НазваниеТемы, НомерТемы, КодУчителя) VALUES('+
+      IntToStr(kodRazdel)+','+
+      #39+Edit1.Text+#39+','+
+      #39+Edit2.Text+#39+','+
+      IntToStr(kodUser)+')'
+    );
     MessageBox(0,'Тема была успешно Создана!','Создание Темы', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
     Edit1.Text:='';

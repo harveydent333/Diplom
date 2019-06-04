@@ -1324,8 +1324,8 @@ object AddLectureModalForm: TAddLectureModalForm
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = -328
-    Top = -280
+    Left = -200
+    Top = -288
     Width = 1337
     Height = 737
     Picture.Data = {

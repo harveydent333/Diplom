@@ -13,7 +13,6 @@ type
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     Image2: TImage;
-    SpeedButton4: TSpeedButton;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -28,12 +27,14 @@ type
     Image4: TImage;
     Image5: TImage;
     Label9: TLabel;
+    BitBtn1: TBitBtn;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     procedure openAuthorizationForm;
     { Private declarations }
@@ -66,7 +67,7 @@ begin
         end;
     Except
       MessageBox(0,'Не  удается подключиться к базе данных! ','', MB_OK+MB_ICONERROR);
-      SpeedButton4.Enabled:=false;
+      BitBtn1.Enabled:=false;
     end;
 end;
 
@@ -135,12 +136,12 @@ begin
                   ConnectionString:= 'Provider=Microsoft.Jet.OLEDB.4.0;'+'Data Source='+OpenDialog1.FileName+';'+'Persist Security Info=false';
                   Connected := True;
                   config.rebootRequestsCRUD;
-                  SpeedButton4.Enabled:=true;
+                  BitBtn1.Enabled:=true;
                   MessageBox(0,'База данных успешно подключена! ','', MB_OK+MB_ICONINFORMATION);
               end;
           Except
             MessageBox(0,'Не  удается подключиться к этой базе данных! ','', MB_OK+MB_ICONERROR);
-            SpeedButton4.Enabled:=false;
+            BitBtn1.Enabled:=false;
           end;
       end;
 end;
@@ -160,6 +161,22 @@ end;
 procedure TTitleForm.SpeedButton3Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TTitleForm.BitBtn1Click(Sender: TObject);
+begin
+    Try
+      with BD.ADOConnection1 do
+        begin
+          Connected := false;
+          Connected := True;
+          config.rebootRequestsCRUD;
+          openAuthorizationForm;
+        end;
+    Except
+      MessageBox(0,'Не  удается подключиться к базе данных! ','', MB_OK+MB_ICONERROR);
+      BitBtn1.Enabled:=false;
+    end;
 end;
 
 end.

@@ -37,6 +37,7 @@ begin
             config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
             setDataAuthUser;            // Заполнение авторизованного пользователя данными
             SetNameAndFamilyAuthUsers;  // Заполнение Имя и Фамилии Авторизованным пользователям
+            KodUser:=BD.Request.DataSet.FieldByName('КодУчителя').AsInteger;
             roleUser:='teacher';
             setIconRole(false,true);
         end;

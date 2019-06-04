@@ -53,7 +53,7 @@ var
     unique_practic,unique_number_practic:boolean;
 implementation
 
-uses basa_dan, config;
+uses basa_dan, config, AuthorizationData;
 
 {$R *.dfm}
 
@@ -129,7 +129,12 @@ end;
 
 procedure TAddPracticModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Практические(КодТемы, НазваниеПрактической, НомерПрактической) VALUES('+IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+')');
+    config.execRequestSQL('INSERT INTO Практические(КодТемы, НазваниеПрактической, НомерПрактической, КодУчителя) VALUES('+
+      IntToStr(kodTema)+','+
+      #39+Edit1.Text+#39+','+
+      #39+Edit2.Text+#39+', '+
+      IntToStr(kodUser)+')'
+    );
     MessageBox(0,'Практическая была успешно создана!','Создание Практической', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 

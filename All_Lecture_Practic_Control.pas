@@ -57,11 +57,11 @@ type
 
 var
   AllComponents: TAllComponents;
-       nameRazdela,str,nameTema,work:string;
+       nameRazdela,str,nameTema,work, kodYchitel:string;
         kodRazdela,kodTema, List, AllList,i,j, position:integer;
         CONST TYPE_SINGLE_QUESTIONS = 1;
         CONST TYPE_MORE_QUESTIONS = 2;
-
+                                   
 implementation
 
 uses basa_dan, config, UpdateUnit, Result, Title_Form,
@@ -265,12 +265,12 @@ begin
         Memo1.Clear;
         Memo1.Lines.Add(BD.Request.DataSet.FieldByName('Содержание').AsString);
 
-        AllList:=Round(Memo1.Lines.Count/34)-1;
-        for i:=0 to 34 do
+        AllList:=Round(Memo1.Lines.Count/25)-1;
+        for i:=0 to 25 do
           ArrayListText[1]:=ArrayListText[1]+Memo1.Lines[i];
 
-        for i:=1 to Round(Memo1.Lines.Count/34)-1 do
-            for j:=i*34 to i*34+33 do
+        for i:=1 to Round(Memo1.Lines.Count/25)-1 do
+            for j:=i*25 to i*25+24 do
               ArrayListText[i+1]:=ArrayListText[i+1]+Memo1.Lines[j];
 
        Memo1.Lines.Clear;
@@ -302,6 +302,7 @@ begin
     ResultForm.Label20.Caption:=work+'"';
 
     config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+work+#39);
+    kodYchitel:=BD.Request.DataSet.FieldByName('КодУчителя').AsString;
     updateKodControl:=BD.Request.DataSet.FieldByName('КодКонтроля').AsInteger;
     ResultForm.Label20.Caption:=BD.Request.DataSet.FieldByName('НазваниеКонтроля').AsString+'"';
     config.selectRequestSQL('SELECT * FROM Вопросы WHERE КодКонтроля='+IntToStr(updateKodControl));
@@ -325,9 +326,12 @@ end;
 procedure TAllComponents.SpeedButton1Click(Sender: TObject);
 begin
     DateTimePicker1.DateTime:=Now;
-    config.execRequestSQL('INSERT INTO ЖурналОценок (КодУченика, КодТемы, КодКонтроля,  ДатаПроведения) VALUES('+
-      IntToStr(KodUser)+', '+IntToStr(KodTema)+', '+#39+IntToStr(updateKodControl)+#39+', '+
-      #39+DateToStr(DateTimePicker1.Date)+#39+')');
+    config.execRequestSQL('INSERT INTO ЖурналОценок (КодУченика, КодТемы, КодКонтроля,  ДатаПроведения,КодУчителя) VALUES('+
+      IntToStr(KodUser)+', '+
+      IntToStr(KodTema)+', '+
+      #39+IntToStr(updateKodControl)+#39+', '+
+      #39+DateToStr(DateTimePicker1.Date)+#39+','+
+      kodYchitel+')');
     config.selectRequestSQL('SELECT * FROM ЖурналОценок');
     BD.Request.DataSet.Last;
     kodLastControl:=BD.Request.DataSet.FieldByName('КодЖурнала').AsInteger;  // код Начавшегося теста

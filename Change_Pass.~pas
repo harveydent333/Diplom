@@ -50,6 +50,7 @@ begin
     if Edit2.Text='' then label7.Visible:=true;
     if Edit1.Text='' then label1.Visible:=true;
 
+  if ((Edit2.Text<>'') and (Edit1.Text<>'')) then
    if BD.Request.DataSet.FieldByName('pass').AsString = Edit2.Text then
     begin
       config.execRequestSQL('UPDATE Учитель SET pass='#39+Edit1.Text+#39+' WHERE КодУчителя='+IntToStr(updateKodTeacher));
