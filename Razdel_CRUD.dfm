@@ -1,6 +1,6 @@
 object RazdelCRUD: TRazdelCRUD
-  Left = 41
-  Top = 334
+  Left = -32
+  Top = 331
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1088#1072#1079#1076#1077#1083#1072#1084#1080
@@ -8228,7 +8228,7 @@ object RazdelCRUD: TRazdelCRUD
         FieldName = #1053#1086#1084#1077#1088#1056#1072#1079#1076#1077#1083#1072
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
-        Font.Height = -19
+        Font.Height = -16
         Font.Name = 'Times New Roman'
         Font.Style = []
         Title.Alignment = taCenter
@@ -8247,7 +8247,7 @@ object RazdelCRUD: TRazdelCRUD
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
-        Font.Height = -19
+        Font.Height = -16
         Font.Name = 'Times New Roman'
         Font.Style = []
         Title.Alignment = taCenter

@@ -26,8 +26,7 @@ type
     Label7: TLabel;
     Label9: TLabel;
     OpenDialog1: TOpenDialog;
-    BitBtn1: TBitBtn;
-    procedure FormCreate(Sender: TObject);
+    BitBtn2: TBitBtn;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
@@ -37,10 +36,13 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BitBtn2Click(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
     procedure defaultSetting;
+    function ReverseString(s: string): string;
     { Private declarations }
   public
     { Public declarations }
@@ -48,28 +50,16 @@ type
 
 var
   AddPracticModalForm: TAddPracticModalForm;
-    nameRazdela,str,nameTema:string;
+    nameRazdela,str,nameTema, path,PathFile:string;
     kodRazdela,kodTema:integer;
     unique_practic,unique_number_practic:boolean;
+
 implementation
 
-uses basa_dan, config;
+uses basa_dan, config, AuthorizationData, UpdatePractic, Practic_CRUD,
+  UpdateUnit;
 
 {$R *.dfm}
-
-procedure TAddPracticModalForm.FormCreate(Sender: TObject);
-begin
-    Edit1.Text:='';                                                                               //Заполнение ComboBox при создании
-    config.selectRequestSQL('SELECT * FROM Раздел');
-    BD.Request.DataSet.First;
-    While (BD.Request.DataSet.Eof=false) do
-    begin
-      ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
-      BD.Request.DataSet.Next;
-    end;
-    BD.Request.DataSet.First;
-    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;           //  конец создания
-end;
 
 procedure TAddPracticModalForm.ComboBox1Change(Sender: TObject);
 begin
@@ -106,8 +96,9 @@ begin
     Edit2.Visible:=true;
     label2.Visible:=true;
     label4.Visible:=true;
-    nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
+    BitBtn2.Visible:=true;
 
+    nameTema:=ComboBox2.Items.Strings[Combobox2.ItemIndex];
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39);  // Получение код темы
     kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
 end;
@@ -116,6 +107,8 @@ procedure TAddPracticModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_practic:=false;
     unique_number_practic:=false;
+    if PathFile='' then
+     MessageBox(0,'Файл практической не выбран!','', MB_OK+MB_ICONwarning);
 
     if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
     if ((Edit1.Text='') and (Edit1.Visible=true)) then label9.Visible:=true;
@@ -123,17 +116,18 @@ begin
     if ((Edit1.Text<>'') and (Edit2.Text<>'')) then
         checkUniqueData;
 
-    if ((Edit1.Text<>'')and (Edit2.Text<>'') and(unique_practic<>false) and(unique_number_practic<>false)) then
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and(unique_practic<>false) and(unique_number_practic<>false) and (PathFile<>'')) then
         saveDataInBD;
 end;
 
 procedure TAddPracticModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Практические(КодТемы, НазваниеПрактической, НомерПрактической, КодУчителя) VALUES('+
+    config.execRequestSQL('INSERT INTO Практические(КодТемы, НазваниеПрактической, НомерПрактической, КодУчителя, Путь) VALUES('+
       IntToStr(kodTema)+','+
       #39+Edit1.Text+#39+','+
       #39+Edit2.Text+#39+', '+
-      IntToStr(kodUser)+')'
+      IntToStr(kodUser)+', '+
+      #39+'Практические\'+PathFile+#39+')'
     );
     MessageBox(0,'Практическая была успешно создана!','Создание Практической', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
@@ -168,6 +162,7 @@ begin
     label5.visible:=false;
     ComboBox2.Visible:=false;
     ComboBox2.Items.Clear;
+    BitBtn2.Visible:=false;
 end;
 
 procedure TAddPracticModalForm.ComboBox1KeyPress(Sender: TObject;
@@ -207,6 +202,41 @@ procedure TAddPracticModalForm.Edit1KeyPress(Sender: TObject;
   var Key: Char);
 begin
     label9.Visible:=false;
+end;
+
+procedure TAddPracticModalForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    AddPracticModalForm.Hide;
+    PracticCRUD.Enabled:=true;
+    defaultSetting;
+end;
+
+procedure TAddPracticModalForm.BitBtn2Click(Sender: TObject);
+var allPath:string; i:integer;
+begin
+    PathFile:='';
+    allPath:='';
+    Path:='';
+    if OpenDialog1.Execute then
+      allPath:=OpenDialog1.FileName;
+    for i:=Length(allPath) downto 1 do
+      if allPath[i]<>'\' then
+        PathFile:=PathFile+allPath[i]
+      else
+        break;
+    PathFile:=ReverseString(PathFile);
+    SetCurrentDir(currentDir);
+end;
+
+function  TAddPracticModalForm.ReverseString(s: string): string;
+var
+  i: integer;
+begin
+  Result := '';
+  if Trim(s) <> '' then
+    for i := Length(s) downto 1 do
+      Result := Result + s[i];
 end;
 
 end.

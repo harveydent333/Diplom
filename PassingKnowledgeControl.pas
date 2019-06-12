@@ -17,6 +17,7 @@ type
     Button2: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure VariantsQuestionMore1Label1Click(Sender: TObject);
 
   private
     procedure processingSingleQuestion;
@@ -115,6 +116,12 @@ begin
         PassingKnowledgeControlForm.Enabled:=false;
         config.countingResults;
       end;
+end;
+
+procedure TPassingKnowledgeControlForm.VariantsQuestionMore1Label1Click(
+  Sender: TObject);
+begin
+   PassingKnowledgeControlForm.AutoScroll:=true;
 end;
 
 end.

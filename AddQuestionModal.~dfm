@@ -1,6 +1,6 @@
 object AddQuestionModalForm: TAddQuestionModalForm
-  Left = 349
-  Top = 338
+  Left = 367
+  Top = 231
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1074#1086#1087#1088#1086#1089#1072
   ClientHeight = 310
@@ -2613,7 +2613,7 @@ object AddQuestionModalForm: TAddQuestionModalForm
   object ComboBox1: TComboBox
     Left = 408
     Top = 196
-    Width = 97
+    Width = 113
     Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText

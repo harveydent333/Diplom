@@ -2624,7 +2624,7 @@ object AddRazdelModalForm: TAddRazdelModalForm
     Font.Height = -19
     Font.Name = 'Times New Roman'
     Font.Style = []
-    MaxLength = 120
+    MaxLength = 75
     ParentFont = False
     TabOrder = 1
     OnChange = Edit1Change

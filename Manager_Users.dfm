@@ -1,6 +1,6 @@
 object ManagerUsers: TManagerUsers
-  Left = 194
-  Top = 196
+  Left = 61
+  Top = 235
   AutoScroll = False
   BorderIcons = []
   Caption = #1042#1099#1073#1086#1088' '#1088#1072#1073#1086#1090#1099' '#1089' '#1076#1072#1085#1085#1099#1084#1080' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1077#1081
@@ -1321,7 +1321,6 @@ object ManagerUsers: TManagerUsers
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

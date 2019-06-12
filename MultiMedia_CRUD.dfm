@@ -1,6 +1,6 @@
 object MultiMediaCRUD: TMultiMediaCRUD
-  Left = 121
-  Top = 148
+  Left = 74
+  Top = 358
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
@@ -8232,14 +8232,13 @@ object MultiMediaCRUD: TMultiMediaCRUD
         Font.Height = -16
         Font.Name = 'Times New Roman'
         Font.Style = []
-        Title.Alignment = taCenter
         Title.Caption = #8470' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1080
         Title.Font.Charset = RUSSIAN_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 250
+        Width = 180
         Visible = True
       end
       item
@@ -8258,7 +8257,7 @@ object MultiMediaCRUD: TMultiMediaCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 300
+        Width = 310
         Visible = True
       end
       item
@@ -8277,7 +8276,7 @@ object MultiMediaCRUD: TMultiMediaCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 250
+        Width = 270
         Visible = True
       end
       item
@@ -8296,7 +8295,7 @@ object MultiMediaCRUD: TMultiMediaCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 320
+        Width = 340
         Visible = True
       end>
   end

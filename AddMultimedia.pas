@@ -107,16 +107,18 @@ procedure TAddMultimediaModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
+    if ComboBox2.Visible=false then
+      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning);
 
     if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
     if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
-    if Path='' then
+    if PathFile='' then
       MessageBox(0,'Файл мультимедии не выбран!','', MB_OK+MB_ICONwarning);
 
-    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Path<>'')) then
+    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (PathFile<>'')) then
       checkUniqueData;
 
-    if ((Edit1.Text<>'')and(Edit2.Text<>'')and(unique_multimedia<>false) and(unique_number_multimedia<>false) and (Path<>'')) then
+    if ((Edit1.Text<>'')and(Edit2.Text<>'')and(unique_multimedia<>false) and(unique_number_multimedia<>false) and (PathFile<>'')) then
       saveDataInBD;
 end;
 
@@ -126,7 +128,7 @@ begin
       IntToStr(kodTema)+','+
       #39+Edit1.Text+#39+','+
       #39+Edit2.Text+#39+', '+
-      #39+'Multimedia\'+PathFile+#39+', '+
+      #39+'Мультимедиа\'+PathFile+#39+', '+
       IntToStr(kodUser)+')'
     );
     MessageBox(0,'Мультимедиа была успешно создана!','Создание мультимедии', MB_OK+MB_ICONINFORMATION);
@@ -165,18 +167,6 @@ begin
     BitBtn1.Visible:=false;
 end;
 
-procedure TAddMultimediaModalForm.ComboBox1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
-procedure TAddMultimediaModalForm.ComboBox2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
 procedure TAddMultimediaModalForm.Edit2KeyPress(Sender: TObject;
   var Key: Char);
 begin
@@ -191,16 +181,18 @@ end;
 procedure TAddMultimediaModalForm.BitBtn1Click(Sender: TObject);
 var allPath:string; i:integer;
 begin
-      PathFile:='';
-      allPath:='';
-      Path:='';
-   if OpenDialog1.Execute then
+    PathFile:='';
+    allPath:='';
+    Path:='';
+    if OpenDialog1.Execute then
       allPath:=OpenDialog1.FileName;
-   for i:=Length(allPath) downto 1 do
-    if allPath[i]<>'\' then Path:=Path+allPath[i] else break;
-   Path:=ReverseString(path);
-   for i:=1 to Length(Path)-4 do
-    PathFile:=PathFile+Path[i];
+    for i:=Length(allPath) downto 1 do
+      if allPath[i]<>'\' then
+        PathFile:=PathFile+allPath[i]
+      else
+        break;
+    PathFile:=ReverseString(PathFile);
+    SetCurrentDir(currentDir);
 end;
 
 procedure TAddMultimediaModalForm.FormClose(Sender: TObject;
@@ -208,6 +200,7 @@ procedure TAddMultimediaModalForm.FormClose(Sender: TObject;
 begin
     AddMultimediaModalForm.Hide;
     MultiMediaCRUD.Enabled:=true;
+    defaultSetting;
 end;
 
 function  TAddMultimediaModalForm.ReverseString(s: string): string;
@@ -228,6 +221,18 @@ end;
 procedure TAddMultimediaModalForm.Edit1Change(Sender: TObject);
 begin
     label8.Visible:=false;
+end;
+
+procedure TAddMultimediaModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TAddMultimediaModalForm.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

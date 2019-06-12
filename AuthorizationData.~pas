@@ -1,7 +1,7 @@
 unit AuthorizationData;
 
 interface
-uses basa_dan, Unit2;
+uses basa_dan, Unit2, Windows, Forms;
 
 var
 nameUser, familyUser, secondNameUser, loginUser, roleUser, groupUser, DataControl:string;
@@ -23,12 +23,9 @@ implementation
 uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
   ControlCenter, Lecture_CRUD, Menu_Control, Menu_Lectures, Menu_Practic,
   Practic_CRUD, Razdel_CRUD, Tema_CRUD, Ycheniki_CRUD, Add_Question,
-  DocumentForm, SysUtils,
-  MultiMedia_CRUD,
-  AddControl,
-  Manager_Users,
-  Teacher_CRUD,
-  Registration_Teacher, Menu_Multimedai, All_Lecture_Practic_Control;
+  DocumentForm, SysUtils,MultiMedia_CRUD,AddControl,Manager_Users,
+  Teacher_CRUD, Registration_Teacher, Menu_Multimedai, All_Lecture_Practic_Control,
+  Title_Form, AddMultimedia, UpdateUnit, StdCtrls;
 
 procedure getDataUser;
 begin
@@ -37,6 +34,7 @@ begin
             config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+#39+AuthorizationForm.edit2.text+#39);
             setDataAuthUser;            // Заполнение авторизованного пользователя данными
             SetNameAndFamilyAuthUsers;  // Заполнение Имя и Фамилии Авторизованным пользователям
+            KodUser:=BD.Request.DataSet.FieldByName('КодУчителя').AsInteger;
             roleUser:='teacher';
             setIconRole(false,true);
         end;
@@ -197,28 +195,31 @@ begin
     groupUser:='';
     kodUser:=0;
 
-   AuthorizationForm.ComboBox1.Clear;
-   AuthorizationForm.ComboBox2.Clear;
-   config.selectRequestSQL('SELECT * FROM Ученик WHERE КодГруппы=1');
-   BD.Request.DataSet.First;
-   for i:=1 to BD.Request.DataSet.RecordCount do
-      begin
-        with BD.Request.DataSet do
-          begin
-              fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
-          end;
-        AuthorizationForm.ComboBox2.Items.Add(fio);
-        BD.Request.DataSet.Next;
-      end;
-   AuthorizationForm.ComboBox2.ItemIndex:=0;
-   config.selectRequestSQL('SELECT * FROM Группа');
-   BD.Request.DataSet.First;
-   for i:=1 to BD.Request.DataSet.RecordCount do
-      begin
-        AuthorizationForm.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеГруппы').AsString);
-        BD.Request.DataSet.Next;
-      end;
-   AuthorizationForm.ComboBox1.ItemIndex:=0;
+    SetCurrentDir(currentDir);
+
+    AuthorizationForm.ComboBox1.Clear;
+    AuthorizationForm.ComboBox2.Clear;
+    config.selectRequestSQL('SELECT * FROM Ученик WHERE КодГруппы=1');
+    BD.Request.DataSet.First;
+    for i:=1 to BD.Request.DataSet.RecordCount do
+        begin
+            with BD.Request.DataSet do
+                fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
+            AuthorizationForm.ComboBox2.Items.Add(fio);
+            BD.Request.DataSet.Next;
+        end;
+    AuthorizationForm.ComboBox2.ItemIndex:=0;
+    config.selectRequestSQL('SELECT * FROM Группа');
+    BD.Request.DataSet.First;
+    for i:=1 to BD.Request.DataSet.RecordCount do
+        begin
+            AuthorizationForm.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеГруппы').AsString);
+            BD.Request.DataSet.Next;
+        end;
+    AuthorizationForm.ComboBox1.ItemIndex:=0;
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
 end;
 
 procedure defoltConfigRegistrationForm;

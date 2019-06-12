@@ -127,10 +127,7 @@ end;
 
 procedure TYchenikiCRUD.SpeedButton5Click(Sender: TObject);
 begin
-    AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
     YchenikiCRUD.Visible:=false;
 end;
 

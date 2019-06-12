@@ -1,6 +1,6 @@
 object UpdateMultimediaModalForm: TUpdateMultimediaModalForm
-  Left = 470
-  Top = 384
+  Left = 323
+  Top = 330
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 310
@@ -5055,7 +5055,8 @@ object UpdateMultimediaModalForm: TUpdateMultimediaModalForm
     Top = 24
   end
   object OpenDialog1: TOpenDialog
-    InitialDir = '.\Mutimedia'
+    Filter = '*.mp4;*.avi|*.mp4;*.avi'
+    InitialDir = '.\'#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
     Left = 56
     Top = 40
   end

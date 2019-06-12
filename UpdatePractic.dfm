@@ -1,6 +1,6 @@
 object UpdatePracticModalForm: TUpdatePracticModalForm
-  Left = 274
-  Top = 351
+  Left = 434
+  Top = 260
   AutoScroll = False
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081' '
   ClientHeight = 310
@@ -1320,7 +1320,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnCreate = FormCreate
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -4188,7 +4188,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
   object Edit1: TEdit
     Left = 120
     Top = 216
-    Width = 281
+    Width = 393
     Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -5032,7 +5032,7 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
     Visible = False
     OnKeyPress = Edit2KeyPress
   end
-  object BitBtn1: TBitBtn
+  object BitBtn2: TBitBtn
     Left = 395
     Top = 216
     Width = 121
@@ -5041,10 +5041,11 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 5
+    OnClick = BitBtn2Click
     Kind = bkRetry
   end
   object Timer1: TTimer
@@ -5054,7 +5055,8 @@ object UpdatePracticModalForm: TUpdatePracticModalForm
     Top = 24
   end
   object OpenDialog1: TOpenDialog
-    InitialDir = '\.Multimedia'
+    Filter = '*.pdf;*.doc|*.pdf;*.doc'
+    InitialDir = '.\'#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1077
     Left = 56
     Top = 40
   end

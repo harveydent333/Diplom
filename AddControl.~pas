@@ -50,7 +50,7 @@ var
   unique_control,unique_number_control:boolean;
 implementation
 
-uses Control, basa_dan, config;
+uses Control, basa_dan, config, AuthorizationData;
 
 {$R *.dfm}
 

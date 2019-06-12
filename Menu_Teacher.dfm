@@ -1,6 +1,6 @@
 object RegistrationForm: TRegistrationForm
-  Left = 28
-  Top = 417
+  Left = 47
+  Top = 286
   AutoScroll = False
   BorderIcons = []
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
@@ -11914,14 +11914,13 @@ object RegistrationForm: TRegistrationForm
     Font.Name = 'Georgia'
     Font.Style = []
     ItemHeight = 23
-    ItemIndex = 2
     ParentFont = False
     TabOrder = 3
     Text = '433'
     OnKeyPress = ComboBox1KeyPress
     Items.Strings = (
-      '431'
-      '432'
-      '433')
+      '341'
+      '342'
+      '343')
   end
 end

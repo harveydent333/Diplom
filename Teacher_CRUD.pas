@@ -112,10 +112,7 @@ end;
 
 procedure TTeacherCRUD.SpeedButton5Click(Sender: TObject);
 begin
-    AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
     TeacherCRUD.Visible:=false;
 end;
 

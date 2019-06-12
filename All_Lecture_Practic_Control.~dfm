@@ -1,6 +1,6 @@
 object AllComponents: TAllComponents
-  Left = 38
-  Top = 209
+  Left = 159
+  Top = 240
   AutoScroll = False
   BorderIcons = []
   Caption = #1054#1073#1091#1095#1077#1085#1080#1077
@@ -2499,7 +2499,7 @@ object AllComponents: TAllComponents
   end
   object Label5: TLabel
     Left = 208
-    Top = 150
+    Top = 148
     Width = 145
     Height = 21
     Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1058#1077#1084
@@ -5360,6 +5360,7 @@ object AllComponents: TAllComponents
     TabOrder = 0
     Text = 'ComboBox1'
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
     Left = 48
@@ -5377,6 +5378,7 @@ object AllComponents: TAllComponents
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox2Change
+    OnKeyPress = ComboBox2KeyPress
   end
   object ComboBox3: TComboBox
     Left = 48
@@ -5394,6 +5396,7 @@ object AllComponents: TAllComponents
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox3Change
+    OnKeyPress = ComboBox3KeyPress
   end
   object Panel1: TPanel
     Left = 96

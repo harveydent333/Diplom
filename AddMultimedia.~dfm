@@ -1,6 +1,6 @@
 object AddMultimediaModalForm: TAddMultimediaModalForm
-  Left = 469
-  Top = 426
+  Left = 396
+  Top = 377
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1084#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 310
@@ -2151,7 +2151,7 @@ object AddMultimediaModalForm: TAddMultimediaModalForm
     Font.Height = -19
     Font.Name = 'Times New Roman'
     Font.Style = []
-    MaxLength = 120
+    MaxLength = 75
     ParentFont = False
     TabOrder = 2
     Visible = False
@@ -2727,8 +2727,8 @@ object AddMultimediaModalForm: TAddMultimediaModalForm
     OnKeyPress = Edit2KeyPress
   end
   object BitBtn1: TBitBtn
-    Left = 395
-    Top = 216
+    Left = 399
+    Top = 215
     Width = 121
     Height = 31
     Caption = #1042#1099#1073#1088#1072#1090#1100' '#1092#1072#1081#1083
@@ -2744,7 +2744,8 @@ object AddMultimediaModalForm: TAddMultimediaModalForm
     Kind = bkRetry
   end
   object OpenDialog1: TOpenDialog
-    InitialDir = '\.Multimedia'
+    Filter = '*.mp4;*.avi|*.mp4;*.avi'
+    InitialDir = '.\'#1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
     Left = 56
     Top = 40
   end

@@ -1,6 +1,6 @@
 object AddPracticModalForm: TAddPracticModalForm
-  Left = 407
-  Top = 432
+  Left = 399
+  Top = 345
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
   ClientHeight = 310
@@ -1320,7 +1320,7 @@ object AddPracticModalForm: TAddPracticModalForm
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnCreate = FormCreate
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -2118,7 +2118,7 @@ object AddPracticModalForm: TAddPracticModalForm
     Font.Height = -19
     Font.Name = 'Times New Roman'
     Font.Style = []
-    MaxLength = 120
+    MaxLength = 75
     ParentFont = False
     TabOrder = 0
     Visible = False
@@ -2715,11 +2715,11 @@ object AddPracticModalForm: TAddPracticModalForm
     Left = 120
     Top = 154
     Width = 400
-    Height = 31
+    Height = 29
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     MaxLength = 3
     ParentFont = False
@@ -2727,19 +2727,21 @@ object AddPracticModalForm: TAddPracticModalForm
     Visible = False
     OnKeyPress = Edit2KeyPress
   end
-  object BitBtn1: TBitBtn
-    Left = 395
-    Top = 216
+  object BitBtn2: TBitBtn
+    Left = 399
+    Top = 215
     Width = 121
     Height = 31
     Caption = #1042#1099#1073#1088#1072#1090#1100' '#1092#1072#1081#1083
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
-    Font.Name = 'Georgia'
+    Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
     TabOrder = 5
+    Visible = False
+    OnClick = BitBtn2Click
     Kind = bkRetry
   end
   object Timer1: TTimer
@@ -2749,7 +2751,8 @@ object AddPracticModalForm: TAddPracticModalForm
     Top = 24
   end
   object OpenDialog1: TOpenDialog
-    InitialDir = '\.Multimedia'
+    Filter = '*.pdf;*.doc|*.pdf;*.doc'
+    InitialDir = '.\'#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1077
     Left = 56
     Top = 40
   end

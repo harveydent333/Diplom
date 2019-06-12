@@ -47,9 +47,9 @@ var
 implementation
 
 uses ControlCenter, DocumentForm, Menu_Lectures, AuthorizationData, config,
-  Unit2, Title_Form, Menu_Practic, Menu_Control,
+  Unit2, Title_Form, Menu_Practic, Menu_Control, UpdateUnit,
   Ycheniki_CRUD, basa_dan, Manager_Users, Menu_Multimedai, ShellAPI,
-  All_Lecture_Practic_Control;
+  All_Lecture_Practic_Control, AddMultimedia, UpdateMultimedia;
 
 {$R *.dfm}
 
@@ -166,10 +166,7 @@ end;
 
 procedure TMainMenu.SpeedButton6Click(Sender: TObject);
 begin
-    AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
     MainMenu.Visible:=false;
 end;
 
@@ -294,6 +291,7 @@ end;
 
 procedure TMainMenu.SpeedButton11Click(Sender: TObject);
 begin
+    SetCurrentDir(currentDir);
     config.selectRequestSQL('SELECT * FROM Раздел');
     with AllComponents do
         begin

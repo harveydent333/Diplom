@@ -51,7 +51,7 @@ var
 
 implementation
 
-uses basa_dan, config;
+uses basa_dan, config, AuthorizationData;
 
 {$R *.dfm}
 
@@ -126,7 +126,12 @@ end;
 
 procedure TAddLectureModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Лекции (КодТемы, НазваниеЛекции, НомерЛекции) VALUES('+IntToStr(kodTema)+','+#39+Edit1.Text+#39+','+#39+Edit2.Text+#39+')');
+    config.execRequestSQL('INSERT INTO Лекции (КодТемы, НазваниеЛекции, НомерЛекции, КодУчителя) VALUES('+
+      IntToStr(kodTema)+','+
+      #39+Edit1.Text+#39+','+
+      #39+Edit2.Text+#39+', '+
+      IntToStr(kodUser)+')'
+    );
     MessageBox(0,'Лекция была успешно создана!','Создание Лекции', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 

@@ -26,7 +26,6 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton11Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -51,45 +50,9 @@ uses Title_Form, AddLecture, UpdateLecture, config, UpdateUnit,
   EditLecture, ControlCenter, Unit2, AuthorizationData, ShellAPI;
 {$R *.dfm}
 
-procedure TLectureCRUD.SpeedButton2Click(Sender: TObject);
-begin
-    DataManagementCenter.show;
-    DataManagementCenter.position:=poDesktopCenter;
-    LectureCRUD.Visible:=false;
-end;
-
-procedure TLectureCRUD.SpeedButton5Click(Sender: TObject);
-begin
-    AuthorizationForm.Edit1.Text:='';
-    AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
-    LectureCRUD.Visible:=false;
-end;
-
-procedure TLectureCRUD.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-    DataManagementCenter.show;
-    DataManagementCenter.position:=poDesktopCenter;
-    LectureCRUD.Visible:=false;
-end;
-
-procedure TLectureCRUD.SpeedButton4Click(Sender: TObject);  // Завершение работы программы
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-        TitleForm.close;
-end;
-
-procedure TLectureCRUD.SpeedButton3Click(Sender: TObject);
-begin
-    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
-end;
-
 procedure TLectureCRUD.SpeedButton11Click(Sender: TObject);
 begin
+
 end;
 
 {
@@ -203,7 +166,33 @@ begin
         Button7.Visible:=false;
         Button8.Visible:=false;
         Memo1.ReadOnly:=false;
+        AutoScroll:=true;
       end;
+end;
+
+procedure TLectureCRUD.SpeedButton2Click(Sender: TObject);
+begin
+    DataManagementCenter.show;
+    DataManagementCenter.position:=poDesktopCenter;
+    LectureCRUD.Visible:=false;
+end;
+
+procedure TLectureCRUD.SpeedButton5Click(Sender: TObject);
+begin
+    AuthorizationData.freeDataUser;
+    LectureCRUD.Visible:=false;
+end;
+
+procedure TLectureCRUD.SpeedButton4Click(Sender: TObject);  // Завершение работы программы
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then TitleForm.close;
+end;
+
+procedure TLectureCRUD.SpeedButton3Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

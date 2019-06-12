@@ -1,6 +1,6 @@
 object Shyrnal: TShyrnal
-  Left = 102
-  Top = 241
+  Left = 389
+  Top = 411
   AutoScroll = False
   BorderIcons = []
   Caption = #1046#1091#1088#1085#1072#1083' '#1086#1094#1077#1085#1086#1082

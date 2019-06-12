@@ -50,7 +50,7 @@ uses Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD, Control_CRUD, ShellAPI,
   Unit2,
   Main_Menu,
   AuthorizationData,
-  MultiMedia_CRUD, config;
+  MultiMedia_CRUD, config, UpdateUnit;
 
 {$R *.dfm}
 
@@ -80,6 +80,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton4Click(Sender: TObject);
 begin
+    SetCurrentDir(currentDir);
     rebootRequestsCRUD;
     PracticCRUD.show;
     PracticCRUD.Position:=poDesktopCenter;
@@ -103,10 +104,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton8Click(Sender: TObject);
 begin
-    AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
 end;
 
@@ -127,6 +125,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton9Click(Sender: TObject);
 begin
+    SetCurrentDir(currentDir);
     rebootRequestsCRUD;
     MultiMediaCRUD.show;
     MultiMediaCRUD.Position:=poDesktopCenter;

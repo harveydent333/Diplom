@@ -25,9 +25,9 @@ type
     OpenDialog1: TOpenDialog;
     Image1: TImage;
     Image4: TImage;
-    Image5: TImage;
     Label9: TLabel;
     BitBtn1: TBitBtn;
+    Label1: TLabel;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -165,6 +165,7 @@ end;
 
 procedure TTitleForm.BitBtn1Click(Sender: TObject);
 begin
+    SetCurrentDir(currentDir);
     Try
       with BD.ADOConnection1 do
         begin
@@ -180,8 +181,6 @@ begin
 end;
 
 end.
-
-
 
  {  getControlData:='SELECT Раздел.НазваниеРаздела,
                           ' Тема.НазваниеТемы,'+

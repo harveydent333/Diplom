@@ -1,6 +1,6 @@
 object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
-  Left = 266
-  Top = 114
+  Left = 286
+  Top = 116
   Width = 896
   Height = 780
   BorderIcons = [biMinimize, biMaximize]
@@ -8,7 +8,7 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
   Color = clBtnFace
   Constraints.MaxHeight = 780
   Constraints.MaxWidth = 896
-  Constraints.MinHeight = 780
+  Constraints.MinHeight = 400
   Constraints.MinWidth = 896
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

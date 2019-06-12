@@ -112,6 +112,8 @@ procedure TAddControlModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_control:=false;
     unique_number_control:=false;
+    if ComboBox2.Visible=false then
+      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning);
 
     if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
     if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;

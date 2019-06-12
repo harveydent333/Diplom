@@ -1,6 +1,6 @@
 object LectureCRUD: TLectureCRUD
-  Left = 77
-  Top = 343
+  Left = 115
+  Top = 352
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1083#1077#1082#1094#1080#1103#1084#1080
@@ -1321,7 +1321,6 @@ object LectureCRUD: TLectureCRUD
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -8239,7 +8238,7 @@ object LectureCRUD: TLectureCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 200
+        Width = 120
         Visible = True
       end
       item
@@ -8258,7 +8257,7 @@ object LectureCRUD: TLectureCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 300
+        Width = 330
         Visible = True
       end
       item
@@ -8277,7 +8276,7 @@ object LectureCRUD: TLectureCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 260
+        Width = 290
         Visible = True
       end
       item
@@ -8296,7 +8295,7 @@ object LectureCRUD: TLectureCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 360
+        Width = 390
         Visible = True
       end>
   end

@@ -2151,6 +2151,7 @@ object AddLectureModalForm: TAddLectureModalForm
     Font.Height = -19
     Font.Name = 'Times New Roman'
     Font.Style = []
+    MaxLength = 75
     ParentFont = False
     TabOrder = 2
     Visible = False

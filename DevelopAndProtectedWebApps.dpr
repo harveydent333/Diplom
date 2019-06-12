@@ -15,8 +15,6 @@ uses
   DocumentForm in 'DocumentForm.pas' {Shyrnal},
   defoltTest in 'defoltTest.pas',
   Result in 'Result.pas' {ResultForm},
-  Menu_Lectures in 'Menu_Lectures.pas' {MenuLectures},
-  Menu_Practic in 'Menu_Practic.pas' {MenuPractic},
   Tema_CRUD in 'Tema_CRUD.pas' {TemaCRUD},
   Razdel_CRUD in 'Razdel_CRUD.pas' {RazdelCRUD},
   Lecture_CRUD in 'Lecture_CRUD.pas' {LectureCRUD},
@@ -33,7 +31,6 @@ uses
   UpdatePractic in 'UpdatePractic.pas' {UpdatePracticModalForm},
   UpdateControl in 'UpdateControl.pas' {UpdateControlModalForm},
   ControlCenter in 'ControlCenter.pas' {DataManagementCenter},
-  Menu_Control in 'Menu_Control.pas' {MenuControl},
   Main_Menu in 'Main_Menu.pas' {MainMenu},
   Variants_Question in 'Variants_Question.pas' {VariantsQuestionSingle: TFrame},
   Variants_Question_More in 'Variants_Question_More.pas' {VariantsQuestionMore: TFrame},
@@ -47,7 +44,6 @@ uses
   Registration_Teacher in 'Registration_Teacher.pas' {RegistrationTeacher},
   Teacher_CRUD in 'Teacher_CRUD.pas' {TeacherCRUD},
   Manager_Users in 'Manager_Users.pas' {ManagerUsers},
-  Menu_Multimedai in 'Menu_Multimedai.pas' {MenuMultimedia},
   QuestionsMoreMemo in 'QuestionsMoreMemo.pas',
   PassControlSingle in 'PassControlSingle.pas',
   PassControlMore in 'PassControlMore.pas',
@@ -66,8 +62,6 @@ begin
   Application.CreateForm(TAdd_Questions, Add_Questions);
   Application.CreateForm(TShyrnal, Shyrnal);
   Application.CreateForm(TResultForm, ResultForm);
-  Application.CreateForm(TMenuLectures, MenuLectures);
-  Application.CreateForm(TMenuPractic, MenuPractic);
   Application.CreateForm(TTemaCRUD, TemaCRUD);
   Application.CreateForm(TRazdelCRUD, RazdelCRUD);
   Application.CreateForm(TLectureCRUD, LectureCRUD);
@@ -75,7 +69,6 @@ begin
   Application.CreateForm(TControlCRUD, ControlCRUD);
   Application.CreateForm(TYchenikiCRUD, YchenikiCRUD);
   Application.CreateForm(TDataManagementCenter, DataManagementCenter);
-  Application.CreateForm(TMenuControl, MenuControl);
   Application.CreateForm(TMainMenu, MainMenu);
   Application.CreateForm(TEdit_Lecture, Edit_Lecture);
   Application.CreateForm(TPassingKnowledgeControlForm, PassingKnowledgeControlForm);
@@ -83,10 +76,11 @@ begin
   Application.CreateForm(TRegistrationTeacher, RegistrationTeacher);
   Application.CreateForm(TTeacherCRUD, TeacherCRUD);
   Application.CreateForm(TManagerUsers, ManagerUsers);
-  Application.CreateForm(TMenuMultimedia, MenuMultimedia);
   Application.CreateForm(TAddMultimediaModalForm, AddMultimediaModalForm);
   Application.CreateForm(TUpdateMultimediaModalForm, UpdateMultimediaModalForm);
   Application.CreateForm(TChangePass, ChangePass);
   Application.CreateForm(TAllComponents, AllComponents);
+  Application.CreateForm(TAddPracticModalForm, AddPracticModalForm);
+  Application.CreateForm(TUpdatePracticModalForm, UpdatePracticModalForm);
   Application.Run;
 end.

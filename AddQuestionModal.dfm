@@ -2606,6 +2606,7 @@ object AddQuestionModalForm: TAddQuestionModalForm
     Font.Height = -19
     Font.Name = 'Times New Roman'
     Font.Style = []
+    MaxLength = 60
     ParentFont = False
     TabOrder = 1
     OnChange = Edit1Change

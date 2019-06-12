@@ -1,6 +1,6 @@
 object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
-  Left = 286
-  Top = 116
+  Left = 237
+  Top = 151
   Width = 896
   Height = 780
   BorderIcons = [biMinimize, biMaximize]
@@ -8,7 +8,7 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
   Color = clBtnFace
   Constraints.MaxHeight = 780
   Constraints.MaxWidth = 896
-  Constraints.MinHeight = 780
+  Constraints.MinHeight = 400
   Constraints.MinWidth = 896
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1474,8 +1474,8 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
     end
   end
   inline VariantsQuestionMore1: TVariantsQuestionMore
-    Left = -12
-    Top = 20
+    Left = -4
+    Top = 28
     Width = 886
     Height = 693
     TabOrder = 4
@@ -1485,7 +1485,8 @@ object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
       Top = 6
     end
     inherited Label1: TLabel
-      Top = 76
+      Top = 68
+      OnClick = VariantsQuestionMore1Label1Click
     end
     inherited Label2: TLabel
       Top = 130

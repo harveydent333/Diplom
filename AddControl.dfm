@@ -1,6 +1,6 @@
 object AddControlModalForm: TAddControlModalForm
-  Left = 219
-  Top = 374
+  Left = 379
+  Top = 309
   AutoScroll = False
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
   ClientHeight = 310
@@ -2151,6 +2151,7 @@ object AddControlModalForm: TAddControlModalForm
     Font.Height = -19
     Font.Name = 'Times New Roman'
     Font.Style = []
+    MaxLength = 75
     ParentFont = False
     TabOrder = 2
     Visible = False

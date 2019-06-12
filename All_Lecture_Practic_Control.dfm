@@ -1,6 +1,6 @@
 object AllComponents: TAllComponents
-  Left = 104
-  Top = 310
+  Left = 37
+  Top = 105
   AutoScroll = False
   BorderIcons = []
   Caption = #1054#1073#1091#1095#1077#1085#1080#1077
@@ -2452,7 +2452,7 @@ object AllComponents: TAllComponents
     Proportional = True
   end
   object Label1: TLabel
-    Left = 48
+    Left = 544
     Top = 64
     Width = 174
     Height = 27
@@ -2467,7 +2467,7 @@ object AllComponents: TAllComponents
     Transparent = True
   end
   object Label2: TLabel
-    Left = 48
+    Left = 544
     Top = 144
     Width = 155
     Height = 27
@@ -2483,7 +2483,7 @@ object AllComponents: TAllComponents
     Visible = False
   end
   object Label3: TLabel
-    Left = 48
+    Left = 544
     Top = 232
     Width = 155
     Height = 27
@@ -2498,11 +2498,11 @@ object AllComponents: TAllComponents
     Visible = False
   end
   object Label5: TLabel
-    Left = 208
-    Top = 150
-    Width = 145
+    Left = 568
+    Top = 148
+    Width = 142
     Height = 21
-    Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1058#1077#1084
+    Caption = #1042' '#1088#1072#1079#1076#1077#1083#1077' '#1085#1077#1090' '#1090#1077#1084
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clRed
     Font.Height = -19
@@ -5330,7 +5330,7 @@ object AllComponents: TAllComponents
     OnClick = SpeedButton4Click
   end
   object SpeedButton1: TSpeedButton
-    Left = 144
+    Left = 376
     Top = 584
     Width = 481
     Height = 49
@@ -5346,9 +5346,9 @@ object AllComponents: TAllComponents
     OnClick = SpeedButton1Click
   end
   object ComboBox1: TComboBox
-    Left = 48
+    Left = 118
     Top = 96
-    Width = 753
+    Width = 950
     Height = 35
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -5360,11 +5360,12 @@ object AllComponents: TAllComponents
     TabOrder = 0
     Text = 'ComboBox1'
     OnChange = ComboBox1Change
+    OnKeyPress = ComboBox1KeyPress
   end
   object ComboBox2: TComboBox
-    Left = 48
+    Left = 120
     Top = 184
-    Width = 753
+    Width = 950
     Height = 35
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -5377,11 +5378,12 @@ object AllComponents: TAllComponents
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox2Change
+    OnKeyPress = ComboBox2KeyPress
   end
   object ComboBox3: TComboBox
-    Left = 48
+    Left = 120
     Top = 272
-    Width = 753
+    Width = 950
     Height = 35
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -5394,9 +5396,10 @@ object AllComponents: TAllComponents
     Text = 'ComboBox2'
     Visible = False
     OnChange = ComboBox3Change
+    OnKeyPress = ComboBox3KeyPress
   end
   object Panel1: TPanel
-    Left = 96
+    Left = 312
     Top = 322
     Width = 593
     Height = 257

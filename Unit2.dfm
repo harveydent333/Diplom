@@ -1,6 +1,6 @@
 object AuthorizationForm: TAuthorizationForm
-  Left = 118
-  Top = 425
+  Left = 74
+  Top = 247
   AutoScroll = False
   BorderIcons = []
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103

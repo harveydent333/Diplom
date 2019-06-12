@@ -59,18 +59,6 @@ uses basa_dan, config, UpdateUnit, MultiMedia_CRUD, Menu_Multimedai;
 
 {$R *.dfm}
 
-procedure TUpdateMultimediaModalForm.ComboBox1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
-procedure TUpdateMultimediaModalForm.ComboBox2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
-end;
-
 procedure TUpdateMultimediaModalForm.ComboBox1Change(Sender: TObject);
 begin
    defaultSetting;
@@ -115,6 +103,10 @@ procedure TUpdateMultimediaModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
+    if ComboBox2.Visible=false then
+      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning);
+    if Edit2.Visible=false then
+      MessageBox(0,'Выберите тему!','', MB_OK+MB_ICONwarning);
 
     if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
     if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
@@ -130,7 +122,12 @@ end;
 
 procedure TUpdateMultimediaModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('UPDATE Мультимедиа SET КодТемы='+#39+IntToStr(updateKodTema)+#39+', НазваниеМультимедии='+#39+Edit1.Text+#39+', НомерМультимедии='+#39+Edit2.Text+#39+', Путь='+#39+'Multimedia\'+PathFile+#39+' WHERE КодМультимедии='+IntToStr(updateKodMultimedia));
+    
+    config.execRequestSQL('UPDATE Мультимедиа SET КодТемы='+#39+IntToStr(updateKodTema)+#39+','+
+      ' НазваниеМультимедии='+#39+Edit1.Text+#39+','+
+      ' НомерМультимедии='+#39+Edit2.Text+#39+','+
+      ' Путь='+#39+'Мультимедиа\'+PathFile+#39+
+      ' WHERE КодМультимедии='+IntToStr(updateKodMultimedia));
     MessageBox(0,'Мультимелиа была успешно изменена!','Редактирование мультимедии', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 
@@ -153,7 +150,7 @@ end;
 
 procedure TUpdateMultimediaModalForm.defaultSetting; // дефолтные
 begin
-     Edit1.Visible:=false;
+    Edit1.Visible:=false;
     Edit2.Visible:=false;
     label2.Visible:=false;
     label3.Visible:=false;
@@ -168,21 +165,24 @@ procedure TUpdateMultimediaModalForm.FormClose(Sender: TObject; var Action: TClo
 begin
    UpdateMultimediaModalForm.Visible:=false;
    MultiMediaCRUD.Enabled:=true;
+   defaultSetting;
 end;
 
 procedure TUpdateMultimediaModalForm.BitBtn1Click(Sender: TObject);
 var allPath:string; i:integer;
 begin
-      PathFile:='';
-      allPath:='';
-      Path:='';
-   if OpenDialog1.Execute then
+    PathFile:='';
+    allPath:='';
+    Path:='';
+    if OpenDialog1.Execute then
       allPath:=OpenDialog1.FileName;
-   for i:=Length(allPath) downto 1 do
-    if allPath[i]<>'\' then Path:=Path+allPath[i] else break;
-   Path:=ReverseString(path);
-   for i:=1 to Length(Path)-4 do
-    PathFile:=PathFile+Path[i];
+    for i:=Length(allPath) downto 1 do
+      if allPath[i]<>'\' then
+        PathFile:=PathFile+allPath[i]
+      else
+        break;
+    PathFile:=ReverseString(PathFile);
+    SetCurrentDir(currentDir);
 end;
 
 function TUpdateMultimediaModalForm.ReverseString(s: string): string;
@@ -195,11 +195,6 @@ begin
       Result := Result + s[i];
 end;
 
-procedure TUpdateMultimediaModalForm.Timer1Timer(Sender: TObject);
-begin
-    label6.Visible:=false;
-end;
-
 procedure TUpdateMultimediaModalForm.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
    label7.Visible:=false;
@@ -210,9 +205,26 @@ begin
       end;
 end;
 
+procedure TUpdateMultimediaModalForm.Timer1Timer(Sender: TObject);
+begin
+    label6.Visible:=false;
+end;
+
 procedure TUpdateMultimediaModalForm.Edit1Change(Sender: TObject);
 begin
     label8.Visible:=false;
+end;
+
+procedure TUpdateMultimediaModalForm.ComboBox1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TUpdateMultimediaModalForm.ComboBox2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

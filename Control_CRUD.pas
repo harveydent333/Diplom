@@ -25,7 +25,6 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton3Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
@@ -159,19 +158,8 @@ end;
 
 procedure TControlCRUD.SpeedButton5Click(Sender: TObject);
 begin
-    AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
     ControlCRUD.Visible:=false;
-end;
-
-procedure TControlCRUD.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-    ControlCRUD.Visible:=false;
-    DataManagementCenter.show;
-    DataManagementCenter.position:=poDesktopCenter;
 end;
 
 procedure TControlCRUD.SpeedButton2Click(Sender: TObject);

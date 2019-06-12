@@ -1,6 +1,6 @@
 object MenuMultimedia: TMenuMultimedia
-  Left = 85
-  Top = 338
+  Left = 339
+  Top = 415
   AutoScroll = False
   Caption = #1052#1091#1083#1100#1090#1080#1084#1077#1076#1080#1072
   ClientHeight = 643

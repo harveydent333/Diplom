@@ -38,7 +38,7 @@ var
     
 implementation
 
-uses Control, config;
+uses Control, config, AuthorizationData;
 
 {$R *.dfm}
 
@@ -59,7 +59,12 @@ end;
 
 procedure TAddRazdelModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Раздел (НазваниеРаздела, НомерРаздела) VALUES ('+#39+Edit1.Text+#39', '+#39+Edit2.Text+#39+')');
+    config.execRequestSQL('INSERT INTO Раздел (НазваниеРаздела, НомерРаздела, КодУчителя) VALUES ('+
+      #39+Edit1.Text+#39', '+
+      #39+Edit2.Text+#39+', '+
+      IntToStr(kodUser)+')'
+    );
+
     MessageBox(0,'Раздел был успешно Создан!','Создание Раздела', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
     Edit1.Text:='';

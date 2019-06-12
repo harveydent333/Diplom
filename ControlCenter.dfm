@@ -1,6 +1,6 @@
 object DataManagementCenter: TDataManagementCenter
-  Left = 111
-  Top = 318
+  Left = 64
+  Top = 243
   AutoScroll = False
   BorderIcons = []
   Caption = #1042#1099#1073#1086#1088' '#1086#1073#1098#1077#1082#1090#1072' '#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1103
@@ -1321,7 +1321,6 @@ object DataManagementCenter: TDataManagementCenter
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 33
   object Image1: TImage

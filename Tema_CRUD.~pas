@@ -83,7 +83,7 @@ begin
     if KodUser = BD.Request.DataSet.FieldByName('КодУчителя').AsInteger then
         performingRemoval
     else
-        MessageBox(0,'У вас нет прав на редактирование данной темы!','', MB_OK+MB_ICONwarning);
+        MessageBox(0,'У вас нет прав на удаление данной темы!','', MB_OK+MB_ICONwarning);
 end;
 
 {

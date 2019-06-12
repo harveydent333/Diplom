@@ -43,6 +43,9 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
   private
     procedure beginControl;
     procedure beginLecture;
@@ -57,7 +60,7 @@ type
 
 var
   AllComponents: TAllComponents;
-       nameRazdela,str,nameTema,work, kodYchitel:string;
+       nameRazdela,str,nameTema,work, kodYchitel, Path, PathFile:string;
         kodRazdela,kodTema, List, AllList,i,j, position:integer;
         CONST TYPE_SINGLE_QUESTIONS = 1;
         CONST TYPE_MORE_QUESTIONS = 2;
@@ -232,21 +235,32 @@ end;
 
 procedure TAllComponents.beginMutimedia;
 begin
+    Path:='';
+    PathFile:='';
     config.rebootRequestsCRUD;
     config.selectRequestSQL('SELECT * FROM Мультимедиа WHERE НазваниеМультимедии='+#39+work+#39);
-    if FileExists('./'+BD.Request.DataSet.FieldByName('Путь').AsString+'.mp4') then
-      ShellExecute(handle,'open', PChar('.\'+BD.Request.DataSet.FieldByName('Путь').AsString+'.mp4'), nil, nil, SW_SHOWNORMAL)
+    Path:=BD.Request.DataSet.FieldByName('Путь').AsString;
+    for i:=1 to Length(Path)-4 do
+      PathFile:=PathFile+Path[i];
+    if ((FileExists('./'+PathFile+'.mp4')) or (FileExists('./'+PathFile+'.avi'))) then
+      ShellExecute(handle,'open', PChar('.\'+BD.Request.DataSet.FieldByName('Путь').AsString), nil, nil, SW_SHOWNORMAL)
     else
-        MessageBox(0,'Файл данной мультимедии отсутствует','Программирование и защита Web - приложений', MB_OK+MB_ICONWARNING);
+        MessageBox(0,'Файл данной мультимедии отсутствует или выбранно неверное расширение','', MB_OK+MB_ICONWARNING);
 end;
 
 procedure TAllComponents.beginPractic;
 begin
-    work:=ComboBox3.Items.Strings[Combobox3.ItemIndex];
-    if FileExists('./Practic/'+work+'.pdf') then
-      ShellExecute(handle,'open', PChar('.\Practic\'+work+'.pdf'), nil, nil, SW_SHOWNORMAL)
+    Path:='';
+    PathFile:='';
+    config.rebootRequestsCRUD;
+    config.selectRequestSQL('SELECT * FROM Практические WHERE НазваниеПрактической='+#39+work+#39);
+    Path:=BD.Request.DataSet.FieldByName('Путь').AsString;
+    for i:=1 to Length(Path)-4 do
+      PathFile:=PathFile+Path[i];
+    if ((FileExists('./'+PathFile+'.pdf')) or (FileExists('./'+PathFile+'.doc'))or (FileExists('./'+PathFile+'.docx'))) then
+      ShellExecute(handle,'open', PChar('.\'+BD.Request.DataSet.FieldByName('Путь').AsString), nil, nil, SW_SHOWNORMAL)
     else
-      MessageBox(0,'Файл данной практической работы отсутствует','Программирование и защита Web - приложений',
+      MessageBox(0,'Файл данной практической работы отсутствует или выбранно неверное расширение','Программирование и защита Web - приложений',
     MB_OK+MB_ICONWARNING);
 
 end;
@@ -261,7 +275,6 @@ begin
         for i:=1 to 30 do ArrayListText[i]:='';
         show;
         Position:=poDesktopCenter;
-      //  MenuLectures.Visible:=false;
         Memo1.Clear;
         Memo1.Lines.Add(BD.Request.DataSet.FieldByName('Содержание').AsString);
 
@@ -277,7 +290,6 @@ begin
        List:=1;
        Memo1.Lines.Add(ArrayListText[1]);
 
-
         Height:=920;
         Width:=1201;
         Memo1.Height:=833;
@@ -291,7 +303,6 @@ begin
         Button8.Visible:=true;
         Button3.Left:=3;
       end;
-    //
 end;
 
 procedure TAllComponents.beginControl;
@@ -397,6 +408,21 @@ end;
 procedure TAllComponents.SpeedButton3Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TAllComponents.ComboBox1KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TAllComponents.ComboBox2KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TAllComponents.ComboBox3KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
 end;
 
 end.

@@ -31,7 +31,6 @@ type
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton8Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton9Click(Sender: TObject);
     procedure SpeedButton10Click(Sender: TObject);
   private
@@ -50,7 +49,7 @@ uses Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD, Control_CRUD, ShellAPI,
   Unit2,
   Main_Menu,
   AuthorizationData,
-  MultiMedia_CRUD, config;
+  MultiMedia_CRUD, config, UpdateUnit;
 
 {$R *.dfm}
 
@@ -80,6 +79,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton4Click(Sender: TObject);
 begin
+    SetCurrentDir(currentDir);
     rebootRequestsCRUD;
     PracticCRUD.show;
     PracticCRUD.Position:=poDesktopCenter;
@@ -103,10 +103,7 @@ end;
 
 procedure TDataManagementCenter.SpeedButton8Click(Sender: TObject);
 begin
-    AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
     DataManagementCenter.Visible:=false;
 end;
 
@@ -117,16 +114,9 @@ begin
     DataManagementCenter.Visible:=false;
 end;
 
-procedure TDataManagementCenter.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-    MainMenu.show;
-    MainMenu.position:=poDesktopCenter;
-    DataManagementCenter.Visible:=false;
-end;
-
 procedure TDataManagementCenter.SpeedButton9Click(Sender: TObject);
 begin
+    SetCurrentDir(currentDir);
     rebootRequestsCRUD;
     MultiMediaCRUD.show;
     MultiMediaCRUD.Position:=poDesktopCenter;

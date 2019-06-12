@@ -84,6 +84,7 @@ end;
 procedure TEdit_Lecture.Button4Click(Sender: TObject);
 begin
     config.execRequestSQL('UPDATE Лекции SET Содержание='+#39+Memo1.Text+#39+' WHERE КодЛекции='+IntToStr(updateKodLecture));
+    MessageBox(0,'Лекция сохранена','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TEdit_Lecture.Button6Click(Sender: TObject);
@@ -114,6 +115,7 @@ begin
       AllComponents.show;
       AllComponents.Position:=poDesktopCenter;
       Edit_Lecture.Visible:=false;
+      Edit_Lecture.AutoScroll:=false;
     end;
 end;
 

@@ -1,6 +1,6 @@
 object TemaCRUD: TTemaCRUD
-  Left = 38
-  Top = 156
+  Left = 9
+  Top = 345
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1090#1077#1084#1072#1084#1080
@@ -8209,7 +8209,7 @@ object TemaCRUD: TTemaCRUD
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -21
+    Font.Height = -16
     Font.Name = 'Georgia'
     Font.Style = []
     ImeMode = imDisable
@@ -8232,14 +8232,13 @@ object TemaCRUD: TTemaCRUD
         Font.Height = -16
         Font.Name = 'Times New Roman'
         Font.Style = []
-        Title.Alignment = taCenter
         Title.Caption = #8470' '#1090#1077#1084#1099
         Title.Font.Charset = RUSSIAN_CHARSET
         Title.Font.Color = clWindowText
         Title.Font.Height = -27
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 300
+        Width = 100
         Visible = True
       end
       item
@@ -8258,7 +8257,7 @@ object TemaCRUD: TTemaCRUD
         Title.Font.Height = -27
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 400
+        Width = 510
         Visible = True
       end
       item
@@ -8277,7 +8276,7 @@ object TemaCRUD: TTemaCRUD
         Title.Font.Height = -27
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 400
+        Width = 510
         Visible = True
       end>
   end

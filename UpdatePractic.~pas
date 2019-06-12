@@ -25,7 +25,8 @@ type
     Timer1: TTimer;
     Label7: TLabel;
     Label8: TLabel;
-    procedure FormCreate(Sender: TObject);
+    OpenDialog1: TOpenDialog;
+    BitBtn2: TBitBtn;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2Change(Sender: TObject);
@@ -34,10 +35,13 @@ type
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure Edit1Change(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BitBtn2Click(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
     procedure defaultSetting;
+     function ReverseString(s: string): string;
     { Private declarations }
   public
     { Public declarations }
@@ -45,60 +49,24 @@ type
 
 var
   UpdatePracticModalForm: TUpdatePracticModalForm;
-       nameTema, nameRazdela:string;
+       nameTema, nameRazdela, str, path:string;
         kodTema, kodRazdela:integer;
        unique_practic,unique_number_practic:boolean;
 
 implementation
 
-uses config, basa_dan, UpdateUnit;
+uses config, basa_dan, UpdateUnit, Practic_CRUD, AuthorizationData,
+  AddMultimedia;
 {$R *.dfm}
-
-procedure TUpdatePracticModalForm.FormCreate(Sender: TObject);
-begin
- // Получение всех разделов
-    config.selectRequestSQL('SELECT * FROM Раздел');
-    BD.Request.DataSet.First;
-    While (BD.Request.DataSet.Eof=false) do
-        begin
-            ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString);
-            BD.Request.DataSet.Next;
-    end;
-
-    // Получение Раздела к которому относиться наша изменяемая лекция
-    config.selectRequestSQL('SELECT * FROM Раздел WHERE КодРаздела='+IntToStr(updateKodRazdela));
-    ComboBox1.Text:=BD.Request.DataSet.FieldByName('НазваниеРаздела').AsString;
-
-    // Получение всех Тем раздела к которомой относиться наша изменяемая лекция
-    config.selectRequestSQL('SELECT * FROM Тема WHERE КодРаздела='+IntToStr(updateKodRazdela));
-
-    ComboBox2.Visible:=true;
-    label3.Visible:=true;
-    While (BD.Request.DataSet.Eof=false) do
-      begin
-        ComboBox2.Items.Add(BD.Request.DataSet.FieldByName('НазваниеТемы').AsString);
-        BD.Request.DataSet.Next;
-      end;
-
-   // Получение название Темы нашей зменяемой лекции
-   config.selectRequestSQL('SELECT * FROM Тема WHERE КодТемы='+IntToStr(updateKodTema));
-   ComboBox2.Text:=BD.Request.DataSet.FieldByName('НазваниеТемы').AsString;
-
-   // Получение названия Практики к которомой относитсья наша изменяемая Практическая             +
-   Edit1.Visible:=true;
-   Edit2.Visible:=true;
-   label2.Visible:=true;
-   label4.Visible:=true;
-   config.selectRequestSQL('SELECT * FROM Практические WHERE КодПрактической='+IntToStr(updateKodPractic));
-   Edit1.Text:=BD.Request.DataSet.FieldByName('НазваниеПрактической').AsString;
-   Edit2.Text:=BD.Request.DataSet.FieldByName('НомерПрактической').AsString;
-
-    kodRazdela:=updateKodRazdela;
-    kodTema:=updateKodTema;
-end;
 
 procedure TUpdatePracticModalForm.ComboBox2Change(Sender: TObject);
 begin
+    Edit1.Visible:=true;
+    Edit2.Visible:=true;
+    label2.Visible:=true;
+    label4.Visible:=true;
+    BitBtn2.Visible:=true;
+
     nameTema:=Combobox2.Text;
     config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+#39+nameTema+#39); // Получение кода темы
     kodTema:=BD.Request.DataSet.FieldByName('КодТемы').AsInteger;
@@ -124,6 +92,7 @@ begin
       begin
         Edit1.visible:=true;
         Edit2.Visible:=true;
+        BitBtn2.Visible:=true;
         label2.Visible:=true;
         label3.Visible:=true;
         label4.Visible:=true;
@@ -140,6 +109,8 @@ procedure TUpdatePracticModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_practic:=false;
     unique_number_practic:=false;
+    if PathFile2='' then
+     MessageBox(0,'Файл практической не выбран!','', MB_OK+MB_ICONwarning);
 
     if ((Edit2.Text='') and (Edit2.Visible=true)) then label8.Visible:=true;
     if ((Edit1.Text='') and (Edit1.Visible=true)) then label7.Visible:=true;
@@ -147,13 +118,18 @@ begin
     if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
         checkUniqueData;
 
-    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_practic<>false) and(unique_number_practic<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_practic<>false) and(unique_number_practic<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)  and (PathFile2<>'')) then
         saveDataInBD;
 end;
 
 procedure TUpdatePracticModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('UPDATE Практические SET КодТемы='+#39+IntToStr(kodTema)+#39+', НазваниеПрактической='+#39+Edit1.Text+#39+', НомерПрактической='+#39+Edit2.Text+#39+' WHERE КодПрактической ='+IntToStr(updateKodPractic));
+    config.execRequestSQL('UPDATE Практические SET КодТемы='+
+      #39+IntToStr(UpdatekodTema)+#39+','+
+      ' НазваниеПрактической='+#39+Edit1.Text+#39+','+
+      ' НомерПрактической='+#39+Edit2.Text+#39+','+
+      ' Путь='+#39+'Практические\'+PathFile2+#39+
+      ' WHERE КодПрактической ='+IntToStr(updateKodPractic));
     MessageBox(0,'Практическая была успешно Изменена!','Редактирование Практической', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 end;
@@ -183,6 +159,36 @@ begin
     label5.visible:=false;
     ComboBox2.Visible:=false;
     ComboBox2.Items.Clear;
+    BitBtn2.Visible:=false;
+end;
+
+procedure TUpdatePracticModalForm.Edit2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    label8.Visible:=false;
+    if not (Key in ['0'..'9', #8]) then
+      begin
+       Key:=#0;
+       label6.Visible:=true;
+      end;
+end;
+
+procedure TUpdatePracticModalForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    UpdatePracticModalForm.Hide;
+    PracticCRUD.Enabled:=true;
+    defaultSetting;
+end;
+
+procedure TUpdatePracticModalForm.Edit1Change(Sender: TObject);
+begin
+    label7.Visible:=false;
+end;
+
+procedure TUpdatePracticModalForm.Timer1Timer(Sender: TObject);
+begin
+    label6.Visible:=false;
 end;
 
 procedure TUpdatePracticModalForm.ComboBox1KeyPress(Sender: TObject;
@@ -197,26 +203,31 @@ begin
     if not (Key in []) then Key := #0;
 end;
 
-
-procedure TUpdatePracticModalForm.Edit2KeyPress(Sender: TObject;
-  var Key: Char);
+procedure TUpdatePracticModalForm.BitBtn2Click(Sender: TObject);
+var allPath:string; i:integer;
 begin
-    label8.Visible:=false;
-    if not (Key in ['0'..'9', #8]) then
-      begin
-       Key:=#0;
-       label6.Visible:=true;
-      end;
+    PathFile2:='';
+    allPath:='';
+    Path:='';
+    if OpenDialog1.Execute then
+      allPath:=OpenDialog1.FileName;
+    for i:=Length(allPath) downto 1 do
+      if allPath[i]<>'\' then
+        PathFile2:=PathFile2+allPath[i]
+      else
+        break;
+    PathFile:=ReverseString(PathFile2);
+    SetCurrentDir(currentDir);
 end;
 
-procedure TUpdatePracticModalForm.Edit1Change(Sender: TObject);
+function TUpdatePracticModalForm.ReverseString(s: string): string;
+var
+  i: integer;
 begin
-    label7.Visible:=false;
-end;
-
-procedure TUpdatePracticModalForm.Timer1Timer(Sender: TObject);
-begin
-    label6.Visible:=false;
+  Result := '';
+  if Trim(s) <> '' then
+    for i := Length(s) downto 1 do
+      Result := Result + s[i];
 end;
 
 end.

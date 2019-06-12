@@ -1,7 +1,7 @@
 unit AuthorizationData;
 
 interface
-uses basa_dan, Unit2;
+uses basa_dan, Unit2, Windows, Forms;
 
 var
 nameUser, familyUser, secondNameUser, loginUser, roleUser, groupUser, DataControl:string;
@@ -23,12 +23,9 @@ implementation
 uses Unit3 ,Menu_Teacher, Control, config, Main_Menu, Control_CRUD,
   ControlCenter, Lecture_CRUD, Menu_Control, Menu_Lectures, Menu_Practic,
   Practic_CRUD, Razdel_CRUD, Tema_CRUD, Ycheniki_CRUD, Add_Question,
-  DocumentForm, SysUtils,
-  MultiMedia_CRUD,
-  AddControl,
-  Manager_Users,
-  Teacher_CRUD,
-  Registration_Teacher, Menu_Multimedai, All_Lecture_Practic_Control;
+  DocumentForm, SysUtils,MultiMedia_CRUD,AddControl,Manager_Users,
+  Teacher_CRUD, Registration_Teacher, Menu_Multimedai, All_Lecture_Practic_Control,
+  Title_Form, AddMultimedia, UpdateUnit, StdCtrls;
 
 procedure getDataUser;
 begin
@@ -77,15 +74,6 @@ begin
     LectureCRUD.teacher_ON.Visible:=teacher;
     LectureCRUD.stydent_ON.Visible:=stydent;
 
-    MenuControl.teacher_ON.Visible:=teacher;
-    MenuControl.stydent_ON.Visible:=stydent;
-
-    MenuLectures.teacher_ON.Visible:=teacher;
-    MenuLectures.stydent_ON.Visible:=stydent;
-
-    MenuPractic.teacher_ON.Visible:=teacher;
-    MenuPractic.stydent_ON.Visible:=stydent;
-
     MultimediaCRUD.teacher_ON.Visible:=teacher;
     MultimediaCRUD.stydent_ON.Visible:=stydent;;
 
@@ -118,10 +106,6 @@ begin
 
     Shyrnal.teacher_ON.Visible:=teacher;
     Shyrnal.stydent_ON.Visible:=stydent;
-
-    MenuMultimedia.teacher_ON.Visible:=teacher;
-    MenuMultimedia.stydent_ON.Visible:=stydent;
-
 end;
 
 procedure SetNameAndFamilyAuthUsers;
@@ -140,15 +124,6 @@ begin
 
     AllComponents.label6.Caption:=nameUser;
     AllComponents.label7.Caption:=familyUser;
-
-    MenuControl.label4.Caption:=nameUser;
-    MenuControl.label6.Caption:=familyUser;
-
-    MenuLectures.label4.Caption:=nameUser;
-    MenuLectures.label6.Caption:=familyUser;
-
-    MenuPractic.label4.Caption:=nameUser;
-    MenuPractic.label6.Caption:=familyUser;
 
     MultimediaCRUD.label1.Caption:=nameUser;
     MultimediaCRUD.label2.Caption:=familyUser;
@@ -182,9 +157,6 @@ begin
 
     Shyrnal.Label1.Caption:=nameUser;
     Shyrnal.Label2.Caption:=familyUser;
-
-    MenuMultimedia.Label4.Caption:=nameUser;
-    MenuMultimedia.Label6.Caption:=familyUser;
 end;
 
 procedure freeDataUser;       // logOut
@@ -198,28 +170,31 @@ begin
     groupUser:='';
     kodUser:=0;
 
-   AuthorizationForm.ComboBox1.Clear;
-   AuthorizationForm.ComboBox2.Clear;
-   config.selectRequestSQL('SELECT * FROM Ученик WHERE КодГруппы=1');
-   BD.Request.DataSet.First;
-   for i:=1 to BD.Request.DataSet.RecordCount do
-      begin
-        with BD.Request.DataSet do
-          begin
-              fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
-          end;
-        AuthorizationForm.ComboBox2.Items.Add(fio);
-        BD.Request.DataSet.Next;
-      end;
-   AuthorizationForm.ComboBox2.ItemIndex:=0;
-   config.selectRequestSQL('SELECT * FROM Группа');
-   BD.Request.DataSet.First;
-   for i:=1 to BD.Request.DataSet.RecordCount do
-      begin
-        AuthorizationForm.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеГруппы').AsString);
-        BD.Request.DataSet.Next;
-      end;
-   AuthorizationForm.ComboBox1.ItemIndex:=0;
+    SetCurrentDir(currentDir);
+
+    AuthorizationForm.ComboBox1.Clear;
+    AuthorizationForm.ComboBox2.Clear;
+    config.selectRequestSQL('SELECT * FROM Ученик WHERE КодГруппы=1');
+    BD.Request.DataSet.First;
+    for i:=1 to BD.Request.DataSet.RecordCount do
+        begin
+            with BD.Request.DataSet do
+                fio:=FieldByName('Фамилия').AsString+' '+FieldByName('Имя').AsString+' '+FieldByName('Отчество').AsString;
+            AuthorizationForm.ComboBox2.Items.Add(fio);
+            BD.Request.DataSet.Next;
+        end;
+    AuthorizationForm.ComboBox2.ItemIndex:=0;
+    config.selectRequestSQL('SELECT * FROM Группа');
+    BD.Request.DataSet.First;
+    for i:=1 to BD.Request.DataSet.RecordCount do
+        begin
+            AuthorizationForm.ComboBox1.Items.Add(BD.Request.DataSet.FieldByName('НазваниеГруппы').AsString);
+            BD.Request.DataSet.Next;
+        end;
+    AuthorizationForm.ComboBox1.ItemIndex:=0;
+    AuthorizationForm.Edit1.Text:='';
+    AuthorizationForm.Visible:=true;;
+    AuthorizationForm.Position:=poDesktopCenter;
 end;
 
 procedure defoltConfigRegistrationForm;
