@@ -121,7 +121,7 @@ begin
            MainMenu.show;
            MainMenu.Position:=poDesktopCenter;
            AuthorizationForm.Visible:=false;
-           MessageBox(0,'Авторизация под учетной записью преподавателя пройдена успешно!','', MB_OK+MB_ICONINFORMATION);
+           MessageBox(0,'Авторизация под учетной записью преподавателя пройдена успешно!','',MB_OK+MB_ICONINFORMATION);
         end;
     with MainMenu do
       begin

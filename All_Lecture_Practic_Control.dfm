@@ -1,6 +1,6 @@
 object AllComponents: TAllComponents
-  Left = 37
-  Top = 105
+  Left = 75
+  Top = 241
   AutoScroll = False
   BorderIcons = []
   Caption = #1054#1073#1091#1095#1077#1085#1080#1077
@@ -2513,11 +2513,11 @@ object AllComponents: TAllComponents
     Visible = False
   end
   object SpeedButton2: TSpeedButton
-    Left = 86
+    Left = 875
     Top = 0
-    Width = 62
+    Width = 65
     Height = 52
-    Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1074' '#1084#1077#1085#1102
+    Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1085#1072#1079#1072#1076
     Flat = True
     ParentShowHint = False
     ShowHint = True
@@ -2535,10 +2535,10 @@ object AllComponents: TAllComponents
     OnClick = SpeedButton3Click
   end
   object SpeedButton5: TSpeedButton
-    Left = 874
+    Left = 89
     Top = 0
-    Width = 67
-    Height = 51
+    Width = 55
+    Height = 52
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
     Flat = True
     ParentShowHint = False
@@ -2550,6 +2550,8 @@ object AllComponents: TAllComponents
     Top = 1
     Width = 65
     Height = 52
+    Hint = #1054#1073#1091#1095#1072#1102#1097#1080#1081#1089#1103
+    ParentShowHint = False
     Picture.Data = {
       0A544A504547496D616765F2550100FFD8FFE000104A46494600010101004800
       480000FFE112BC4578696600004D4D002A000000080007011200030000000100
@@ -5289,6 +5291,7 @@ object AllComponents: TAllComponents
       8E4963924FBD368A2BBCFD652495905145140C28A28A0028A28A0028A28A00FF
       D9}
     Proportional = True
+    ShowHint = True
   end
   object Label6: TLabel
     Left = 1010
@@ -5349,13 +5352,13 @@ object AllComponents: TAllComponents
     Left = 118
     Top = 96
     Width = 950
-    Height = 35
+    Height = 31
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -24
+    Font.Height = -21
     Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 27
+    ItemHeight = 23
     ParentFont = False
     TabOrder = 0
     Text = 'ComboBox1'
@@ -5366,13 +5369,13 @@ object AllComponents: TAllComponents
     Left = 120
     Top = 184
     Width = 950
-    Height = 35
+    Height = 31
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -24
+    Font.Height = -21
     Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 27
+    ItemHeight = 23
     ParentFont = False
     TabOrder = 1
     Text = 'ComboBox2'
@@ -5384,13 +5387,13 @@ object AllComponents: TAllComponents
     Left = 120
     Top = 272
     Width = 950
-    Height = 35
+    Height = 31
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -24
+    Font.Height = -21
     Font.Name = 'Times New Roman'
     Font.Style = []
-    ItemHeight = 27
+    ItemHeight = 23
     ParentFont = False
     TabOrder = 2
     Text = 'ComboBox2'

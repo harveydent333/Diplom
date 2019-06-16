@@ -23,14 +23,12 @@ type
     Image3: TImage;
     SpeedButton5: TSpeedButton;
     OpenDialog1: TOpenDialog;
-    Image1: TImage;
     Image4: TImage;
     Label9: TLabel;
     BitBtn1: TBitBtn;
     Label1: TLabel;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
@@ -125,6 +123,10 @@ begin
                        ' ON Группа.КодГруппы = Ученик.КодГруппы';
 end;
 
+{
+  Процедура обработки нажатия кнопки "Настройка БД"
+  Открывает модальное окно компонента OpenDialog, после выбранного файла БД, подключает его
+}
 procedure TTitleForm.SpeedButton5Click(Sender: TObject);
 begin
    if OpenDialog1.Execute then
@@ -133,7 +135,9 @@ begin
             with BD.ADOConnection1 do
               begin
                   Connected := false;
-                  ConnectionString:= 'Provider=Microsoft.Jet.OLEDB.4.0;'+'Data Source='+OpenDialog1.FileName+';'+'Persist Security Info=false';
+                  ConnectionString:= 'Provider=Microsoft.Jet.OLEDB.4.0;'+
+                    'Data Source='+OpenDialog1.FileName+';'+
+                    'Persist Security Info=false';
                   Connected := True;
                   config.rebootRequestsCRUD;
                   BitBtn1.Enabled:=true;
@@ -144,11 +148,6 @@ begin
             BitBtn1.Enabled:=false;
           end;
       end;
-end;
-
-procedure TTitleForm.SpeedButton1Click(Sender: TObject);
-begin
-    ShellExecute(Handle, nil, 'https://www.simbirsoft.com', nil, nil, SW_SHOW);
 end;
 
 procedure TTitleForm.SpeedButton2Click(Sender: TObject);

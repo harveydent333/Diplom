@@ -1324,8 +1324,8 @@ object UpdateControlModalForm: TUpdateControlModalForm
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = -328
-    Top = -280
+    Left = -168
+    Top = -256
     Width = 1337
     Height = 737
     Picture.Data = {

@@ -107,32 +107,44 @@ procedure TAddMultimediaModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
+    if ComboBox2.Visible=false then
+      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning)
+    else
+      if Edit2.Visible=false then
+            MessageBox(0,'Выберите тему!','', MB_OK+MB_ICONwarning)
+      else
+        begin
+            if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
+            if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
+            if PathFile='' then
+                MessageBox(0,'Файл мультимедии не выбран!','', MB_OK+MB_ICONwarning);
 
-    if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
-    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
-    if PathFile='' then
-      MessageBox(0,'Файл мультимедии не выбран!','', MB_OK+MB_ICONwarning);
+            if ((Edit1.Text<>'') and (Edit2.Text<>'') and (PathFile<>'')) then
+                checkUniqueData;
 
-    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (PathFile<>'')) then
-      checkUniqueData;
-
-    if ((Edit1.Text<>'')and(Edit2.Text<>'')and(unique_multimedia<>false) and(unique_number_multimedia<>false) and (PathFile<>'')) then
-      saveDataInBD;
+            if ((Edit1.Text<>'')and(Edit2.Text<>'')and(unique_multimedia<>false) and(unique_number_multimedia<>false) and (PathFile<>'')) then
+                saveDataInBD;
+        end;
 end;
 
 procedure TAddMultimediaModalForm.saveDataInBD; // Внесение данных в БД
 begin
-    config.execRequestSQL('INSERT INTO Мультимедиа (КодТемы, НазваниеМультимедии, НомерМультимедии, Путь, КодУчителя) VALUES('+
-      IntToStr(kodTema)+','+
-      #39+Edit1.Text+#39+','+
-      #39+Edit2.Text+#39+', '+
-      #39+'Мультимедиа\'+PathFile+#39+', '+
-      IntToStr(kodUser)+')'
+    config.execRequestSQL('INSERT INTO Мультимедиа (КодТемы,'+
+                                                  ' НазваниеМультимедии,'+
+                                                  ' НомерМультимедии,'+
+                                                  ' Путь,'+
+                                                  ' КодУчителя)'+
+                              ' VALUES('+IntToStr(kodTema)+','+
+                                        #39+Edit1.Text+#39+','+
+                                        #39+Edit2.Text+#39+', '+
+                                        #39+'Мультимедиа\'+PathFile+#39+', '+
+                                        IntToStr(kodUser)+')'
     );
+
     MessageBox(0,'Мультимедиа была успешно создана!','Создание мультимедии', MB_OK+MB_ICONINFORMATION);
     config.rebootRequestsCRUD;
 
-    defaultSetting;
+    defaultSetting;  //   Вызыв процедуры стандартные настройки для компонентов
 end;
 
 procedure TAddMultimediaModalForm.checkUniqueData; // Проверка на уникальные данные

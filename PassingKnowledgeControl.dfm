@@ -1,10 +1,11 @@
 object PassingKnowledgeControlForm: TPassingKnowledgeControlForm
   Left = 237
   Top = 151
-  Width = 896
-  Height = 780
+  AutoScroll = False
   BorderIcons = [biMinimize, biMaximize]
   Caption = #1055#1088#1086#1093#1086#1078#1076#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1103' '#1079#1085#1072#1085#1080#1081
+  ClientHeight = 742
+  ClientWidth = 880
   Color = clBtnFace
   Constraints.MaxHeight = 780
   Constraints.MaxWidth = 896

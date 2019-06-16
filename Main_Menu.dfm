@@ -1,6 +1,6 @@
 object MainMenu: TMainMenu
-  Left = 78
-  Top = 228
+  Left = 22
+  Top = 224
   AutoScroll = False
   BorderIcons = []
   Caption = #1043#1083#1072#1074#1085#1086#1077' '#1084#1077#1085#1102
@@ -2578,11 +2578,11 @@ object MainMenu: TMainMenu
     OnClick = SpeedButton4Click
   end
   object SpeedButton6: TSpeedButton
-    Left = 872
+    Left = 875
     Top = 0
-    Width = 73
-    Height = 50
-    Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
+    Width = 65
+    Height = 52
+    Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1085#1072#1079#1072#1076' '#1080' '#1074#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
     Constraints.MaxHeight = 699
     Constraints.MaxWidth = 1188
     Flat = True
@@ -2629,6 +2629,8 @@ object MainMenu: TMainMenu
     Top = 1
     Width = 65
     Height = 52
+    Hint = #1055#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1100
+    ParentShowHint = False
     Picture.Data = {
       0A544A504547496D6167650A6D0100FFD8FFE000104A46494600010101004800
       480000FFE111184578696600004D4D002A000000080007011200030000000100
@@ -5552,12 +5554,15 @@ object MainMenu: TMainMenu
       BF23FDD9F04FFE485CB3FEBD2FCD851451599FA9052AF5145140094514500145
       1450014514500145145001451450014514500145145007FFD9}
     Proportional = True
+    ShowHint = True
   end
   object stydent_ON: TImage
     Left = 944
     Top = 1
     Width = 65
     Height = 52
+    Hint = #1054#1073#1091#1095#1072#1102#1097#1080#1081#1089#1103
+    ParentShowHint = False
     Picture.Data = {
       0A544A504547496D616765F2550100FFD8FFE000104A46494600010101004800
       480000FFE112BC4578696600004D4D002A000000080007011200030000000100
@@ -8297,6 +8302,7 @@ object MainMenu: TMainMenu
       8E4963924FBD368A2BBCFD652495905145140C28A28A0028A28A0028A28A00FF
       D9}
     Proportional = True
+    ShowHint = True
   end
   object SpeedButton11: TSpeedButton
     Left = 256

@@ -97,12 +97,18 @@ begin
     TeacherCRUD.Visible:=false;
 end;
 
+{
+  Обработка кнопки "Удалить преподавателя", удаляет данные преподавателя из базы
+}
 procedure TTeacherCRUD.BitBtn3Click(Sender: TObject);
 begin
-    config.execRequestSQL('DELETE FROM Учитель WHERE login='+#39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39);
+    config.execRequestSQL('DELETE FROM Учитель WHERE login='+
+        #39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39
+    );
     config.rebootRequestsCRUD;
     MessageBox(0,'Данные преподавателя были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
 end;
+
 procedure TTeacherCRUD.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin

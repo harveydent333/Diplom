@@ -27,8 +27,6 @@ type
     Label8: TLabel;
     OpenDialog1: TOpenDialog;
     BitBtn1: TBitBtn;
-    Button1: TButton;
-    Label9: TLabel;
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Change(Sender: TObject);
@@ -39,7 +37,6 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure Edit1Change(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     procedure saveDataInBD;
     procedure checkUniqueData;
@@ -106,6 +103,10 @@ procedure TUpdateMultimediaModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_multimedia:=false;
     unique_number_multimedia:=false;
+    if ComboBox2.Visible=false then
+      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning);
+    if Edit2.Visible=false then
+      MessageBox(0,'Выберите тему!','', MB_OK+MB_ICONwarning);
 
     if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
     if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
@@ -224,11 +225,6 @@ procedure TUpdateMultimediaModalForm.ComboBox2KeyPress(Sender: TObject;
   var Key: Char);
 begin
     if not (Key in []) then Key := #0;
-end;
-
-procedure TUpdateMultimediaModalForm.Button1Click(Sender: TObject);
-begin
-    label9.Caption:=PathFile;
 end;
 
 end.

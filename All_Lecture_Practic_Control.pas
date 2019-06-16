@@ -233,6 +233,9 @@ begin
       end;
 end;
 
+{
+  Процедура запуска мультимедиа
+}
 procedure TAllComponents.beginMutimedia;
 begin
     Path:='';
@@ -356,6 +359,7 @@ begin
         Show;
         Button1.Caption:='Следующий вопрос';
         Enabled:=true;
+        AutoScroll:=false;
 
         kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
         Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;

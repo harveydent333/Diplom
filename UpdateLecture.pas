@@ -97,15 +97,22 @@ procedure TUpdateLectureModalForm.SpeedButton1Click(Sender: TObject);       // К
 begin
     unique_lecture:=false;
     unique_number_lecture:=false;
+    if ComboBox2.Visible=false then
+      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning)
+    else
+      if Edit2.Visible=false then
+         MessageBox(0,'Выберите тему!','', MB_OK+MB_ICONwarning)
+      else
+        begin
+           if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
+           if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
 
-    if ((Edit2.Text='') and (Edit2.Visible=true)) then label7.Visible:=true;
-    if ((Edit1.Text='') and (Edit1.Visible=true)) then label8.Visible:=true;
-    
-    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
-        checkUniqueData;
+           if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+              checkUniqueData;
 
-    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_lecture<>false) and(unique_number_lecture<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
-        saveDataInBD;
+           if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_lecture<>false) and(unique_number_lecture<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+              saveDataInBD;
+        end;
 end;
 
 procedure TUpdateLectureModalForm.saveDataInBD; // Внесение данных в БД

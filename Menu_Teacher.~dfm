@@ -1,6 +1,6 @@
 object RegistrationForm: TRegistrationForm
-  Left = 294
-  Top = 369
+  Left = 58
+  Top = 235
   AutoScroll = False
   BorderIcons = []
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103' '#1086#1073#1091#1095#1072#1102#1097#1077#1075#1086#1089#1103
@@ -6070,11 +6070,11 @@ object RegistrationForm: TRegistrationForm
     Transparent = True
   end
   object SpeedButton2: TSpeedButton
-    Left = 84
+    Left = 875
     Top = 0
-    Width = 62
-    Height = 50
-    Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1074' '#1084#1077#1085#1102
+    Width = 65
+    Height = 52
+    Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1085#1072#1079#1072#1076
     Flat = True
     ParentShowHint = False
     ShowHint = True
@@ -6103,10 +6103,10 @@ object RegistrationForm: TRegistrationForm
     OnClick = SpeedButton4Click
   end
   object SpeedButton5: TSpeedButton
-    Left = 872
+    Left = 89
     Top = 0
-    Width = 67
-    Height = 51
+    Width = 55
+    Height = 52
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
     Flat = True
     ParentShowHint = False
@@ -8934,6 +8934,8 @@ object RegistrationForm: TRegistrationForm
     Top = 1
     Width = 65
     Height = 52
+    Hint = #1055#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1100
+    ParentShowHint = False
     Picture.Data = {
       0A544A504547496D6167650A6D0100FFD8FFE000104A46494600010101004800
       480000FFE111184578696600004D4D002A000000080007011200030000000100
@@ -11857,6 +11859,7 @@ object RegistrationForm: TRegistrationForm
       BF23FDD9F04FFE485CB3FEBD2FCD851451599FA9052AF5145140094514500145
       1450014514500145145001451450014514500145145007FFD9}
     Proportional = True
+    ShowHint = True
   end
   object last_name: TEdit
     Left = 368
@@ -11914,14 +11917,14 @@ object RegistrationForm: TRegistrationForm
     Font.Name = 'Georgia'
     Font.Style = []
     ItemHeight = 23
-    ItemIndex = 2
+    ItemIndex = 0
     ParentFont = False
     TabOrder = 3
-    Text = '433'
+    Text = '341'
     OnKeyPress = ComboBox1KeyPress
     Items.Strings = (
-      '431'
-      '432'
-      '433')
+      '341'
+      '342'
+      '343')
   end
 end

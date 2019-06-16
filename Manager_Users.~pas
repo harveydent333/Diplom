@@ -23,7 +23,6 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
@@ -45,10 +44,7 @@ uses basa_dan, config, UpdateUnit, Unit2, Main_Menu, Title_Form,
 
 procedure TManagerUsers.SpeedButton5Click(Sender: TObject);
 begin
-    AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
     ManagerUsers.Visible:=false;
 end;
 
@@ -63,21 +59,12 @@ procedure TManagerUsers.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then
-        TitleForm.close;
-end;
-
-procedure TManagerUsers.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-    MainMenu.show;
-    MainMenu.position:=poDesktopCenter;
-    ManagerUsers.Visible:=false;
+    if idyes=temp then TitleForm.close;
 end;
 
 procedure TManagerUsers.SpeedButton1Click(Sender: TObject);
 begin
-     config.rebootRequestsCRUD;
+    config.rebootRequestsCRUD;
     YchenikiCRUD.show;
     YchenikiCRUD.Position:=poDesktopCenter;
     ManagerUsers.Visible:=false;

@@ -107,6 +107,10 @@ begin
     TitleForm.Position:=poDesktopCenter;
 end;
 
+{
+  Процедура обработки авторизации преподавателя
+  Формирует запрос на проверку логина и пароля, выдача прав
+}
 procedure TAuthorizationForm.teacherAuthorization;
 begin
     config.selectRequestSQL('SELECT pass FROM Учитель WHERE login='+#39+edit2.text+#39);
@@ -121,7 +125,7 @@ begin
            MainMenu.show;
            MainMenu.Position:=poDesktopCenter;
            AuthorizationForm.Visible:=false;
-           MessageBox(0,'Авторизация под учетной записью преподавателя пройдена успешно!','', MB_OK+MB_ICONINFORMATION);
+           MessageBox(0,'Авторизация под учетной записью преподавателя пройдена успешно!','',MB_OK+MB_ICONINFORMATION);
         end;
     with MainMenu do
       begin

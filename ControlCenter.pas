@@ -53,14 +53,9 @@ uses Tema_CRUD, Razdel_CRUD, Lecture_CRUD, Practic_CRUD, Control_CRUD, ShellAPI,
 
 {$R *.dfm}
 
-procedure TDataManagementCenter.SpeedButton1Click(Sender: TObject);
-begin
-    rebootRequestsCRUD;
-    TemaCRUD.show;
-    TemaCRUD.Position:=poDesktopCenter;
-    DataManagementCenter.Visible:=false;
-end;
-
+{
+  Обработка кнопки "Раздел", переходит на форму "Управление разделами"
+}
 procedure TDataManagementCenter.SpeedButton2Click(Sender: TObject);
 begin
     rebootRequestsCRUD;
@@ -69,6 +64,20 @@ begin
     DataManagementCenter.Visible:=false;
 end;
 
+{
+  Обработка кнопки "Темы", переходит на форму "Управление темами"
+}
+procedure TDataManagementCenter.SpeedButton1Click(Sender: TObject);
+begin
+    rebootRequestsCRUD;
+    TemaCRUD.show;
+    TemaCRUD.Position:=poDesktopCenter;
+    DataManagementCenter.Visible:=false;
+end;
+
+{
+  Обработка кнопки "Лекции", переходит на форму "Управление лекциями"
+}
 procedure TDataManagementCenter.SpeedButton3Click(Sender: TObject);
 begin
     rebootRequestsCRUD;
@@ -77,6 +86,9 @@ begin
     DataManagementCenter.Visible:=false;
 end;
 
+{
+  Обработка кнопки "Практические", переходит на форму "Управление практическими"
+}
 procedure TDataManagementCenter.SpeedButton4Click(Sender: TObject);
 begin
     SetCurrentDir(currentDir);

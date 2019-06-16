@@ -43,6 +43,7 @@ type
 
 var
   MainMenu: TMainMenu;
+  i:integer;
 
 implementation
 
@@ -169,33 +170,35 @@ begin
     AuthorizationData.freeDataUser;
     MainMenu.Visible:=false;
 end;
-
+{
+  Процедура обработки нажатия кнопки "Журнал оценок"
+  Формирует настройки формы "Журнал оценок", для роли пользователя
+}
 procedure TMainMenu.SpeedButton10Click(Sender: TObject);
 begin
     MainMenu.Visible:=false;
-    Shyrnal.show;
-    Shyrnal.Position:=poDesktopCenter;
-
     if roleUser='stydent' then
         begin
-            settingForShyrnal(false);
-            getDataTemaForShyrnal;
-            getDataControlForShyrnal;
-             Shyrnal.Image2.Visible:=false;
-            Shyrnal.Label10.Visible:=false;
-
-            config.selectRequestSQL(getShyrnalData+' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39);
+            formCustomizationProcess(false); // Вызов процедуры настройки формы
+            config.selectRequestSQL(getShyrnalData+' WHERE Фамилия='+
+              #39+familyUser+#39+
+              ' AND Имя='+#39+nameUser+#39+
+              ' AND Отчество='+#39+secondNameUser+#39
+            );
         end;
 
     if roleUser='teacher' then
         begin
-            settingForShyrnal(true);
-            getDataTemaForShyrnal;
-            getDataControlForShyrnal;
-            config.selectRequestSQL(getShyrnalData);
-            Shyrnal.Image2.Visible:=true;
-            Shyrnal.Label10.Visible:=true;
+            formCustomizationProcess(true); // Вызов процедуры настройки формы
+            config.selectRequestSQL(getShyrnalData+' WHERE ЖурналОценок.КодУчителя='+IntToStr(kodUser));
         end;
+end;
+
+procedure TMainMenu.formCustomizationProcess(value:boolean);
+begin
+    settingForShyrnal(value);  // Вызов процедуры настройки компонентов формы "Журнал оценок"
+    getDataTemaForShyrnal;    // Вызов процедуры заполнения списка тем
+    getDataControlForShyrnal; // Вызов процедуры заполнения списка контрлей знаний
 end;
 
 procedure TMainMenu.getDataTemaForShyrnal;
@@ -224,6 +227,15 @@ begin
             label3.Visible:=value;
             label4.Visible:=value;
             label5.Visible:=value;
+            Image2.Visible:=value;
+            SpeedButton4.Visible:=value;
+            Label10.Visible:=value;
+            Label15.Visible:=value;
+            CheckBox8.Visible:=value;
+            ComboBox4.Visible:=value;
+
+            Show;
+            Position:=poDesktopCenter;
         end;
 end;
 

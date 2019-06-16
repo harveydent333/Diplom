@@ -18,12 +18,9 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure VariantsQuestionMore1Label1Click(Sender: TObject);
-
   private
     procedure processingSingleQuestion;
     procedure processingMoreQuestion;
-    procedure setDataInResultForm;
-    procedure setMarkForTest;
     { Private declarations }
   public
     { Public declarations }
@@ -40,23 +37,20 @@ uses AuthorizationData, Result, Control,DateUtils,
   QuestionsMoreMemo;
 {$R *.dfm}
 
-procedure TPassingKnowledgeControlForm.setDataInResultForm;
-begin
-
-end;
-
-procedure TPassingKnowledgeControlForm.setMarkForTest;
-begin
-
-end;
-
-
+{
+  Процедура обработки кнопки "Следующий вопрос", передает данные отвеченного вопроса и считает балл
+}
 procedure TPassingKnowledgeControlForm.Button1Click(Sender: TObject);
 begin
-    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then PassControlSingle.checkUserAnswer;
-    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then PassControlMore.checkUserAnswer;
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then
+      PassControlSingle.checkUserAnswer;
 
-    if BD.Request.DataSet.RecNo+1 = BD.Request.DataSet.RecordCount then Button1.Caption:='Завершить тестирование';
+    if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then
+      PassControlMore.checkUserAnswer;
+
+    if BD.Request.DataSet.RecNo+1 = BD.Request.DataSet.RecordCount then
+      Button1.Caption:='Завершить тестирование';
+
     if BD.Request.DataSet.RecNo = BD.Request.DataSet.RecordCount then
       begin
         config.countingResults;
@@ -72,14 +66,11 @@ begin
         kodVoprosa:=BD.Request.DataSet.FieldByName('КодВопроса').AsInteger;
         Memo1.Text:=BD.Request.DataSet.FieldByName('СодержаниеВопроса').AsString;
 
-        if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then processingSingleQuestion;
-        if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then processingMoreQuestion;
+        if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_SINGLE_QUESTIONS then
+          processingSingleQuestion;
+        if BD.Request.DataSet.FieldByName('КодТипа').AsInteger=TYPE_MORE_QUESTIONS then
+          processingMoreQuestion;
       end;
-end;
-
-procedure getResultTest;
-begin
-
 end;
 
 procedure TPassingKnowledgeControlForm.processingSingleQuestion;
@@ -110,7 +101,6 @@ begin
    temp:=MessageBox(0,'Вы точно хотите завершить тестирование?','Программирование и защита Web - приложений', MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then
       begin
-        setDataInResultForm;
         ResultForm.Show;
         ResultForm.Position:=poDesktopCenter;
         PassingKnowledgeControlForm.Enabled:=false;

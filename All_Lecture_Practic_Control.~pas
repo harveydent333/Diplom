@@ -233,6 +233,9 @@ begin
       end;
 end;
 
+{
+  Процедура запуска мультимедиа
+}
 procedure TAllComponents.beginMutimedia;
 begin
     Path:='';

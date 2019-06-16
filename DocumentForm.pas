@@ -72,9 +72,9 @@ type
     CheckBox8: TCheckBox;
     Label15: TLabel;
     ComboBox4: TComboBox;
-    Label16: TLabel;
-    CheckBox9: TCheckBox;
-    ComboBox5: TComboBox;
+    SpeedButton4: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    SpeedButton8: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);
@@ -89,11 +89,14 @@ type
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox3KeyPress(Sender: TObject; var Key: Char);
-    procedure Image2Click(Sender: TObject);
-    procedure Image3Click(Sender: TObject);
-    procedure Image4Click(Sender: TObject);
     procedure CheckBox3Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure CheckBox8Click(Sender: TObject);
+    procedure ComboBox4KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox5KeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -179,6 +182,11 @@ begin
      if CheckBox7.Checked=true then Edit4.Enabled:=true else Edit4.Enabled:=false;
 end;
 
+procedure TShyrnal.CheckBox8Click(Sender: TObject);
+begin
+    if CheckBox8.Checked=true then ComboBox4.Enabled:=true else ComboBox4.Enabled:=false;
+end;
+
 procedure TShyrnal.Button3Click(Sender: TObject);
 var default:string;
 begin
@@ -228,6 +236,11 @@ begin
       end;
 end;
 
+procedure TShyrnal.SpeedButton2Click(Sender: TObject);
+begin
+    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
 procedure TShyrnal.ComboBox1KeyPress(Sender: TObject; var Key: Char);
 begin
     if not (Key in []) then Key := #0;
@@ -243,24 +256,25 @@ begin
     if not (Key in []) then Key := #0;
 end;
 
-procedure TShyrnal.Image2Click(Sender: TObject);
+procedure TShyrnal.ComboBox4KeyPress(Sender: TObject; var Key: Char);
 begin
-    last_name.DataField:='Фамилия';
-    first_name.DataField:='Имя';
-    second_name.DataField:='Отчество';
-    control.DataField:='НазваниеКонтроля';
-    date.DataField:='ДатаПроведения';
-    mark.DataField:='Оценка';
-    if roleUser='teacher' then
-      QuickRep1.Preview;
+    if not (Key in []) then Key := #0;
 end;
 
-procedure TShyrnal.Image3Click(Sender: TObject);
+procedure TShyrnal.ComboBox5KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+{
+  Процедура обработки нажатия на иконку "Поиск", формирует SQL запрос на основе выбранных свойств
+}
+procedure TShyrnal.SpeedButton7Click(Sender: TObject);
 var default:string;
 begin
     if roleUser='teacher' then
       begin
-        default:=getShyrnalData+' WHERE 1=1';
+        default:=getShyrnalData+' WHERE ЖурналОценок.КодУчителя='+IntToStr(kodUser);
         if CheckBox5.Checked = true then
           default:=default+' AND Фамилия='+#39+edit2.Text+#39;
 
@@ -282,12 +296,18 @@ begin
         if CheckBox3.Checked = true then
           default:=default+' AND ДатаПроведения ='+#39+DateToStr(DateTimePicker1.Date)+#39;
 
+        if CheckBox8.Checked = true then
+          default:=default+' AND Ученик.КодГруппы='+IntToStr(ComboBox4.ItemIndex+1);
+
         config.selectRequestSQL(default);
       end;
 
     if roleUser='stydent' then
       begin
-        default:=getShyrnalData +' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39;
+        default:=getShyrnalData +' WHERE Фамилия='+#39+familyUser+#39+' AND'+
+        ' Имя='+#39+nameUser+#39+' AND'+
+        ' Отчество='+#39+secondNameUser+#39;
+
         if CheckBox1.Checked = true then
           default:=default+' AND НазваниеТемы='+#39+ComboBox1.Text+#39;
 
@@ -300,7 +320,19 @@ begin
       end;
 end;
 
-procedure TShyrnal.Image4Click(Sender: TObject);
+procedure TShyrnal.SpeedButton4Click(Sender: TObject);
+begin
+   last_name.DataField:='Фамилия';
+    first_name.DataField:='Имя';
+    second_name.DataField:='Отчество';
+    control.DataField:='НазваниеКонтроля';
+    date.DataField:='ДатаПроведения';
+    mark.DataField:='Оценка';
+    if roleUser='teacher' then
+      QuickRep1.Preview;
+end;
+
+procedure TShyrnal.SpeedButton8Click(Sender: TObject);
 var default:string;
 begin
     default:=getShyrnalData+' WHERE 1=1';
@@ -325,15 +357,19 @@ begin
       end;
     if roleUser='stydent' then
       begin
-        config.selectRequestSQL(getShyrnalData+' WHERE Фамилия='+#39+familyUser+#39+' AND Имя='+#39+nameUser+#39+' AND Отчество='+#39+secondNameUser+#39);
+        config.selectRequestSQL(getShyrnalData+' WHERE'+
+          ' Фамилия='+#39+familyUser+#39+' AND'+
+          ' Имя='+#39+nameUser+#39+' AND'+
+          ' Отчество='+#39+secondNameUser+#39
+        );
       end;
 end;
 
-procedure TShyrnal.SpeedButton2Click(Sender: TObject);
-begin
-    ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
-end;
-
 end.
+
+procedure TShyrnal.SpeedButton7Click(Sender: TObject);
+begin
+
+end;
 
 

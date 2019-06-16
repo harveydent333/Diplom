@@ -107,6 +107,9 @@ procedure TAddPracticModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_practic:=false;
     unique_number_practic:=false;
+    if ComboBox2.Visible=false then
+      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning);
+
     if PathFile='' then
      MessageBox(0,'Файл практической не выбран!','', MB_OK+MB_ICONwarning);
 

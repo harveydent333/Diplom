@@ -109,20 +109,26 @@ procedure TUpdatePracticModalForm.SpeedButton1Click(Sender: TObject);
 begin
     unique_practic:=false;
     unique_number_practic:=false;
+
     if ComboBox2.Visible=false then
-      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning);
+      MessageBox(0,'Выберите раздел!','', MB_OK+MB_ICONwarning)
+    else
+      if Edit2.Visible=false then
+        MessageBox(0,'Выберите тему!','', MB_OK+MB_ICONwarning)
+      else
+        begin
+          if PathFile2='' then
+              MessageBox(0,'Файл практической не выбран!','', MB_OK+MB_ICONwarning);
 
-    if PathFile2='' then
-     MessageBox(0,'Файл практической не выбран!','', MB_OK+MB_ICONwarning);
+          if ((Edit2.Text='') and (Edit2.Visible=true)) then label8.Visible:=true;
+          if ((Edit1.Text='') and (Edit1.Visible=true)) then label7.Visible:=true;
 
-    if ((Edit2.Text='') and (Edit2.Visible=true)) then label8.Visible:=true;
-    if ((Edit1.Text='') and (Edit1.Visible=true)) then label7.Visible:=true;
+          if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
+              checkUniqueData;
 
-    if ((Edit1.Text<>'') and (Edit2.Text<>'') and (Edit1.Visible<>false) and (Edit2.Visible<>false)) then
-        checkUniqueData;
-
-    if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_practic<>false) and(unique_number_practic<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)  and (PathFile2<>'')) then
-        saveDataInBD;
+          if ((Edit1.Text<>'')and (Edit2.Text<>'') and (unique_practic<>false) and(unique_number_practic<>false)  and (Edit1.Visible<>false) and (Edit2.Visible<>false)  and (PathFile2<>'')) then
+              saveDataInBD;
+        end;
 end;
 
 procedure TUpdatePracticModalForm.saveDataInBD; // Внесение данных в БД

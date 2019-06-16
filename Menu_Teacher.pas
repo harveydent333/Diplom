@@ -48,7 +48,6 @@ type
     procedure login_fieldChange(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
     procedure SpeedButton6Click(Sender: TObject);
     procedure last_nameKeyPress(Sender: TObject; var Key: Char);
@@ -271,19 +270,8 @@ end;
 
 procedure TRegistrationForm.SpeedButton5Click(Sender: TObject);
 begin
-    AuthorizationForm.Edit1.Text:='';
     AuthorizationData.freeDataUser;
-    AuthorizationForm.Visible:=true;;
-    AuthorizationForm.Position:=poDesktopCenter;
     RegistrationForm.Visible:=false;
-end;
-
-procedure TRegistrationForm.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-    RegistrationForm.visible:=false;
-    MainMenu.show;
-    MainMenu.position:=poDesktopCenter;
 end;
 
 procedure TRegistrationForm.last_nameKeyPress(Sender: TObject; var Key: Char);
@@ -306,6 +294,10 @@ begin
       label1.Visible:=false;
 end;
 
+{
+  Обработка события нажатия клавиши в поле "Имя"
+  Проверяется на нажатие кнопки и BackSpace и валидация пустого поля
+}
 procedure TRegistrationForm.first_nameKeyPress(Sender: TObject; var Key: Char);
 begin
     defolt_edit2.Visible:=false;
@@ -324,18 +316,6 @@ begin
 
     if((last_name.Text<>'') and (first_name.Text<>'') and (second_name.Text<>''))then
     Label1.Visible:=false;
-end;
-
-procedure TRegistrationForm.SpeedButton4Click(Sender: TObject);
-var temp:word;
-begin
-    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
-    if idyes=temp then TitleForm.close;
-end;
-
-procedure TRegistrationForm.ComboBox1KeyPress(Sender: TObject; var Key: Char);
-begin
-    if not (Key in []) then Key := #0;
 end;
 
 procedure TRegistrationForm.second_nameKeyPress(Sender: TObject; var Key: Char);
@@ -361,6 +341,18 @@ end;
 procedure TRegistrationForm.SpeedButton3Click(Sender: TObject);
 begin
     ShellExecute(handle,'open', PChar('Help.chm'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TRegistrationForm.ComboBox1KeyPress(Sender: TObject; var Key: Char);
+begin
+    if not (Key in []) then Key := #0;
+end;
+
+procedure TRegistrationForm.SpeedButton4Click(Sender: TObject);
+var temp:word;
+begin
+    temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then TitleForm.close;
 end;
 
 end.

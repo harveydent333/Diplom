@@ -1,6 +1,6 @@
 object LectureCRUD: TLectureCRUD
-  Left = 115
-  Top = 352
+  Left = -46
+  Top = 383
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1083#1077#1082#1094#1080#1103#1084#1080
@@ -2482,9 +2482,9 @@ object LectureCRUD: TLectureCRUD
     Transparent = True
   end
   object SpeedButton2: TSpeedButton
-    Left = 86
+    Left = 875
     Top = 0
-    Width = 62
+    Width = 65
     Height = 52
     Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1085#1072#1079#1072#1076
     Flat = True
@@ -2504,10 +2504,10 @@ object LectureCRUD: TLectureCRUD
     OnClick = SpeedButton3Click
   end
   object SpeedButton5: TSpeedButton
-    Left = 874
+    Left = 89
     Top = 0
-    Width = 67
-    Height = 49
+    Width = 55
+    Height = 52
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
     Flat = True
     ParentShowHint = False
@@ -2530,6 +2530,8 @@ object LectureCRUD: TLectureCRUD
     Top = 1
     Width = 65
     Height = 52
+    Hint = #1055#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1100
+    ParentShowHint = False
     Picture.Data = {
       0A544A504547496D6167650A6D0100FFD8FFE000104A46494600010101004800
       480000FFE111184578696600004D4D002A000000080007011200030000000100
@@ -5453,6 +5455,7 @@ object LectureCRUD: TLectureCRUD
       BF23FDD9F04FFE485CB3FEBD2FCD851451599FA9052AF5145140094514500145
       1450014514500145145001451450014514500145145007FFD9}
     Proportional = True
+    ShowHint = True
   end
   object stydent_ON: TImage
     Left = 944
@@ -8208,11 +8211,11 @@ object LectureCRUD: TLectureCRUD
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -21
     Font.Name = 'Georgia'
     Font.Style = []
     ImeMode = imDisable
-    Options = [dgTitles, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgTitles, dgColLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
     ParentFont = False
     ReadOnly = True
     TabOrder = 0
@@ -8228,7 +8231,7 @@ object LectureCRUD: TLectureCRUD
         FieldName = #1053#1086#1084#1077#1088#1051#1077#1082#1094#1080#1080
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -19
         Font.Name = 'Times New Roman'
         Font.Style = []
         Title.Alignment = taCenter
@@ -8242,50 +8245,11 @@ object LectureCRUD: TLectureCRUD
         Visible = True
       end
       item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
-        Font.Charset = RUSSIAN_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Times New Roman'
-        Font.Style = []
-        Title.Alignment = taCenter
-        Title.Caption = #1056#1072#1079#1076#1077#1083
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -24
-        Title.Font.Name = 'Times New Roman'
-        Title.Font.Style = [fsBold]
-        Width = 330
-        Visible = True
-      end
-      item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
-        Font.Charset = RUSSIAN_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Times New Roman'
-        Font.Style = []
-        Title.Alignment = taCenter
-        Title.Caption = #1058#1077#1084#1072
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -24
-        Title.Font.Name = 'Times New Roman'
-        Title.Font.Style = [fsBold]
-        Width = 290
-        Visible = True
-      end
-      item
-        Alignment = taCenter
         Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1051#1077#1082#1094#1080#1080
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -19
         Font.Name = 'Times New Roman'
         Font.Style = []
         Title.Alignment = taCenter
@@ -8295,7 +8259,7 @@ object LectureCRUD: TLectureCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 390
+        Width = 1000
         Visible = True
       end>
   end

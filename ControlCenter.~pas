@@ -31,7 +31,6 @@ type
     procedure SpeedButton6Click(Sender: TObject);
     procedure SpeedButton8Click(Sender: TObject);
     procedure SpeedButton7Click(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton9Click(Sender: TObject);
     procedure SpeedButton10Click(Sender: TObject);
   private
@@ -109,14 +108,6 @@ begin
 end;
 
 procedure TDataManagementCenter.SpeedButton7Click(Sender: TObject);
-begin
-    MainMenu.show;
-    MainMenu.position:=poDesktopCenter;
-    DataManagementCenter.Visible:=false;
-end;
-
-procedure TDataManagementCenter.FormClose(Sender: TObject;
-  var Action: TCloseAction);
 begin
     MainMenu.show;
     MainMenu.position:=poDesktopCenter;

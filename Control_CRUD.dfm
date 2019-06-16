@@ -1,6 +1,6 @@
 object ControlCRUD: TControlCRUD
-  Left = 1
-  Top = 300
+  Left = 10
+  Top = 306
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1082#1086#1085#1090#1088#1086#1083#1077#1084' '#1079#1085#1072#1085#1080#1081
@@ -2465,9 +2465,9 @@ object ControlCRUD: TControlCRUD
     OnClick = SpeedButton3Click
   end
   object SpeedButton2: TSpeedButton
-    Left = 86
+    Left = 875
     Top = 0
-    Width = 62
+    Width = 65
     Height = 52
     Hint = #1042#1077#1088#1085#1091#1090#1100#1089#1103' '#1085#1072#1079#1072#1076
     Flat = True
@@ -2476,10 +2476,10 @@ object ControlCRUD: TControlCRUD
     OnClick = SpeedButton2Click
   end
   object SpeedButton5: TSpeedButton
-    Left = 874
+    Left = 89
     Top = 0
-    Width = 67
-    Height = 49
+    Width = 55
+    Height = 52
     Hint = #1042#1099#1081#1090#1080' '#1080#1079' '#1072#1082#1072#1091#1085#1090#1072
     Flat = True
     ParentShowHint = False
@@ -2530,6 +2530,7 @@ object ControlCRUD: TControlCRUD
     Top = 1
     Width = 65
     Height = 52
+    Hint = #1055#1088#1077#1087#1086#1076#1072#1074#1072#1090#1077#1083#1100
     Picture.Data = {
       0A544A504547496D6167650A6D0100FFD8FFE000104A46494600010101004800
       480000FFE111184578696600004D4D002A000000080007011200030000000100
@@ -8208,11 +8209,11 @@ object ControlCRUD: TControlCRUD
     FixedColor = clMoneyGreen
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -21
     Font.Name = 'Georgia'
     Font.Style = []
     ImeMode = imDisable
-    Options = [dgTitles, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    Options = [dgTitles, dgColLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
     ParentFont = False
     ReadOnly = True
     TabOrder = 0
@@ -8228,7 +8229,7 @@ object ControlCRUD: TControlCRUD
         FieldName = #1053#1086#1084#1077#1088#1050#1086#1085#1090#1088#1086#1083#1103
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -19
         Font.Name = 'Times New Roman'
         Font.Style = []
         Title.Caption = #8470' '#1082#1086#1085#1090#1088#1086#1083#1103
@@ -8241,60 +8242,16 @@ object ControlCRUD: TControlCRUD
         Visible = True
       end
       item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1056#1072#1079#1076#1077#1083#1072
-        Font.Charset = RUSSIAN_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Times New Roman'
-        Font.Style = []
-        Title.Alignment = taCenter
-        Title.Caption = #1056#1072#1079#1076#1077#1083
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -24
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = [fsBold]
-        Width = 310
-        Visible = True
-      end
-      item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1058#1077#1084#1099
-        Font.Charset = RUSSIAN_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Times New Roman'
-        Font.Style = []
-        Title.Alignment = taCenter
-        Title.Caption = #1058#1077#1084#1099
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -24
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = [fsBold]
-        Width = 260
-        Visible = True
-      end
-      item
-        Alignment = taCenter
         Expanded = False
         FieldName = #1053#1072#1079#1074#1072#1085#1080#1077#1050#1086#1085#1090#1088#1086#1083#1103
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -19
         Font.Name = 'Times New Roman'
         Font.Style = []
         Title.Alignment = taCenter
-        Title.Caption = #1050#1086#1085#1090#1088#1086#1083#1100
-        Title.Font.Charset = RUSSIAN_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -24
-        Title.Font.Name = 'Georgia'
-        Title.Font.Style = [fsBold]
-        Width = 350
+        Title.Caption = #1050#1086#1085#1090#1088#1086#1083#1100' '#1079#1085#1072#1085#1080#1081
+        Width = 960
         Visible = True
       end>
   end

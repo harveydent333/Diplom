@@ -74,6 +74,7 @@ procedure TEdit_Lecture.Button3Click(Sender: TObject);
 begin
     if SaveDialog1.Execute then
       Memo1.Lines.SaveToFile(SaveDialog1.FileName+'.txt');
+    MessageBox(0,'Лекция сохранена','', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TEdit_Lecture.Button5Click(Sender: TObject);
@@ -81,9 +82,16 @@ begin
     PrintDialog1.Execute;
 end;
 
+{
+  Процедура обработки нажатия кнопки "Сохранить в базу данных"
+  Формируется запрос на сохранение 
+}
 procedure TEdit_Lecture.Button4Click(Sender: TObject);
 begin
-    config.execRequestSQL('UPDATE Лекции SET Содержание='+#39+Memo1.Text+#39+' WHERE КодЛекции='+IntToStr(updateKodLecture));
+    config.execRequestSQL('UPDATE Лекции'+
+                            ' SET Содержание='+#39+Memo1.Text+#39+
+                          ' WHERE КодЛекции='+IntToStr(updateKodLecture)
+    );
     MessageBox(0,'Лекция сохранена','', MB_OK+MB_ICONINFORMATION);
 end;
 
