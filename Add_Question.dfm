@@ -1,15 +1,15 @@
 object Add_Questions: TAdd_Questions
-  Left = 114
-  Top = 158
+  Left = 346
+  Top = 53
   AutoScroll = False
   BorderIcons = []
   Caption = #1056#1077#1076#1072#1082#1090#1086#1088' '#1074#1086#1087#1088#1086#1089#1086#1074
-  ClientHeight = 672
+  ClientHeight = 867
   ClientWidth = 1185
   Color = clBtnFace
-  Constraints.MaxHeight = 710
+  Constraints.MaxHeight = 905
   Constraints.MaxWidth = 1201
-  Constraints.MinHeight = 710
+  Constraints.MinHeight = 905
   Constraints.MinWidth = 1201
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11867,7 +11867,7 @@ object Add_Questions: TAdd_Questions
     Height = 105
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'Times New Roman'
     Font.Style = []
     ParentFont = False
@@ -11877,7 +11877,7 @@ object Add_Questions: TAdd_Questions
     Left = 0
     Top = 80
     Width = 273
-    Height = 553
+    Height = 753
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -11892,7 +11892,7 @@ object Add_Questions: TAdd_Questions
     Left = 280
     Top = 184
     Width = 905
-    Height = 473
+    Height = 670
     Color = clBtnFace
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -11904,9 +11904,9 @@ object Add_Questions: TAdd_Questions
     TabOrder = 2
     Visible = False
     inherited hint: TLabel
-      Width = 200
-      Height = 15
-      Font.Name = 'Times New Roman'
+      Width = 268
+      Height = 18
+      Font.Height = -16
     end
     inherited Label1: TLabel
       Width = 79
@@ -11959,6 +11959,9 @@ object Add_Questions: TAdd_Questions
       Height = 21
       Font.Name = 'Times New Roman'
     end
+    inherited Memo1: TMemo
+      Font.Name = 'Times New Roman'
+    end
     inherited Panel2: TPanel
       inherited BitBtn3: TBitBtn
         Visible = True
@@ -11996,7 +11999,7 @@ object Add_Questions: TAdd_Questions
   end
   object Button1: TButton
     Left = 8
-    Top = 640
+    Top = 840
     Width = 129
     Height = 25
     Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
@@ -12011,7 +12014,7 @@ object Add_Questions: TAdd_Questions
   end
   object Button2: TButton
     Left = 144
-    Top = 640
+    Top = 840
     Width = 129
     Height = 25
     Caption = #1059#1076#1072#1083#1080#1090#1100' '#1074#1086#1087#1088#1086#1089
@@ -12028,7 +12031,7 @@ object Add_Questions: TAdd_Questions
     Left = 280
     Top = 184
     Width = 905
-    Height = 473
+    Height = 670
     TabOrder = 5
     Visible = False
     inherited Label1: TLabel

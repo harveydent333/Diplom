@@ -1,6 +1,6 @@
 object YchenikiCRUD: TYchenikiCRUD
-  Left = 45
-  Top = 108
+  Left = 67
+  Top = 137
   AutoScroll = False
   BorderIcons = []
   Caption = #1056#1072#1073#1086#1090#1072' '#1089' '#1076#1072#1085#1085#1099#1084#1080' '#1086#1073#1091#1095#1072#1102#1097#1080#1093#1089#1103

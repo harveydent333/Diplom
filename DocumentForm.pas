@@ -317,6 +317,11 @@ begin
         if CheckBox4.Checked = true then
           default:=default+' AND Оценка='+#39+ComboBox3.Text+#39;
           config.selectRequestSQL(default);
+
+        if CheckBox3.Checked = true then
+          default:=default+' AND ДатаПроведения ='+#39+DateToStr(DateTimePicker1.Date)+#39;
+
+        config.selectRequestSQL(default);
       end;
 end;
 

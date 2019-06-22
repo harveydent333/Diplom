@@ -1,6 +1,6 @@
 object PracticCRUD: TPracticCRUD
-  Left = 86
-  Top = 262
+  Left = 19
+  Top = 117
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1084#1080
@@ -8238,10 +8238,10 @@ object PracticCRUD: TPracticCRUD
         Title.Caption = #8470' '#1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081
         Title.Font.Charset = RUSSIAN_CHARSET
         Title.Font.Color = clWindowText
-        Title.Font.Height = -21
+        Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 170
+        Width = 200
         Visible = True
       end
       item
@@ -8256,10 +8256,10 @@ object PracticCRUD: TPracticCRUD
         Title.Caption = #1055#1088#1072#1082#1090#1080#1095#1077#1089#1082#1072#1103
         Title.Font.Charset = RUSSIAN_CHARSET
         Title.Font.Color = clWindowText
-        Title.Font.Height = -21
+        Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 972
+        Width = 920
         Visible = True
       end>
   end

@@ -72,9 +72,6 @@ type
     CheckBox8: TCheckBox;
     Label15: TLabel;
     ComboBox4: TComboBox;
-    Label16: TLabel;
-    CheckBox9: TCheckBox;
-    ComboBox5: TComboBox;
     SpeedButton4: TSpeedButton;
     SpeedButton7: TSpeedButton;
     SpeedButton8: TSpeedButton;
@@ -95,7 +92,6 @@ type
     procedure CheckBox3Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure CheckBox8Click(Sender: TObject);
-    procedure CheckBox9Click(Sender: TObject);
     procedure ComboBox4KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox5KeyPress(Sender: TObject; var Key: Char);
     procedure SpeedButton7Click(Sender: TObject);
@@ -189,11 +185,6 @@ end;
 procedure TShyrnal.CheckBox8Click(Sender: TObject);
 begin
     if CheckBox8.Checked=true then ComboBox4.Enabled:=true else ComboBox4.Enabled:=false;
-end;
-
-procedure TShyrnal.CheckBox9Click(Sender: TObject);
-begin
-   if CheckBox9.Checked=true then ComboBox5.Enabled:=true else ComboBox5.Enabled:=false;
 end;
 
 procedure TShyrnal.Button3Click(Sender: TObject);

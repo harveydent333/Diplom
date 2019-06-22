@@ -42,7 +42,7 @@ var
    nameTema, nameRazdela:string;
         kodTema, kodRazdela,i:integer;
         unique_user:boolean;
-
+             temp:word;
 implementation
 
 uses config, basa_dan, ControlCenter, Title_Form, Unit2, AuthorizationData,
@@ -98,9 +98,13 @@ begin
         #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеМультимедии').AsString+#39
     );
     if KodUser = BD.Request.DataSet.FieldByName('КодУчителя').AsInteger then
-        performingRemoval
+      begin
+        temp:=MessageBox(0,'Вы точно хотите удалить данные мультимедиа?','',MB_YESNO+MB_ICONQUESTION);
+        if idyes=temp then
+          performingRemoval;
+      end
     else
-        MessageBox(0,'У вас нет прав на удаление данной темы!','', MB_OK+MB_ICONwarning);
+      MessageBox(0,'У вас нет прав на удаление данной темы!','', MB_OK+MB_ICONwarning);
 end;
 
 {

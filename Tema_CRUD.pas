@@ -40,7 +40,7 @@ type
 
 var
   TemaCRUD: TTemaCRUD;
-
+   temp:word;
 implementation
 
 uses Title_Form, UpdateTema, UpdateUnit, config,
@@ -77,13 +77,17 @@ end;
 }
 procedure TTemaCRUD.BitBtn3Click(Sender: TObject);
 begin
-   config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+
+    config.selectRequestSQL('SELECT * FROM Тема WHERE НазваниеТемы='+
       #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеТемы').AsString+#39
-   );
+    );
     if KodUser = BD.Request.DataSet.FieldByName('КодУчителя').AsInteger then
-        performingRemoval
+      begin
+        temp:=MessageBox(0,'Вы точно хотите удалить тему?','',MB_YESNO+MB_ICONQUESTION);
+        if idyes=temp then
+            performingRemoval;
+      end
     else
-        MessageBox(0,'У вас нет прав на удаление данной темы!','', MB_OK+MB_ICONwarning);
+      MessageBox(0,'У вас нет прав на удаление данной темы!','', MB_OK+MB_ICONwarning);
 end;
 
 {
@@ -115,7 +119,6 @@ begin
 end;
 
 procedure TTemaCRUD.SpeedButton4Click(Sender: TObject);  // Завершение работы программы
-var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then TitleForm.close;

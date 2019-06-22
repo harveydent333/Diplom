@@ -44,7 +44,7 @@ var
      nameTema, nameRazdela, PathFile2:string;
         kodTema, kodRazdela,i:integer;
         unique_user:boolean;
-
+            temp:word;
 implementation
 
 uses AddPractic, Title_Form, updateUnit, config, UpdatePractic,
@@ -107,9 +107,13 @@ begin
       #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеПрактической').AsString+#39
    );
   if KodUser = BD.Request.DataSet.FieldByName('КодУчителя').AsInteger then
-        performingRemoval
-    else
-        MessageBox(0,'У вас нет прав на удаления данной практической работы!','', MB_OK+MB_ICONwarning);
+    begin
+      temp:=MessageBox(0,'Вы точно хотите удалить данные практической работы?','',MB_YESNO+MB_ICONQUESTION);
+      if idyes=temp then
+        performingRemoval;
+    end
+  else
+     MessageBox(0,'У вас нет прав на удаления данной практической работы!','', MB_OK+MB_ICONwarning);
 end;
 
 {
@@ -212,7 +216,6 @@ begin
 end;
 
 procedure TPracticCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений', MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then TitleForm.close;

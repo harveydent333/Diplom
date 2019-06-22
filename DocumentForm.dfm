@@ -13298,7 +13298,7 @@ object Shyrnal: TShyrnal
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        304.270833333333400000
+        304.270833333333300000
         1899.708333333333000000)
       BandType = rbTitle
       object QRImage2: TQRImage

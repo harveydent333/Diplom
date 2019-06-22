@@ -35,6 +35,7 @@ type
     Label20: TLabel;
     SpeedButton1: TSpeedButton;
     DateTimePicker1: TDateTimePicker;
+    Label4: TLabel;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
     procedure ComboBox3Change(Sender: TObject);
@@ -53,6 +54,7 @@ type
     procedure beginMutimedia;
     procedure processingSingleQuestion;
     procedure processingMoreQuestion;
+    procedure getPathWork;
     { Private declarations }
   public
     { Public declarations }
@@ -61,10 +63,11 @@ type
 var
   AllComponents: TAllComponents;
        nameRazdela,str,nameTema,work, kodYchitel, Path, PathFile:string;
-        kodRazdela,kodTema, List, AllList,i,j, position:integer;
+        kodRazdela,kodTema, List, AllList,i,j, pos1:integer;
+        position:integer;
         CONST TYPE_SINGLE_QUESTIONS = 1;
         CONST TYPE_MORE_QUESTIONS = 2;
-                                   
+
 implementation
 
 uses basa_dan, config, UpdateUnit, Result, Title_Form,
@@ -80,6 +83,7 @@ var i:integer;
 begin
     label2.Visible:=false;
     label3.Visible:=false;
+    label4.Visible:=false;
     ComboBox2.Visible:=false;
     ComboBox2.Items.Clear;
     ComboBox3.Visible:=false;
@@ -124,6 +128,7 @@ end;
 procedure TAllComponents.ComboBox2Change(Sender: TObject);
 var i:integer;
 begin
+    label4.Visible:=false;
     ComboBox3.Visible:=false;
     label3.Visible:=false;
     ComboBox3.Items.Clear;
@@ -143,7 +148,7 @@ begin
     While (BD.Request.DataSet.Eof=false) do
       begin
         ComboBox3.Items.Add(
-          '№ '+BD.Request.DataSet.FieldByName('НомерЛекции').AsString+' | Лекция | '+
+          '№ '+BD.Request.DataSet.FieldByName('НомерЛекции').AsString+' Лекция | '+
           BD.Request.DataSet.FieldByName('НазваниеЛекции').AsString
         );
         BD.Request.DataSet.Next;
@@ -153,7 +158,7 @@ begin
     While (BD.Request.DataSet.Eof=false) do
       begin
         ComboBox3.Items.Add(
-          '№ '+BD.Request.DataSet.FieldByName('НомерМультимедии').AsString+' | Мультимедиа | '+
+          '№ '+BD.Request.DataSet.FieldByName('НомерМультимедии').AsString+' Мультимедиа | '+
           BD.Request.DataSet.FieldByName('НазваниеМультимедии').AsString
         );
         BD.Request.DataSet.Next;
@@ -163,7 +168,7 @@ begin
     While (BD.Request.DataSet.Eof=false) do
       begin
         ComboBox3.Items.Add(
-          '№ '+BD.Request.DataSet.FieldByName('НомерПрактической').AsString+' | Практическая | '+
+          '№ '+BD.Request.DataSet.FieldByName('НомерПрактической').AsString+' Практическая | '+
           BD.Request.DataSet.FieldByName('НазваниеПрактической').AsString
         );
         BD.Request.DataSet.Next;
@@ -173,7 +178,7 @@ begin
     While (BD.Request.DataSet.Eof=false) do
       begin
         ComboBox3.Items.Add(
-          '№ '+BD.Request.DataSet.FieldByName('НомерКонтроля').AsString+' | Контроль | '+
+          '№ '+BD.Request.DataSet.FieldByName('НомерКонтроля').AsString+' Контроль | '+
           BD.Request.DataSet.FieldByName('НазваниеКонтроля').AsString
         );
         BD.Request.DataSet.Next;
@@ -183,54 +188,53 @@ begin
     ComboBox3.Text:=ComboBox3.Items.Strings[0];
     label3.Visible:=true;
     Combobox3.Visible:=true;
+
+    if ComboBox3.Items.Count=0 then
+      begin
+        Combobox3.Visible:=false;
+        label4.Visible:=true;
+        label3.Visible:=false;
+      end;
 end;
 
 procedure TAllComponents.ComboBox3Change(Sender: TObject);
-var position:integer;
 begin
     Panel1.Visible:=false;
     SpeedButton1.Visible:=false;
 
     work:=ComboBox3.Items.Strings[Combobox3.ItemIndex];
-    position:= AnsiPos('Лекция',work);
-    if position <> 0 then
+    pos1:= AnsiPos('Лекция',work);
+    if pos1 <> 0 then
       begin
-       for j:= 1 to 2 do
-          for i:=1 to length(work) do
-            if ((work[i]='|') and (j=2)) then
-                 work:=Copy(work,i+2,Length(work)-i);
-       beginLecture;
+        getPathWork;
+        beginLecture;
       end;
 
-    position := AnsiPos('Контроль',work);
-    if position <> 0 then
+    pos1:= AnsiPos('Контроль',work);
+    if pos1 <> 0 then
       begin
-       for j:= 1 to 2 do
-          for i:=1 to length(work) do
-            if ((work[i]='|') and (j=2)) then
-                 work:=Copy(work,i+2,Length(work)-i);
-       beginControl;
+        getPathWork;
+        beginControl;
       end;
 
-    position := AnsiPos('Практическая',work);
-    if position <> 0 then
+    pos1:= AnsiPos('Практическая',work);
+    if pos1 <> 0 then
       begin
-       for j:= 1 to 2 do
-          for i:=1 to length(work) do
-            if ((work[i]='|') and (j=2)) then
-                 work:=Copy(work,i+2,Length(work)-i);
-       beginPractic;
+        getPathWork;
+        beginPractic;
       end;
 
-    position := AnsiPos('Мультимедиа',work);
-    if position <> 0 then
+    pos1:= AnsiPos('Мультимедиа',work);
+    if pos1 <> 0 then
       begin
-       for j:= 1 to 2 do
-          for i:=1 to length(work) do
-            if ((work[i]='|') and (j=2)) then
-                 work:=Copy(work,i+2,Length(work)-i);
-       beginMutimedia;
+        getPathWork;
+        beginMutimedia;
       end;
+end;
+
+procedure TAllComponents.getPathWork;
+begin
+    work:=Copy(work,AnsiPos('|',work)+2,Length(work)-AnsiPos('|',work));
 end;
 
 {

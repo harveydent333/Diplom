@@ -39,7 +39,7 @@ type
 
 var
   RazdelCRUD: TRazdelCRUD;
-
+    temp:word;
 implementation
 
 uses Title_Form, AddRazdel, UpdateUnit, UpdateRazdel,
@@ -84,9 +84,13 @@ begin
       #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеРаздела').AsString+#39
   );
   if KodUser = BD.Request.DataSet.FieldByName('КодУчителя').AsInteger then
-        performingRemoval
-    else
-        MessageBox(0,'У вас нет прав на удаление данного раздела!','', MB_OK+MB_ICONwarning);
+    begin
+      temp:=MessageBox(0,'Вы точно хотите удалить раздел?','',MB_YESNO+MB_ICONQUESTION);
+        if idyes=temp then
+        performingRemoval;
+    end
+  else
+    MessageBox(0,'У вас нет прав на удаление данного раздела!','', MB_OK+MB_ICONwarning);
 end;
 
 {
@@ -116,7 +120,6 @@ begin
 end;
 
 procedure TRazdelCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then TitleForm.close;

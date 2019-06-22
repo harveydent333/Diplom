@@ -73,8 +73,10 @@ end;
 procedure TEdit_Lecture.Button3Click(Sender: TObject);
 begin
     if SaveDialog1.Execute then
-      Memo1.Lines.SaveToFile(SaveDialog1.FileName+'.txt');
-    MessageBox(0,'Лекция сохранена','', MB_OK+MB_ICONINFORMATION);
+      begin
+          Memo1.Lines.SaveToFile(SaveDialog1.FileName+'.txt');
+          MessageBox(0,'Лекция сохранена','', MB_OK+MB_ICONINFORMATION);
+      end;
 end;
 
 procedure TEdit_Lecture.Button5Click(Sender: TObject);

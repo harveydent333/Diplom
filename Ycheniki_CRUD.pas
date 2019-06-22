@@ -37,7 +37,7 @@ type
 var
   YchenikiCRUD: TYchenikiCRUD;
     idGroup:integer;
-
+      temp:word;
 implementation
 
 uses basa_dan, Title_Form, Menu_Teacher, AuthorizationData, config, UpdateUnit,
@@ -106,21 +106,25 @@ end;
 
 procedure TYchenikiCRUD.BitBtn3Click(Sender: TObject);
 begin
-    config.selectRequestSQL('SELECT * FROM Группа WHERE НазваниеГруппы='+
-    #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеГруппы').AsString+#39);
+    temp:=MessageBox(0,'Вы точно хотите удалить данные обучающегося?','',MB_YESNO+MB_ICONQUESTION);
+    if idyes=temp then
+      begin
+        config.selectRequestSQL('SELECT * FROM Группа WHERE НазваниеГруппы='+
+            #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеГруппы').AsString+#39);
 
-    idGroup:=BD.Request.DataSet.FieldByName('КодГруппы').AsInteger;
+        idGroup:=BD.Request.DataSet.FieldByName('КодГруппы').AsInteger;
 
-    config.selectRequestSQL('SELECT * FROM Ученик WHERE Фамилия='+
-        #39+DBGrid1.DataSource.DataSet.FieldByName('Фамилия').AsString+#39+' AND Имя='+
-        #39+DBGrid1.DataSource.DataSet.FieldByName('Имя').AsString+#39+' AND Отчество='+
-        #39+DBGrid1.DataSource.DataSet.FieldByName('Отчество').AsString+#39+' AND КодГруппы='+IntToStr(idGroup)
-    );
-    updateKodYchenika:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;
+        config.selectRequestSQL('SELECT * FROM Ученик WHERE Фамилия='+
+            #39+DBGrid1.DataSource.DataSet.FieldByName('Фамилия').AsString+#39+' AND Имя='+
+            #39+DBGrid1.DataSource.DataSet.FieldByName('Имя').AsString+#39+' AND Отчество='+
+            #39+DBGrid1.DataSource.DataSet.FieldByName('Отчество').AsString+#39+' AND КодГруппы='+IntToStr(idGroup)
+        );
+        updateKodYchenika:=BD.Request.DataSet.FieldByName('КодУченика').AsInteger;
 
-    config.execRequestSQL('DELETE FROM Ученик WHERE КодУченика='+IntToStr(updateKodYchenika));
-    config.rebootRequestsCRUD;
-    MessageBox(0,'Данные обучающегося были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
+        config.execRequestSQL('DELETE FROM Ученик WHERE КодУченика='+IntToStr(updateKodYchenika));
+        config.rebootRequestsCRUD;
+        MessageBox(0,'Данные обучающегося были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
+      end;
 end;
 
 procedure TYchenikiCRUD.SpeedButton5Click(Sender: TObject);
@@ -137,7 +141,6 @@ begin
 end;
 
 procedure TYchenikiCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then TitleForm.close;

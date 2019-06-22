@@ -1,6 +1,6 @@
 object TemaCRUD: TTemaCRUD
-  Left = 32
-  Top = 413
+  Left = 68
+  Top = 238
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1090#1077#1084#1072#1084#1080

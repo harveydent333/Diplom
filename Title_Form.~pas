@@ -123,6 +123,10 @@ begin
                        ' ON Группа.КодГруппы = Ученик.КодГруппы';
 end;
 
+{
+  Процедура обработки нажатия кнопки "Настройка БД"
+  Открывает модальное окно компонента OpenDialog, после выбранного файла БД, подключает его
+}
 procedure TTitleForm.SpeedButton5Click(Sender: TObject);
 begin
    if OpenDialog1.Execute then

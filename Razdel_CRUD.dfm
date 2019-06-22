@@ -1,6 +1,6 @@
 object RazdelCRUD: TRazdelCRUD
-  Left = 97
-  Top = 373
+  Left = 85
+  Top = 151
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1088#1072#1079#1076#1077#1083#1072#1084#1080

@@ -102,12 +102,21 @@ end;
 }
 procedure TTeacherCRUD.BitBtn3Click(Sender: TObject);
 begin
-    config.execRequestSQL('DELETE FROM Учитель WHERE login='+
+    config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+
         #39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39
     );
-    config.rebootRequestsCRUD;
-    MessageBox(0,'Данные преподавателя были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
+    if BD.Request.DataSet.FieldByName('КодУчителя').AsInteger <> kodUser then
+      begin
+          config.execRequestSQL('DELETE FROM Учитель WHERE login='+
+              #39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39
+          );
+          config.rebootRequestsCRUD;
+          MessageBox(0,'Данные преподавателя были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
+      end
+    else
+      MessageBox(0,'Невозможно удалить собственный профиль во время работы с ним!','', MB_OK+MB_ICONwarning);
 end;
+
 procedure TTeacherCRUD.SpeedButton4Click(Sender: TObject);
 var temp:word;
 begin

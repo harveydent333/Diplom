@@ -41,7 +41,7 @@ type
 
 var
   ControlCRUD: TControlCRUD;
-
+     temp:word;
 implementation
 
 uses Title_Form, config, UpdateUnit, AddControl, UpdateControl,
@@ -80,9 +80,13 @@ procedure TControlCRUD.BitBtn3Click(Sender: TObject);
 begin
     config.selectRequestSQL('SELECT * FROM Контроль WHERE НазваниеКонтроля='+#39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеКонтроля').AsString+#39);
     if KodUser = BD.Request.DataSet.FieldByName('КодУчителя').AsInteger then
-        performingRemoval
+      begin
+        temp:=MessageBox(0,'Вы точно хотите удалить данные контроля знаний?','',MB_YESNO+MB_ICONQUESTION);
+        if idyes=temp then
+          performingRemoval;
+      end
     else
-        MessageBox(0,'У вас нет прав на удаление данного контроля знаний!','', MB_OK+MB_ICONwarning);
+       MessageBox(0,'У вас нет прав на удаление данного контроля знаний!','', MB_OK+MB_ICONwarning);
 end;
 
 {

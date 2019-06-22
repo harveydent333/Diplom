@@ -420,6 +420,10 @@ begin
          processingMoreVariants;
 end;
 
+{
+  Процедура обработки изменений в ComboBox
+  Изменениет тип вопроса
+}
 procedure TAdd_Questions.ComboBox2Change(Sender: TObject);
 begin
     varianti:='';

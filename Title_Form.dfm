@@ -1,6 +1,6 @@
 object TitleForm: TTitleForm
-  Left = 109
-  Top = 221
+  Left = 453
+  Top = 355
   AutoScroll = False
   BorderIcons = [biHelp]
   Caption = #1058#1080#1090#1091#1083#1100#1085#1072#1103' '#1092#1086#1088#1084#1072

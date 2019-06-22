@@ -1,6 +1,6 @@
 object YchenikiCRUD: TYchenikiCRUD
-  Left = 51
-  Top = 309
+  Left = 67
+  Top = 137
   AutoScroll = False
   BorderIcons = []
   Caption = #1056#1072#1073#1086#1090#1072' '#1089' '#1076#1072#1085#1085#1099#1084#1080' '#1086#1073#1091#1095#1072#1102#1097#1080#1093#1089#1103
@@ -1321,7 +1321,6 @@ object YchenikiCRUD: TYchenikiCRUD
     FFF000000000FFFFFFFFF0000000FFFFFFF800000007FFFFFFFFF0000000}
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

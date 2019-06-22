@@ -27612,6 +27612,7 @@ object AuthorizationForm: TAuthorizationForm
     Font.Style = []
     ItemHeight = 21
     ParentFont = False
+    Sorted = True
     TabOrder = 2
     Text = 'ComboBox1'
     Visible = False
@@ -27630,6 +27631,7 @@ object AuthorizationForm: TAuthorizationForm
     Font.Style = []
     ItemHeight = 21
     ParentFont = False
+    Sorted = True
     TabOrder = 3
     Text = 'ComboBox1'
     Visible = False

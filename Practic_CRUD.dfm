@@ -1,6 +1,6 @@
 object PracticCRUD: TPracticCRUD
-  Left = 74
-  Top = 293
+  Left = 19
+  Top = 117
   AutoScroll = False
   BorderIcons = []
   Caption = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1087#1088#1072#1082#1090#1080#1095#1077#1089#1082#1080#1084#1080
@@ -8259,7 +8259,7 @@ object PracticCRUD: TPracticCRUD
         Title.Font.Height = -24
         Title.Font.Name = 'Times New Roman'
         Title.Font.Style = [fsBold]
-        Width = 942
+        Width = 920
         Visible = True
       end>
   end

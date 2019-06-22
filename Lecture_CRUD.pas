@@ -27,7 +27,6 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
-    procedure SpeedButton11Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
@@ -43,17 +42,12 @@ type
 
 var
   LectureCRUD: TLectureCRUD;
-
+   temp:word;
 implementation
 
 uses Title_Form, AddLecture, UpdateLecture, config, UpdateUnit,
   EditLecture, ControlCenter, Unit2, AuthorizationData, ShellAPI;
 {$R *.dfm}
-
-procedure TLectureCRUD.SpeedButton11Click(Sender: TObject);
-begin
-
-end;
 
 {
   Обработка нажатия кнопки добавить контроль знаний
@@ -91,7 +85,11 @@ begin
       #39+DBGrid1.DataSource.DataSet.FieldByName('НазваниеЛекции').AsString+#39
     );
     if KodUser = BD.Request.DataSet.FieldByName('КодУчителя').AsInteger then
-        performingRemoval
+      begin
+        temp:=MessageBox(0,'Вы точно хотите удалить данные лекции?','',MB_YESNO+MB_ICONQUESTION);
+        if idyes=temp then
+          performingRemoval;
+      end
     else
         MessageBox(0,'У вас нет прав на удаление данной лекции!','', MB_OK+MB_ICONwarning);
 end;
@@ -184,7 +182,6 @@ begin
 end;
 
 procedure TLectureCRUD.SpeedButton4Click(Sender: TObject);  // Завершение работы программы
-var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then TitleForm.close;

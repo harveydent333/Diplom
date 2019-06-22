@@ -36,7 +36,7 @@ type
 
 var
   TeacherCRUD: TTeacherCRUD;
-
+        temp:word;
 implementation
 
 uses Title_Form, Unit2, Manager_Users, Add_Question, basa_dan, config,
@@ -102,15 +102,26 @@ end;
 }
 procedure TTeacherCRUD.BitBtn3Click(Sender: TObject);
 begin
-    config.execRequestSQL('DELETE FROM Учитель WHERE login='+
-        #39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39
-    );
-    config.rebootRequestsCRUD;
-    MessageBox(0,'Данные преподавателя были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
+    temp:=MessageBox(0,'Вы точно хотите удалить данные преподавателя?','',MB_YESNO+MB_ICONQUESTION);
+      if idyes=temp then
+        begin
+          config.selectRequestSQL('SELECT * FROM Учитель WHERE login='+
+            #39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39
+          );
+          if BD.Request.DataSet.FieldByName('КодУчителя').AsInteger <> kodUser then
+            begin
+              config.execRequestSQL('DELETE FROM Учитель WHERE login='+
+                #39+DBGrid1.DataSource.DataSet.FieldByName('login').AsString+#39
+              );
+              config.rebootRequestsCRUD;
+              MessageBox(0,'Данные преподавателя были успешно удалены!','', MB_OK+MB_ICONINFORMATION);
+            end
+          else
+            MessageBox(0,'Невозможно удалить собственный профиль во время работы с ним!','', MB_OK+MB_ICONwarning);
+        end;
 end;
 
 procedure TTeacherCRUD.SpeedButton4Click(Sender: TObject);
-var temp:word;
 begin
     temp:=MessageBox(0,'Вы точно хотите выйти из программы?','Программирование и защита Web - приложений',MB_YESNO+MB_ICONQUESTION);
     if idyes=temp then TitleForm.close;
